@@ -1,13 +1,11 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Sistema de Adquisición, Bodega y Activo Fijo
-      Hospital XXXXXXXX
-       {{nombreBonoModulo}}</h1>
+    <h1 class="example-app-name">SAFA {{nombreBonoModulo}}</h1>
     <h5>{{tituloModulo}}</h5><span class="spacing"></span>
     <span class="spacerDerecha"></span>
 
-    <h6>{{"nombre usuario"}}</h6>
+    <h6>{{"Italo Vallejos Gutiérrez"}}</h6>
 
 
   </mat-toolbar>
@@ -15,7 +13,7 @@
 
   <mat-sidenav-container autosize class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened="true"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <!--
