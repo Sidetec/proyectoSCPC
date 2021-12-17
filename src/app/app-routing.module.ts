@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PacComponent } from './componentes/compras/pac/pac.component';
+import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
-
-
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -16,7 +15,7 @@ const routes: Routes = [
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: PruebaComponent},
 
-    {path: 'arsenal', component: PruebaComponent},
+    {path: 'arsenal', component: ArsenalComponent},
     {path: 'climatizacion', component: PruebaComponent},
 
     {path: 'catalogo', component: PruebaComponent},
@@ -25,8 +24,6 @@ const routes: Routes = [
 
     {path: 'gestionRequerimientos', component: PruebaComponent},
     {path: 'gestionDocumeevaluacionesntal', component: PruebaComponent},
-
-
 
 ];
 
