@@ -15,3 +15,22 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+td.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+td.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+
+.mat-row .mat-cell {
+
+  background: none;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  background: whitesmoke;
+}

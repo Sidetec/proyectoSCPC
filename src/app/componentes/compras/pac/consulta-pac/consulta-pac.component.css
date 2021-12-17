@@ -1,47 +1,52 @@
-.consulta-container {
-  display: flex;
-  flex-direction: column;
-  padding: 0 10%;
+table {
+  width: 100%;
 }
 
-.consulta-container > * {
-  width: 95%;
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
 
-.colorFondoBoton {
-  color: white;
-  background-color: black;
+.mat-icon-button {
+  width: 30px;
+  height: 30px;
 }
 
-.mat-raised-button {
-  min-width: 100%;
+th.mat-sort-header-sorted {
+  color: black;
 }
 
-.mat-dialog-container {
-  padding: 50px !important;
-
+td.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
 }
 
-.mat-dialog-content{
-  margin: 0;
+td.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
 }
 
-.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
-  color: rgb(33, 10, 88) !important;
+
+.mat-row .mat-cell {
+
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
-  color: #000000;
+.mat-row:hover .mat-cell {
+  background: whitesmoke;
 }
 
-.mat-card-image {
-  height: 100px;
-  width: 50%;
-  text-align: center;
+.mat-cell, .mat-footer-cell {
+  font-size: 9px;
 }
 
-  .mat-card{
+th.mat-header-cell, mat-header-cell {
+  font-size: 10px!important;
+}
 
-    border: 1px solid #807d7d;
-    border-radius: 10px !important;
-   }
+#idLicitacionI {
+  border-left: 3px solid transparent;
+
+  border-left-color: currentColor;
+}
+

@@ -8,77 +8,44 @@ import { HttpClient } from '@angular/common/http';
 import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
 
-export interface UserData {
+export interface Datos {
   pac: string;
   servicio: string;
-  columna1: string;
-  columna2: string;
-  columna3: string;
+
 }
 
-/** Constants used to fill up our data base. */
-const PAC: string[] = [
-  'PAC-001',
-  'PAC-002',
-  'PAC-003',
-  'PAC-004',
-  'PAC-005',
-  'PAC-006',
-  'PAC-007',
-  'PAC-008',
-];
-const SERVICIO: string[] = [
-  'Servicio1',
-  'Servicio2',
-  'Servicio3',
-  'Servicio4',
-  'Servicio5',
-  'Servicio6',
-  'Servicio7',
-  'Servicio8',
 
+const datos: Datos[] = [
+  {pac: 'PAC-001', servicio: 'Servicio1'},
+  {pac: 'PAC-002', servicio: 'Servicio2'},
+  {pac: 'PAC-003', servicio: 'Servicio3'},
+  {pac: 'PAC-004', servicio: 'Servicio4'},
+  {pac: 'PAC-005', servicio: 'Servicio5'},
+  {pac: 'PAC-006', servicio: 'Servicio6'},
+  {pac: 'PAC-007', servicio: 'Servicio7'},
+  {pac: 'PAC-008', servicio: 'Servicio8'},
+  {pac: 'PAC-009', servicio: 'Servicio9'},
+  {pac: 'PAC-0010', servicio: 'Servicio10'},
+  {pac: 'PAC-0011', servicio: 'Servicio11'},
+  {pac: 'PAC-0012', servicio: 'Servicio12'},
+  {pac: 'PAC-0013', servicio: 'Servicio13'},
+  {pac: 'PAC-0014', servicio: 'Servicio14'},
+  {pac: 'PAC-0015', servicio: 'Servicio15'},
+  {pac: 'PAC-0016', servicio: 'Servicio16'},
+  {pac: 'PAC-0017', servicio: 'Servicio17'},
+  {pac: 'PAC-0018', servicio: 'Servicio18'},
+  {pac: 'PAC-0019', servicio: 'Servicio19'},
+  {pac: 'PAC-0020', servicio: 'Servicio20'},
 ];
-const CAMPO1: string[] = [
-  'Campo1',
-  'Campo2',
-  'Campo3',
-  'Campo4',
-  'Campo5',
-  'Campo6',
-  'Campo7',
-  'Campo8',
 
-];
-const CAMPO2: string[] = [
-  'Campo1',
-  'Campo2',
-  'Campo3',
-  'Campo4',
-  'Campo5',
-  'Campo6',
-  'Campo7',
-  'Campo8',
-
-];
-const CAMPO3: string[] = [
-  'Campo1',
-  'Campo2',
-  'Campo3',
-  'Campo4',
-  'Campo5',
-  'Campo6',
-  'Campo7',
-  'Campo8',
-
-];
 @Component({
   selector: 'app-pac',
   templateUrl: './pac.component.html',
   styleUrls: ['./pac.component.css']
 })
 export class PacComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'pac', 'servicio', 'columna1', 'columna2', 'columna3', 'columna4','opciones'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['pac', 'servicio', 'columna1','opciones'];
+  dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -87,10 +54,10 @@ export class PacComponent implements AfterViewInit {
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
     // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(datos);
   }
 
   ngAfterViewInit() {
@@ -164,7 +131,7 @@ export class PacComponent implements AfterViewInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '100%';
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
@@ -188,7 +155,7 @@ export class PacComponent implements AfterViewInit {
 }
 
 /** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
+/*function createNewUser(id: number): UserData {
   const pac =
     PAC[Math.round(Math.random() * (PAC.length - 1))] +
     ' ' +
@@ -206,3 +173,4 @@ function createNewUser(id: number): UserData {
   };
 }
 
+*/
