@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
+import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 
@@ -16,7 +17,7 @@ const routes: Routes = [
     {path: 'consumo', component: PruebaComponent},
 
     {path: 'arsenal', component: ArsenalComponent},
-    {path: 'climatizacion', component: PruebaComponent},
+    {path: 'climatizacion', component: ClimaComponent},
 
     {path: 'catalogo', component: PruebaComponent},
     {path: 'gestionDocumental', component: PruebaComponent},

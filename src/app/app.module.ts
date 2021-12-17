@@ -21,7 +21,7 @@ import { AgregaArticuloComponent } from './componentes/Farmacia/Arsenal/agrega-a
 import { ModificaArticuloComponent } from './componentes/Farmacia/Arsenal/modifica-articulo/modifica-articulo.component';
 import { ConsultaArticuloComponent } from './componentes/Farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
 import { EliminaArticuloComponent } from './componentes/Farmacia/Arsenal/elimina-articulo/elimina-articulo.component';
-
+import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { EliminaArticuloComponent } from './componentes/Farmacia/Arsenal/elimina
     ConsultaArticuloComponent,
     AgregaArticuloComponent,
     ModificaArticuloComponent,
-    EliminaArticuloComponent
+    EliminaArticuloComponent,
+    ClimaComponent
   ],
   imports: [
     BrowserModule,
