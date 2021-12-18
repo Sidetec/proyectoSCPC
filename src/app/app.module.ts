@@ -16,6 +16,11 @@ import { MenuListaSubMenuComponent } from './componentes/menu-lista-sub-menu/men
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PacComponent } from './componentes/compras/pac/pac.component';
+import { sucComponent } from './componentes/compras/suc/suc.component';
+import { AgregasucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc.component';
+import { ModificasucComponent } from './componentes/compras/suc/modifica-suc/modifica-suc.component';
+import { ConsultasucComponent } from './componentes/compras/suc/consulta-suc/consulta-suc.component';
+import { CancelarSucComponent } from './componentes/compras/suc/cancelarSuc/cancelar-suc.component';
 import { AgregaPacComponent } from './componentes/compras/pac/agrega-pac/agrega-pac.component';
 import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
@@ -31,6 +36,11 @@ import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.comp
     PruebaComponent,
     InicioComponent,
     PacComponent,
+    sucComponent,
+    AgregasucComponent,
+    ModificasucComponent,
+    ConsultasucComponent,
+    CancelarSucComponent,
     AgregaPacComponent,
     ModificaPacComponent,
     ConsultaPacComponent,
