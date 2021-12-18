@@ -1,0 +1,28 @@
+<app-loader></app-loader>
+<h2 mat-dialog-title class="text-center">DETALLE DEL ACTIVO</h2>
+
+<mat-dialog-content  name="consulta" class="consulta-container">
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Código"  value="FRM-001" disabled='true' >
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Descripción"  value="Descripción1" disabled='true' >
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Activo1" value="Activo1" disabled='true'>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Dato2" value="Dato2" disabled='true'>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="justify-content-center">
+    <div class="col-md-6">
+      <button mat-raised-button  (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+    </div>
+</mat-dialog-actions>

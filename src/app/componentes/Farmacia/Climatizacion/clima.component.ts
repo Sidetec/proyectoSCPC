@@ -4,12 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-/*
-import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
-import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
-import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
-import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
-*/
+
 export interface UserData {
   articulo: string;
   tempIdeal: string;
