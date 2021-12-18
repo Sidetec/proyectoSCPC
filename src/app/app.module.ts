@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { PacComponent } from './componentes/compras/pac/pac.component';
 import { AgregaPacComponent } from './componentes/compras/pac/agrega-pac/agrega-pac.component';
 import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
+import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
 
 
 
@@ -31,13 +33,16 @@ import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/con
     PacComponent,
     AgregaPacComponent,
     ModificaPacComponent,
-    ConsultaPacComponent
+    ConsultaPacComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

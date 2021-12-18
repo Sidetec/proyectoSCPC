@@ -4,11 +4,17 @@
   </div>
 </div>
 <div class="content ml-2 mr-2">
-<mat-form-field appearance="standard">
-  <mat-label>Buscar</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
-</mat-form-field>
-
+  <div class="row">
+    <div class="col-md-11">
+      <mat-form-field appearance="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
+      </mat-form-field>
+    </div>
+    <div class="col-md-1">
+        <button mat-raised-button   (click)="alertas()"  [disabled]=false>Alertas</button>
+    </div>
+</div>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
 

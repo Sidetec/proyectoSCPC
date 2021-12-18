@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 export interface Datos {
   pac: string;
@@ -151,6 +152,28 @@ export class PacComponent implements AfterViewInit {
 
 
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
+  }
+
+
+
+  alertas(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.height = '95%';
+    dialogConfig.position = { top : '2%'};
+
+
+    this.dialog.open(AlertasComponent, dialogConfig)
+      .afterClosed().subscribe(
+       data => {console.log('Dialog output3333:', data);
+                if (data !== undefined) {
+                    this.refreshTable();
+                }
+        }
+      );
   }
 }
 

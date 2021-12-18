@@ -22,3 +22,12 @@ export interface IConsultaPac {
   totalComprado: number
   saldoLicitacion: number;
   }
+
+  export interface IAlertas {
+    fechaInicio:Date;
+    fechaTermino:Date;
+    primerAvisoDias:number;
+    segundoAvisoDias:number;
+    tercerAvisoDias:number;
+    stockMinimoPorc:number;
+  }

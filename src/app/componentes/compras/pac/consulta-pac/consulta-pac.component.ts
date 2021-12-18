@@ -6,7 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { IConsultaPac } from 'src/app/interface/consultasPac';
+import { IConsultaPac } from 'src/app/interface/Pac';
 
 @Component({
   selector: 'app-consulta-pac',
