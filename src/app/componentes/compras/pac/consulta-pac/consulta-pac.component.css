@@ -46,7 +46,15 @@ th.mat-header-cell, mat-header-cell {
 
 #idLicitacionI {
   border-left: 3px solid transparent;
-
   border-left-color: currentColor;
 }
 
+#headrePrimeraFilaGrupo4{
+  border-left: 3px solid transparent;
+  border-left-color: currentColor;
+  text-align: center;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 4px !important;
+}
