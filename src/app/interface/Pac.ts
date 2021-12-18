@@ -31,3 +31,13 @@ export interface IConsultaPac {
     tercerAvisoDias:number;
     stockMinimoPorc:number;
   }
+
+  export interface IIgresoConsumo {
+  planAnual:number;
+  servicio:number;
+  codigoArticulo: number;
+  descripcionArticulo: string;
+  saldoDisponibleantesConsumo: number;
+  cantidadConsumir: number;
+  saldoDisponibleDespuesConsumo: number;
+  }

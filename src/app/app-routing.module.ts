@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
     {path: 'suc', component: PruebaComponent},
     {path: 'oc', component: PruebaComponent},
     {path: 'recepcion', component: PruebaComponent},
-    {path: 'consumo', component: PruebaComponent},
+    {path: 'consumo', component: AgregaConsumoComponent},
 
     {path: 'arsenal', component: PruebaComponent},
     {path: 'climatizacion', component: PruebaComponent},

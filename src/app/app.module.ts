@@ -20,6 +20,7 @@ import { AgregaPacComponent } from './componentes/compras/pac/agrega-pac/agrega-
 import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
 import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
+import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
 
 
 
@@ -34,7 +35,8 @@ import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.comp
     AgregaPacComponent,
     ModificaPacComponent,
     ConsultaPacComponent,
-    AlertasComponent
+    AlertasComponent,
+    AgregaConsumoComponent
   ],
   imports: [
     BrowserModule,
