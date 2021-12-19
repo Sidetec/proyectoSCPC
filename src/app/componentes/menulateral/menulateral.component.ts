@@ -105,6 +105,7 @@ export class MenulateralComponent implements OnDestroy {
               tituloMenu: 'Climatización',
               iconName: 'send icon',
               route: 'climatizacion',
+
               disabled: false
             }
 
