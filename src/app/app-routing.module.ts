@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { sucComponent } from './componentes/compras/suc/suc.component';
+import { OcComponent } from './componentes/compras/oc/oc.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 
@@ -13,7 +14,7 @@ const routes: Routes = [
 
     {path: 'pac', component: PacComponent},
     {path: 'suc', component: sucComponent},
-    {path: 'oc', component: PruebaComponent},
+    {path: 'oc', component: OcComponent},
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: PruebaComponent},
 

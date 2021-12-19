@@ -17,6 +17,8 @@ import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { sucComponent } from './componentes/compras/suc/suc.component';
+import { OcComponent } from './componentes/compras/oc/oc.component';
+import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consulta-oc.component';
 import { AgregasucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc.component';
 import { ModificasucComponent } from './componentes/compras/suc/modifica-suc/modifica-suc.component';
 import { ConsultasucComponent } from './componentes/compras/suc/consulta-suc/consulta-suc.component';
@@ -37,6 +39,8 @@ import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.comp
     InicioComponent,
     PacComponent,
     sucComponent,
+    OcComponent,
+    ConsultaOcComponent,
     AgregasucComponent,
     ModificasucComponent,
     ConsultasucComponent,
