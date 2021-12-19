@@ -5,6 +5,10 @@ import { PacComponent } from './componentes/compras/pac/pac.component';
 
 import { sucComponent } from './componentes/compras/suc/suc.component';
 
+
+import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
+import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.component';
+
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
@@ -23,12 +27,21 @@ const routes: Routes = [
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
+<<<<<<< HEAD
     {path: 'arsenal', component: PruebaComponent},
     {path: 'climatizacion', component: PruebaComponent},
 
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
     {path: 'centralizacionContable', component: CentralizacionContableComponent},
+=======
+    {path: 'Arsenal', component: ArsenalComponent},
+    {path: 'Climatizacion', component: ClimaComponent},
+
+    {path: 'catalogo', component: PruebaComponent},
+    {path: 'gestionDocumental', component: PruebaComponent},
+    {path: 'centralizacionContable', component: PruebaComponent},
+>>>>>>> origin/Irma
 
     {path: 'gestionRequerimientos', component: PruebaComponent},
     {path: 'gestionDocumeevaluacionesntal', component: PruebaComponent}
