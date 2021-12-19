@@ -5,9 +5,13 @@ import { PacComponent } from './componentes/compras/pac/pac.component';
 
 import { sucComponent } from './componentes/compras/suc/suc.component';
 
-
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
+import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
+import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
+import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
+
+
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -22,12 +26,12 @@ const routes: Routes = [
     {path: 'arsenal', component: PruebaComponent},
     {path: 'climatizacion', component: PruebaComponent},
 
-    {path: 'catalogo', component: PruebaComponent},
-    {path: 'gestionDocumental', component: PruebaComponent},
-    {path: 'centralizacionContable', component: PruebaComponent},
+    {path: 'catalogo', component: CatalogoComponent},
+    {path: 'gestionDocumental', component: GestionDocumentalComponent},
+    {path: 'centralizacionContable', component: CentralizacionContableComponent},
 
     {path: 'gestionRequerimientos', component: PruebaComponent},
-    {path: 'gestionDocumeevaluacionesntal', component: PruebaComponent},
+    {path: 'gestionDocumeevaluacionesntal', component: PruebaComponent}
 
 ];
 
