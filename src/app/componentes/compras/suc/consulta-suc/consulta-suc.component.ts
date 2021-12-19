@@ -5,38 +5,38 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { CancelarSucComponent } from '../cancelarSuc/cancelar-suc.component';
 
-import { IConsultaPac } from 'src/app/interface/Pac';
-
+import { IConsultaSuc } from 'src/app/interface/suc';
 @Component({
-  selector: 'app-consulta-pac',
-  templateUrl: './consulta-pac.component.html',
-  styleUrls: ['./consulta-pac.component.css']
+  selector: 'app-consulta-suc',
+  templateUrl: './consulta-suc.component.html',
+  styleUrls: ['./consulta-suc.component.css']
 })
-export class ConsultaPacComponent implements AfterViewInit {
+export class ConsultasucComponent implements AfterViewInit {
 
-  //datoConsultaPac:  IConsultaPac | undefined;
+//datoConsultaPac:  IConsultaPac | undefined;
 
-  datoConsultaPac: IConsultaPac[] = [
+datoConsultaSuc: IConsultaSuc[] = [
 
-  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12, catidadTotal: 78,  valorUnitario: 10,  montoTotal: 80000, idLicitacion: 100,  idOc: 1000,  totalComprado: 50000,  saldoLicitacion: 30000}
+  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
 
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoLicitacion'];
-  dataSource: MatTableDataSource<IConsultaPac>;
+  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
+  dataSource: MatTableDataSource<IConsultaSuc>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaPacComponent>,) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultasucComponent>,) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.datoConsultaPac);
+    this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
   }
 
   ngAfterViewInit() {
@@ -67,6 +67,27 @@ export class ConsultaPacComponent implements AfterViewInit {
   cerrar() {
     this.dialogRef.close();
   }
+  CancelarSUC(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.height = '95%';
+    dialogConfig.position = { top : '2%'};
+
+
+    this.dialog.open(CancelarSucComponent, dialogConfig)
+      .afterClosed().subscribe(
+       data => {console.log('Dialog output3333:', data);
+                if (data !== undefined) {
+                    this.refreshTable();
+                }
+        }
+      );
+  }
+
+
 }
 
 /** Builds and returns a new User. */

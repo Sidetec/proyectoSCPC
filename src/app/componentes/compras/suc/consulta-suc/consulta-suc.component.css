@@ -62,7 +62,7 @@ th.mat-header-cell, mat-header-cell {
   text-align: center;
 }
 
-#headrePrimeraFilaGrupo3, #headrePrimeraFilaGrupo2{
+ #headrePrimeraFilaGrupo2{
   border-left: 1px solid transparent;
   border-left-color: currentColor;
   text-align: center;

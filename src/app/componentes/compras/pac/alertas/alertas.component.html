@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>CONFIGURACIÓN DE ALERTAS</h2>
+
+<mat-dialog-content [formGroup]="configuraAlerta" name="configuraAlerta" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Fecha Inicio" [matDatepicker]="dpdFechaInicio" [formControl]="fechaInicio" required>
+    <mat-datepicker-toggle matSuffix [for]="dpdFechaInicio"></mat-datepicker-toggle>
+    <mat-datepicker #dpdFechaInicio></mat-datepicker>
+    <mat-error *ngIf="fechaInicio.invalid">{{getErrorMessage('fechaInicio')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Fecha Término" [matDatepicker]="dpdFechaTermino" [formControl]="fechaTermino" required>
+    <mat-datepicker-toggle matSuffix [for]="dpdFechaTermino"></mat-datepicker-toggle>
+    <mat-datepicker #dpdFechaTermino></mat-datepicker>
+    <mat-error *ngIf="fechaTermino.invalid">{{getErrorMessage('fechaTermino')}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="1er. Aviso" [formControl]="primerAvisoDias" >
+    <mat-error *ngIf="primerAvisoDias.invalid">{{getErrorMessage('primerAvisoDias')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="2er. Aviso" [formControl]="segundoAvisoDias" >
+    <mat-error *ngIf="segundoAvisoDias.invalid">{{getErrorMessage('segundoAvisoDias')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="3er. Aviso" [formControl]="tercerAvisoDias" >
+    <mat-error *ngIf="tercerAvisoDias.invalid">{{getErrorMessage('tercerAvisoDias')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" >
+    <mat-label>Control Stock</mat-label>
+    <input matInput type="number" placeholder="0%" [formControl]="stockMinimoPorc" min="100">
+    <span matSuffix>%</span>
+    <mat-error *ngIf="stockMinimoPorc.invalid">Mínimo: 100%</mat-error>
+  </mat-form-field>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="col-md-6">
+      <button mat-raised-button color="warn" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+    </div>
+    <div class="col-md-6">
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="configuraAlerta.invalid">ACEPTAR</button>
+    </div>
+</mat-dialog-actions>

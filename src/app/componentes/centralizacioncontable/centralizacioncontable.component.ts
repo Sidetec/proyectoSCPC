@@ -2,50 +2,38 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { AgregaPacComponent } from './agrega-pac/agrega-pac.component';
+//import { AgregaPacComponent } from './agrega-pac/agrega-pac.component';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
-import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
-import { AlertasComponent } from './alertas/alertas.component';
+//import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
+//import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
+//import { AlertasComponent } from './alertas/alertas.component';
 
 export interface Datos {
-  pac: string;
-  servicio: string;
-
+  Fecha: string;
+  TipoDocumento: string;
+  NumeroDocto: string;
+  Proveedor: string;
+  Total: string;
 }
 
 
 const datos: Datos[] = [
-  {pac: 'PAC-001', servicio: 'Servicio1'},
-  {pac: 'PAC-002', servicio: 'Servicio2'},
-  {pac: 'PAC-003', servicio: 'Servicio3'},
-  {pac: 'PAC-004', servicio: 'Servicio4'},
-  {pac: 'PAC-005', servicio: 'Servicio5'},
-  {pac: 'PAC-006', servicio: 'Servicio6'},
-  {pac: 'PAC-007', servicio: 'Servicio7'},
-  {pac: 'PAC-008', servicio: 'Servicio8'},
-  {pac: 'PAC-009', servicio: 'Servicio9'},
-  {pac: 'PAC-0010', servicio: 'Servicio10'},
-  {pac: 'PAC-0011', servicio: 'Servicio11'},
-  {pac: 'PAC-0012', servicio: 'Servicio12'},
-  {pac: 'PAC-0013', servicio: 'Servicio13'},
-  {pac: 'PAC-0014', servicio: 'Servicio14'},
-  {pac: 'PAC-0015', servicio: 'Servicio15'},
-  {pac: 'PAC-0016', servicio: 'Servicio16'},
-  {pac: 'PAC-0017', servicio: 'Servicio17'},
-  {pac: 'PAC-0018', servicio: 'Servicio18'},
-  {pac: 'PAC-0019', servicio: 'Servicio19'},
-  {pac: 'PAC-0020', servicio: 'Servicio20'},
+  {Fecha: 'ACT-001', TipoDocumento: 'Descripcion1' , NumeroDocto : 'NumeroDocto' , Proveedor : 'Proveedor',  Total : 'Total'},
+  {Fecha: 'ACT-001', TipoDocumento: 'Descripcion1' , NumeroDocto : 'NumeroDocto' , Proveedor : 'Proveedor',  Total : 'Total'},
+  {Fecha: 'ACT-001', TipoDocumento: 'Descripcion1' , NumeroDocto : 'NumeroDocto' , Proveedor : 'Proveedor',  Total : 'Total'},
+  {Fecha: 'ACT-001', TipoDocumento: 'Descripcion1' , NumeroDocto : 'NumeroDocto' , Proveedor : 'Proveedor',  Total : 'Total'},
+  {Fecha: 'ACT-001', TipoDocumento: 'Descripcion1' , NumeroDocto : 'NumeroDocto' , Proveedor : 'Proveedor',  Total : 'Total'}
+ 
 ];
 
 @Component({
-  selector: 'app-pac',
-  templateUrl: './pac.component.html',
-  styleUrls: ['./pac.component.css']
+  selector: 'app-centralizacioncontable',
+  templateUrl: './centralizacioncontable.component.html',
+  styleUrls: ['./centralizacioncontable.component.css']
 })
-export class PacComponent implements AfterViewInit {
-  displayedColumns: string[] = ['pac', 'servicio', 'columna1','opciones'];
+export class CentralizacionContableComponent implements AfterViewInit {
+  displayedColumns: string[] = ['Fecha', 'TipoDocumento', 'NumeroDocto','Proveedor', 'Total'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -92,6 +80,8 @@ export class PacComponent implements AfterViewInit {
   //  };
 
 
+  /*
+
     this.dialog.open(AgregaPacComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Dialog output3333:', data);
@@ -100,6 +90,10 @@ export class PacComponent implements AfterViewInit {
               }
       }
     );
+
+    */
+
+
   }
 
   actualizaPac() {
@@ -113,7 +107,7 @@ export class PacComponent implements AfterViewInit {
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
-
+/*
     this.dialog.open(ModificaPacComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Dialog output3333:', data);
@@ -122,6 +116,8 @@ export class PacComponent implements AfterViewInit {
                 }
         }
       );
+*/
+
   }
 
   consultaPac() {
@@ -136,7 +132,7 @@ export class PacComponent implements AfterViewInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-
+/*
     this.dialog.open(ConsultaPacComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);
@@ -145,6 +141,8 @@ export class PacComponent implements AfterViewInit {
                 }
         }
       );
+*/
+
    }
 
 
@@ -155,8 +153,15 @@ export class PacComponent implements AfterViewInit {
   }
 
 
+  isShown: boolean = false ;
 
-  alertas(){
+  Generar(){
+
+    this.isShown = true;
+
+  
+
+/*
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -164,7 +169,6 @@ export class PacComponent implements AfterViewInit {
     dialogConfig.width = '50%';
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
-
 
     this.dialog.open(AlertasComponent, dialogConfig)
       .afterClosed().subscribe(
@@ -174,6 +178,9 @@ export class PacComponent implements AfterViewInit {
                 }
         }
       );
+
+*/
+
   }
 }
 

@@ -46,41 +46,41 @@ export class MenulateralComponent implements OnDestroy {
         {
           titulo: 'Compra',
           tituloMenu: 'Compras',
-          iconName: 'business',
+          iconName: 'local_hospital',
           disabled: false,
           children: [
             {
               titulo: 'Compra - Plan Anual de Compra',
               tituloMenu: 'PAC',
-              iconName: 'menu_book',
+              iconName: 'send icon',
               route: 'pac',
               disabled: false
             },
             {
               titulo: 'Compra - Solicitudes Únicas de Compra ',
               tituloMenu: 'SUC',
-              iconName: 'menu_book',
+              iconName: 'send icon',
               route: 'suc',
               disabled: false
             },
             {
               titulo: 'Compra - Ordenes de Compra',
               tituloMenu: 'O/C',
-              iconName: 'menu_book',
+              iconName: 'send icon',
               route: 'oc',
               disabled: false
             },
             {
               titulo: 'Compra - Recepción Artículos',
               tituloMenu: 'Recepción',
-              iconName: 'menu_book',
+              iconName: 'send icon',
               route: 'recepcion',
               disabled: false
             },
             {
               titulo: 'Compra - Consumo',
               tituloMenu: 'Consumo',
-              iconName: 'menu_book',
+              iconName: 'send icon',
               route: 'consumo',
               disabled: false
             },
@@ -90,21 +90,21 @@ export class MenulateralComponent implements OnDestroy {
         {
           titulo: 'Farmacia',
           tituloMenu: 'Farmacia',
-          iconName: 'business',
+          iconName: 'local_hospital',
           disabled: false,
           children: [
             {
               titulo: 'Farmacia - Arsenal Farmacológico',
               tituloMenu: 'Arsenal',
-              iconName: 'label_important',
-              route: 'Arsenal',
+              iconName: 'send icon',
+              route: 'arsenal',
               disabled: false
             },
             {
               titulo: 'Farmacia - Climatización',
               tituloMenu: 'Climatización',
-              iconName: 'label_important',
-              route: 'Climatizacion',
+              iconName: 'send icon',
+              route: 'climatizacion',
               disabled: false
             }
 
@@ -113,27 +113,27 @@ export class MenulateralComponent implements OnDestroy {
         {
           titulo: 'Activo Fijo',
           tituloMenu: 'Activo Fijo',
-          iconName: 'construction',
+          iconName: 'local_hospital',
           disabled: false,
           children: [
             {
               titulo: 'Activo Fijo - Catálogo de Activos Fijos',
               tituloMenu: 'Catálogo',
-              iconName: 'cloud_upload',
+              iconName: 'send icon',
               route: 'catalogo',
               disabled: false
             },
             {
               titulo: 'Activo Fijo - Documentos Asociados al Activo',
               tituloMenu: 'Gestión Documental',
-              iconName: 'cloud_upload',
+              iconName: 'send icon',
               route: 'gestionDocumental',
               disabled: false
             },
             {
               titulo: 'Activo Fijo - Centralización Contable',
               tituloMenu: 'Centralización Contable',
-              iconName: 'cloud_upload',
+              iconName: 'send icon',
               route: 'centralizacionContable',
               disabled: false
             },
@@ -142,20 +142,20 @@ export class MenulateralComponent implements OnDestroy {
         {
           titulo: 'Generales',
           tituloMenu: 'Generales',
-          iconName: 'sick',
+          iconName: 'local_hospital',
           disabled: false,
           children: [
             {
               titulo: 'Generales - Gestión Requerimientos',
               tituloMenu: 'Gestión Requerimientos',
-              iconName: 'cloud_upload',
+              iconName: 'send icon',
               route: 'gestionRequerimientos',
               disabled: false
             },
             {
               titulo: 'Generales - Evaluaciones',
               tituloMenu: 'Evaluaciones',
-              iconName: 'cloud_upload',
+              iconName: 'send icon',
               route: 'evaluaciones',
               disabled: false
             },
