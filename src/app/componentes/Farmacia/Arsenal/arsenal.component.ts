@@ -156,14 +156,14 @@ export class ArsenalComponent implements AfterViewInit {
     //  agregaNuevo(empresaInterface_: EmpresaI) {
       // Nuevo
       const dialogConfig = new MatDialogConfig();
-  
+
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.width = '50%';
       dialogConfig.height = '90%';
       dialogConfig.position = { top : '2%'};
       dialogConfig.data = {};
-  
+
       this.dialog.open(EliminaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Dialog output3333:', data);
@@ -173,7 +173,7 @@ export class ArsenalComponent implements AfterViewInit {
         }
       );
     }
-  
+
   private refreshTable() {
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
