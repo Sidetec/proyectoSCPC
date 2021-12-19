@@ -23,7 +23,6 @@ import { AgregaPacComponent } from './componentes/compras/pac/agrega-pac/agrega-
 import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
 
-
 import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
 import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
@@ -31,13 +30,6 @@ import { GestionDocumentalComponent } from './componentes/gestiondocumental/gest
 import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
 
 
-
-import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
-import { AgregaArticuloComponent } from './componentes/Farmacia/Arsenal/agrega-articulo/agrega-articulo.component';
-import { ModificaArticuloComponent } from './componentes/Farmacia/Arsenal/modifica-articulo/modifica-articulo.component';
-import { ConsultaArticuloComponent } from './componentes/Farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
-import { EliminaArticuloComponent } from './componentes/Farmacia/Arsenal/elimina-articulo/elimina-articulo.component';
-import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.component';
 
 @NgModule({
   declarations: [
@@ -54,18 +46,13 @@ import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.compo
     CancelarSucComponent,
     AgregaPacComponent,
     ModificaPacComponent,
+
     ConsultaPacComponent,
      CatalogoComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
     AlertasComponent,
-    AgregaConsumoComponent,
-    ArsenalComponent,
-    ConsultaArticuloComponent,
-    AgregaArticuloComponent,
-    ModificaArticuloComponent,
-    EliminaArticuloComponent,
-    ClimaComponent
+    AgregaConsumoComponent
 
   ],
   imports: [
