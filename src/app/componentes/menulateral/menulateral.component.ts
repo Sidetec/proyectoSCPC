@@ -97,14 +97,14 @@ export class MenulateralComponent implements OnDestroy {
               titulo: 'Farmacia - Arsenal Farmacológico',
               tituloMenu: 'Arsenal',
               iconName: 'label_important',
-              route: 'arsenal',
+              route: 'Arsenal',
               disabled: false
             },
             {
               titulo: 'Farmacia - Climatización',
               tituloMenu: 'Climatización',
               iconName: 'label_important',
-              route: 'climatizacion',
+              route: 'Climatizacion',
               disabled: false
             }
 

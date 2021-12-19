@@ -44,7 +44,7 @@ const TEMPACTUAL: string[] = [
 ];
 
 @Component({
-  selector: 'app-clima',
+  selector: 'app-climatizacion',
   templateUrl: './clima.component.html',
   styleUrls: ['./clima.component.css']
 })

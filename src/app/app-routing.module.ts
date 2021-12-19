@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
 import { ClimaComponent } from './componentes/Farmacia/Climatizacion/clima.component';
-import { CatalogoComponent } from './componentes/ActivosFijos/Catalogo/catalogo.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 
@@ -17,10 +16,10 @@ const routes: Routes = [
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: PruebaComponent},
 
-    {path: 'arsenal', component: ArsenalComponent},
-    {path: 'climatizacion', component: ClimaComponent},
+    {path: 'Arsenal', component: ArsenalComponent},
+    {path: 'Climatizacion', component: ClimaComponent},
 
-    {path: 'catalogo', component: CatalogoComponent},
+    {path: 'catalogo', component: PruebaComponent},
     {path: 'gestionDocumental', component: PruebaComponent},
     {path: 'centralizacionContable', component: PruebaComponent},
 
