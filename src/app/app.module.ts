@@ -26,7 +26,9 @@ import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/mod
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
 import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
 import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
-
+import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
+import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
+import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
 
 
 @NgModule({
@@ -45,6 +47,9 @@ import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-con
     AgregaPacComponent,
     ModificaPacComponent,
     ConsultaPacComponent,
+     CatalogoComponent,
+    GestionDocumentalComponent,
+    CentralizacionContableComponent,
     AlertasComponent,
     AgregaConsumoComponent
   ],
