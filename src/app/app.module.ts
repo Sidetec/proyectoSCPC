@@ -36,6 +36,7 @@ import { EliminaArticuloComponent } from './componentes/farmacia/Arsenal/elimina
 import { ConsultaArticuloComponent } from './componentes/farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
 import { AgregaArticuloComponent } from './componentes/farmacia/Arsenal/agrega-articulo/agrega-articulo.component';
 import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consulta-oc.component';
+import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
 
 
 
@@ -67,7 +68,8 @@ import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consul
     EliminaArticuloComponent,
     ConsultaArticuloComponent,
     AgregaArticuloComponent,
-    ConsultaOcComponent
+    ConsultaOcComponent,
+    RecepcionComponent
   ],
   imports: [
     BrowserModule,

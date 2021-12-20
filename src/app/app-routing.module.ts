@@ -13,6 +13,7 @@ import { CentralizacionContableComponent } from './componentes/centralizacioncon
 import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
 import { OcComponent } from './componentes/compras/oc/oc.component';
 import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
+import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
 
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
     {path: 'pac', component: PacComponent},
     {path: 'suc', component: sucComponent},
     {path: 'oc', component: OcComponent},
-    {path: 'recepcion', component: PruebaComponent},
+    {path: 'recepcion', component: RecepcionComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
     {path: 'arsenal', component: ArsenalComponent},
