@@ -1,3 +1,13 @@
+export interface IListaPac {
+  pac: string;
+  servicio: string;
+  responsable: string;
+  campo1: string;
+  campo2: string;
+  campo3: string;
+  campo4:string;
+  campo5:string;
+}
 export interface IConsultaPac {
   codigoArticulo: string;
   detalle: string;
