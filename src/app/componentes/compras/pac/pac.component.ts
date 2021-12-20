@@ -46,7 +46,7 @@ export class PacComponent implements AfterViewInit, OnInit {
     {pac: 'PAC-0020', servicio: 'Servicio20'},
   ];
   */
-  displayedColumns: string[] = ['pac', 'servicio', 'columna1','opciones'];
+  displayedColumns: string[] = ['pac', 'servicio', 'solicitados','comprados','pendientes','consumidos','disponibles','opciones'];
   dataSource: MatTableDataSource<IListaPac>;
 
   @ViewChild(MatPaginator)
