@@ -26,16 +26,39 @@
 
     <!-- Servicio Column -->
     <ng-container matColumnDef="servicio">
-      <th id='servicioI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Servicio </th>
-      <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.servicio}} </td>
+      <th id='servicioI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Servicio </th>
+      <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.servicio}} </td>
+    </ng-container>
+    
+    <!-- solicitados Column -->
+    <ng-container matColumnDef="solicitados">
+      <th id='solicitadosI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 23%;'>Solicitados </th>
+      <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.solicitados}} </td>
     </ng-container>
 
-    <!-- Columna1 Column -->
-    <ng-container matColumnDef="columna1">
-      <th id='columna1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 35%;'> </th>
-      <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{''}} </td>
+    <!-- comprados Column -->
+    <ng-container matColumnDef="comprados">
+      <th id='compradosI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Comprados </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.comprados}} </td>
     </ng-container>
 
+    <!-- comprados Column -->
+    <ng-container matColumnDef="pendientes">
+      <th id='pendientesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Pendientes </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.pendientes}} </td>
+    </ng-container>
+
+    <!-- pendientes Column -->
+    <ng-container matColumnDef="consumidos">
+      <th id='consumidosI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'> Consumidos </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.consumidos}} </td>
+    </ng-container>
+
+    <!-- pendientes Column -->
+    <ng-container matColumnDef="disponibles">
+      <th id='disponiblesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'> Disponibles </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.disponibles}} </td>
+    </ng-container>
 
     <ng-container matColumnDef="opciones" >
       <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>

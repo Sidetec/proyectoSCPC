@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Recepcion Articulos</h2>
+
+<mat-dialog-content [formGroup]="ingresoConsumo" name="ingresoConsumo" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput type="string" placeholder="Servicio" [formControl]="servicio" >
+    <mat-error *ngIf="servicio.invalid">{{getErrorMessage('servicio')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="string" placeholder="Tipo Solicitud" [formControl]="tipoSolicitud" >
+    <mat-error *ngIf="servicio.invalid">{{getErrorMessage('tipoSolicitud')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="string" placeholder="Código Articulo" [formControl]="codigoArt" >
+    <mat-error *ngIf="codigoArt.invalid">{{getErrorMessage('codigoArt')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Descripción Artículo" [formControl]="descripcionArt" >
+    <mat-error *ngIf="descripcionArt.invalid">{{getErrorMessage('descripcionArt')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Saldo disponible antes de Consumo" [formControl]="saldoDisponible" >
+    <mat-error *ngIf="saldoDisponible.invalid">{{getErrorMessage('saldoDisponible')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Cantidad a Consumir" [formControl]="cantidad" >
+    <mat-error *ngIf="cantidad.invalid">{{getErrorMessage('cantidad')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Saldo disponible después de Consumo" [formControl]="nuevoSaldo" >
+    <mat-error *ngIf="nuevoSaldo.invalid">{{getErrorMessage('nuevoSaldo')}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <div class="col-md-12 text-center">
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="ingresoConsumo.invalid">ACEPTAR</button>
+    </div>
+</mat-dialog-actions>

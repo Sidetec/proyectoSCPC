@@ -16,15 +16,16 @@ export interface Datos {
   Servicio: string;
   Responsable: string;
   Motivo: string;
+  MontoTotal:string;
 }
 
 /** Constants used to fill up our data base. */
 const datos: Datos[] = [
-  {Suc: 'SUC-001', Estado: 'Estado 1',Fecha: 'Fecha 1',Servicio: 'Servicio 1',Responsable:'Responsable 1',Motivo: 'Motivo 1'},
-  {Suc: 'SUC-002', Estado: 'Estado 2',Fecha: 'Fecha 2',Servicio: 'Servicio 2',Responsable:'Responsable 2',Motivo: 'Motivo 2'},
-  {Suc: 'SUC-003', Estado: 'Estado 3',Fecha: 'Fecha 3',Servicio: 'Servicio 3',Responsable:'Responsable 3',Motivo: 'Motivo 3'},
-  {Suc: 'SUC-004', Estado: 'Estado 4',Fecha: 'Fecha 4',Servicio: 'Servicio 4',Responsable:'Responsable 4',Motivo: 'Motivo 4'},
-  {Suc: 'SUC-005', Estado: 'Estado 5',Fecha: 'Fecha 5',Servicio: 'Servicio 5',Responsable:'Responsable 5',Motivo: 'Motivo 5'},
+  {Suc: 'SUC-001', Estado: 'Estado 1',Fecha: 'Fecha 1',Servicio: 'Servicio 1',Responsable:'Responsable 1',Motivo: 'Motivo 1',MontoTotal:''},
+  {Suc: 'SUC-002', Estado: 'Estado 2',Fecha: 'Fecha 2',Servicio: 'Servicio 2',Responsable:'Responsable 2',Motivo: 'Motivo 2',MontoTotal:''},
+  {Suc: 'SUC-003', Estado: 'Estado 3',Fecha: 'Fecha 3',Servicio: 'Servicio 3',Responsable:'Responsable 3',Motivo: 'Motivo 3',MontoTotal:''},
+  {Suc: 'SUC-004', Estado: 'Estado 4',Fecha: 'Fecha 4',Servicio: 'Servicio 4',Responsable:'Responsable 4',Motivo: 'Motivo 4',MontoTotal:''},
+  {Suc: 'SUC-005', Estado: 'Estado 5',Fecha: 'Fecha 5',Servicio: 'Servicio 5',Responsable:'Responsable 5',Motivo: 'Motivo 5',MontoTotal:''},
 
 ];
 @Component({
@@ -33,7 +34,7 @@ const datos: Datos[] = [
   styleUrls: ['./suc.component.css']
 })
 export class sucComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Suc', 'Estado', 'Fecha', 'Servicio', 'Responsable', 'Motivo','opciones'];
+  displayedColumns: string[] = ['Suc', 'Estado', 'Fecha', 'Servicio', 'Responsable', 'Motivo','MontoTotal','opciones'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -120,7 +121,7 @@ export class sucComponent implements AfterViewInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '60%';
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 

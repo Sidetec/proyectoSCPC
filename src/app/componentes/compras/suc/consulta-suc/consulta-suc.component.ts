@@ -14,13 +14,15 @@ import { IConsultaSuc } from 'src/app/interface/suc';
   styleUrls: ['./consulta-suc.component.css']
 })
 export class ConsultasucComponent implements AfterViewInit {
-
+  resultado=0;
+  iva=964;
 //datoConsultaPac:  IConsultaPac | undefined;
 
 datoConsultaSuc: IConsultaSuc[] = [
 
-  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
-
+  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
+  {codigoArticulo: 'CCC-987', detalle: 'Detalle1',   unidadDeMedida: 'Litro', catidadTotal: 10,  valorUnitario: 123,  montoTotal: 1230, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
+  {codigoArticulo: 'CCC-345', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 15,  valorUnitario: 123,  montoTotal: 1845, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
   ];
 
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
@@ -66,6 +68,14 @@ datoConsultaSuc: IConsultaSuc[] = [
 
   cerrar() {
     this.dialogRef.close();
+  }
+
+  getTotalCost() {
+     return this.datoConsultaSuc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0);
+  }
+
+  getTotalCostIva() {
+    return this.resultado= (this.datoConsultaSuc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0) + this.iva);
   }
   CancelarSUC(){
     const dialogConfig = new MatDialogConfig();

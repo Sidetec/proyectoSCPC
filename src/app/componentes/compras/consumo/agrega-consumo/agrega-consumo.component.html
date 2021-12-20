@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Ingreso Consumo</h2>
+
+<mat-dialog-content [formGroup]="ingresoConsumo" name="ingresoConsumo" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Plan Anual" [formControl]="planAnual" >
+    <mat-error *ngIf="planAnual.invalid">{{getErrorMessage('planAnual')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Servicio" [formControl]="servicio" >
+    <mat-error *ngIf="servicio.invalid">{{getErrorMessage('servicio')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Código Articulo" [formControl]="codigoArticulo" >
+    <mat-error *ngIf="codigoArticulo.invalid">{{getErrorMessage('codigoArticulo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Descripción Artículo" [formControl]="descripcionArticulo" >
+    <mat-error *ngIf="descripcionArticulo.invalid">{{getErrorMessage('descripcionArticulo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Saldo disponible antes de Consumo" [formControl]="saldoDisponibleantesConsumo" >
+    <mat-error *ngIf="saldoDisponibleantesConsumo.invalid">{{getErrorMessage('saldoDisponibleantesConsumo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Cantidad a Consumir" [formControl]="cantidadConsumir" >
+    <mat-error *ngIf="cantidadConsumir.invalid">{{getErrorMessage('cantidadConsumir')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Saldo disponible después de Consumo" [formControl]="saldoDisponibleDespuesConsumo" >
+    <mat-error *ngIf="saldoDisponibleDespuesConsumo.invalid">{{getErrorMessage('saldoDisponibleDespuesConsumo')}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <div class="col-md-12 text-center">
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="ingresoConsumo.invalid">ACEPTAR</button>
+    </div>
+</mat-dialog-actions>
