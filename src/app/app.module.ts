@@ -22,14 +22,18 @@ import { CancelarSucComponent } from './componentes/compras/suc/cancelarSuc/canc
 import { AgregaPacComponent } from './componentes/compras/pac/agrega-pac/agrega-pac.component';
 import { ModificaPacComponent } from './componentes/compras/pac/modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/consulta-pac.component';
-
 import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
 import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
+
+import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
+import { AgregaArticuloComponent } from './componentes/Farmacia/Arsenal/agrega-articulo/agrega-articulo.component';
+import { ConsultaArticuloComponent } from './componentes/Farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
+import { EliminaArticuloComponent } from './componentes/Farmacia/Arsenal/elimina-articulo/elimina-articulo.component';
+import { ModificaArticuloComponent } from './componentes/Farmacia/Arsenal/modifica-articulo/modifica-articulo.component';
+
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
 import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
-
-
 
 @NgModule({
   declarations: [
@@ -46,14 +50,17 @@ import { CentralizacionContableComponent } from './componentes/centralizacioncon
     CancelarSucComponent,
     AgregaPacComponent,
     ModificaPacComponent,
-
     ConsultaPacComponent,
-     CatalogoComponent,
+    ArsenalComponent,
+    AgregaArticuloComponent,
+    ConsultaArticuloComponent,
+    EliminaArticuloComponent,
+    ModificaArticuloComponent,
+    CatalogoComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
     AlertasComponent,
     AgregaConsumoComponent
-
   ],
   imports: [
     BrowserModule,

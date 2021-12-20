@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
 import { PacComponent } from './componentes/compras/pac/pac.component';
-
 import { sucComponent } from './componentes/compras/suc/suc.component';
 
+import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
@@ -23,8 +23,8 @@ const routes: Routes = [
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
-    {path: 'arsenal', component: PruebaComponent},
-    {path: 'climatizacion', component: PruebaComponent},
+    {path: 'arsenal', component: ArsenalComponent},
+    {path: 'climatizacion', component: ClimaComponent},
 
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
