@@ -10,6 +10,9 @@ import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
 import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
+import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
+import { OcComponent } from './componentes/compras/oc/oc.component';
+import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
 
 
 
@@ -19,12 +22,12 @@ const routes: Routes = [
 
     {path: 'pac', component: PacComponent},
     {path: 'suc', component: sucComponent},
-    {path: 'oc', component: PruebaComponent},
+    {path: 'oc', component: OcComponent},
     {path: 'recepcion', component: PruebaComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
-    {path: 'arsenal', component: PruebaComponent},
-    {path: 'climatizacion', component: PruebaComponent},
+    {path: 'arsenal', component: ArsenalComponent},
+    {path: 'climatizacion', component: ClimaComponent},
 
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
