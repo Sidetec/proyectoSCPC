@@ -22,6 +22,7 @@
     </ng-container>
 
     <!-- Columna1 Column -->
+<<<<<<< HEAD
     <ng-container matColumnDef="Columna1">
       <th id='Columna1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Columna 1 </th>
       <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Columna1}} </td>
@@ -37,6 +38,38 @@
     <ng-container matColumnDef="Columna3">
       <th id='Columna3I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 35%;'> Columna 3</th>
       <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{row.Columna3}} </td>
+=======
+    <ng-container matColumnDef="Estado">
+      <th id='EstadoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Estado  </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Estado}} </td>
+    </ng-container>
+
+    <!-- Columna2 Column -->
+    <ng-container matColumnDef="TipoSolicitud">
+      <th id='TipoSolicitudI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> Tipo Solicitud </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.TipoSolicitud}} </td>
+    </ng-container>
+    
+    <!-- Columna3 Column -->
+    <ng-container matColumnDef="IDsolicitud">
+      <th id='IDsolicitudI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> ID Solicitud </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.IDsolicitud}} </td>
+    </ng-container>
+    <!-- Columna3 Column -->
+    <ng-container matColumnDef="Empresa">
+      <th id='EmpresaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> Empresa </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Empresa}} </td>
+    </ng-container>
+    <!-- Columna3 Column -->
+    <ng-container matColumnDef="Descripcion">
+      <th id='DescripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'> Descripcion </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Descripcion}} </td>
+    </ng-container>
+    <!-- Columna3 Column -->
+    <ng-container matColumnDef="TotalNeto">
+      <th id='TotalNetoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> Total Neto </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.TotalNeto}} </td>
+>>>>>>> Felipe
     </ng-container>
 
     <ng-container matColumnDef="opciones" >

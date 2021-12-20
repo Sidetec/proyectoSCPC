@@ -51,3 +51,16 @@ export interface IConsultaPac {
   cantidadConsumir: number;
   saldoDisponibleDespuesConsumo: number;
   }
+<<<<<<< HEAD
+=======
+
+  export interface IIngresoRecepcion {
+    servicio:string;
+    tipoSolicitud:string;
+    codigoArt:string;
+    descripcionArt:string;
+    saldoDisponible:string;
+    cantidad:string;
+    nuevoSaldo:string;
+  }
+>>>>>>> Felipe

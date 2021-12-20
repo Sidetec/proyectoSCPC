@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { IConsultaSuc } from 'src/app/interface/suc';
+import { IConsultaOc } from 'src/app/interface/oc';
 @Component({
   selector: 'app-consulta-occ',
   templateUrl: './consulta-oc.component.html',
@@ -13,16 +13,19 @@ import { IConsultaSuc } from 'src/app/interface/suc';
 })
 export class ConsultaOcComponent implements AfterViewInit {
 
+  iva=964;
+  resultado=0;
+
 //datoConsultaPac:  IConsultaPac | undefined;
 
-datoConsultaSuc: IConsultaSuc[] = [
+datoConsultaOc: IConsultaOc[] = [
 
-  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
+  {codigoArticulo: '', detalle: '',   unidadDeMedida: '', catidadTotal: 0,  valorUnitario: 0,  montoTotal: 0}
 
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
-  dataSource: MatTableDataSource<IConsultaSuc>;
+  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal'];
+  dataSource: MatTableDataSource<IConsultaOc>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -34,7 +37,7 @@ datoConsultaSuc: IConsultaSuc[] = [
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+    this.dataSource = new MatTableDataSource(this.datoConsultaOc);
   }
 
   ngAfterViewInit() {
@@ -65,6 +68,13 @@ datoConsultaSuc: IConsultaSuc[] = [
   cerrar() {
     this.dialogRef.close();
   }
+  getTotalCost() {
+    return this.datoConsultaOc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0);
+ }
+
+ getTotalCostIva() {
+  return this.resultado= (this.datoConsultaOc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0) + this.iva);
+}
 
   }
 

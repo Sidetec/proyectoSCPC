@@ -8,18 +8,20 @@ import { ConsultaOcComponent } from './consulta-oc/consulta-oc.component';
 
 export interface Datos {
   oc: string;
-  Columna1: string;
-  Columna2: string;
-  Columna3: string;
+  Estado: string;
+  TipoSolicitud: string;
+  IDsolicitud: string;
+  Empresa:string;
+  Descripcion:string;
+  TotalNeto:string
 
 }
 
 
 const datos: Datos[] = [
-  {oc: 'OC-001', Columna1: 'Columna 1' , Columna2: 'Columna 1',Columna3:'Columna 1'},
-  {oc: 'OC-002', Columna1: 'Columna 2' , Columna2: 'Columna 2',Columna3:'Columna 2'},
-  {oc: 'OC-003', Columna1: 'Columna 3' , Columna2: 'Columna 3',Columna3:'Columna 3'},
-  {oc: 'OC-004', Columna1: 'Columna 4' , Columna2: 'Columna 4',Columna3:'Columna 4'},
+  {oc: 'OC-001', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-218721',Empresa:'',Descripcion:'',TotalNeto:''},
+  {oc: 'OC-002', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-3217Y6',Empresa:'',Descripcion:'',TotalNeto:''},
+  {oc: 'OC-003', Estado: '' , TipoSolicitud: 'SUC',IDsolicitud:'SUC-3127TY',Empresa:'',Descripcion:'',TotalNeto:''},
 ];
 
 @Component({
@@ -28,7 +30,7 @@ const datos: Datos[] = [
   styleUrls: ['./oc.component.css']
 })
 export class OcComponent implements AfterViewInit {
-  displayedColumns: string[] = ['oc', 'Columna1', 'Columna2','Columna3','opciones'];
+  displayedColumns: string[] = ['oc', 'Estado', 'TipoSolicitud','IDsolicitud','Empresa','Descripcion','TotalNeto','opciones'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -65,7 +67,7 @@ export class OcComponent implements AfterViewInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '100%';
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
@@ -85,7 +87,7 @@ export class OcComponent implements AfterViewInit {
 
     this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
    }
- 
+
 
 }
 
