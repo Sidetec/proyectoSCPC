@@ -7,13 +7,13 @@ import { sucComponent } from './componentes/compras/suc/suc.component';
 
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
-import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
-import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
-import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
+import { GestionDocumentalComponent } from './componentes/activo-fijo/gestiondocumental/gestiondocumental.component';
+import { CentralizacionContableComponent } from './componentes/activo-fijo/centralizacioncontable/centralizacioncontable.component';
 import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
 import { OcComponent } from './componentes/compras/oc/oc.component';
 import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
 import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
+import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
 
 
 
@@ -30,7 +30,8 @@ const routes: Routes = [
     {path: 'arsenal', component: ArsenalComponent},
     {path: 'climatizacion', component: ClimaComponent},
 
-    {path: 'catalogo', component: CatalogoComponent},
+    
+    {path:'activofijo', component:ActivoFijoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
     {path: 'centralizacionContable', component: CentralizacionContableComponent},
 

@@ -1,54 +1,40 @@
-/*
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-catalogo',
-  templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css']
-})
-export class CatalogoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
-*/
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-//import { AgregaPacComponent } from './agrega-pac/agrega-pac.component';
+import { AgregaPacComponent } from './agrega-pac/agrega-pac.component';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-//import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
-//import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
-//import { AlertasComponent } from './alertas/alertas.component';
+import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
+import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 export interface Datos {
-  CodigoActivo: string;
-  Descripcion: string;
+  pac: string;
+  servicio: string;
+  solicitados:string;
+  comprados:string;
+  pendientes:string;
+  consumidos:string;
+  disponibles:string;
 
 }
 
 
 const datos: Datos[] = [
-  {CodigoActivo: 'ACT-001', Descripcion: 'Descripcion1'},
-  {CodigoActivo: 'ACT-002', Descripcion: 'Descripcion2'},
-  {CodigoActivo: 'ACT-003', Descripcion: 'Descripcion3'},
-  {CodigoActivo: 'ACT-004', Descripcion: 'Descripcion4'},
-  {CodigoActivo: 'ACT-005', Descripcion: 'Descripcion5'},
- 
-];
+  {pac: 'PAC-001', servicio: 'AAAA',solicitados:'800',comprados:'200',pendientes:'600',consumidos:'50',disponibles:'150'},
+  {pac: 'PAC-001', servicio: '',solicitados:'',comprados:'',pendientes:'',consumidos:'',disponibles:''},
+  {pac: 'PAC-001', servicio: '',solicitados:'',comprados:'',pendientes:'',consumidos:'',disponibles:''},
+  {pac: 'PAC-001', servicio: '',solicitados:'',comprados:'',pendientes:'',consumidos:'',disponibles:''},
+]
 
 @Component({
-  selector: 'app-catalogo',
-  templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css']
+  selector: 'app-pac',
+  templateUrl: './pac.component.html',
+  styleUrls: ['./pac.component.css']
 })
-export class CatalogoComponent implements AfterViewInit {
-  displayedColumns: string[] = ['CodigoActivo', 'Descripcion', 'columna1','opciones'];
+export class PacComponent implements AfterViewInit {
+  displayedColumns: string[] = ['pac', 'servicio', 'solicitados','comprados','pendientes','consumidos','disponibles','opciones'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -95,8 +81,6 @@ export class CatalogoComponent implements AfterViewInit {
   //  };
 
 
-  /*
-
     this.dialog.open(AgregaPacComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Dialog output3333:', data);
@@ -105,10 +89,6 @@ export class CatalogoComponent implements AfterViewInit {
               }
       }
     );
-
-    */
-
-
   }
 
   actualizaPac() {
@@ -122,7 +102,7 @@ export class CatalogoComponent implements AfterViewInit {
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
-/*
+
     this.dialog.open(ModificaPacComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Dialog output3333:', data);
@@ -131,8 +111,6 @@ export class CatalogoComponent implements AfterViewInit {
                 }
         }
       );
-*/
-
   }
 
   consultaPac() {
@@ -147,7 +125,7 @@ export class CatalogoComponent implements AfterViewInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-/*
+
     this.dialog.open(ConsultaPacComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);
@@ -156,8 +134,6 @@ export class CatalogoComponent implements AfterViewInit {
                 }
         }
       );
-*/
-
    }
 
 
@@ -178,7 +154,7 @@ export class CatalogoComponent implements AfterViewInit {
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
-/*
+
     this.dialog.open(AlertasComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Dialog output3333:', data);
@@ -187,9 +163,6 @@ export class CatalogoComponent implements AfterViewInit {
                 }
         }
       );
-
-*/
-
   }
 }
 
