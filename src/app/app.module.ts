@@ -25,9 +25,8 @@ import { ConsultaPacComponent } from './componentes/compras/pac/consulta-pac/con
 
 import { AlertasComponent } from './componentes/compras/pac/alertas/alertas.component';
 import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-consumo/agrega-consumo.component';
-import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
-import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
-import { CentralizacionContableComponent } from './componentes/centralizacioncontable/centralizacioncontable.component';
+import { GestionDocumentalComponent } from './componentes/activo-fijo/gestiondocumental/gestiondocumental.component';
+import { CentralizacionContableComponent } from './componentes/activo-fijo/centralizacioncontable/centralizacioncontable.component';
 import { OcComponent } from './componentes/compras/oc/oc.component';
 import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
 import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
@@ -37,8 +36,12 @@ import { ConsultaArticuloComponent } from './componentes/farmacia/Arsenal/consul
 import { AgregaArticuloComponent } from './componentes/farmacia/Arsenal/agrega-articulo/agrega-articulo.component';
 import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consulta-oc.component';
 import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
-
-
+import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
+import { ConsultaActivoFijoComponent } from './componentes/activo-fijo/consulta-activo-fijo/consulta-activo-fijo.component';
+import { ReporteDepreciacionComponent } from './componentes/activo-fijo/reporte-depreciacion/reporte-depreciacion.component';
+import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
+import { ResumenInventarioComponent } from './componentes/activo-fijo/resumen-inventario/resumen-inventario.component';
+import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/alerta-activo.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,6 @@ import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/re
     ModificaPacComponent,
     OcComponent,
     ConsultaPacComponent,
-     CatalogoComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
     AlertasComponent,
@@ -69,7 +71,13 @@ import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/re
     ConsultaArticuloComponent,
     AgregaArticuloComponent,
     ConsultaOcComponent,
-    RecepcionComponent
+    RecepcionComponent,
+    ActivoFijoComponent,
+    ConsultaActivoFijoComponent,
+    ReporteDepreciacionComponent,
+    MantencionArchivoComponent,
+    ResumenInventarioComponent,
+    AlertaActivoComponent
   ],
   imports: [
     BrowserModule,

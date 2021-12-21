@@ -1,0 +1,59 @@
+
+<div class="pt-1" >
+    <div class="col-md-12">
+      <h2 class="text-center">Alerta del Activo</h2>
+    </div>
+</div>
+<div class="pt-2" >
+    <div class="col-md-12">
+
+      <h2 class="text-center">Datos Generales del Archivo</h2>
+
+        <mat-dialog-content [formGroup]="IVidaUtil" name="IVidaUtil" class="agrega-container">
+
+        <mat-form-field>
+            <input matInput type="string" placeholder="Vida Util" [formControl]="vidaUtil" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="string" placeholder="Fecha de Compra" [formControl]="fecha" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="string" placeholder="Vida Util Restante" [formControl]="vidaUtilRes" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput  placeholder="Genera Alerta cuando la vida util restante sea menor o igual a " [formControl]="generaAlerta" >
+        </mat-form-field>
+
+        </mat-dialog-content>
+    </div>
+</div>
+    <div class="row">
+</div>
+<div class="col-md-6">
+    <mat-dialog-content [formGroup]="IVidaUtil" name="IContrato" class="agrega-container">
+
+        <mat-form-field>
+          <input matInput type="string" placeholder="Inicio Contrato" [formControl]="inicioContrato" >
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput type="string" placeholder="Termino Contrato" [formControl]="terminoContrato" >
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput type="string" placeholder="Tiempo Restante" [formControl]="tiempoRestante" >
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput  placeholder="Genera Alerta cuando queden " [formControl]="generaAlerta" >
+        </mat-form-field>
+      
+      </mat-dialog-content>
+</div>
+<div>
+    <button mat-raised-button  [disabled]=false>Volver</button>  
+    <button mat-raised-button  [disabled]=false>Grabar</button>
+</div>
