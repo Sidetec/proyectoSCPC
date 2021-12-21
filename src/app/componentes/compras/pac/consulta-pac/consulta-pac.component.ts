@@ -7,8 +7,9 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
 import { HttpClient } from '@angular/common/http';
 
 import { IConsultaPac, IDetallePac1 } from 'src/app/interface/Pac';
-import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
+
 import Swal from 'sweetalert2';
+import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
 
 @Component({
   selector: 'app-consulta-pac',

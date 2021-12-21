@@ -16,6 +16,7 @@ import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
 
 
 
+
 @Component({
   selector: 'app-pac',
   templateUrl: './pac.component.html',

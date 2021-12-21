@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 import { CancelarSucComponent } from '../cancelarSuc/cancelar-suc.component';
 
 import { IConsultaSuc, IDetalleSuc1 } from 'src/app/interface/suc';
-import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 
 import Swal from 'sweetalert2';
+import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 @Component({
   selector: 'app-consulta-suc',
   templateUrl: './consulta-suc.component.html',

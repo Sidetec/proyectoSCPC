@@ -88,7 +88,9 @@ export class OcComponent implements AfterViewInit {
     this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
    }
 
+   agregaNuevo(){
 
+   }
 }
 
 /** Builds and returns a new User. */

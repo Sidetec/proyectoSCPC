@@ -39,9 +39,9 @@ import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/re
 import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
 import { ConsultaActivoFijoComponent } from './componentes/activo-fijo/consulta-activo-fijo/consulta-activo-fijo.component';
 import { ReporteDepreciacionComponent } from './componentes/activo-fijo/reporte-depreciacion/reporte-depreciacion.component';
-import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
 import { ResumenInventarioComponent } from './componentes/activo-fijo/resumen-inventario/resumen-inventario.component';
 import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/alerta-activo.component';
+import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
 
 @NgModule({
   declarations: [

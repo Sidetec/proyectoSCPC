@@ -8,10 +8,10 @@ import { ModificasucComponent } from './modifica-suc/modifica-suc.component';
 import { ConsultasucComponent } from './consulta-suc/consulta-suc.component';
 import { AgregasucComponent } from './agrega-suc/agrega-suc.component';
 import { CancelarSucComponent } from './cancelarSuc/cancelar-suc.component';
-import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 import { IConsultaSucLista } from 'src/app/interface/suc';
 
 import Swal from 'sweetalert2';
+import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 export interface Datos {
   Suc: string;
   Estado: string;

@@ -6,10 +6,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { ReporteDepreciacionComponent } from '../reporte-depreciacion/reporte-depreciacion.component';
-import { MantencionArchivoComponent } from '../mantencion-archivo/mantencion-archivo.component';
 import { AlertaActivoComponent } from '../alerta-activo/alerta-activo.component';
 
 import { IConsultaActivoFijo } from 'src/app/interface/activoFijo';
+import { MantencionArchivoComponent } from '../mantencion-archivo/mantencion-archivo.component';
 @Component({
   selector: 'app-consulta-activo-fijo',
   templateUrl: './consulta-activo-fijo.component.html',
@@ -39,7 +39,7 @@ datoConsultaSuc: IConsultaActivoFijo[] = [
     this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
   }
 
-  
+
   resumenDepreciacion() {
 
 
@@ -128,7 +128,7 @@ datoConsultaSuc: IConsultaActivoFijo[] = [
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 
-  
+
 
   cerrar() {
     this.dialogRef.close();
