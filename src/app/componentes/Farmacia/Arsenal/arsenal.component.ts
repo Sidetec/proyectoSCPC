@@ -8,34 +8,53 @@ import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.compo
 import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
 import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
 import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
+import { IArticulo } from 'src/app/interface/Arsenal';
 
-export interface Datos {
-  articulo: string;
-  cantidad: string;
-  descripcion: string;
+var datos: IArticulo[] = [
+  { id: 'FRM-001', 
+    grupo: 'grupo001',
+    subgrupo: 'subgrupo001', 
+    ctrlLegal: 'controlLegal001',
+    tipo: 'tipo001',
+    gzen: 'gzen001',
+    medicamento: 'medicamento001',
+    farmaceutica: 'farmaceutica001',
+    presentacion: 'presentacion001',
+    dosificacion: 'dosificacion001'
+  }, 
+  { id: 'FRM-002', 
+    grupo: 'grupo002',
+    subgrupo: 'subgrupo002', 
+    ctrlLegal: 'controlLegal002',
+    tipo: 'tipo002',
+    gzen: 'gzen002',
+    medicamento: 'medicamento002',
+    farmaceutica: 'farmaceutica002',
+    presentacion: 'presentacion002',
+    dosificacion: 'dosificacion002'
+  },
+  { id: 'FRM-003', 
+  grupo: 'grupo003',
+  subgrupo: 'subgrupo003', 
+  ctrlLegal: 'controlLegal003',
+  tipo: 'tipo003',
+  gzen: 'gzen003',
+  medicamento: 'medicamento003',
+  farmaceutica: 'farmaceutica003',
+  presentacion: 'presentacion003',
+  dosificacion: 'dosificacion003'
+  },
+  { id: 'FRM-004', 
+  grupo: 'grupo004',
+  subgrupo: 'subgrupo004', 
+  ctrlLegal: 'controlLegal004',
+  tipo: 'tipo004',
+  gzen: 'gzen004',
+  medicamento: 'medicamento004',
+  farmaceutica: 'farmaceutica004',
+  presentacion: 'presentacion004',
+  dosificacion: 'dosificacion004'
 }
-
-const datos: Datos[] = [
-  {articulo: 'ART-001', cantidad: 'Cantidad1', descripcion: 'Descripción01'},
-  {articulo: 'ART-002', cantidad: 'Cantidad2', descripcion: 'Descripción02'},
-  {articulo: 'ART-003', cantidad: 'Cantidad3', descripcion: 'Descripción03'},
-  {articulo: 'ART-004', cantidad: 'Cantidad4', descripcion: 'Descripción04'},
-  {articulo: 'ART-005', cantidad: 'Cantidad5', descripcion: 'Descripción05'},
-  {articulo: 'ART-006', cantidad: 'Cantidad6', descripcion: 'Descripción06'},
-  {articulo: 'ART-007', cantidad: 'Cantidad7', descripcion: 'Descripción07'},
-  {articulo: 'ART-008', cantidad: 'Cantidad8', descripcion: 'Descripción08'},
-  {articulo: 'ART-009', cantidad: 'Cantidad9', descripcion: 'Descripción09'},
-  {articulo: 'ART-0010', cantidad: 'Cantidad10', descripcion: 'Descripción10'},
-  {articulo: 'ART-0011', cantidad: 'Cantidad11', descripcion: 'Descripción11'},
-  {articulo: 'ART-0012', cantidad: 'Cantidad12', descripcion: 'Descripción12'},
-  {articulo: 'ART-0013', cantidad: 'Cantidad13', descripcion: 'Descripción13'},
-  {articulo: 'ART-0014', cantidad: 'Cantidad14', descripcion: 'Descripción14'},
-  {articulo: 'ART-0015', cantidad: 'Cantidad15', descripcion: 'Descripción15'},
-  {articulo: 'ART-0016', cantidad: 'Cantidad16', descripcion: 'Descripción16'},
-  {articulo: 'ART-0017', cantidad: 'Cantidad17', descripcion: 'Descripción17'},
-  {articulo: 'ART-0018', cantidad: 'Cantidad18', descripcion: 'Descripción18'},
-  {articulo: 'ART-0019', cantidad: 'Cantidad19', descripcion: 'Descripción19'},
-  {articulo: 'ART-0020', cantidad: 'Cantidad20', descripcion: 'Descripción20'},
 ];
 
 @Component({
@@ -43,9 +62,11 @@ const datos: Datos[] = [
   templateUrl: './arsenal.component.html',
   styleUrls: ['./arsenal.component.css']
 })
-export class ArsenalComponent implements AfterViewInit {
-  displayedColumns: string[] = ['articulo', 'cantidad', 'descripcion','opciones'];
-  dataSource: MatTableDataSource<Datos>;
+export class ArsenalComponent implements AfterViewInit {  
+
+  displayedColumns: string[] = ['id', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 'gzen', 
+    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','opciones'];
+  dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -53,10 +74,6 @@ export class ArsenalComponent implements AfterViewInit {
   sort!: MatSort;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
-    // Create 100 users
-    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(datos);
   }
 
@@ -75,8 +92,7 @@ export class ArsenalComponent implements AfterViewInit {
   }
 
   agregaNuevo() {
-  //  agregaNuevo(empresaInterface_: EmpresaI) {
-    // Nuevo
+
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -85,11 +101,7 @@ export class ArsenalComponent implements AfterViewInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '2%'};
     dialogConfig.data = {};
-  //  dialogConfig.data = {
-  //    idProducto: idProdP,
-  //    titulo: tituloP
-  //  };
-
+    
     this.dialog.open(AgregaArticuloComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Datos agregados:', data);
@@ -120,7 +132,13 @@ export class ArsenalComponent implements AfterViewInit {
       );
   }
 
-  consultaArticulo() {
+  consultaArticulo(id: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
+    gzen: string, medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string) {
+
+   /* datoArticulo = {
+      id, grupo, subgrupo, ctrlLegal, tipo,
+      gzen, medicamento, farmaceutica, presentacion, dosificacion
+    };*/
 
     const dialogConfig = new MatDialogConfig();
 
@@ -130,6 +148,7 @@ export class ArsenalComponent implements AfterViewInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
+    //dialogConfig.data = this.datoArticulo;
     this.dialog.open(ConsultaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos Consulta:', data);
@@ -140,7 +159,7 @@ export class ArsenalComponent implements AfterViewInit {
       );
    }
 
-   eliminaArticulo() {
+   eliminaArticulo(id: string) {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -150,6 +169,7 @@ export class ArsenalComponent implements AfterViewInit {
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
+    dialogConfig.data = id;
     this.dialog.open(EliminaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos eliminados:', data);
@@ -164,5 +184,4 @@ export class ArsenalComponent implements AfterViewInit {
 
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
-
 }

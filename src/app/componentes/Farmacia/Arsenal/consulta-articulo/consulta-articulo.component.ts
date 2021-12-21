@@ -6,7 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { IConsultaArticulo } from 'src/app/interface/Arsenal';
+import { IArticulo } from 'src/app/interface/Arsenal';
 
 @Component({
   selector: 'app-consulta-articulo',
@@ -15,14 +15,23 @@ import { IConsultaArticulo } from 'src/app/interface/Arsenal';
 })
 export class ConsultaArticuloComponent implements AfterViewInit {
 
-  datoConsultaArticulo: IConsultaArticulo[] = [
-
-  {codigoArticulo: 'ART-123', cantidad: 150, descripcion: 'Descripción1'}
-
+  datoConsultaArticulo: IArticulo[] = [
+    { id: 'FRM-001', 
+    grupo: 'grupo001',
+    subgrupo: 'subgrupo001', 
+    ctrlLegal: 'controlLegal001',
+    tipo: 'tipo001',
+    gzen: 'gzen001',
+    medicamento: 'medicamento001',
+    farmaceutica: 'farmaceutica001',
+    presentacion: 'presentacion001',
+    dosificacion: 'dosificacion001'
+    }
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'cantidad', 'descripcion'];
-  dataSource: MatTableDataSource<IConsultaArticulo>;
+  displayedColumns: string[] = ['id', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 'gzen', 
+  'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','opciones'];
+  dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -30,10 +39,6 @@ export class ConsultaArticuloComponent implements AfterViewInit {
   sort!: MatSort;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaArticuloComponent>,) {
-    // Create 100 users
-    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.datoConsultaArticulo);
   }
 

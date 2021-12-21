@@ -2,65 +2,56 @@
     <div class="col-md-12">
       <h2 class="text-center">Detalle de Artículo Farmacológico</h2>
     </div>
-  </div>
+</div>
   
-  <div class="row col-3 border">
+<div class="row col-10 border">
   <div>
     <div class="row border-bottom">
-      <div class=" border-end bg-light text-center">Datos del Arículo</div>
+    <div class=" border-end bg-light text-center">Datos del Arículo</div>
   </div>
-    <div class="row border-bottom">
-        <div class="col-md-4 border-end bg-light">ID Artículo</div>
-        <div class="col-md-5">{{"idArticulo"}}</div>
-    </div>
-    <div class="row border-bottom">
-      <div class="col-md-4 border-end bg-light">Cantidad</div>
-      <div class="col-md-5">{{"cantidad"}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-4  border-end bg-light">Descripción</div>
-      <div class="col-md-5">{{"descripcion"}}</div>
-    </div>
+  <div class="row border-bottom">
+      <div class="col-md-4 border-end bg-light">ID</div>
+      <div class="col-md-7">{{"id"}}</div>
   </div>
+  <div class="row border-bottom">
+    <div class="col-md-4 border-end bg-light">Grupo</div>
+    <div class="col-md-7">{{"grupo"}}</div>
   </div>
-  
-  <div class="content ml-2 mr-2">
-  <mat-form-field appearance="standard">
-    <mat-label>Buscar</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
-  </mat-form-field>
-  
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
- 
-      <!-- Código Artículo Column -->
-      <ng-container matColumnDef="codigoArticulo">
-        <th id='codigoArticuloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 3%;'>Código Artículo </th>
-        <td mat-cell *matCellDef="let row" style=' width: 3%;'> {{row.codigoArticulo}} </td>
-      </ng-container>
-  
-      <!-- Cantidad Column -->
-      <ng-container matColumnDef="cantidad">
-        <th id='cantidadI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Cantidad </th>
-        <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.cantidad}} </td>
-      </ng-container>
-  
-       <!-- Descripción Column -->
-       <ng-container matColumnDef="descripcion">
-        <th id='descripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Descripción </th>
-        <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{row.descripcion}} </td>
-      </ng-container>
-    
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <div class="row">
+    <div class="col-md-4 border-end bg-light">SubGrupo</div>
+    <div class="col-md-7">{{"subgrupo"}}</div>
   </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Control Legal</div>
+    <div class="col-md-7">{{"ctrlLegal"}}</div>
   </div>
-  
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Tipo</div>
+    <div class="col-md-7">{{"tipo"}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Código GZEN</div>
+    <div class="col-md-7">{{"gzen"}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Medicamento</div>
+    <div class="col-md-7">{{"medicamento"}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Farmacéutica</div>
+    <div class="col-md-7">{{"farmaceutica"}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Presentación</div>
+    <div class="col-md-7">{{"presentacion"}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4  border-end bg-light">Dosificación</div>
+    <div class="col-md-7">{{"dosificacion"}}</div>
+  </div>
+
+</div>
+
   <mat-dialog-actions >
       <div class="col-md-12 text-center ">
         <button mat-raised-button  (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>

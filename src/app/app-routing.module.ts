@@ -5,6 +5,7 @@ import { PacComponent } from './componentes/compras/pac/pac.component';
 import { sucComponent } from './componentes/compras/suc/suc.component';
 
 import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
+import { ClimatizacionComponent } from './componentes/Farmacia/Climatizacion/climatizacion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
     {path: 'consumo', component: AgregaConsumoComponent},
 
     {path: 'arsenal', component: ArsenalComponent},
-    {path: 'climatizacion', component: ClimaComponent},
+    {path: 'climatizacion', component: ClimatizacionComponent},
 
     {path: 'catalogo', component: CatalogoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},

@@ -30,6 +30,7 @@ import { AgregaArticuloComponent } from './componentes/Farmacia/Arsenal/agrega-a
 import { ConsultaArticuloComponent } from './componentes/Farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
 import { EliminaArticuloComponent } from './componentes/Farmacia/Arsenal/elimina-articulo/elimina-articulo.component';
 import { ModificaArticuloComponent } from './componentes/Farmacia/Arsenal/modifica-articulo/modifica-articulo.component';
+import {ClimatizacionComponent } from './componentes/Farmacia/Climatizacion/climatizacion.component';
 
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { GestionDocumentalComponent } from './componentes/gestiondocumental/gestiondocumental.component';
@@ -56,6 +57,7 @@ import { CentralizacionContableComponent } from './componentes/centralizacioncon
     ConsultaArticuloComponent,
     EliminaArticuloComponent,
     ModificaArticuloComponent,
+    ClimatizacionComponent,
     CatalogoComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
