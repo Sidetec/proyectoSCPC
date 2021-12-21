@@ -1,13 +1,16 @@
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { CancelarSucComponent } from '../cancelarSuc/cancelar-suc.component';
 
-import { IConsultaSuc } from 'src/app/interface/suc';
+import { IConsultaSuc, IDetalleSuc1 } from 'src/app/interface/suc';
+import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
+
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-consulta-suc',
   templateUrl: './consulta-suc.component.html',
@@ -17,6 +20,16 @@ export class ConsultasucComponent implements AfterViewInit {
   resultado=0;
   iva=964;
 //datoConsultaPac:  IConsultaPac | undefined;
+
+iDetallePac1:IDetalleSuc1={
+  idSuc:'',
+  estado:'',
+  fechaSolicitud: '',
+  servicio:'',
+  responsable: '',
+  motivosCompra: ''};
+
+  servicio: string='';
 
 datoConsultaSuc: IConsultaSuc[] = [
 
@@ -33,12 +46,61 @@ datoConsultaSuc: IConsultaSuc[] = [
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultasucComponent>,) {
-    // Create 100 users
-    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
+  constructor(public dialog: MatDialog,public httpClient: HttpClient
+    ,private dialogRef: MatDialogRef<ConsultasucComponent>
+    , private comprasSucService:ComprasSucService
+    ,@Inject(MAT_DIALOG_DATA) public data: any) {
+      this.servicio = data;
     this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+  }
+
+  ngOnInit() {
+
+    this.getConsultaDetallePac1();
+  }
+
+
+  getConsultaDetallePac1() {
+    console.log('paso pac', this.servicio)
+    this.comprasSucService
+    .getDataSucDetalle1(this.servicio)
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.iDetallePac1 = res as IDetalleSuc1;
+      this.getConsultaDetallePac2()
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+
+
+  getConsultaDetallePac2() {
+    console.log('paso pac')
+    this.comprasSucService
+    .getDataSucDetalle2(this.servicio)
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.dataSource.data = res as IConsultaSuc[];
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
   ngAfterViewInit() {

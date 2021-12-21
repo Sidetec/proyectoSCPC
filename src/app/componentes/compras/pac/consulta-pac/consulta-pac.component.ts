@@ -1,29 +1,38 @@
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { IConsultaPac } from 'src/app/interface/Pac';
+import { IConsultaPac, IDetallePac1 } from 'src/app/interface/Pac';
+import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-consulta-pac',
   templateUrl: './consulta-pac.component.html',
   styleUrls: ['./consulta-pac.component.css']
 })
-export class ConsultaPacComponent implements AfterViewInit {
+export class ConsultaPacComponent implements AfterViewInit, OnInit {
 
   //datoConsultaPac:  IConsultaPac | undefined;
 
-  datoConsultaPac: IConsultaPac[] = [
+  iDetallePac1:IDetallePac1={
+  idPac:'',
+  pacAnio:'',
+  servicio: ''};
+
+  servicio: string='';
+  /*datoConsultaPac: IConsultaPac[] = [
 
   {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12, catidadTotal: 78,  valorUnitario: 10,  montoTotal: 80000, idLicitacion: 100,  idOc: 1000,  totalComprado: 50000,  saldoLicitacion: 30000}
 
   ];
-
+*/
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoLicitacion'];
+ // dataSource: MatTableDataSource<IConsultaPac>;
   dataSource: MatTableDataSource<IConsultaPac>;
 
   @ViewChild(MatPaginator)
@@ -31,12 +40,61 @@ export class ConsultaPacComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaPacComponent>,) {
-    // Create 100 users
-    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaPacComponent>
+    ,private comprasPacService:ComprasPacService
+    ,@Inject(MAT_DIALOG_DATA) public data: any) {
+      console.log('datoooooooooooo', data);
+      this.servicio = data;
+    this.dataSource = new MatTableDataSource<IConsultaPac>();
+  }
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.datoConsultaPac);
+  ngOnInit() {
+
+    this.getConsultaDetallePac1();
+  }
+
+
+  getConsultaDetallePac1() {
+    console.log('paso pac', this.servicio)
+    this.comprasPacService
+    .getDataPacDetalle1(this.servicio)
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.iDetallePac1 = res as IDetallePac1;
+      this.getConsultaDetallePac2()
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+
+
+  getConsultaDetallePac2() {
+    console.log('paso pac')
+    this.comprasPacService
+    .getDataPacDetalle2(this.servicio)
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.dataSource.data = res as IConsultaPac[];
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
   ngAfterViewInit() {

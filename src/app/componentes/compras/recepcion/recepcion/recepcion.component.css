@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-.modifica-container {
-=======
+
 .agrega-container {
->>>>>>> Felipe
   display: flex;
   flex-direction: column;
   padding: 0 10%;
 }
 
-<<<<<<< HEAD
-.modifica-container > * {
-=======
 .agrega-container > * {
->>>>>>> Felipe
   width: 95%;
 }
 

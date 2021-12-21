@@ -64,12 +64,12 @@
         <mat-icon>edit</mat-icon>
       </button>
 
-      <button mat-icon-button color="accent" (click)="consultasuc()">
+      <button mat-icon-button color="accent" (click)="consultasuc(row.servicio)">
         <mat-icon>search</mat-icon>
       </button>
 
 
-   
+
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

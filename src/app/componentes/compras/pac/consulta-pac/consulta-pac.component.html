@@ -11,15 +11,15 @@
 </div>
   <div class="row border-bottom">
       <div class="col-md-4 border-end bg-light">ID PAC</div>
-      <div class="col-md-5">{{"idPac"}}</div>
+      <div class="col-md-5">{{iDetallePac1.idPac}}</div>
   </div>
   <div class="row border-bottom">
     <div class="col-md-4 border-end bg-light">Plan Año</div>
-    <div class="col-md-5">{{"planAno"}}</div>
+    <div class="col-md-5">{{iDetallePac1.pacAnio}}</div>
   </div>
   <div class="row">
     <div class="col-md-4  border-end bg-light">Servido</div>
-    <div class="col-md-5">{{"servido"}}</div>
+    <div class="col-md-5">{{iDetallePac1.servicio}}</div>
   </div>
 </div>
 </div>
@@ -39,7 +39,7 @@
     <!-- Código Artículo Column -->
     <ng-container matColumnDef="codigoArticulo">
       <th id='codigoArticuloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 3%;'>Código Artículo </th>
-      <td mat-cell *matCellDef="let row" style=' width: 3%;'> {{row.codigoArticulo}} </td>
+      <td mat-cell *matCellDef="let row" style=' width: 3%;'> {{row.codigo}} </td>
     </ng-container>
 
     <!-- detalle Column -->
@@ -129,7 +129,7 @@
      <!-- catidadTotal Column -->
      <ng-container matColumnDef="catidadTotal">
       <th id='catidadTotalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Catidad Total </th>
-      <td id='catidadTotalI' mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.catidadTotal}} </td>
+      <td id='catidadTotalI' mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.canttotal}} </td>
     </ng-container>
 
      <!-- valorUnitario Column -->
@@ -149,7 +149,7 @@
      <!-- idLicitacion Column -->
      <ng-container matColumnDef="idLicitacion">
       <th id='idLicitacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Id. Licitación </th>
-      <td id='idLicitacionTd' mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.idLicitacion}} </td>
+      <td id='idLicitacionTd' mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.idLic}} </td>
     </ng-container>
 
      <!-- idOc Column -->
@@ -167,7 +167,7 @@
      <!-- saldoLicitacion Column -->
      <ng-container matColumnDef="saldoLicitacion">
       <th id='saldoLicitacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Saldo Licitación </th>
-      <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.saldoLicitacion}} </td>
+      <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.totalLic}} </td>
     </ng-container>
 
     <!-- Header row first group -->

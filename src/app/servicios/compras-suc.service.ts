@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
-import { IConsultaPac, IDetallePac1, IListaPac } from '../interface/Pac';
 
+import { IConsultaSuc, IConsultaSucLista, IDetalleSuc1 } from '../interface/suc';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ComprasPacService {
+export class ComprasSucService {
 
   constructor(private http: HttpClient) { }
 
@@ -22,24 +22,24 @@ export class ComprasPacService {
 
 
 
-  getDataPacLista(): Observable<IListaPac> {
-    return this.http.get<IListaPac>(`${environment.apiUrl}/PostaCentralConsultaPac/consulta`, { headers: this.headers })
+  getDataSucLista(): Observable<IConsultaSucLista> {
+    return this.http.get<IConsultaSucLista>(`${environment.apiUrl}/PostaCentralConsultaPac/consulta`, { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  getDataPacDetalle1(parametro1:string): Observable<IDetallePac1> {
-    return this.http.get<IDetallePac1>(`${environment.apiUrl}/PostaCentralConsultaPac/consultaId/`+ parametro1 , { headers: this.headers })
+  getDataSucDetalle1(parametro1:string): Observable<IDetalleSuc1> {
+    return this.http.get<IDetalleSuc1>(`${environment.apiUrl}/PostaCentralConsultaSuc/consultaId/`+ parametro1 , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  getDataPacDetalle2(parametro1:string): Observable<IConsultaPac> {
-    return this.http.get<IConsultaPac>(`${environment.apiUrl}/PostaCentralConsultaDetallePac/consulta/`+ parametro1 , { headers: this.headers })
+  getDataSucDetalle2(parametro1:string): Observable<IConsultaSuc> {
+    return this.http.get<IConsultaSuc>(`${environment.apiUrl}/PostaCentralConsultaSuc/consulta/`+ parametro1 , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

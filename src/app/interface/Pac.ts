@@ -8,8 +8,13 @@ export interface IListaPac {
   campo4:string;
   campo5:string;
 }
+export interface IDetallePac1 {
+  idPac:string;
+  pacAnio:string;
+  servicio: string;
+}
 export interface IConsultaPac {
-  codigoArticulo: string;
+  codigo: string;
   detalle: string;
   unidadDeMedida: string;
   enero: number;
@@ -24,10 +29,10 @@ export interface IConsultaPac {
   octubre: number;
   noviembre: number;
   diciembre: number;
-  catidadTotal: number;
+  canttotal: number;
   valorUnitario: number;
   montoTotal: number;
-  idLicitacion: number;
+  idLic: number;
   idOc: number;
   totalComprado: number
   saldoLicitacion: number;

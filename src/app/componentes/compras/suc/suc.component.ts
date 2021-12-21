@@ -8,7 +8,10 @@ import { ModificasucComponent } from './modifica-suc/modifica-suc.component';
 import { ConsultasucComponent } from './consulta-suc/consulta-suc.component';
 import { AgregasucComponent } from './agrega-suc/agrega-suc.component';
 import { CancelarSucComponent } from './cancelarSuc/cancelar-suc.component';
+import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
+import { IConsultaSucLista } from 'src/app/interface/suc';
 
+import Swal from 'sweetalert2';
 export interface Datos {
   Suc: string;
   Estado: string;
@@ -42,7 +45,7 @@ export class sucComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private comprasSucService:ComprasSucService) {
     // Create 100 users
    // const users = Array.from({length: 4}, (_, k) => createNewUser(k + 1));
 
@@ -50,7 +53,28 @@ export class sucComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(datos);
   }
 
-  
+
+  getListPac() {
+    console.log('paso pac')
+    this.comprasSucService
+    .getDataSucLista()
+    .subscribe((res: {}) => {
+      console.log('suc: ', res);
+    //  this.dataSource.data = res as IConsultaSucLista[];
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -113,7 +137,7 @@ export class sucComponent implements AfterViewInit {
       );
   }
 
-  consultasuc() {
+  consultasuc(servicio:string) {
 
 
 
@@ -125,7 +149,7 @@ export class sucComponent implements AfterViewInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-
+    dialogConfig.data = servicio;
     this.dialog.open(ConsultasucComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);
@@ -144,7 +168,7 @@ export class sucComponent implements AfterViewInit {
 
 
   }
-   
+
 
 /** Builds and returns a new User. */
 /*function createNewUser(id: number): UserData {
