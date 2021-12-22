@@ -157,7 +157,7 @@ export class PacComponent implements AfterViewInit, OnInit {
       );
   }
 
-  consultaPac(servicio:string) {
+  consultaPac(id:string) {
 
 
 
@@ -169,7 +169,7 @@ export class PacComponent implements AfterViewInit, OnInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-    dialogConfig.data = servicio;
+    dialogConfig.data = id;
     this.dialog.open(ConsultaPacComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);

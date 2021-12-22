@@ -25,7 +25,7 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
   pacAnio:'',
   servicio: ''};
 
-  servicio: string='';
+  id: string='';
   /*datoConsultaPac: IConsultaPac[] = [
 
   {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12, cantidadTotal: 78,  valorUnitario: 10,  montoTotal: 80000, idLicitacion: 100,  idOc: 1000,  totalComprado: 50000,  saldoLicitacion: 30000}
@@ -45,7 +45,7 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
     ,private comprasPacService:ComprasPacService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       console.log('datoooooooooooo', data);
-      this.servicio = data;
+      this.id = data;
     this.dataSource = new MatTableDataSource<IConsultaPac>();
   }
 
@@ -56,9 +56,9 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
 
 
   getConsultaDetallePac1() {
-    console.log('paso pac', this.servicio)
+    console.log('paso pac', this.id)
     this.comprasPacService
-    .getDataPacDetalle1(this.servicio)
+    .getDataPacDetalle1(this.id)
     .subscribe((res: {}) => {
       console.log('pac: ', res);
       this.iDetallePac1 = res as IDetallePac1;
@@ -80,7 +80,7 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
   getConsultaDetallePac2() {
     console.log('paso pac')
     this.comprasPacService
-    .getDataPacDetalle2(this.servicio)
+    .getDataPacDetalle2(this.id)
     .subscribe((res: {}) => {
       console.log('pac: ', res);
       this.dataSource.data = res as IConsultaPac[];

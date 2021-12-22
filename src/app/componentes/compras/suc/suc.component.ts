@@ -141,9 +141,9 @@ export class sucComponent implements AfterViewInit, OnInit {
       );
   }
 
-  consultasuc(servicio:string) {
+  consultasuc(id:string) {
 
-
+console.log('id:',id);
 
     const dialogConfig = new MatDialogConfig();
 
@@ -153,7 +153,7 @@ export class sucComponent implements AfterViewInit, OnInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-    dialogConfig.data = servicio;
+    dialogConfig.data = id;
     this.dialog.open(ConsultasucComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);

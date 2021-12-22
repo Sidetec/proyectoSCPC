@@ -21,22 +21,24 @@ export class ConsultasucComponent implements AfterViewInit {
   iva=964;
 //datoConsultaPac:  IConsultaPac | undefined;
 
-iDetallePac1:IDetalleSuc1={
+iDetalleSuc1:IDetalleSuc1={
   idSuc:'',
   estado:'',
   fechaSolicitud: '',
   servicio:'',
   responsable: '',
-  motivosCompra: ''};
+  motivoCompra: ''};
 
   servicio: string='';
 
-datoConsultaSuc: IConsultaSuc[] = [
+/*datoConsultaSuc: IConsultaSuc[] = [
 
   {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', cantidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
   {codigoArticulo: 'CCC-987', detalle: 'Detalle1',   unidadDeMedida: 'Litro', cantidadTotal: 10,  valorUnitario: 123,  montoTotal: 1230, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
   {codigoArticulo: 'CCC-345', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', cantidadTotal: 15,  valorUnitario: 123,  montoTotal: 1845, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
   ];
+*/
+
 
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
   dataSource: MatTableDataSource<IConsultaSuc>;
@@ -51,7 +53,7 @@ datoConsultaSuc: IConsultaSuc[] = [
     , private comprasSucService:ComprasSucService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       this.servicio = data;
-    this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+    this.dataSource = new MatTableDataSource<IConsultaSuc>();
   }
 
   ngOnInit() {
@@ -65,8 +67,8 @@ datoConsultaSuc: IConsultaSuc[] = [
     this.comprasSucService
     .getDataSucDetalle1(this.servicio)
     .subscribe((res: {}) => {
-      console.log('pac: ', res);
-      this.iDetallePac1 = res as IDetalleSuc1;
+      console.log('suc1: ', res);
+      this.iDetalleSuc1 = res as IDetalleSuc1;
       this.getConsultaDetallePac2()
     },
     // console.log('yo:', res as PerfilI[]),
@@ -87,7 +89,7 @@ datoConsultaSuc: IConsultaSuc[] = [
     this.comprasSucService
     .getDataSucDetalle2(this.servicio)
     .subscribe((res: {}) => {
-      console.log('pac: ', res);
+      console.log('suc2: ', res);
       this.dataSource.data = res as IConsultaSuc[];
 
     },
@@ -133,11 +135,11 @@ datoConsultaSuc: IConsultaSuc[] = [
   }
 
   getTotalCost() {
-     return this.datoConsultaSuc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0);
+     return this.dataSource.data.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0);
   }
 
   getTotalCostIva() {
-    return this.resultado= (this.datoConsultaSuc.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0) + this.iva);
+    return this.resultado= (this.dataSource.data.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0) + this.iva);
   }
   CancelarSUC(){
     const dialogConfig = new MatDialogConfig();

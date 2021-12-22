@@ -85,12 +85,9 @@ import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-gener
     MantencionArchivoComponent,
     ResumenInventarioComponent,
     AlertaActivoComponent,
-<<<<<<< HEAD
-    AgregaSuc2Component
-=======
+    AgregaSuc2Component,
     DocumentosAsociadosComponent,
     BalanceGeneralComponent
->>>>>>> Felipe
   ],
   imports: [
     BrowserModule,

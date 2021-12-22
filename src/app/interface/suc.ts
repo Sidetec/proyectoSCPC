@@ -31,7 +31,7 @@ export interface IConsultaSuc {
       fechaSolicitud: string;
       servicio:string;
       responsable: string;
-      motivosCompra: string;
+      motivoCompra: string;
     }
 
     export interface IConsultaSucLista {
