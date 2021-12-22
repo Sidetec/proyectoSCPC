@@ -44,7 +44,7 @@ th.mat-header-cell, mat-header-cell {
   font-size: 10px!important;
 }
 
-#catidadTotalI, #eneroI{
+#cantidadTotalI, #eneroI{
   border-left: 1px solid transparent;
   border-left-color: currentColor;
 }

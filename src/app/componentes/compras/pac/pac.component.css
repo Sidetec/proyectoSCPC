@@ -34,3 +34,17 @@ td.example-element-row:not(.example-expanded-row):active {
 .mat-row:hover .mat-cell {
   background: whitesmoke;
 }
+
+
+
+#solicitadosI, #consumidosI{
+  border-left: 1.5px solid transparent;
+  border-left-color: currentColor;
+}
+
+#headrePrimeraFilaGrupo3, #headrePrimeraFilaGrupo4{
+  border-left: 1.5px solid transparent;
+  border-left-color: currentColor;
+  text-align: center;
+}
+

@@ -1,4 +1,5 @@
 export interface IListaPac {
+  id: string;
   pac: string;
   servicio: string;
   responsable: string;

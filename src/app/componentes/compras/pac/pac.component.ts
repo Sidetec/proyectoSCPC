@@ -47,13 +47,15 @@ export class PacComponent implements AfterViewInit, OnInit {
     {pac: 'PAC-0020', servicio: 'Servicio20'},
   ];
   */
-  displayedColumns: string[] = ['pac', 'servicio', 'solicitados','comprados','pendientes','consumidos','disponibles','opciones'];
+  displayedColumns: string[] = ['id','pac', 'servicio', 'solicitados','comprados','pendientes','consumidos','disponibles','opciones'];
   dataSource: MatTableDataSource<IListaPac>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+
+  show=true;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient,private comprasPacService:ComprasPacService) {
     // Create 100 users

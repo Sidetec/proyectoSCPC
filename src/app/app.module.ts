@@ -42,6 +42,7 @@ import { ReporteDepreciacionComponent } from './componentes/activo-fijo/reporte-
 import { ResumenInventarioComponent } from './componentes/activo-fijo/resumen-inventario/resumen-inventario.component';
 import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/alerta-activo.component';
 import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
+import { AgregaSuc2Component } from './componentes/compras/suc/agrega-suc/agrega-suc2/agrega-suc2.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion
     ReporteDepreciacionComponent,
     MantencionArchivoComponent,
     ResumenInventarioComponent,
-    AlertaActivoComponent
+    AlertaActivoComponent,
+    AgregaSuc2Component
   ],
   imports: [
     BrowserModule,

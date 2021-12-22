@@ -27,7 +27,7 @@ export class AlertasComponent implements OnInit {
   segundoAvisoDias= new FormControl('', [Validators.required]);
   tercerAvisoDias= new FormControl('', [Validators.required]);
   dFechaExtincion= new FormControl('', [Validators.required]);
-  stockMinimoPorc= new FormControl('', [Validators.required]);;
+  stockMinimoPorc= new FormControl('', [Validators.required]);
 
   public configuraAlerta: FormGroup = new FormGroup({
     fechaInicio: this.fechaInicio,

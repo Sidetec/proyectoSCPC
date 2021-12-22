@@ -29,50 +29,30 @@ td.example-element-row:not(.example-expanded-row):active {
 
   background: none;
   cursor: pointer;
-  font-weight: bold;
 }
 
 .mat-row:hover .mat-cell {
   background: whitesmoke;
 }
 
-.mat-cell, .mat-footer-cell {
-  font-size: 9px;
-}
-
-th.mat-header-cell, mat-header-cell {
-  font-size: 10px!important;
-}
-
-#cantidadTotalI, #eneroI{
-  border-left: 1px solid transparent;
+#cantidadTotalI{
+  border-left: 1.5px solid transparent;
   border-left-color: currentColor;
 }
 
-#idLicitacionI {
-  border-left: 3px solid transparent;
-  border-left-color: currentColor;
-}
-#idLicitacionTd{
-  border-left: 3px solid transparent;
-
-}
 
 #headrePrimeraFilaGrupo1{
+  border-left: 1.5px solid transparent;
+  border-left-color: currentColor;
   text-align: center;
 }
 
  #headrePrimeraFilaGrupo2{
-  border-left: 1px solid transparent;
+  border-left: 1.5px solid transparent;
   border-left-color: currentColor;
   text-align: center;
 }
 
-#headrePrimeraFilaGrupo4{
-  border-left: 3px solid transparent;
-  border-left-color: currentColor;
-  text-align: center;
-}
 
 th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
   padding-left: 4px !important;

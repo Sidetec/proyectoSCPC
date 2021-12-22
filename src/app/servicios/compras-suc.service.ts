@@ -23,7 +23,7 @@ export class ComprasSucService {
 
 
   getDataSucLista(): Observable<IConsultaSucLista> {
-    return this.http.get<IConsultaSucLista>(`${environment.apiUrl}/PostaCentralConsultaPac/consulta`, { headers: this.headers })
+    return this.http.get<IConsultaSucLista>(`${environment.apiUrl}/PostaCentralConsultaSuc/consulta`, { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

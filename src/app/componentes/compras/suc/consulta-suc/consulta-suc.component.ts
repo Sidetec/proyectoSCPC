@@ -33,12 +33,12 @@ iDetallePac1:IDetalleSuc1={
 
 datoConsultaSuc: IConsultaSuc[] = [
 
-  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
-  {codigoArticulo: 'CCC-987', detalle: 'Detalle1',   unidadDeMedida: 'Litro', catidadTotal: 10,  valorUnitario: 123,  montoTotal: 1230, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
-  {codigoArticulo: 'CCC-345', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', catidadTotal: 15,  valorUnitario: 123,  montoTotal: 1845, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
+  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', cantidadTotal: 20,  valorUnitario: 100,  montoTotal: 2000, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
+  {codigoArticulo: 'CCC-987', detalle: 'Detalle1',   unidadDeMedida: 'Litro', cantidadTotal: 10,  valorUnitario: 123,  montoTotal: 1230, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0},
+  {codigoArticulo: 'CCC-345', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', cantidadTotal: 15,  valorUnitario: 123,  montoTotal: 1845, idLicitacion: 0,  idOc: 0,  totalComprado:0,  saldoSuc: 0}
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
+  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoSuc'];
   dataSource: MatTableDataSource<IConsultaSuc>;
 
   @ViewChild(MatPaginator)

@@ -4,8 +4,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-
 import { IConsultaOc } from 'src/app/interface/oc';
+
 @Component({
   selector: 'app-consulta-occ',
   templateUrl: './consulta-oc.component.html',
@@ -20,11 +20,11 @@ export class ConsultaOcComponent implements AfterViewInit {
 
 datoConsultaOc: IConsultaOc[] = [
 
-  {codigoArticulo: '', detalle: '',   unidadDeMedida: '', catidadTotal: 0,  valorUnitario: 0,  montoTotal: 0}
+  {codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: 0,  valorUnitario: 0,  montoTotal: 0}
 
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'catidadTotal',  'valorUnitario',  'montoTotal'];
+  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
   dataSource: MatTableDataSource<IConsultaOc>;
 
   @ViewChild(MatPaginator)

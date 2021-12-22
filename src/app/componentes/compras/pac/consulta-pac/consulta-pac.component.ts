@@ -28,11 +28,11 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
   servicio: string='';
   /*datoConsultaPac: IConsultaPac[] = [
 
-  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12, catidadTotal: 78,  valorUnitario: 10,  montoTotal: 80000, idLicitacion: 100,  idOc: 1000,  totalComprado: 50000,  saldoLicitacion: 30000}
+  {codigoArticulo: 'CCC-123', detalle: 'Detalle1',   unidadDeMedida: 'Unidad', enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12, cantidadTotal: 78,  valorUnitario: 10,  montoTotal: 80000, idLicitacion: 100,  idOc: 1000,  totalComprado: 50000,  saldoLicitacion: 30000}
 
   ];
 */
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'catidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoLicitacion'];
+  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'cantidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoLicitacion'];
  // dataSource: MatTableDataSource<IConsultaPac>;
   dataSource: MatTableDataSource<IConsultaPac>;
 

@@ -12,45 +12,54 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
 
-    <!-- Estado Column -->
-    <ng-container matColumnDef="Suc">
-      <th id='SucI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> SUC </th>
-      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Suc}} </td>
+     <!-- Suc Column -->
+     <ng-container matColumnDef="suc">
+      <th id='sucI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> SUC </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.suc}} </td>
     </ng-container>
+
+
     <!-- Estado Column -->
-    <ng-container matColumnDef="Estado">
-      <th id='EstadoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Estado </th>
-      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Estado}} </td>
+    <ng-container matColumnDef="estado">
+      <th id='estadoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Estado </th>
+      <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.estado}} </td>
     </ng-container>
 
     <!-- Fecha Solicitud Column -->
-    <ng-container matColumnDef="Fecha">
-      <th id='FechaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 17%;'>Fecha Solicitud </th>
-      <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Fecha}} </td>
+    <ng-container matColumnDef="fechaSolicitud">
+      <th id='fechaSolicitudI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 17%;'>Fecha Solicitud </th>
+      <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.fechaSolicitud}} </td>
     </ng-container>
 
     <!-- Servicio Column -->
-    <ng-container matColumnDef="Servicio">
-      <th id='ServicioI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Servicio </th>
-      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.Servicio}} </td>
+    <ng-container matColumnDef="servicio">
+      <th id='servicioI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Servicio </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.servicio}} </td>
     </ng-container>
 
     <!-- Responsable Column -->
-    <ng-container matColumnDef="Responsable">
-      <th id='ResponsableI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Responsable </th>
-      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.Responsable}} </td>
+    <ng-container matColumnDef="responsable">
+      <th id='responsableI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Responsable </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.responsable}} </td>
     </ng-container>
     <!-- Motivo Column -->
-    <ng-container matColumnDef="Motivo">
-      <th id='MotivoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Motivo </th>
-      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.Motivo}} </td>
+    <ng-container matColumnDef="motivo">
+      <th id='motivoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Motivo </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.motivo}} </td>
     </ng-container>
 
     <!-- Motivo Column -->
-    <ng-container matColumnDef="MontoTotal">
-      <th id='MontoTotalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Monto Total Neto </th>
-      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.MontoTotal}} </td>
+    <ng-container matColumnDef="montoTotal">
+      <th id='montoTotalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Monto Total Neto </th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.montoTotal}} </td>
     </ng-container>
+    <!--NO LO MUESTRA-->
+    <!-- Suc Column -->
+    <ng-container matColumnDef="id">
+      <th [hidden]="show" id='idI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'> SUC </th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.id}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="opciones" >
       <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>
         <button mat-icon-button color="accent" class="nuevo" (click)="agregaNuevo()">
@@ -61,7 +70,7 @@
     <td mat-cell *matCellDef="let row; let i=index;" style=' width: 15%; text-align: center'>
 
 
-      <button mat-icon-button color="accent" (click)="consultasuc(row.servicio)">
+      <button mat-icon-button color="accent" (click)="consultasuc(row.id)">
         <mat-icon>search</mat-icon>
       </button>
 

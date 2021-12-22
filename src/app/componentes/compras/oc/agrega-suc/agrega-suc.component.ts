@@ -16,7 +16,7 @@ export class AgregasucComponent implements OnInit {
 
 
 
-
+  datoAlertas: IAlertas | undefined;
 
   constructor(private dialogRef: MatDialogRef<AgregasucComponent>,
               ) {
@@ -55,7 +55,6 @@ export class AgregasucComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   enviar() {

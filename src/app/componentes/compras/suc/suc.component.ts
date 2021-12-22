@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -12,7 +12,7 @@ import { IConsultaSucLista } from 'src/app/interface/suc';
 
 import Swal from 'sweetalert2';
 import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
-export interface Datos {
+/*export interface Datos {
   Suc: string;
   Estado: string;
   Fecha: string;
@@ -21,38 +21,42 @@ export interface Datos {
   Motivo: string;
   MontoTotal:string;
 }
-
+*/
 /** Constants used to fill up our data base. */
-const datos: Datos[] = [
+/*const datos: Datos[] = [
   {Suc: 'SUC-001', Estado: 'Estado 1',Fecha: 'Fecha 1',Servicio: 'Servicio 1',Responsable:'Responsable 1',Motivo: 'Motivo 1',MontoTotal:''},
   {Suc: 'SUC-002', Estado: 'Estado 2',Fecha: 'Fecha 2',Servicio: 'Servicio 2',Responsable:'Responsable 2',Motivo: 'Motivo 2',MontoTotal:''},
   {Suc: 'SUC-003', Estado: 'Estado 3',Fecha: 'Fecha 3',Servicio: 'Servicio 3',Responsable:'Responsable 3',Motivo: 'Motivo 3',MontoTotal:''},
   {Suc: 'SUC-004', Estado: 'Estado 4',Fecha: 'Fecha 4',Servicio: 'Servicio 4',Responsable:'Responsable 4',Motivo: 'Motivo 4',MontoTotal:''},
   {Suc: 'SUC-005', Estado: 'Estado 5',Fecha: 'Fecha 5',Servicio: 'Servicio 5',Responsable:'Responsable 5',Motivo: 'Motivo 5',MontoTotal:''},
 
-];
+];*/
 @Component({
   selector: 'app-suc',
   templateUrl: './suc.component.html',
   styleUrls: ['./suc.component.css']
 })
-export class sucComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Suc', 'Estado', 'Fecha', 'Servicio', 'Responsable', 'Motivo','MontoTotal','opciones'];
-  dataSource: MatTableDataSource<Datos>;
+export class sucComponent implements AfterViewInit, OnInit {
+  displayedColumns: string[] = ['id','suc', 'estado', 'fechaSolicitud', 'servicio', 'responsable', 'motivo','montoTotal','opciones'];
+  dataSource: MatTableDataSource<IConsultaSucLista>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
+  show = true;
   constructor(public dialog: MatDialog,public httpClient: HttpClient,private comprasSucService:ComprasSucService) {
     // Create 100 users
    // const users = Array.from({length: 4}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(datos);
+    this.dataSource = new MatTableDataSource<IConsultaSucLista>();
   }
 
+  ngOnInit() {
+    this.getListPac();
+  }
 
   getListPac() {
     console.log('paso pac')
@@ -60,7 +64,7 @@ export class sucComponent implements AfterViewInit {
     .getDataSucLista()
     .subscribe((res: {}) => {
       console.log('suc: ', res);
-    //  this.dataSource.data = res as IConsultaSucLista[];
+      this.dataSource.data = res as IConsultaSucLista[];
 
     },
     // console.log('yo:', res as PerfilI[]),

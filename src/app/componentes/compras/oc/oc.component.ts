@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConsultaOcComponent } from './consulta-oc/consulta-oc.component';
 
 export interface Datos {
+  id: string;
   oc: string;
   Estado: string;
   TipoSolicitud: string;
@@ -19,9 +20,9 @@ export interface Datos {
 
 
 const datos: Datos[] = [
-  {oc: 'OC-001', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-218721',Empresa:'',Descripcion:'',TotalNeto:''},
-  {oc: 'OC-002', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-3217Y6',Empresa:'',Descripcion:'',TotalNeto:''},
-  {oc: 'OC-003', Estado: '' , TipoSolicitud: 'SUC',IDsolicitud:'SUC-3127TY',Empresa:'',Descripcion:'',TotalNeto:''},
+  {id:'1',oc: 'OC-001', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-218721',Empresa:'',Descripcion:'',TotalNeto:''},
+  {id:'2',oc: 'OC-002', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-3217Y6',Empresa:'',Descripcion:'',TotalNeto:''},
+  {id:'3',oc: 'OC-003', Estado: '' , TipoSolicitud: 'SUC',IDsolicitud:'SUC-3127TY',Empresa:'',Descripcion:'',TotalNeto:''},
 ];
 
 @Component({
@@ -30,7 +31,7 @@ const datos: Datos[] = [
   styleUrls: ['./oc.component.css']
 })
 export class OcComponent implements AfterViewInit {
-  displayedColumns: string[] = ['oc', 'Estado', 'TipoSolicitud','IDsolicitud','Empresa','Descripcion','TotalNeto','opciones'];
+  displayedColumns: string[] = ['id','oc', 'Estado', 'TipoSolicitud','IDsolicitud','Empresa','Descripcion','TotalNeto','opciones'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -38,6 +39,7 @@ export class OcComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
+  show=true;
   constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
@@ -59,7 +61,7 @@ export class OcComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  consultaoc() {
+  consultaoc(id:string) {
 
 
 

@@ -44,8 +44,8 @@ th.mat-header-cell, mat-header-cell {
   font-size: 10px!important;
 }
 
-#catidadTotalI, #eneroI{
-  border-left: 1px solid transparent;
+#cantidadTotalI, #eneroI{
+  border-left: 1.5px solid transparent;
   border-left-color: currentColor;
 }
 
@@ -63,7 +63,7 @@ th.mat-header-cell, mat-header-cell {
 }
 
 #headrePrimeraFilaGrupo3, #headrePrimeraFilaGrupo2{
-  border-left: 1px solid transparent;
+  border-left: 1.5px solid transparent;
   border-left-color: currentColor;
   text-align: center;
 }
