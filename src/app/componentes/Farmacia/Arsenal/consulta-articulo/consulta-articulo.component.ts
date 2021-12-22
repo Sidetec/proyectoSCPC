@@ -16,21 +16,25 @@ import { IArticulo } from 'src/app/interface/Arsenal';
 export class ConsultaArticuloComponent implements AfterViewInit {
 
   datoConsultaArticulo: IArticulo[] = [
-    { id: 'FRM-001', 
-    grupo: 'grupo001',
-    subgrupo: 'subgrupo001', 
-    ctrlLegal: 'controlLegal001',
-    tipo: 'tipo001',
-    gzen: 'gzen001',
-    medicamento: 'medicamento001',
-    farmaceutica: 'farmaceutica001',
-    presentacion: 'presentacion001',
-    dosificacion: 'dosificacion001'
+    { 
+      gzen: 'gzen001',
+      grupo: 'grupo001',
+      subgrupo: 'subgrupo001', 
+      ctrlLegal: 'controlLegal001',
+      tipo: 'tipo001',
+      medicamento: 'medicamento001',
+      farmaceutica: 'farmaceutica001',
+      presentacion: 'presentacion001',
+      dosificacion: 'dosificacion001',
+      restricciones: 'restricciones001',
+      altTerapeutica: 'altTerapeutica001',
+      observaciones: 'observaciones001'
     }
   ];
 
-  displayedColumns: string[] = ['id', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 'gzen', 
-  'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','opciones'];
+  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 
+  'medicamento', 'farmaceutica', 'presentacion', 'dosificacion', 'restriccionres',
+  'altTerapeutica','observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)

@@ -2,60 +2,76 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatSnackBar} from '@angular/material//snack-bar';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
 import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
 import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
 import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 import { IArticulo } from 'src/app/interface/Arsenal';
+import Swal from 'sweetalert2';
 
-var datos: IArticulo[] = [
-  { id: 'FRM-001', 
-    grupo: 'grupo001',
-    subgrupo: 'subgrupo001', 
-    ctrlLegal: 'controlLegal001',
-    tipo: 'tipo001',
+
+/*var datos: IArticulo[] = [
+  { 
     gzen: 'gzen001',
+    grupo: 'G001',
+    subgrupo: 'SG001', 
+    ctrlLegal: 'ctrl001',
+    tipo: 'tipo001',
     medicamento: 'medicamento001',
     farmaceutica: 'farmaceutica001',
     presentacion: 'presentacion001',
-    dosificacion: 'dosificacion001'
+    dosificacion: 'dosificacion001',
+    restricciones: 'restricciones001',
+    altTerapeutica: 'altTerapeutica001',
+    observaciones: 'observaciones001'
   }, 
-  { id: 'FRM-002', 
-    grupo: 'grupo002',
-    subgrupo: 'subgrupo002', 
-    ctrlLegal: 'controlLegal002',
+  { 
+    gzen: 'gzen002', 
+    grupo: 'G002',
+    subgrupo: 'SG002', 
+    ctrlLegal: 'ctrl002',
     tipo: 'tipo002',
-    gzen: 'gzen002',
     medicamento: 'medicamento002',
     farmaceutica: 'farmaceutica002',
     presentacion: 'presentacion002',
-    dosificacion: 'dosificacion002'
+    dosificacion: 'dosificacion002',
+    restricciones: 'restricciones002',
+    altTerapeutica: 'altTerapeutica002',
+    observaciones: 'observaciones002'
   },
-  { id: 'FRM-003', 
-  grupo: 'grupo003',
-  subgrupo: 'subgrupo003', 
-  ctrlLegal: 'controlLegal003',
-  tipo: 'tipo003',
-  gzen: 'gzen003',
-  medicamento: 'medicamento003',
-  farmaceutica: 'farmaceutica003',
-  presentacion: 'presentacion003',
-  dosificacion: 'dosificacion003'
+  { 
+    gzen: 'gzen003',
+    grupo: 'G003',
+    subgrupo: 'SG003', 
+    ctrlLegal: 'ctrl003',
+    tipo: 'tipo003',
+    medicamento: 'medicamento003',
+    farmaceutica: 'farmaceutica003',
+    presentacion: 'presentacion003',
+    dosificacion: 'dosificacion003',
+    restricciones: 'restricciones003',
+    altTerapeutica: 'altTerapeutica003',
+    observaciones: 'observaciones003'
   },
-  { id: 'FRM-004', 
-  grupo: 'grupo004',
-  subgrupo: 'subgrupo004', 
-  ctrlLegal: 'controlLegal004',
-  tipo: 'tipo004',
-  gzen: 'gzen004',
-  medicamento: 'medicamento004',
-  farmaceutica: 'farmaceutica004',
-  presentacion: 'presentacion004',
-  dosificacion: 'dosificacion004'
+  {   
+    gzen: 'gzen004',
+    grupo: 'G004',
+    subgrupo: 'SG004', 
+    ctrlLegal: 'ctrl004',
+    tipo: 'tipo004',
+    medicamento: 'medicamento004',
+    farmaceutica: 'farmaceutica004',
+    presentacion: 'presentacion004',
+    dosificacion: 'dosificacion004',
+    restricciones: 'restricciones004',
+    altTerapeutica: 'altTerapeutica004',
+    observaciones: 'observaciones004'
 }
-];
+];*/
 
 @Component({
   selector: 'app-Arsenal',
@@ -63,9 +79,10 @@ var datos: IArticulo[] = [
   styleUrls: ['./arsenal.component.css']
 })
 export class ArsenalComponent implements AfterViewInit {  
-
-  displayedColumns: string[] = ['id', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 'gzen', 
-    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','opciones'];
+  show = true;
+  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 
+    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','restricciones',
+    'altTerapeutica','observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
@@ -73,9 +90,35 @@ export class ArsenalComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
-    this.dataSource = new MatTableDataSource(datos);
+  constructor(  private listaArsenalService: ListaArsenalService,
+                public dialog: MatDialog,
+                public httpClient: HttpClient,) {
+    //this.dataSource = new MatTableDataSource(datos);
+    this.dataSource = new MatTableDataSource<IArticulo>();
   }
+  
+ngOnInit() {
+  this.getListArsenal();
+}
+
+getListArsenal(): void {
+  this.listaArsenalService
+    .getDataArsenalLista()
+    .subscribe((res: {}) => {
+      console.log('Artículos: ', res);
+      this.dataSource.data = res as IArticulo[];
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  ); // (this.dataSource.data = res as PerfilI[])
+}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -132,12 +175,14 @@ export class ArsenalComponent implements AfterViewInit {
       );
   }
 
-  consultaArticulo(id: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
-    gzen: string, medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string) {
+  consultaArticulo(gzen: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
+    medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string,
+     restricciones:string, altTerapuetica: string, observaciones: string) {
 
-   /* datoArticulo = {
-      id, grupo, subgrupo, ctrlLegal, tipo,
-      gzen, medicamento, farmaceutica, presentacion, dosificacion
+    /*datoArticulo = {
+      gzen, grupo, subgrupo, ctrlLegal, tipo,
+      medicamento, farmaceutica, presentacion, dosificacion,
+      restricciones, altTerapuetica, observaciones
     };*/
 
     const dialogConfig = new MatDialogConfig();

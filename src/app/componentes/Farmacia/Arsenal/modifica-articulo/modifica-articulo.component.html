@@ -1,10 +1,10 @@
 <h2 mat-dialog-title class="text-center">MODIFICA ARTICULO FARMACOLÓGICO</h2>
 
-<mat-dialog-content [formGroup]="modificaArticulo" name="modificaArticulo" class="agrega-container">
+<mat-dialog-content [formGroup]="modificaArticulo" name="modificaArticulo" class="modifica-container">
 
   <mat-form-field>
-    <input matInput placeholder="ID" [formControl]="id" >
-    <mat-error *ngIf="id.invalid">{{getErrorMessage('id')}}</mat-error>
+    <input matInput placeholder="Código" [formControl]="gzen" >
+    <mat-error *ngIf="gzen.invalid">{{getErrorMessage('gzen')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -28,11 +28,6 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="GZEN" [formControl]="gzen" >
-    <mat-error *ngIf="gzen.invalid">{{getErrorMessage('gzen')}}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
     <input matInput placeholder="Medicamento" [formControl]="medicamento" >
     <mat-error *ngIf="medicamento.invalid">{{getErrorMessage('medicamento')}}</mat-error>
   </mat-form-field>
@@ -51,7 +46,22 @@
     <input matInput placeholder="Dosificación" [formControl]="dosificacion" >
     <mat-error *ngIf="dosificacion.invalid">{{getErrorMessage('dosificacion')}}</mat-error>
   </mat-form-field>
-  
+
+  <mat-form-field>
+    <input matInput placeholder="Restricciones" [formControl]="restricciones" >
+    <!--<mat-error *ngIf="restricciones.invalid">{{getErrorMessage('restricciones')}}</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Alternativa Terapéutica" [formControl]="altTerapeutica" >
+    <!--<mat-error *ngIf="altTerapeutica.invalid">{{getErrorMessage('altTerapeutica')}}</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Observaciones" [formControl]="observaciones" >
+    <!--<mat-error *ngIf="observaciones.invalid">{{getErrorMessage('observaciones')}}</mat-error>-->
+  </mat-form-field>
+
 </mat-dialog-content>
 
 <mat-dialog-actions>

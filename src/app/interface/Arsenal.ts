@@ -1,17 +1,16 @@
 export interface IArticulo{
-    id: string;
+    gzen: string;
     grupo: string;
     subgrupo: string; 
     ctrlLegal: string;
     tipo: string;
-    gzen: string;
     medicamento: string;
     farmaceutica: string;
     presentacion: string;
     dosificacion: string;
-    /*restricciones: string;
+    restricciones: string;
     altTerapeutica: string;
-    observaciones: string; */
+    observaciones: string;
 }
 
 export interface IClimatizacion {
