@@ -6,6 +6,8 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 
 export interface Datos {
+  tipoEspecie:string;
+  cuenta:string;
   codigo: string;
   descripcion: string;
   marca:string;
@@ -19,17 +21,17 @@ export interface Datos {
 }
 
 const datos: Datos[] = [
-  {codigo: '', descripcion: ' ',marca:'',modelo:'',vidaUtil:'',valorLibro:'',valorDesecho:'',depreciacionAnual:'',depreciacionAcumulada:''},
+  {tipoEspecie:'',cuenta:'',codigo: '', descripcion: ' ',marca:'',modelo:'',vidaUtil:'',valorLibro:'',valorDesecho:'',depreciacionAnual:'',depreciacionAcumulada:''},
 ]
 
-
 @Component({
-  selector: 'app-resumen-inventario',
-  templateUrl: './resumen-inventario.component.html',
-  styleUrls: ['./resumen-inventario.component.css']
+  selector: 'app-balance-general',
+  templateUrl: './balance-general.component.html',
+  styleUrls: ['./balance-general.component.css']
 })
-export class ResumenInventarioComponent implements AfterViewInit {
-  displayedColumns: string[] = ['codigo', 'descripcion', 'marca','modelo','vidaUtil','valorLibro','valorDesecho','depreciacionAnual','depreciacionAcumulada'];
+export class BalanceGeneralComponent implements AfterViewInit {
+
+  displayedColumns: string[] = ['tipoEspecie','cuenta','codigo', 'descripcion', 'marca','modelo','vidaUtil','valorLibro','valorDesecho','depreciacionAnual','depreciacionAcumulada'];
   dataSource: MatTableDataSource<Datos>;
 
   @ViewChild(MatPaginator)
@@ -37,7 +39,7 @@ export class ResumenInventarioComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ResumenInventarioComponent>) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<BalanceGeneralComponent>) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -69,4 +71,6 @@ export class ResumenInventarioComponent implements AfterViewInit {
   cerrar() {
     this.dialogRef.close();
   }
+
+
 }

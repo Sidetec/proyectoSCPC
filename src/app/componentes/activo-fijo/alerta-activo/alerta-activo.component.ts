@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 import { IVidaUtil } from 'src/app/interface/alertasActivo';
 import { IContrato } from 'src/app/interface/alertasActivo';
 
@@ -38,6 +39,11 @@ export class AlertaActivoComponent implements OnInit {
     generaAlerta: this.generaAlerta,
   });
 
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<AlertaActivoComponent>)
+  {
+
+  }
+
   ngOnInit() {
   }
 
@@ -49,6 +55,10 @@ export class AlertaActivoComponent implements OnInit {
             'success'
           ); // ,
 
+            }
+
+            cerrar() {
+              this.dialogRef.close();
             }
 
 }

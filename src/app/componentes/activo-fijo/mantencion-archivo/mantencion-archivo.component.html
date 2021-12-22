@@ -70,7 +70,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
   <div class="col-md-4">
-    <button mat-raised-button   [disabled]=false>Volver</button>
+    <button mat-raised-button  (click)="cerrar()" [disabled]=false>Cerrar</button>
     <button mat-raised-button   [disabled]=false>Agregar</button>
 </div>
   </div>

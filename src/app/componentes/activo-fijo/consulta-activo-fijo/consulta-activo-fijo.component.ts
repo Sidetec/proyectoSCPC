@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReporteDepreciacionComponent } from '../reporte-depreciacion/reporte-depreciacion.component';
 import { MantencionArchivoComponent } from '../mantencion-archivo/mantencion-archivo.component';
 import { AlertaActivoComponent } from '../alerta-activo/alerta-activo.component';
+import { DocumentosAsociadosComponent } from '../documentos-asociados/documentos-asociados.component';
 
 import { IConsultaActivoFijo } from 'src/app/interface/activoFijo';
 @Component({
@@ -112,6 +113,29 @@ datoConsultaSuc: IConsultaActivoFijo[] = [
     dialogConfig.position = { top : '1%'};
 
     this.dialog.open(AlertaActivoComponent, dialogConfig)
+      .afterClosed().subscribe(
+       data => {console.log('Datoas Consulta:', data);
+                if (data !== undefined) {
+                    this.refreshTable();
+                }
+        }
+      );
+
+   }
+
+   documentos() {
+
+
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '100%';
+    dialogConfig.height = '90%';
+    dialogConfig.position = { top : '1%'};
+
+    this.dialog.open(DocumentosAsociadosComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datoas Consulta:', data);
                 if (data !== undefined) {

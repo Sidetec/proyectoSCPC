@@ -42,6 +42,8 @@ import { ReporteDepreciacionComponent } from './componentes/activo-fijo/reporte-
 import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
 import { ResumenInventarioComponent } from './componentes/activo-fijo/resumen-inventario/resumen-inventario.component';
 import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/alerta-activo.component';
+import { DocumentosAsociadosComponent } from './componentes/activo-fijo/documentos-asociados/documentos-asociados.component';
+import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/a
     ReporteDepreciacionComponent,
     MantencionArchivoComponent,
     ResumenInventarioComponent,
-    AlertaActivoComponent
+    AlertaActivoComponent,
+    DocumentosAsociadosComponent,
+    BalanceGeneralComponent
   ],
   imports: [
     BrowserModule,
