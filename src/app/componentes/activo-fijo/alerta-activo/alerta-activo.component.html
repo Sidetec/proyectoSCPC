@@ -4,56 +4,53 @@
       <h2 class="text-center">Alerta del Activo</h2>
     </div>
 </div>
-<div class="pt-2" >
-    <div class="col-md-12">
-
-      <h2 class="text-center">Datos Generales del Archivo</h2>
-
-        <mat-dialog-content [formGroup]="IVidaUtil" name="IVidaUtil" class="agrega-container">
-
-        <mat-form-field>
-            <input matInput type="string" placeholder="Vida Util" [formControl]="vidaUtil" >
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput type="string" placeholder="Fecha de Compra" [formControl]="fecha" >
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput type="string" placeholder="Vida Util Restante" [formControl]="vidaUtilRes" >
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput  placeholder="Genera Alerta cuando la vida util restante sea menor o igual a " [formControl]="generaAlerta" >
-        </mat-form-field>
-
+<div class="row">
+    <div class="col-md-6">
+      <table>
+        <h2 class="text-center">Datos Generales del Archivo</h2>
+        <tr>
+          VIDA UTIL
+          <mat-dialog-content [formGroup]="IVidaUtil" name="IVidaUtil" class="agrega-container">
+          <td>
+                <input matInput type="string" placeholder="Vida Util" [formControl]="vidaUtil" >
+          </td>
+          <td>
+                <input matInput type="string" placeholder="Fecha de Compra" [formControl]="fecha" >
+          </td>
+          <td>
+                <input matInput type="string" placeholder="Vida Util Restante" [formControl]="vidaUtilRes" >
+          </td>
+          <td>
+                <input matInput  placeholder="Genera Alerta cuando la vida util restante sea menor o igual a " [formControl]="generaAlerta" >
+          </td>
+          </mat-dialog-content>
+          </tr>
+  </table>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table>
+      <tr>Contrato de Arriendo
+      <mat-dialog-content [formGroup]="IVidaUtil" name="IContrato" class="agrega-container">
+        <td>
+            <input matInput type="string" placeholder="Inicio Contrato" [formControl]="inicioContrato" >
+        </td>
+        <td>
+            <input matInput type="string" placeholder="Termino Contrato" [formControl]="terminoContrato" >
+        </td>
+        <td>
+            <input matInput type="string" placeholder="Tiempo Restante" [formControl]="tiempoRestante" >
+        </td>
+        <td>
+            <input matInput  placeholder="Genera Alerta cuando queden " [formControl]="generaAlerta" >
+        </td>
         </mat-dialog-content>
-    </div>
+      </tr>
+      </table>
 </div>
-    <div class="row">
-</div>
-<div class="col-md-6">
-    <mat-dialog-content [formGroup]="IVidaUtil" name="IContrato" class="agrega-container">
-
-        <mat-form-field>
-          <input matInput type="string" placeholder="Inicio Contrato" [formControl]="inicioContrato" >
-        </mat-form-field>
-      
-        <mat-form-field>
-          <input matInput type="string" placeholder="Termino Contrato" [formControl]="terminoContrato" >
-        </mat-form-field>
-      
-        <mat-form-field>
-          <input matInput type="string" placeholder="Tiempo Restante" [formControl]="tiempoRestante" >
-        </mat-form-field>
-      
-        <mat-form-field>
-          <input matInput  placeholder="Genera Alerta cuando queden " [formControl]="generaAlerta" >
-        </mat-form-field>
-      
-      </mat-dialog-content>
 </div>
 <div>
-    <button mat-raised-button  [disabled]=false>Volver</button>  
+    <button mat-raised-button (click)="cerrar()"  [disabled]=false>Cerrar</button>  
     <button mat-raised-button  [disabled]=false>Grabar</button>
 </div>

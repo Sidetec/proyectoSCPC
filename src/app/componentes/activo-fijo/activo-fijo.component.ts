@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 import { ConsultaActivoFijoComponent } from './consulta-activo-fijo/consulta-activo-fijo.component';
 import { ResumenInventarioComponent } from './resumen-inventario/resumen-inventario.component';
+import { BalanceGeneralComponent } from './balance-general/balance-general.component';
 
 export interface Datos {
   CodigoActivo: string;
@@ -162,6 +163,28 @@ export class ActivoFijoComponent implements AfterViewInit {
 
    }
 
+   balanceGeneral() {
+
+
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '100%';
+    dialogConfig.height = '90%';
+    dialogConfig.position = { top : '1%'};
+
+    this.dialog.open(BalanceGeneralComponent, dialogConfig)
+      .afterClosed().subscribe(
+       data => {console.log('Datoas Consulta:', data);
+                if (data !== undefined) {
+                    this.refreshTable();
+                }
+        }
+      );
+
+   }
 
 
   private refreshTable() {

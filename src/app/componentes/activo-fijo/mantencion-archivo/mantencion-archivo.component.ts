@@ -43,7 +43,7 @@ export class MantencionArchivoComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<MantencionArchivoComponent>) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -95,5 +95,9 @@ export class MantencionArchivoComponent implements AfterViewInit {
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 
+  
+  cerrar() {
+    this.dialogRef.close();
+  }
 
 }

@@ -45,6 +45,8 @@ import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion
 import { AgregaSuc2Component } from './componentes/compras/suc/agrega-suc/agrega-suc2/agrega-suc2.component';
 import { AgregaOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc.component';
 import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc2/agrega-oc2.component';
+import { DocumentosAsociadosComponent } from './componentes/activo-fijo/documentos-asociados/documentos-asociados.component';
+import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,12 @@ import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc
     MantencionArchivoComponent,
     ResumenInventarioComponent,
     AlertaActivoComponent,
+<<<<<<< HEAD
     AgregaSuc2Component
+=======
+    DocumentosAsociadosComponent,
+    BalanceGeneralComponent
+>>>>>>> Felipe
   ],
   imports: [
     BrowserModule,
