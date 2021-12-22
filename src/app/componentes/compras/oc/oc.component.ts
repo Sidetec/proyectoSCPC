@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { ConsultaOcComponent } from './consulta-oc/consulta-oc.component';
+import { AgregaOcComponent } from './agrega-oc/agrega-oc.component';
 
 export interface Datos {
   id: string;
@@ -91,7 +92,29 @@ export class OcComponent implements AfterViewInit {
    }
 
    agregaNuevo(){
+//  agregaNuevo(empresaInterface_: EmpresaI) {
+    // Nuevo
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.height = '90%';
+    dialogConfig.position = { top : '2%'};
+    dialogConfig.data = {};
+  //  dialogConfig.data = {
+  //    idProducto: idProdP,
+  //    titulo: tituloP
+  //  };
+
+    this.dialog.open(AgregaOcComponent, dialogConfig)
+    .afterClosed().subscribe(
+     data => {console.log('Dialog output3333:', data);
+              if (data !== undefined) {
+                  this.refreshTable();
+              }
+      }
+    );
    }
 }
 

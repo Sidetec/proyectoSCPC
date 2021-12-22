@@ -13,11 +13,11 @@ import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-agrega-suc2',
-  templateUrl: './agrega-suc2.component.html',
-  styleUrls: ['./agrega-suc2.component.css']
+  selector: 'app-agrega-oc2',
+  templateUrl: './agrega-oc2.component.html',
+  styleUrls: ['./agrega-oc2.component.css']
 })
-export class AgregaSuc2Component implements AfterViewInit {
+export class AgregaOc2Component implements AfterViewInit {
   @Input()
   agregaArticulo!: FormGroup;
 
@@ -46,8 +46,8 @@ datoConsultaSuc: IArticuloSuc[] = [
   sort!: MatSort;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient
-    ,private dialogRef: MatDialogRef<AgregaSuc2Component>
-    , private comprasSucService:ComprasSucService
+    ,private dialogRef: MatDialogRef<AgregaOc2Component>
+
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       this.servicio = data;
     this.dataSource = new MatTableDataSource(this.datoConsultaSuc);

@@ -43,6 +43,8 @@ import { ResumenInventarioComponent } from './componentes/activo-fijo/resumen-in
 import { AlertaActivoComponent } from './componentes/activo-fijo/alerta-activo/alerta-activo.component';
 import { MantencionArchivoComponent } from './componentes/activo-fijo/mantencion-archivo/mantencion-archivo.component';
 import { AgregaSuc2Component } from './componentes/compras/suc/agrega-suc/agrega-suc2/agrega-suc2.component';
+import { AgregaOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc.component';
+import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc2/agrega-oc2.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { AgregaSuc2Component } from './componentes/compras/suc/agrega-suc/agrega
     AgregaPacComponent,
     ModificaPacComponent,
     OcComponent,
+    AgregaOcComponent,
+    AgregaOc2Component,
     ConsultaPacComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
