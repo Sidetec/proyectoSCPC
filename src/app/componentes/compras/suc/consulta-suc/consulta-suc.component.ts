@@ -143,7 +143,7 @@ iDetalleSuc1:IDetalleSuc1={
   }
   CancelarSUC(){
     const dialogConfig = new MatDialogConfig();
-
+    dialogConfig.data = this.iDetalleSuc1.idSuc;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
@@ -155,7 +155,7 @@ iDetalleSuc1:IDetalleSuc1={
       .afterClosed().subscribe(
        data => {console.log('Dialog output3333:', data);
                 if (data !== undefined) {
-                    this.refreshTable();
+                  this.dialogRef.close(1);
                 }
         }
       );

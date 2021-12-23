@@ -22,7 +22,7 @@ export class ComprasOcService {
 
 
   getDataOcLista(): Observable<IConsultaOcLista> {
-    return this.http.get<IConsultaOcLista>(`${environment.apiUrl}/PostaCentralConsultaPac/consulta`, { headers: this.headers })
+    return this.http.get<IConsultaOcLista>(`${environment.apiUrl}/PostaCentralConsultaOC/consulta`, { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -30,7 +30,17 @@ export class ComprasOcService {
   }
 
   getDataOcDetalle1(parametro1:string): Observable<IDetalleOc1> {
-    return this.http.get<IDetalleOc1>(`${environment.apiUrl}/PostaCentralConsultaOc/consultaId/`+ parametro1 , { headers: this.headers })
+    return this.http.get<IDetalleOc1>(`${environment.apiUrl}/PostaCentralConsultaOC/consultaid/null/null/suc`, { headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+
+  getDataOcDetalle2(parametro1:string): Observable<IArticuloOc> {
+    console.log('parametro2',parametro1)
+    return this.http.get<IArticuloOc>(`${environment.apiUrl}/PostaCentralConsultaOC/articulos/`+ parametro1 , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -47,14 +57,6 @@ export class ComprasOcService {
 
   putDataOcCreaArticulo(primero:string,codigoArticulo: string,detalle: string, unidadDeMedida: string, cantidadTotal: string, valorUnitario: string, montoTotal: string): Observable<IOcresultado> {
     return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/creaArticulo/10/10/enfer/pedro/500/50000/valofinal/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
-  }
-
-  getDataOcDetalle2(parametro1:string): Observable<IArticuloOc> {
-    return this.http.get<IArticuloOc>(`${environment.apiUrl}/PostaCentralConsultaDetalleOc/consulta/`+ parametro1 , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

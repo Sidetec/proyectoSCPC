@@ -62,6 +62,14 @@ export class ComprasSucService {
     );
   }
 
+  putDataSucCancelar(idSuc:string,responsable:string,motivo:string,adjuntar:string,fecha:string): Observable<ISucresultado> {
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/elimina/`+ idSuc+  `/`+ responsable+  `/`+ motivo+  `/`+ adjuntar+  `/`+ fecha+  `/`,{ headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
   errorHandl(error: { error: { message: string; }; status: any; message: any; }) {
     console.log('paso error: ', error);
     let errorMessage = '';

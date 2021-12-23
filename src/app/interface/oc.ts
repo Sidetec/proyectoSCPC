@@ -10,27 +10,27 @@ export interface IArticuloOc {
 
     export interface IConsultaOcLista {
       id: string;
-      oc: string;
-      estado: string;
+      cod_oc: string;
       tipoSolicitud: string;
       idSolicitud: string;
-      empresa:string;
+      empresa: string;
       descripcion:string;
-      totalNeto:string
+      monto_total_neto:string;
+      estado:string
 
     }
 
     export interface IDetalleOc1 {
-      oc:string;
-      tipoDocumentoAsociado:string;
-      numeroDocumentoAsociado: string;
+      numeroOc:string;
+      tipoDocAsoc:string;
+      numDocAsoc: string;
       fechaSolicitud: string;
       empresa:string;
       rut: string;
       descripcion: string;
-      direccionEnviaFactura: string;
-      direccionDespacho: string;
-      formaDePago: string;
+      dircEnvioFact: string;
+      dircDespacho: string;
+      formaPago: string;
     }
 
     export interface IOcresultado {

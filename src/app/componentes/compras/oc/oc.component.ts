@@ -90,8 +90,8 @@ export class OcComponent implements AfterViewInit {
     dialogConfig.width = '100%';
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
-
-
+console.log('consulta id',id)
+    dialogConfig.data = id;
     this.dialog.open(ConsultaOcComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos Consulta:', data);

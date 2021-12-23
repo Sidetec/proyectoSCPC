@@ -20,17 +20,17 @@ export class ConsultaOcComponent implements AfterViewInit {
 
 //datoConsultaPac:  IConsultaPac | undefined;
 
-iDetalleOc1:IDetalleOc1={
-  oc:'',
-  tipoDocumentoAsociado:'',
-  numeroDocumentoAsociado: '',
+ iDetalleOc1:IDetalleOc1={
+  numeroOc:'',
+  tipoDocAsoc:'',
+  numDocAsoc: '',
   fechaSolicitud: '',
   empresa: '',
   rut: '',
   descripcion: '',
-  direccionEnviaFactura: '',
-  direccionDespacho: '',
-  formaDePago: ''};
+  dircEnvioFact: '',
+  dircDespacho: '',
+  formaPago: ''};
 
 id: string='';
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
@@ -45,6 +45,7 @@ id: string='';
     ,private dialogRef: MatDialogRef<ConsultaOcComponent>
     , private comprasOcService:ComprasOcService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
+      console.log('en consulta',data)
       this.id = data;
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
@@ -61,12 +62,14 @@ id: string='';
 
 
   getConsultaDetallePac1() {
-    console.log('paso pac', this.id)
+    console.log('paso oc1', this.id)
     this.comprasOcService
     .getDataOcDetalle1(this.id)
     .subscribe((res: {}) => {
-      console.log('suc1: ', res);
+      console.log('res oc1: ', res);
+      if (res != null){
       this.iDetalleOc1 = res as IDetalleOc1;
+      }
       this.getConsultaDetallePac2()
     },
     // console.log('yo:', res as PerfilI[]),

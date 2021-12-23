@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Cancelacion SUC</h2>
 
-<mat-dialog-content [formGroup]="configuraAlerta" name="cancelarSUC" class="agrega-container">
-
+<mat-dialog-content [formGroup]="cancelarSuc" name="cancelarSUC" class="agrega-container">
+<h3>Ud. esta a punto de cancelar la SUC N°{{idSuc}} favor ingrese datos de cancelación y confirme</h3>
   <mat-form-field>
     <input matInput placeholder="Ingrese Nombre Responsable" [formControl]="Responsable" required>
     <mat-error *ngIf="Responsable.invalid">{{getErrorMessage('Responsable')}}</mat-error>
@@ -25,6 +25,6 @@
       <button mat-raised-button color="warn" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cancelar</button>
     </div>
     <div class="col-md-6">
-      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="configuraAlerta.invalid">Confirmar</button>
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="cancelarSuc.invalid">Confirmar</button>
     </div>
 </mat-dialog-actions>
