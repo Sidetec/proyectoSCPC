@@ -1,11 +1,75 @@
-
 <h2 mat-dialog-title class="text-center">MODIFICA ARTICULO FARMACOLÓGICO</h2>
 
+<mat-dialog-content [formGroup]="modificaArticulo" name="modificaArticulo" class="modifica-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Código" [formControl]="gzen" >
+    <mat-error *ngIf="gzen.invalid">{{getErrorMessage('gzen')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Grupo" [formControl]="grupo" >
+    <mat-error *ngIf="grupo.invalid">{{getErrorMessage('grupo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="SubGrupo" [formControl]="subgrupo" >
+    <mat-error *ngIf="subgrupo.invalid">{{getErrorMessage('subgrupo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Control Legal" [formControl]="ctrlLegal" >
+    <mat-error *ngIf="ctrlLegal.invalid">{{getErrorMessage('ctrlLegal')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Tipo" [formControl]="tipo" >
+    <mat-error *ngIf="tipo.invalid">{{getErrorMessage('tipo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Medicamento" [formControl]="medicamento" >
+    <mat-error *ngIf="medicamento.invalid">{{getErrorMessage('medicamento')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Farmacéutica" [formControl]="farmaceutica" >
+    <mat-error *ngIf="farmaceutica.invalid">{{getErrorMessage('farmaceutica')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Presentación" [formControl]="presentacion" >
+    <mat-error *ngIf="presentacion.invalid">{{getErrorMessage('presentacion')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Dosificación" [formControl]="dosificacion" >
+    <mat-error *ngIf="dosificacion.invalid">{{getErrorMessage('dosificacion')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Restricciones" [formControl]="restricciones" >
+    <!--<mat-error *ngIf="restricciones.invalid">{{getErrorMessage('restricciones')}}</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Alternativa Terapéutica" [formControl]="altTerapeutica" >
+    <!--<mat-error *ngIf="altTerapeutica.invalid">{{getErrorMessage('altTerapeutica')}}</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Observaciones" [formControl]="observaciones" >
+    <!--<mat-error *ngIf="observaciones.invalid">{{getErrorMessage('observaciones')}}</mat-error>-->
+  </mat-form-field>
+
+</mat-dialog-content>
+
 <mat-dialog-actions>
-    <div class="col-md-6">
-      <button mat-raised-button class="btn-primary" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+
+    <div class="col-md-6 text-center">
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="modificaArticulo.invalid">ACEPTAR</button>
     </div>
-    <div class="col-md-6">
-      <button class="btn-danger" mat-raised-button  (click)="enviar()"  >ACEPTAR</button>
+    <div class="col-md-6 text-center">
+      <button mat-raised-button class="btn-primary" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
     </div>
 </mat-dialog-actions>

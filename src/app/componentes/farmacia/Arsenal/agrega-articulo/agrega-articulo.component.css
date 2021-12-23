@@ -1,27 +1,37 @@
-.agrega-container {
-  display: flex;
-  flex-direction: column;
-  padding: 0 10%;
-}
-
-.agrega-container > * {
-  width: 95%;
-}
-
-.colorFondoBoton {
-  color: white;
-  background-color: black;
-}
-
-.mat-raised-button {
-  min-width: 100%;
-}
-
-.mat-dialog-container {
-  padding: 50px !important;
-
-}
-
-.mat-dialog-content{
-  margin: auto;
-}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-icon-button {
+    width: 30px;
+    height: 30px;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  td.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  td.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  
+  .mat-row .mat-cell {
+  
+    background: none;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    background: whitesmoke;
+  }
+  

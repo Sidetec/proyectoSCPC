@@ -33,8 +33,6 @@ export class EliminaArticuloComponent implements OnInit {
           this.dialogRef.close(1);
         }
 
-  // Error handling
-
   cerrar() {
     this.dialogRef.close();
   }

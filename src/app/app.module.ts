@@ -28,12 +28,7 @@ import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-con
 import { GestionDocumentalComponent } from './componentes/activo-fijo/gestiondocumental/gestiondocumental.component';
 import { CentralizacionContableComponent } from './componentes/activo-fijo/centralizacioncontable/centralizacioncontable.component';
 import { OcComponent } from './componentes/compras/oc/oc.component';
-import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
-import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
-import { ModificaArticuloComponent } from './componentes/farmacia/Arsenal/modifica-articulo/modifica-articulo.component';
-import { EliminaArticuloComponent } from './componentes/farmacia/Arsenal/elimina-articulo/elimina-articulo.component';
-import { ConsultaArticuloComponent } from './componentes/farmacia/Arsenal/consulta-articulo/consulta-articulo.component';
-import { AgregaArticuloComponent } from './componentes/farmacia/Arsenal/agrega-articulo/agrega-articulo.component';
+
 import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consulta-oc.component';
 import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
 import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
@@ -47,6 +42,13 @@ import { AgregaOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc.
 import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc2/agrega-oc2.component';
 import { DocumentosAsociadosComponent } from './componentes/activo-fijo/documentos-asociados/documentos-asociados.component';
 import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
+import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
+import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
+import { ModificaArticuloComponent } from './componentes/farmacia/arsenal/modifica-articulo/modifica-articulo.component';
+import { EliminaArticuloComponent } from './componentes/farmacia/arsenal/elimina-articulo/elimina-articulo.component';
+import { ConsultaArticuloComponent } from './componentes/farmacia/arsenal/consulta-articulo/consulta-articulo.component';
+import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
+
 
 @NgModule({
   declarations: [
@@ -71,7 +73,6 @@ import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-gener
     CentralizacionContableComponent,
     AlertasComponent,
     AgregaConsumoComponent,
-    ClimaComponent,
     ArsenalComponent,
     ModificaArticuloComponent,
     EliminaArticuloComponent,
@@ -87,7 +88,9 @@ import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-gener
     AlertaActivoComponent,
     AgregaSuc2Component,
     DocumentosAsociadosComponent,
-    BalanceGeneralComponent
+    BalanceGeneralComponent,
+    ClimatizacionComponent,
+
   ],
   imports: [
     BrowserModule,

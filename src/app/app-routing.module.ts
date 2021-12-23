@@ -9,11 +9,12 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { GestionDocumentalComponent } from './componentes/activo-fijo/gestiondocumental/gestiondocumental.component';
 import { CentralizacionContableComponent } from './componentes/activo-fijo/centralizacioncontable/centralizacioncontable.component';
-import { ClimaComponent } from './componentes/farmacia/Climatizacion/clima.component';
+
 import { OcComponent } from './componentes/compras/oc/oc.component';
-import { ArsenalComponent } from './componentes/farmacia/Arsenal/arsenal.component';
+import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
 import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
 import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
+import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
 
 
 
@@ -28,9 +29,9 @@ const routes: Routes = [
     {path: 'consumo', component: AgregaConsumoComponent},
 
     {path: 'arsenal', component: ArsenalComponent},
-    {path: 'climatizacion', component: ClimaComponent},
+    {path: 'climatizacion', component: ClimatizacionComponent},
 
-    
+
     {path:'activofijo', component:ActivoFijoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
     {path: 'centralizacionContable', component: CentralizacionContableComponent},

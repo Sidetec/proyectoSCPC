@@ -37,7 +37,7 @@ datoConsultaOc: IArticuloOc[] = [
   ];
 
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal','opciones'];
-  dataSource: MatTableDataSource<IArticuloSuc>;
+  dataSource: MatTableDataSource<IArticuloOc>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -45,12 +45,12 @@ datoConsultaOc: IArticuloOc[] = [
   sort!: MatSort;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient
-    ,private dialogRef: MatDialogRef<AgregaOc2Component>,
+    ,private dialogRef: MatDialogRef<AgregaOc2Component>
     ,private comprasOcService:ComprasOcService
 
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       this.id = data;
-    this.dataSource = new MatTableDataSource<IArticuloSuc>();
+    this.dataSource = new MatTableDataSource<IArticuloOc>();
     ;
   }
 

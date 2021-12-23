@@ -32,3 +32,7 @@ export interface IArticuloOc {
       direccionDespacho: string;
       formaDePago: string;
     }
+
+    export interface IOcresultado {
+      resultado: string;
+    }

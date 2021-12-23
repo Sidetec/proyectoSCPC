@@ -1,28 +1,67 @@
-<app-loader></app-loader>
-<h2 mat-dialog-title class="text-center">DETALLE DE ARTICULO FARMACOLÓGICO</h2>
+<h2 mat-dialog-title class="text-center">Detalle de Artículo Farmacológico</h2>
+<div class="content ml-2 mr-2">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+      <!-- GZEN row -->
+      <ng-container matColumnDef="gzen">
+        <th id='gzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Código</th>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.gzen}} </td>
+      </ng-container>
+  
+      <!-- Grupo row -->
+      <ng-container matColumnDef="grupo">
+        <td id='grupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Grupo</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.grupo}} </td>
+      </ng-container>
 
-<mat-dialog-content  name="consulta" class="consulta-container">
+      <!-- SubGrupo Column -->      
+      <ng-container matColumnDef="subgrupo">
+        <td id='subgrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>SubGrupo</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.subgrupo}} </td>
+      </ng-container>
 
-  <mat-form-field color="accent">
-    <input matInput placeholder="Código"  value="FRM-001" disabled='true' >
-  </mat-form-field>
+      <!-- Control Legal Column -->
+      <ng-container matColumnDef="ctrlLegal">
+        <td id='ctrlLegalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Control Legal</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.ctrlLegal}} </td>
+      </ng-container>
 
-  <mat-form-field color="accent">
-    <input matInput placeholder="Cantidad"  value="Cantidad" disabled='true' >
-  </mat-form-field>
+      <!-- Tipo Column -->
+      <ng-container matColumnDef="tipo">
+        <td id='tipoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Tipo</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.tipo}} </td>
+      </ng-container>
 
-  <mat-form-field>
-      <input matInput placeholder="Campo1" value="Campo1" disabled='true'>
-  </mat-form-field>
+      <!-- Medicamento Column -->
+      <ng-container matColumnDef="medicamento">
+        <td id='medicamentoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Medicamento</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.medicamento}} </td>
+      </ng-container>
 
-  <mat-form-field>
-    <input matInput placeholder="ctrlLegal" value="ctrlLegal" disabled='true'>
-  </mat-form-field>
+      <!-- Farmacéutica Column -->
+      <ng-container matColumnDef="farmaceutica">
+        <td id='farmaceuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Farmacéutica</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.farmaceutica}} </td>
+      </ng-container>
 
-</mat-dialog-content>
+      <!-- Presentación Column -->
+      <ng-container matColumnDef="presentacion">
+        <td id='presentacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Presentación</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.presentacion}} </td>
+      </ng-container>
 
-<mat-dialog-actions class="justify-content-center">
-    <div class="col-md-6">
-      <button mat-raised-button  (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
-    </div>
-</mat-dialog-actions>
+      <!-- Dosificación Column -->
+      <ng-container matColumnDef="dosificacion">
+        <td id='dosificacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 100%;'>Dosificación</td>
+        <td mat-cell *matCellDef="let row" style=' width: 100%;'> {{row.dosificacion}} </td>
+      </ng-container>
+
+    </table>
+
+    <mat-dialog-actions>
+      <div class="col-md-6 text-center">
+        <button mat-raised-button class="btn-primary" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+      </div>
+    </mat-dialog-actions>
+  </div>
+</div>

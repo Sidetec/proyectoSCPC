@@ -29,7 +29,7 @@ iDetalleSuc1:IDetalleSuc1={
   responsable: '',
   motivoCompra: ''};
 
-  servicio: string='';
+  id: string='';
 
 /*datoConsultaSuc: IConsultaSuc[] = [
 
@@ -52,7 +52,7 @@ iDetalleSuc1:IDetalleSuc1={
     ,private dialogRef: MatDialogRef<ConsultasucComponent>
     , private comprasSucService:ComprasSucService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.servicio = data;
+      this.id = data;
     this.dataSource = new MatTableDataSource<IConsultaSuc>();
   }
 
@@ -63,9 +63,9 @@ iDetalleSuc1:IDetalleSuc1={
 
 
   getConsultaDetallePac1() {
-    console.log('paso pac', this.servicio)
+    console.log('paso pac', this.id)
     this.comprasSucService
-    .getDataSucDetalle1(this.servicio)
+    .getDataSucDetalle1(this.id)
     .subscribe((res: {}) => {
       console.log('suc1: ', res);
       this.iDetalleSuc1 = res as IDetalleSuc1;
@@ -87,7 +87,7 @@ iDetalleSuc1:IDetalleSuc1={
   getConsultaDetallePac2() {
     console.log('paso pac')
     this.comprasSucService
-    .getDataSucDetalle2(this.servicio)
+    .getDataSucDetalle2(this.id)
     .subscribe((res: {}) => {
       console.log('suc2: ', res);
       this.dataSource.data = res as IConsultaSuc[];
