@@ -183,7 +183,7 @@ export class PacComponent implements AfterViewInit, OnInit {
 
   private refreshTable() {
 
-
+    this.getListPac();
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 

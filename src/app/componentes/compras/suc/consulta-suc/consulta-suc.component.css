@@ -60,15 +60,16 @@ th.mat-header-cell, mat-header-cell {
 
 #headrePrimeraFilaGrupo1{
   text-align: center;
+
 }
 
  #headrePrimeraFilaGrupo2{
-  border-left: 1px solid transparent;
+  border-left: 1.5px solid transparent;
   border-left-color: currentColor;
   text-align: center;
 }
 
-#headrePrimeraFilaGrupo4{
+#headrePrimeraFilaGrupo3{
   border-left: 3px solid transparent;
   border-left-color: currentColor;
   text-align: center;

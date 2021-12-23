@@ -1,21 +1,34 @@
-export interface IConsultaOc {
+export interface IArticuloOc {
     codigoArticulo: string;
     detalle: string;
     unidadDeMedida: string;
-    cantidadTotal: number;
-    valorUnitario: number;
-    montoTotal: number;
+    cantidadTotal: string;
+    valorUnitario: string;
+    montoTotal: string;
     }
 
 
     export interface IConsultaOcLista {
       id: string;
       oc: string;
-      Estado: string;
-      TipoSolicitud: string;
-      IDsolicitud: string;
-      Empresa:string;
-      Descripcion:string;
-      TotalNeto:string
+      estado: string;
+      tipoSolicitud: string;
+      idSolicitud: string;
+      empresa:string;
+      descripcion:string;
+      totalNeto:string
 
+    }
+
+    export interface IDetalleOc1 {
+      oc:string;
+      tipoDocumentoAsociado:string;
+      numeroDocumentoAsociado: string;
+      fechaSolicitud: string;
+      empresa:string;
+      rut: string;
+      descripcion: string;
+      direccionEnviaFactura: string;
+      direccionDespacho: string;
+      formaDePago: string;
     }

@@ -11,7 +11,7 @@
 
 
   <mat-form-field>
-    <input matInput type="number" placeholder="servicio" [formControl]="servicio" >
+    <input matInput  placeholder="Servicio" [formControl]="servicio" >
     <mat-error *ngIf="servicio.invalid">{{getErrorMessage('servicio')}}</mat-error>
   </mat-form-field>
 
@@ -21,7 +21,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Responsable" [formControl]="motivoCompra" >
+    <input matInput  placeholder="Motivo Compra" [formControl]="motivoCompra" >
     <mat-error *ngIf="motivoCompra.invalid">{{getErrorMessage('motivoCompra')}}</mat-error>
   </mat-form-field>
 

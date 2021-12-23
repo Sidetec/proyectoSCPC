@@ -10,7 +10,6 @@ export interface IConsultaSuc {
     totalComprado: number
     saldoSuc: number;
     }
-
     export interface IArticuloSuc1 {
       fechaSolicitud: string;
       servicio:string;
@@ -49,4 +48,9 @@ export interface IConsultaSuc {
         Responsable:string;
         Motivo:string;
         AdjDocu:string;
+      }
+
+
+      export interface ISucresultado {
+        resultado: string;
       }

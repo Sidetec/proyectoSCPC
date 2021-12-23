@@ -8,31 +8,31 @@
   <div class="content ml-2 mr-2">
     <div class="row">
       <div class="col-md-11">
-          
+
         <mat-form-field appearance="standard">
           <mat-label>Buscar</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
         </mat-form-field>
       </div>
       <div class="col-md-1">
-       
+
       </div>
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
-  
+
       <!-- PAC Column -->
       <ng-container matColumnDef="Documento">
         <th id='Documento' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Documento </th>
         <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Documento}} </td>
       </ng-container>
-  
+
       <!-- Servicio Column -->
       <ng-container matColumnDef="Descripcion">
         <th id='Descripcion' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Descripción </th>
         <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Descripcion}} </td>
       </ng-container>
-  
+
       <ng-container matColumnDef="Icono">
         <th id='Icono' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Ícono </th>
         <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Icono}} </td>
@@ -49,12 +49,12 @@
       </ng-container>
 
 <!--
-    
+
       <ng-container matColumnDef="columna1">
         <th id='columna1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 35%;'> </th>
         <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{''}} </td>
       </ng-container>
-  
+
   -->
       <ng-container matColumnDef="opciones" >
         <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>
@@ -63,15 +63,15 @@
           </button>
         </th>
 
-      
-  
+
+
         <td mat-cell *matCellDef="let row; let i=index;" style=' width: 15%; text-align: center'>
-  
+
             <!--
           <button mat-icon-button color="accent" style="size:5px" (click)="actualizaPac()">
             <mat-icon>edit</mat-icon>
           </button>
-  
+
           <button mat-icon-button color="accent" (click)="consultaPac()">
             <mat-icon>search</mat-icon>
           </button>
@@ -80,8 +80,8 @@
           <button mat-icon-button color="accent" (click)="consultaPac()">
             <mat-icon>delete</mat-icon>
           </button>
-  
-  
+
+
         </td>
       </ng-container>
 
@@ -89,15 +89,15 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
+
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        <td class="mat-cell" colspan="4">No existen datos..."{{input.value}}"</td>
       </tr>
     </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-   
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página"></mat-paginator>
+
     <div class="col-md-1">
       <button mat-raised-button   (click)="alertas()"  [disabled]=false>Volver</button>
   </div>
@@ -115,31 +115,31 @@
   <div class="content ml-2 mr-2">
     <div class="row">
       <div class="col-md-11">
-          
+
         <mat-form-field appearance="standard">
           <mat-label>Buscar</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
         </mat-form-field>
       </div>
       <div class="col-md-1">
-       
+
       </div>
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
-  
+
       <!-- PAC Column -->
       <ng-container matColumnDef="Documento">
         <th id='Documento' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Documento </th>
         <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.Documento}} </td>
       </ng-container>
-  
+
       <!-- Servicio Column -->
       <ng-container matColumnDef="Descripcion">
         <th id='Descripcion' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Descripción </th>
         <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Descripcion}} </td>
       </ng-container>
-  
+
       <ng-container matColumnDef="Icono">
         <th id='Icono' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Ícono </th>
         <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Icono}} </td>
@@ -156,12 +156,12 @@
       </ng-container>
 
 <!--
-    
+
       <ng-container matColumnDef="columna1">
         <th id='columna1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 35%;'> </th>
         <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{''}} </td>
       </ng-container>
-  
+
   -->
       <ng-container matColumnDef="opciones" >
         <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>
@@ -170,15 +170,15 @@
           </button>
         </th>
 
-      
-  
+
+
         <td mat-cell *matCellDef="let row; let i=index;" style=' width: 15%; text-align: center'>
-  
+
             <!--
           <button mat-icon-button color="accent" style="size:5px" (click)="actualizaPac()">
             <mat-icon>edit</mat-icon>
           </button>
-  
+
           <button mat-icon-button color="accent" (click)="consultaPac()">
             <mat-icon>search</mat-icon>
           </button>
@@ -187,8 +187,8 @@
           <button mat-icon-button color="accent" (click)="consultaPac()">
             <mat-icon>delete</mat-icon>
           </button>
-  
-  
+
+
         </td>
       </ng-container>
 
@@ -196,15 +196,15 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
+
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        <td class="mat-cell" colspan="4">No existen datos..."{{input.value}}"</td>
       </tr>
     </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-   
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página"></mat-paginator>
+
     <div class="col-md-1">
       <button mat-raised-button   (click)="alertas()"  [disabled]=false>Volver</button>
   </div>
@@ -213,4 +213,3 @@
   </div>
   </div>
 >>>>>>> Felipe
-  

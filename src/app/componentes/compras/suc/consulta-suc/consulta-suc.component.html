@@ -19,19 +19,19 @@
 </div>
 <div class="row border-bottom">
   <div class="col-md-6 border-end bg-light">Fecha Solicitud</div>
-  <div class="col-md-5">{{iDetalleSuc1.fechaSolicitud}}</div>
+  <div class="col-md-6">{{iDetalleSuc1.fechaSolicitud}}</div>
 </div>
   <div class="row border-bottom">
     <div class="col-md-6 border-end bg-light">Servicio</div>
     <div class="col-md-6">{{iDetalleSuc1.servicio}}</div>
   </div>
-  <div class="row">
+  <div class="row border-bottom">
     <div class="col-md-6  border-end bg-light">Responsable</div>
-    <div class="col-md-4">{{iDetalleSuc1.responsable}}</div>
+    <div class="col-md-6">{{iDetalleSuc1.responsable}}</div>
   </div>
   <div class="row">
     <div class="col-md-6  border-end bg-light">Motivos de la Compra</div>
-    <div class="col-md-6">{{iDetalleSuc1.motivoCompra}}</div>
+    <div class="col-md-6">{{iDetalleSuc1.motivoCompra}}ppp</div>
   </div>
 </div>
 </div>
@@ -97,7 +97,7 @@
      <ng-container matColumnDef="idLicitacion">
       <th id='idLicitacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Id. Licitación </th>
       <td id='idLicitacionTd' mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.idLicitacion}} </td>
-      <td mat-footer-cell *matFooterCellDef>IVA 964  </td>
+      <td mat-footer-cell *matFooterCellDef>IVA {{(getTotalCost()*0.19) | currency}}   </td>
 
     </ng-container>
 
@@ -105,14 +105,14 @@
      <ng-container matColumnDef="idOc">
       <th id='idOcI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Id. O/C </th>
       <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.idOc}} </td>
-      <td mat-footer-cell *matFooterCellDef> Total Bruto </td>
+      <td mat-footer-cell *matFooterCellDef> Total Bruto {{(getTotalCost()*0.19)+ getTotalCost()| currency}}</td>
     </ng-container>
 
      <!-- totalComprado Column -->
      <ng-container matColumnDef="totalComprado">
       <th id='totalCompradoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Total Comprado </th>
       <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.totalComprado}} </td>
-      <td mat-footer-cell *matFooterCellDef>{{getTotalCostIva() | currency}}  </td>
+      <td mat-footer-cell *matFooterCellDef> </td>
     </ng-container>
 
      <!-- saldoSuc Column -->
@@ -127,27 +127,27 @@
     <th id="headrePrimeraFilaGrupo1" mat-header-cell *matHeaderCellDef [attr.colspan]="3"> Articulos Solicitados </th>
   </ng-container>
 
-  <!-- Header row tercer grupo -->
-  <ng-container matColumnDef="header-row-tercer-grupo">
-    <th id='headrePrimeraFilaGrupo3' mat-header-cell *matHeaderCellDef [attr.colspan]="3"> Total Solicitado </th>
+  <!-- Header row segundo grupo -->
+  <ng-container matColumnDef="header-row-segundo-grupo">
+    <th id='headrePrimeraFilaGrupo2' mat-header-cell *matHeaderCellDef [attr.colspan]="3"> Total Solicitado </th>
   </ng-container>
 
 
-  <!-- Header row cuarto grupo -->
-  <ng-container matColumnDef="header-row-cuarto-grupo">
-    <th id='headrePrimeraFilaGrupo4' mat-header-cell *matHeaderCellDef [attr.colspan]="4"> Ordenes de Compra </th>
+  <!-- Header row trcero grupo -->
+  <ng-container matColumnDef="header-row-tercero-grupo">
+    <th id='headrePrimeraFilaGrupo3' mat-header-cell *matHeaderCellDef [attr.colspan]="4"> Ordenes de Compra </th>
   </ng-container>
 
 
 
-  <tr mat-header-row *matHeaderRowDef="['header-row-primer-grupo','header-row-tercer-grupo','header-row-cuarto-grupo']"></tr>
+  <tr mat-header-row *matHeaderRowDef="['header-row-primer-grupo','header-row-segundo-grupo','header-row-tercero-grupo']"></tr>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      <td class="mat-cell" colspan="4">No existen datos..."{{input.value}}"</td>
 
     </tr>
 
@@ -156,7 +156,7 @@
 
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página"></mat-paginator>
 </div>
 </div>
 <mat-dialog-actions >

@@ -6,26 +6,17 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 import { ConsultaOcComponent } from './consulta-oc/consulta-oc.component';
 import { AgregaOcComponent } from './agrega-oc/agrega-oc.component';
+import { IConsultaOcLista } from 'src/app/interface/oc';
+import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 
-export interface Datos {
-  id: string;
-  oc: string;
-  Estado: string;
-  TipoSolicitud: string;
-  IDsolicitud: string;
-  Empresa:string;
-  Descripcion:string;
-  TotalNeto:string
+import Swal from 'sweetalert2';
 
-}
-
-
-const datos: Datos[] = [
+/*const datos: Datos[] = [
   {id:'1',oc: 'OC-001', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-218721',Empresa:'',Descripcion:'',TotalNeto:''},
   {id:'2',oc: 'OC-002', Estado: '' , TipoSolicitud: 'PAC',IDsolicitud:'PAC-3217Y6',Empresa:'',Descripcion:'',TotalNeto:''},
   {id:'3',oc: 'OC-003', Estado: '' , TipoSolicitud: 'SUC',IDsolicitud:'SUC-3127TY',Empresa:'',Descripcion:'',TotalNeto:''},
 ];
-
+*/
 @Component({
   selector: 'app-oc',
   templateUrl: './oc.component.html',
@@ -33,7 +24,7 @@ const datos: Datos[] = [
 })
 export class OcComponent implements AfterViewInit {
   displayedColumns: string[] = ['id','oc', 'Estado', 'TipoSolicitud','IDsolicitud','Empresa','Descripcion','TotalNeto','opciones'];
-  dataSource: MatTableDataSource<Datos>;
+  dataSource: MatTableDataSource<IConsultaOcLista>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -41,12 +32,38 @@ export class OcComponent implements AfterViewInit {
   sort!: MatSort;
 
   show=true;
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private comprasOcService:ComprasOcService) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(datos);
+    this.dataSource = new MatTableDataSource<IConsultaOcLista>()
+  }
+
+  ngOnInit() {
+
+    this.getListOc();
+  }
+
+  getListOc() {
+    console.log('paso pac')
+    this.comprasOcService
+    .getDataOcLista()
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.dataSource.data = res as IConsultaOcLista[];
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
   ngAfterViewInit() {
@@ -87,7 +104,7 @@ export class OcComponent implements AfterViewInit {
 
   private refreshTable() {
 
-
+    this.getListOc();
     this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
    }
 

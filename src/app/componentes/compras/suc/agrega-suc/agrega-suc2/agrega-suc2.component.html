@@ -96,7 +96,7 @@
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      <td class="mat-cell" colspan="4">No existen datos..."{{input.value}}"</td>
 
     </tr>
 
@@ -105,7 +105,7 @@
 
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página"></mat-paginator>
 </div>
 </div>
 <mat-dialog-actions >
@@ -116,3 +116,4 @@
       <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close >GRABAR</button>
     </div>
 </mat-dialog-actions>
+

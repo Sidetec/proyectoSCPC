@@ -58,17 +58,6 @@ export class AgregasucComponent implements OnInit {
 
   }
 
-  enviar() {
-
-            Swal.fire(
-            'Se grabó con Éxito',
-            'Click en Botón!',
-            'success'
-          ); // ,
-            this.dialogRef.close(1);
-
-
-  }
 
   // Error handling
 

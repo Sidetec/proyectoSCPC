@@ -6,11 +6,10 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
 import { HttpClient } from '@angular/common/http';
 
 
-import { IArticuloSuc, IArticuloSuc1, IConsultaSuc, IDetalleSuc1 } from 'src/app/interface/suc';
-
 import Swal from 'sweetalert2';
-import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { IArticuloOc } from 'src/app/interface/oc';
+import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 
 @Component({
   selector: 'app-agrega-oc2',
@@ -25,14 +24,14 @@ export class AgregaOc2Component implements AfterViewInit {
   iva=964;
 //datoConsultaPac:  IConsultaPac | undefined;
 
-iArticuloSuc1:IArticuloSuc = {
+iArticuloOc1:IArticuloOc = {
   codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
 };
 
-  servicio: string='';
+  id: string='';
 
 
-datoConsultaSuc: IArticuloSuc[] = [
+datoConsultaOc: IArticuloOc[] = [
 
 
   ];
@@ -46,11 +45,12 @@ datoConsultaSuc: IArticuloSuc[] = [
   sort!: MatSort;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient
-    ,private dialogRef: MatDialogRef<AgregaOc2Component>
+    ,private dialogRef: MatDialogRef<AgregaOc2Component>,
+    ,private comprasOcService:ComprasOcService
 
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.servicio = data;
-    this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+      this.id = data;
+    this.dataSource = new MatTableDataSource<IArticuloSuc>();
     ;
   }
 
@@ -60,8 +60,8 @@ datoConsultaSuc: IArticuloSuc[] = [
   }
 
   eliminaArticulo(i:any){
-  this.datoConsultaSuc.splice(i,1);
-    console.log('todo:',this.datoConsultaSuc);
+  this.datoConsultaOc.splice(i,1);
+    console.log('todo:',this.datoConsultaOc);
     this.refreshTable()
   }
 
@@ -121,12 +121,12 @@ agregaNuevo(){
 
     focusConfirm: false,
     preConfirm: () => {
-     this.iArticuloSuc1.codigoArticulo=((document.getElementById("codigoArticulo") as HTMLInputElement).value);
-      this.iArticuloSuc1.detalle=((document.getElementById("detalle") as HTMLInputElement).value);
-      this.iArticuloSuc1.unidadDeMedida=((document.getElementById("unidadDeMedida") as HTMLInputElement).value);
-      this.iArticuloSuc1.cantidadTotal=((document.getElementById("cantidadTotal") as HTMLInputElement).value);
-      this.iArticuloSuc1.valorUnitario=((document.getElementById("valorUnitario") as HTMLInputElement).value);
-      this.datoConsultaSuc.push(this.iArticuloSuc1);
+     this.iArticuloOc1.codigoArticulo=((document.getElementById("codigoArticulo") as HTMLInputElement).value);
+      this.iArticuloOc1.detalle=((document.getElementById("detalle") as HTMLInputElement).value);
+      this.iArticuloOc1.unidadDeMedida=((document.getElementById("unidadDeMedida") as HTMLInputElement).value);
+      this.iArticuloOc1.cantidadTotal=((document.getElementById("cantidadTotal") as HTMLInputElement).value);
+      this.iArticuloOc1.valorUnitario=((document.getElementById("valorUnitario") as HTMLInputElement).value);
+      this.datoConsultaOc.push(this.iArticuloOc1);
       this.refreshTable();
     }
   })
@@ -154,8 +154,8 @@ agregaNuevo(){
 
 
   private refreshTable() {
-console.log('pp:',this.datoConsultaSuc);
-this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+console.log('pp:',this.datoConsultaOc);
+this.dataSource = new MatTableDataSource(this.datoConsultaOc);
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 
@@ -164,15 +164,59 @@ this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
   }
 
   getTotalCost() {
-     return this.datoConsultaSuc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0);
+     return this.datoConsultaOc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0);
   }
 
   getTotalCostIva() {
-    return this.resultado= (this.datoConsultaSuc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0) + this.iva);
+    return this.resultado= (this.datoConsultaOc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0) + this.iva);
   }
 
   enviar(){
 
+    this.comprasOcService
+    .putDataOcCrea('5',this.agregaArticulo.value.fechaSolicitud,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
+    .subscribe((res: {}) => {
+      console.log('suc: ', res);
+      this.grabarArticulo();
+        this.dialogRef.close(1);
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
-}
+  grabarArticulo(){
+    for (var valor in this.dataSource.data){
+
+          this.comprasOcService
+        .putDataOcCreaArticulo('10',this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].detalle,this.dataSource.data[valor].unidadDeMedida,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario,this.dataSource.data[valor].montoTotal)
+        .subscribe((res: {}) => {
+          console.log('suc: ', res);
+
+        },
+        // console.log('yo:', res as PerfilI[]),
+        error => {
+          console.log('error carga:', error);
+          Swal.fire(
+            'ERROR INESPERADO',
+            error,
+          'info'
+        );
+        }
+      );
+      }
+      Swal.fire(
+        'Se grabó con Éxito',
+        'Click en Botón!',
+        'success'
+      ); // ,
+    }
+  }

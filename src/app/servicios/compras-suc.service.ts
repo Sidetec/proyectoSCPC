@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
 
-import { IConsultaSuc, IConsultaSucLista, IDetalleSuc1 } from '../interface/suc';
+import { IConsultaSuc, IConsultaSucLista, IDetalleSuc1, ISucresultado } from '../interface/suc';
 
 
 @Injectable({
@@ -40,6 +40,22 @@ export class ComprasSucService {
 
   getDataSucDetalle2(parametro1:string): Observable<IConsultaSuc> {
     return this.http.get<IConsultaSuc>(`${environment.apiUrl}/PostaCentralConsultaSuc/consulta/`+ parametro1 , { headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  putDataSucCrea(primero:string,fechaSolicitud:string,servicio:string,responsable:string,motivoCompra:string): Observable<ISucresultado> {
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/crea/`+ primero+  `/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`+ motivoCompra+  `/`,{ headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  putDataSucCreaArticulo(primero:string,codigoArticulo: string,detalle: string, unidadDeMedida: string, cantidadTotal: string, valorUnitario: string, montoTotal: string): Observable<ISucresultado> {
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/10/10/enfer/pedro/500/50000/valofinal/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

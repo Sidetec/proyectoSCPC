@@ -51,7 +51,6 @@ datoConsultaSuc: IArticuloSuc[] = [
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       this.servicio = data;
     this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
-    ;
   }
 
   ngOnInit() {
@@ -154,9 +153,9 @@ agregaNuevo(){
 
 
   private refreshTable() {
-console.log('pp:',this.datoConsultaSuc);
-this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
-   this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
+  console.log('pp:',this.datoConsultaSuc);
+  this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 
   cerrar() {
@@ -173,6 +172,51 @@ this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
 
   enviar(){
 
+    this.comprasSucService
+    .putDataSucCrea('5',this.agregaArticulo.value.fechaSolicitud,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
+    .subscribe((res: {}) => {
+      console.log('suc: ', res);
+      this.grabarArticulo();
+        this.dialogRef.close(1);
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
+  grabarArticulo(){
+    for (var valor in this.dataSource.data){
+
+          this.comprasSucService
+        .putDataSucCreaArticulo('10',this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].detalle,this.dataSource.data[valor].unidadDeMedida,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario,this.dataSource.data[valor].montoTotal)
+        .subscribe((res: {}) => {
+          console.log('suc: ', res);
+
+        },
+        // console.log('yo:', res as PerfilI[]),
+        error => {
+          console.log('error carga:', error);
+          Swal.fire(
+            'ERROR INESPERADO',
+            error,
+          'info'
+        );
+        }
+      );
+      }
+      Swal.fire(
+        'Se grabó con Éxito',
+        'Click en Botón!',
+        'success'
+      ); // ,
+    }
 }
+
