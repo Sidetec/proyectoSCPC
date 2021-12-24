@@ -44,8 +44,6 @@ import { DocumentosAsociadosComponent } from './componentes/activo-fijo/document
 import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
 import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
 import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
-import { ModificaArticuloComponent } from './componentes/farmacia/arsenal/modifica-articulo/modifica-articulo.component';
-import { EliminaArticuloComponent } from './componentes/farmacia/arsenal/elimina-articulo/elimina-articulo.component';
 import { ConsultaArticuloComponent } from './componentes/farmacia/arsenal/consulta-articulo/consulta-articulo.component';
 import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
 
@@ -74,8 +72,6 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     AlertasComponent,
     AgregaConsumoComponent,
     ArsenalComponent,
-    ModificaArticuloComponent,
-    EliminaArticuloComponent,
     ConsultaArticuloComponent,
     AgregaArticuloComponent,
     ConsultaOcComponent,

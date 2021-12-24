@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {IArticulo} from 'src/app/interface/Arsenal';
-
+import {IArtFarm, IResultado} from 'src/app/interface/arsenal';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,9 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class AgregaArticuloComponent implements OnInit {
   
-  datoArticulo: IArticulo | undefined;
+  datos: IArtFarm | undefined;
   constructor(private dialogRef: MatDialogRef<AgregaArticuloComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+              public httpClient: HttpClient,
+              public listaArsenalService: ListaArsenalService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     
     }
 
@@ -87,14 +90,51 @@ export class AgregaArticuloComponent implements OnInit {
   }
 
   enviar() {
+    this.datos = {
+      cantidad: 1,
+      descripcion: this.ingresoArticulo.get('medicamento')?.value,
+      gzen: this.ingresoArticulo.get('gzen')?.value,
+      grupo: this.ingresoArticulo.get('grupo')?.value,
+      subgrupo: this.ingresoArticulo.get('subgrupo')?.value,
+      tipo: this.ingresoArticulo.get('tipo')?.value,
+      ctrlLegal: this.ingresoArticulo.get('ctrlLegal')?.value,
+      medicamento: this.ingresoArticulo.get('medicamento')?.value,
+      farmaceutica: this.ingresoArticulo.get('farmaceutica')?.value,
+      presentacion: this.ingresoArticulo.get('presentacon')?.value,
+      dosificacion: this.ingresoArticulo.get('dosificacion')?.value,
+      restricciones: this.ingresoArticulo.get('restricciones')?.value,
+      altTerapeutica: this.ingresoArticulo.get('altTerapeutica')?.value,
+      observaciones: this.ingresoArticulo.get('observaciones')?.value,
+    };
 
-      Swal.fire(
-        'Actualizado',
-        'Click en Botón!',
-        'info'
-      );
-
-    }
+    this.listaArsenalService.getInsArticulo(this.datos)
+      .subscribe(res => {
+        console.log('respuesta:', res['codigo']);
+        if ( res['codigo'] === 0 ) {
+            Swal.fire(
+            'Se agregó con Éxito',
+            'Click en Botón!',
+            'success'
+          ); // ,
+            this.dialogRef.close(1);
+        }else{
+          Swal.fire(
+            'No se pudo agregar',
+            'Click en Botón!',
+            'info'
+          );
+          this.dialogRef.close(1);
+        }
+      }, error => {
+        console.log('error carga:', error);
+        Swal.fire(
+          'ERROR INESPERADO',
+          error,
+         'info'
+       );
+      }
+    );
+  }
 
   cerrar() {
     this.dialogRef.close();

@@ -7,13 +7,10 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
-import { IArticulo } from 'src/app/interface/Arsenal';
+import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
-import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
 import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
-import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
-
 
 /*var datos: IArticulo[] = [
   {
@@ -81,9 +78,11 @@ import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.co
 })
 export class ArsenalComponent implements AfterViewInit {
   show = true;
-  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo',
-    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','restricciones',
-    'altTerapeutica','observaciones','opciones'];
+  datos: IArticulo | undefined;
+
+  displayedColumns: string[] = ['articulo','cantidad','descripcion','gzen', 'grupo', 'subgrupo', 
+    'ctrlLegal', 'tipo', 'medicamento', 'farmaceutica', 'presentacion', 'dosificacion',
+    'restricciones', 'altTerapeutica','observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
@@ -109,7 +108,6 @@ getListArsenal(): void {
       console.log('Artículos: ', res);
       this.dataSource.data = res as IArticulo[];
     },
-    // console.log('yo:', res as PerfilI[]),
     error => {
       console.log('error carga:', error);
       Swal.fire(
@@ -118,7 +116,7 @@ getListArsenal(): void {
        'info'
      );
     }
-  ); // (this.dataSource.data = res as PerfilI[])
+  ); 
 }
 
   ngAfterViewInit() {
@@ -136,9 +134,7 @@ getListArsenal(): void {
   }
 
   agregaNuevo() {
-
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
@@ -156,8 +152,36 @@ getListArsenal(): void {
     );
   }
 
-  actualizaArticulo() {
+  consultaArticulo(articulo: string, cantidad: number, descripcion: string, gzen: string, 
+    grupo: string, subgrupo: string, ctrlLegal: string, tipo: string, medicamento: string, 
+    farmaceutica: string, presentacion: string, dosificacion: string, restricciones:string, 
+    altTerapeutica: string, observaciones: string) {
 
+    this.datos = { 
+      articulo, cantidad, descripcion, gzen, grupo, subgrupo, ctrlLegal, tipo, medicamento, 
+      farmaceutica, presentacion, dosificacion, restricciones, altTerapeutica, observaciones
+    };
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '100%';
+    dialogConfig.height = '90%';
+    dialogConfig.position = { top : '1%'};
+
+    dialogConfig.data = this.datos;
+    this.dialog.open(ConsultaArticuloComponent, dialogConfig)
+      .afterClosed().subscribe(
+       data => {console.log('Datos Consulta:', data);
+                if (data !== undefined) {
+                    this.refreshTable();
+                }
+        }
+      );
+  }
+
+/*
+  actualizaArticulo() {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -175,36 +199,7 @@ getListArsenal(): void {
         }
       );
   }
-
-  consultaArticulo(gzen: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
-    medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string,
-     restricciones:string, altTerapuetica: string, observaciones: string) {
-
-    /*datoArticulo = {
-      gzen, grupo, subgrupo, ctrlLegal, tipo,
-      medicamento, farmaceutica, presentacion, dosificacion,
-      restricciones, altTerapuetica, observaciones
-    };*/
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '100%';
-    dialogConfig.height = '90%';
-    dialogConfig.position = { top : '1%'};
-
-    //dialogConfig.data = this.datoArticulo;
-    this.dialog.open(ConsultaArticuloComponent, dialogConfig)
-      .afterClosed().subscribe(
-       data => {console.log('Datos Consulta:', data);
-                if (data !== undefined) {
-                    this.refreshTable();
-                }
-        }
-      );
-   }
-
+  
    eliminaArticulo(id: string) {
 
     const dialogConfig = new MatDialogConfig();
@@ -225,9 +220,8 @@ getListArsenal(): void {
         }
       );
   }
-
+*/
    private refreshTable() {
-
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 }
