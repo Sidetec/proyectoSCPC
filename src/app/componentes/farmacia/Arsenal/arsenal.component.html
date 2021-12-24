@@ -16,9 +16,9 @@
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
 
       <!-- GZEN Column -->
-      <ng-container matColumnDef="gzen">
-        <th id='gzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Código</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.gzen}} </td>
+      <ng-container matColumnDef="codigoGzen">
+        <th id='codigoGzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Código</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.codigoGzen}} </td>
       </ng-container>
   
       <!-- Grupo Column -->
@@ -28,15 +28,15 @@
       </ng-container>
 
       <!-- SubGrupo Column -->      
-      <ng-container matColumnDef="subgrupo">
-        <th id='subgrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>SubGrupo</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.subgrupo}} </td>
+      <ng-container matColumnDef="subGrupo">
+        <th id='subGrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>SubGrupo</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.subGrupo}} </td>
       </ng-container>
 
       <!-- Control Legal Column -->
-      <ng-container matColumnDef="ctrlLegal">
-        <th id='ctrlLegalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Control Legal</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.ctrlLegal}} </td>
+      <ng-container matColumnDef="controlLegal">
+        <th id='controlLegalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Control Legal</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.controlLegal}} </td>
       </ng-container>
 
       <!-- Tipo Column -->
@@ -52,9 +52,9 @@
       </ng-container>
 
       <!-- Farmacéutica Column -->
-      <ng-container matColumnDef="farmaceutica">
-        <th id='farmaceuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Farmacéutica</th>
-        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.farmaceutica}} </td>
+      <ng-container matColumnDef="fFarmacia">
+        <th id='fFarmaciaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Farmacéutica</th>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fFarmacia}} </td>
       </ng-container>
 
       <!-- Presentación Column -->
@@ -91,9 +91,9 @@
         <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.restricciones}} </td>
       </ng-container>
       <!-- Alternativa Terapéutica Column -->
-      <ng-container matColumnDef="altTerapeutica">
-        <th [hidden]="show" id='altTerapeuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Alternativa Terapéutica</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.altTerapeutica}} </td>
+      <ng-container matColumnDef="alternativa">
+        <th [hidden]="show" id='alternativaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Alternativa Terapéutica</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.alternativa}} </td>
       </ng-container>
       <!-- Observaciones Column -->
       <ng-container matColumnDef="observaciones">
@@ -110,7 +110,7 @@
   
         <td mat-cell *matCellDef="let row; let i=index;" style=' width: 5%; text-align: center'>
   
-          <button mat-icon-button color="accent" (click)="consultaArticulo(row.articulo,row.cantidad,row.descripcion,row.gzen, row.grupo, row.subgrupo, row.ctrlLegal, row.tipo, row.medicamento, row.farmaceutica, row.presentacion, row.dosificacion, row.restricciones,row.altTerapeutica,row.observaciones)">
+          <button mat-icon-button color="accent" (click)="consultaArticulo(row.articulo,row.cantidad,row.descripcion,row.codigoGzen, row.grupo, row.subGrupo, row.controlLegal, row.tipo, row.medicamento, row.fFarmacia, row.presentacion, row.dosificacion, row.restricciones,row.alternativa,row.observaciones)">
             <mat-icon>search</mat-icon>
           </button>
 

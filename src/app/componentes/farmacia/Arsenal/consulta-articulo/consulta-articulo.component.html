@@ -3,11 +3,11 @@
   <div class="mat-elevation-z8">
     <mat-dialog-content  name="consultaArticulo" class="consulta-container">
       <mat-form-field color="accent">
-        <input matInput placeholder="Código"  value="{{this.data.gzen}}" disabled='true' >
+        <input matInput placeholder="Código"  value="{{this.data.codigoGzen}}" disabled='true' >
       </mat-form-field>
     
       <mat-form-field color="accent">
-        <input matInput placeholder="Control Legal"  value="{{this.data.ctrlLegal}}" disabled='true' >
+        <input matInput placeholder="Control Legal"  value="{{this.data.controlLegal}}" disabled='true' >
       </mat-form-field>
     
       <mat-form-field>
@@ -15,7 +15,7 @@
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput placeholder="Subgrupo" value="{{this.data.subgrupo}}" disabled='true'>
+        <input matInput placeholder="Subgrupo" value="{{this.data.subGrupo}}" disabled='true'>
       </mat-form-field>
     
       <mat-form-field>
@@ -27,7 +27,7 @@
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput placeholder="Farmacéutica" value="{{this.data.farmaceutica}}" disabled='true'>
+        <input matInput placeholder="Farmacéutica" value="{{this.data.fFarmacia}}" disabled='true'>
       </mat-form-field>
     
       <mat-form-field>
@@ -37,7 +37,11 @@
       <mat-form-field>
         <input matInput placeholder="Dosificación" value="{{this.data.dosificacion}}" disabled='true'>
       </mat-form-field>
-    
+
+      <mat-form-field>
+        <input matInput placeholder="Alternativa Terapéutica" value="{{this.data.alternativa}}" disabled='true'>
+      </mat-form-field>
+
       <mat-form-field>
         <input matInput placeholder="Restricciones" value="{{this.data.restricciones}}" disabled='true'>
       </mat-form-field>

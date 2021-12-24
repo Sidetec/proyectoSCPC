@@ -2,34 +2,34 @@ export interface IArticulo{
     articulo: string;
     cantidad: number;
     descripcion: string;
-    ctrlLegal: string;    
+    controlLegal: string;    
     grupo: string;
-    subgrupo: string;    
+    subGrupo: string;    
     tipo: string;
-    gzen: string;
+    codigoGzen: string;
     medicamento: string;
-    farmaceutica: string;
+    fFarmacia: string;
     presentacion: string;
     dosificacion: string;
     restricciones: string;
-    altTerapeutica: string;
+    alternativa: string;
     observaciones: string;
 }
 
 export interface IArtFarm {
     cantidad: number;
     descripcion: string;
-    ctrlLegal: string;    
+    controlLegal: string;    
     grupo: string;
-    subgrupo: string;    
+    subGrupo: string;    
     tipo: string;
-    gzen: string;
+    codigoGzen: string;
     medicamento: string;
-    farmaceutica: string;
+    fFarmacia: string;
     presentacion: string;
     dosificacion: string;
     restricciones: string;
-    altTerapeutica: string;
+    alternativa: string;
     observaciones: string;
 }
 export interface IResultado{

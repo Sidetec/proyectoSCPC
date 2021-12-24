@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {IArtFarm, IResultado} from 'src/app/interface/arsenal';
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agrega-articulo',
@@ -15,51 +15,50 @@ export class AgregaArticuloComponent implements OnInit {
   datos: IArtFarm | undefined;
   constructor(private dialogRef: MatDialogRef<AgregaArticuloComponent>,
               public listaArsenalService: ListaArsenalService,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    
+              @Inject(MAT_DIALOG_DATA) public data: any) {   
     }
 
-    gzen= new FormControl('', [Validators.required]);
+    codigoGzen= new FormControl('', [Validators.required]);
     grupo= new FormControl('', [Validators.required]);
-    subgrupo= new FormControl('', [Validators.required]);
-    ctrlLegal= new FormControl('', [Validators.required]);
+    subGrupo= new FormControl('', [Validators.required]);
+    controlLegal= new FormControl('', [Validators.required]);
     tipo= new FormControl('', [Validators.required]);
     medicamento= new FormControl('', [Validators.required]);
-    farmaceutica= new FormControl('', [Validators.required]);
+    fFarmacia= new FormControl('', [Validators.required]);
     presentacion= new FormControl('', [Validators.required]);
     dosificacion= new FormControl('', [Validators.required]);
     restricciones= new FormControl('', [Validators.required]);
-    altTerapeutica= new FormControl('', [Validators.required]);
+    alternativa= new FormControl('', [Validators.required]);
     observaciones= new FormControl('', [Validators.required]);;
   
   public ingresoArticulo: FormGroup = new FormGroup({
-    gzen: this.gzen,
+    codigoGzen: this.codigoGzen,
     grupo: this.grupo,
-    subgrupo: this.subgrupo,
-    ctrlLegal: this.ctrlLegal,
+    subGrupo: this.subGrupo,
+    controlLegal: this.controlLegal,
     tipo: this.tipo,
     medicamento: this.medicamento,
-    farmaceutica: this.farmaceutica,
+    fFarmacia: this.fFarmacia,
     presentacion: this.presentacion,
     dosificacion: this.dosificacion, 
     restricciones: this.restricciones,
-    altTerapeutica: this.altTerapeutica,
+    alternativa: this.alternativa,
     observaciones: this.observaciones,
   });
 
   getErrorMessage(campo: string) {
-    if (campo === 'gzen'){
-      return this.gzen.hasError('required') ? 'Debe ingresar código GZEN de artículo' : '';
+    if (campo === 'codigoGzen'){
+      return this.codigoGzen.hasError('required') ? 'Debe ingresar código GZEN de artículo' : '';
     }
     
     if (campo === 'grupo'){
         return this.grupo.hasError('required') ? 'Debe ingresar el grupo del artículo' : '';
     }
-    if (campo === 'suggrupo'){
-        return this.subgrupo.hasError('required') ? 'Debe ingresar subgrupo Artículo' : '';
+    if (campo === 'sugGrupo'){
+        return this.subGrupo.hasError('required') ? 'Debe ingresar subgrupo Artículo' : '';
     }
-    if (campo === 'ctrlLegal'){
-        return this.ctrlLegal.hasError('required') ? 'Debe ingresar control legal del artículo' : '';
+    if (campo === 'controlLegal'){
+        return this.controlLegal.hasError('required') ? 'Debe ingresar control legal del artículo' : '';
     }
     if (campo === 'tipo'){
         return this.tipo.hasError('required') ? 'Debe ingresar el tipo de artículo' : '';
@@ -69,8 +68,8 @@ export class AgregaArticuloComponent implements OnInit {
       return this.medicamento.hasError('required') ? 'Debe ingresar el nombre del medicamento' : '';
     }
 
-    if (campo === 'farmaceutica'){
-      return this.farmaceutica.hasError('required') ? 'Debe ingresar la farmacéutica que produce el medicamento' : '';
+    if (campo === 'fFarmacia'){
+      return this.fFarmacia.hasError('required') ? 'Debe ingresar la farmacéutica que produce el medicamento' : '';
     }
 
     if (campo === 'presentacion'){
@@ -91,17 +90,17 @@ export class AgregaArticuloComponent implements OnInit {
     this.datos = {
       cantidad: 1,
       descripcion: this.ingresoArticulo.get('medicamento')?.value,
-      gzen: this.ingresoArticulo.get('gzen')?.value,
+      codigoGzen: this.ingresoArticulo.get('codigoGzen')?.value,
       grupo: this.ingresoArticulo.get('grupo')?.value,
-      subgrupo: this.ingresoArticulo.get('subgrupo')?.value,
+      subGrupo: this.ingresoArticulo.get('subGrupo')?.value,
       tipo: this.ingresoArticulo.get('tipo')?.value,
-      ctrlLegal: this.ingresoArticulo.get('ctrlLegal')?.value,
+      controlLegal: this.ingresoArticulo.get('controlLegal')?.value,
       medicamento: this.ingresoArticulo.get('medicamento')?.value,
-      farmaceutica: this.ingresoArticulo.get('farmaceutica')?.value,
+      fFarmacia: this.ingresoArticulo.get('fFarmacia')?.value,
       presentacion: this.ingresoArticulo.get('presentacon')?.value,
       dosificacion: this.ingresoArticulo.get('dosificacion')?.value,
       restricciones: this.ingresoArticulo.get('restricciones')?.value,
-      altTerapeutica: this.ingresoArticulo.get('altTerapeutica')?.value,
+      alternativa: this.ingresoArticulo.get('alternativa')?.value,
       observaciones: this.ingresoArticulo.get('observaciones')?.value,
     };
 
@@ -137,5 +136,4 @@ export class AgregaArticuloComponent implements OnInit {
   cerrar() {
     this.dialogRef.close();
   }
-
 }

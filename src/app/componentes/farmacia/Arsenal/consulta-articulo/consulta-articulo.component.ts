@@ -29,9 +29,9 @@ export class ConsultaArticuloComponent implements AfterViewInit {
     }
   ];
 */
-  displayedColumns: string[] = ['articulo','cantidad','descripcion','gzen', 'grupo', 'subgrupo', 
-  'ctrlLegal', 'tipo', 'medicamento', 'farmaceutica', 'presentacion', 'dosificacion', 
-  'restriccionres', 'altTerapeutica','observaciones','opciones'];
+displayedColumns: string[] = ['articulo','cantidad','descripcion','codigoGzen', 'grupo', 
+  'subGrupo', 'controlLegal', 'tipo', 'medicamento', 'fFarmacia', 'presentacion', 
+  'dosificacion', 'restricciones', 'alternativa','observaciones','opciones'];
 
   constructor(public dialog: MatDialog, public httpClient: HttpClient,
     private dialogRef: MatDialogRef<ConsultaArticuloComponent>,
@@ -39,17 +39,17 @@ export class ConsultaArticuloComponent implements AfterViewInit {
     
   }
 
-  gzen= new FormControl(this.data.gzen, [Validators.required]);
+  codigoGzen= new FormControl(this.data.codigoGzen, [Validators.required]);
   grupo= new FormControl(this.data.grupo, [Validators.required]);
-  subgrupo= new FormControl(this.data.subgrupo, [Validators.required]);
-  ctrlLegal= new FormControl(this.data.ctrlLegal, [Validators.required]);
+  subGrupo= new FormControl(this.data.subGrupo, [Validators.required]);
+  controlLegal= new FormControl(this.data.controlLegal, [Validators.required]);
   tipo= new FormControl(this.data.tipo, [Validators.required]);
   medicamento= new FormControl(this.data.medicamento, [Validators.required]);
-  farmaceutica= new FormControl(this.data.farmaceutica, [Validators.required]);
+  fFarmacia= new FormControl(this.data.fFarmacia, [Validators.required]);
   presentacion= new FormControl(this.data.presentacion, [Validators.required]);
   dosificacion= new FormControl(this.data.dosificacion, [Validators.required]);
   restricciones= new FormControl(this.data.restricciones, [Validators.required]);
-  altTerapeutica= new FormControl(this.data.altTerapeutica, [Validators.required]);
+  alternativa= new FormControl(this.data.alternativa, [Validators.required]);
   observaciones= new FormControl(this.data.observaciones, [Validators.required]);;
   ngOnInit() {
     
