@@ -1,0 +1,28 @@
+
+
+
+
+.mat-raised-button {
+  min-width: 100%;
+ 
+}
+
+.mat-dialog-container {
+  padding: 50px !important;
+
+}
+
+.mat-dialog-content{
+  margin: auto;
+}
+
+.text-right
+{
+float: right;
+}
+
+ *{
+margin: 10px;
+padding: 0;
+
+}

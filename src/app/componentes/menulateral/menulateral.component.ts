@@ -150,14 +150,14 @@ export class MenulateralComponent implements OnDestroy {
               titulo: 'Generales - Gestión Requerimientos',
               tituloMenu: 'Gestión Requerimientos',
               iconName: 'send icon',
-              route: 'gestionRequerimientos',
+              route: 'reportes',
               disabled: false
             },
             {
               titulo: 'Generales - Evaluaciones',
               tituloMenu: 'Evaluaciones',
               iconName: 'send icon',
-              route: 'evaluaciones',
+              route: 'encuestas',
               disabled: false
             },
           ]

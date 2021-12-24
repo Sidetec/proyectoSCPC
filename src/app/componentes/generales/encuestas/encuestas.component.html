@@ -1,0 +1,572 @@
+<h2 class="text-center">Encuesta de Satisfacción</h2>
+
+<div *ngIf="pantallabienvenida" >     
+
+<p>Estimado(a) Participante, este formulario tiene como finalidad conocer su opinión sobre el curso de la capacitación que acaba de recibir, lo que nos ayudará a mejorar la calidad de nuestro servicio. Por favor conteste todas las preguntas.
+</p>
+<ol>
+  <li>Deficiente</li>
+  <li>Malo</li>
+  <li>Regular</li>
+  <li>Bueno</li>
+  <li>Excelente</li>
+</ol> 
+<div class="col-md-1 text-right">
+  <button mat-raised-button color="warn" (click)="Iniciar()"  mat-dialog-close [disabled]="btnIniciar" style="float: right;" >Iniciar</button>
+</div>
+</div>
+
+    
+
+
+    <div *ngIf="pantallaencuesta" >     
+
+
+<mat-accordion>
+  
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       <h2>A. Contenidos</h2> 
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>¿Los objetivos de aprendizaje fueron claros, definidos y alcanzables?.</p>
+Deficiente
+    <mat-radio-group aria-label="Seleccione una opción">
+      <label for="1" class="text-center">1<br />
+      <mat-radio-button value="1"></mat-radio-button>
+    </label>
+      
+    <label for="2" class="text-center">2<br />
+      <mat-radio-button value="2"></mat-radio-button>
+    </label>
+
+    <label for="3" class="text-center">3<br />
+      <mat-radio-button value="3"></mat-radio-button>
+    </label>
+
+    <label for="4" class="text-center">4<br />
+      <mat-radio-button value="4"></mat-radio-button>
+    </label>
+
+    <label for="5" class="text-center">5<br />
+      <mat-radio-button value="5"></mat-radio-button>
+    </label>
+
+    </mat-radio-group>
+Excelente
+
+
+
+<p>¿La cantidad y nivel de exigencia de las actividades se ajustaron a los tiempos planificados y efectivamente destinados para su desarrollo?.</p>
+Deficiente
+    <mat-radio-group aria-label="Seleccione una opción">
+      <label for="1" class="text-center">1<br />
+      <mat-radio-button value="1"></mat-radio-button>
+    </label>
+      
+    <label for="2" class="text-center">2<br />
+      <mat-radio-button value="2"></mat-radio-button>
+    </label>
+
+    <label for="3" class="text-center">3<br />
+      <mat-radio-button value="3"></mat-radio-button>
+    </label>
+
+    <label for="4" class="text-center">4<br />
+      <mat-radio-button value="4"></mat-radio-button>
+    </label>
+
+    <label for="5" class="text-center">5<br />
+      <mat-radio-button value="5"></mat-radio-button>
+    </label>
+    </mat-radio-group>
+    Excelente
+
+
+<p>¿Los contenidos fueron presentados de forma lógica y coherente?.</p>
+Deficiente
+    <mat-radio-group aria-label="Seleccione una opción">
+      <label for="1" class="text-center">1<br />
+      <mat-radio-button value="1"></mat-radio-button>
+    </label>
+      
+    <label for="2" class="text-center">2<br />
+      <mat-radio-button value="2"></mat-radio-button>
+    </label>
+
+    <label for="3" class="text-center">3<br />
+      <mat-radio-button value="3"></mat-radio-button>
+    </label>
+
+    <label for="4" class="text-center">4<br />
+      <mat-radio-button value="4"></mat-radio-button>
+    </label>
+
+    <label for="5" class="text-center">5<br />
+      <mat-radio-button value="5"></mat-radio-button>
+    </label>
+    </mat-radio-group>
+    Excelente
+
+
+    <p>¿La capacitación ha aportado conicimientos relevantes para desempeñar su trabajo?.</p>
+Deficiente
+    <mat-radio-group aria-label="Seleccione una opción">
+      <label for="1" class="text-center">1<br />
+      <mat-radio-button value="1"></mat-radio-button>
+    </label>
+      
+    <label for="2" class="text-center">2<br />
+      <mat-radio-button value="2"></mat-radio-button>
+    </label>
+
+    <label for="3" class="text-center">3<br />
+      <mat-radio-button value="3"></mat-radio-button>
+    </label>
+
+    <label for="4" class="text-center">4<br />
+      <mat-radio-button value="4"></mat-radio-button>
+    </label>
+
+    <label for="5" class="text-center">5<br />
+      <mat-radio-button value="5"></mat-radio-button>
+    </label>
+    </mat-radio-group>
+    Excelente
+
+
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+  <h2>B. Metodología</h2>
+</mat-panel-title>
+</mat-expansion-panel-header>
+
+
+<p>¿Se generó el intercambio de experiencias entre los participantes?.</p>
+Deficiente
+    <mat-radio-group aria-label="Seleccione una opción">
+      <label for="1" class="text-center">1<br />
+      <mat-radio-button value="1"></mat-radio-button>
+    </label>
+      
+    <label for="2" class="text-center">2<br />
+      <mat-radio-button value="2"></mat-radio-button>
+    </label>
+
+    <label for="3" class="text-center">3<br />
+      <mat-radio-button value="3"></mat-radio-button>
+    </label>
+
+    <label for="4" class="text-center">4<br />
+      <mat-radio-button value="4"></mat-radio-button>
+    </label>
+
+    <label for="5" class="text-center">5<br />
+      <mat-radio-button value="5"></mat-radio-button>
+    </label>
+    </mat-radio-group>
+    Excelente
+
+
+    <p>¿La dinámica del curso fue estimulante?.</p>
+    Deficiente
+        <mat-radio-group aria-label="Seleccione una opción">
+          <label for="1" class="text-center">1<br />
+          <mat-radio-button value="1"></mat-radio-button>
+        </label>
+          
+        <label for="2" class="text-center">2<br />
+          <mat-radio-button value="2"></mat-radio-button>
+        </label>
+    
+        <label for="3" class="text-center">3<br />
+          <mat-radio-button value="3"></mat-radio-button>
+        </label>
+    
+        <label for="4" class="text-center">4<br />
+          <mat-radio-button value="4"></mat-radio-button>
+        </label>
+    
+        <label for="5" class="text-center">5<br />
+          <mat-radio-button value="5"></mat-radio-button>
+        </label>
+        </mat-radio-group>
+        Excelente
+    
+
+
+</mat-expansion-panel>
+
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+  <mat-panel-title>
+ <h2>C. Relator</h2> 
+  </mat-panel-title>
+  </mat-expansion-panel-header>
+  
+
+  <p>¿Demostró dominio del tema, argumentando con evidencia y respondiendo las preguntas recibidas?.</p>
+  Deficiente
+      <mat-radio-group aria-label="Seleccione una opción">
+        <label for="1" class="text-center">1<br />
+        <mat-radio-button value="1"></mat-radio-button>
+      </label>
+        
+      <label for="2" class="text-center">2<br />
+        <mat-radio-button value="2"></mat-radio-button>
+      </label>
+  
+      <label for="3" class="text-center">3<br />
+        <mat-radio-button value="3"></mat-radio-button>
+      </label>
+  
+      <label for="4" class="text-center">4<br />
+        <mat-radio-button value="4"></mat-radio-button>
+      </label>
+  
+      <label for="5" class="text-center">5<br />
+        <mat-radio-button value="5"></mat-radio-button>
+      </label>
+      </mat-radio-group>
+      Excelente
+
+
+
+      <p>¿Estimuló la participación, generando un ambiente cálido y motivante?.</p>
+      Deficiente
+          <mat-radio-group aria-label="Seleccione una opción">
+            <label for="1" class="text-center">1<br />
+            <mat-radio-button value="1"></mat-radio-button>
+          </label>
+            
+          <label for="2" class="text-center">2<br />
+            <mat-radio-button value="2"></mat-radio-button>
+          </label>
+      
+          <label for="3" class="text-center">3<br />
+            <mat-radio-button value="3"></mat-radio-button>
+          </label>
+      
+          <label for="4" class="text-center">4<br />
+            <mat-radio-button value="4"></mat-radio-button>
+          </label>
+      
+          <label for="5" class="text-center">5<br />
+            <mat-radio-button value="5"></mat-radio-button>
+          </label>
+          </mat-radio-group>
+          Excelente
+
+
+          <p>¿Expuso claramente los contenidos?.</p>
+          Deficiente
+              <mat-radio-group aria-label="Seleccione una opción">
+                <label for="1" class="text-center">1<br />
+                <mat-radio-button value="1"></mat-radio-button>
+              </label>
+                
+              <label for="2" class="text-center">2<br />
+                <mat-radio-button value="2"></mat-radio-button>
+              </label>
+          
+              <label for="3" class="text-center">3<br />
+                <mat-radio-button value="3"></mat-radio-button>
+              </label>
+          
+              <label for="4" class="text-center">4<br />
+                <mat-radio-button value="4"></mat-radio-button>
+              </label>
+          
+              <label for="5" class="text-center">5<br />
+                <mat-radio-button value="5"></mat-radio-button>
+              </label>
+              </mat-radio-group>
+              Excelente
+
+              <p>¿Mostró disposición para aclarar dudas y preguntas?.</p>
+              Deficiente
+                  <mat-radio-group aria-label="Seleccione una opción">
+                    <label for="1" class="text-center">1<br />
+                    <mat-radio-button value="1"></mat-radio-button>
+                  </label>
+                    
+                  <label for="2" class="text-center">2<br />
+                    <mat-radio-button value="2"></mat-radio-button>
+                  </label>
+              
+                  <label for="3" class="text-center">3<br />
+                    <mat-radio-button value="3"></mat-radio-button>
+                  </label>
+              
+                  <label for="4" class="text-center">4<br />
+                    <mat-radio-button value="4"></mat-radio-button>
+                  </label>
+              
+                  <label for="5" class="text-center">5<br />
+                    <mat-radio-button value="5"></mat-radio-button>
+                  </label>
+                  </mat-radio-group>
+                  Excelente
+    
+    
+
+                  
+              <p>¿Fue puntual y aprovechó el tiempo durante el curso?.</p>
+              Deficiente
+                  <mat-radio-group aria-label="Seleccione una opción">
+                    <label for="1" class="text-center">1<br />
+                    <mat-radio-button value="1"></mat-radio-button>
+                  </label>
+                    
+                  <label for="2" class="text-center">2<br />
+                    <mat-radio-button value="2"></mat-radio-button>
+                  </label>
+              
+                  <label for="3" class="text-center">3<br />
+                    <mat-radio-button value="3"></mat-radio-button>
+                  </label>
+              
+                  <label for="4" class="text-center">4<br />
+                    <mat-radio-button value="4"></mat-radio-button>
+                  </label>
+              
+                  <label for="5" class="text-center">5<br />
+                    <mat-radio-button value="5"></mat-radio-button>
+                  </label>
+                  </mat-radio-group>
+                  Excelente
+
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+    <h2>D. Materiales y apoyo audiovisual</h2>
+    </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+
+    <p>¿La calidad de los recursos y demás materiales del curso aportaron significativamente al logro de los objetivos de aprendizaje?.</p>
+              Deficiente
+                  <mat-radio-group aria-label="Seleccione una opción">
+                    <label for="1" class="text-center">1<br />
+                    <mat-radio-button value="1"></mat-radio-button>
+                  </label>
+                    
+                  <label for="2" class="text-center">2<br />
+                    <mat-radio-button value="2"></mat-radio-button>
+                  </label>
+              
+                  <label for="3" class="text-center">3<br />
+                    <mat-radio-button value="3"></mat-radio-button>
+                  </label>
+              
+                  <label for="4" class="text-center">4<br />
+                    <mat-radio-button value="4"></mat-radio-button>
+                  </label>
+              
+                  <label for="5" class="text-center">5<br />
+                    <mat-radio-button value="5"></mat-radio-button>
+                  </label>
+                  </mat-radio-group>
+                  Excelente
+
+                  <p>¿La documentación entregada se ajustó a los contenidos vistos?.</p>
+                  Deficiente
+                      <mat-radio-group aria-label="Seleccione una opción">
+                        <label for="1" class="text-center">1<br />
+                        <mat-radio-button value="1"></mat-radio-button>
+                      </label>
+                        
+                      <label for="2" class="text-center">2<br />
+                        <mat-radio-button value="2"></mat-radio-button>
+                      </label>
+                  
+                      <label for="3" class="text-center">3<br />
+                        <mat-radio-button value="3"></mat-radio-button>
+                      </label>
+                  
+                      <label for="4" class="text-center">4<br />
+                        <mat-radio-button value="4"></mat-radio-button>
+                      </label>
+                  
+                      <label for="5" class="text-center">5<br />
+                        <mat-radio-button value="5"></mat-radio-button>
+                      </label>
+                      </mat-radio-group>
+                      Excelente
+
+                      <p>¿El apoyo audiovisual funcionó correctamente?.</p>
+                      Deficiente
+                          <mat-radio-group aria-label="Seleccione una opción">
+                            <label for="1" class="text-center">1<br />
+                            <mat-radio-button value="1"></mat-radio-button>
+                          </label>
+                            
+                          <label for="2" class="text-center">2<br />
+                            <mat-radio-button value="2"></mat-radio-button>
+                          </label>
+                      
+                          <label for="3" class="text-center">3<br />
+                            <mat-radio-button value="3"></mat-radio-button>
+                          </label>
+                      
+                          <label for="4" class="text-center">4<br />
+                            <mat-radio-button value="4"></mat-radio-button>
+                          </label>
+                      
+                          <label for="5" class="text-center">5<br />
+                            <mat-radio-button value="5"></mat-radio-button>
+                          </label>
+                          </mat-radio-group>
+                          Excelente
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+      <mat-panel-title>
+      <h2>E. Atención al Cliente</h2>
+      </mat-panel-title>
+      </mat-expansion-panel-header>
+      
+
+      <p>¿El lugar donde se realizó la actividad fue adecuado?.</p>
+      Deficiente
+          <mat-radio-group aria-label="Seleccione una opción">
+            <label for="1" class="text-center">1<br />
+            <mat-radio-button value="1"></mat-radio-button>
+          </label>
+            
+          <label for="2" class="text-center">2<br />
+            <mat-radio-button value="2"></mat-radio-button>
+          </label>
+      
+          <label for="3" class="text-center">3<br />
+            <mat-radio-button value="3"></mat-radio-button>
+          </label>
+      
+          <label for="4" class="text-center">4<br />
+            <mat-radio-button value="4"></mat-radio-button>
+          </label>
+      
+          <label for="5" class="text-center">5<br />
+            <mat-radio-button value="5"></mat-radio-button>
+          </label>
+          </mat-radio-group>
+          Excelente
+
+          <p>¿El asistente de curso brindó un trato amable y cordial?.</p>
+          Deficiente
+              <mat-radio-group aria-label="Seleccione una opción">
+                <label for="1" class="text-center">1<br />
+                <mat-radio-button value="1"></mat-radio-button>
+              </label>
+                
+              <label for="2" class="text-center">2<br />
+                <mat-radio-button value="2"></mat-radio-button>
+              </label>
+          
+              <label for="3" class="text-center">3<br />
+                <mat-radio-button value="3"></mat-radio-button>
+              </label>
+          
+              <label for="4" class="text-center">4<br />
+                <mat-radio-button value="4"></mat-radio-button>
+              </label>
+          
+              <label for="5" class="text-center">5<br />
+                <mat-radio-button value="5"></mat-radio-button>
+              </label>
+              </mat-radio-group>
+              Excelente
+
+              <p>¿El trabajo realizado por el Asistente de curso fue eficiente durante la jornada?.</p>
+              Deficiente
+                  <mat-radio-group aria-label="Seleccione una opción">
+                    <label for="1" class="text-center">1<br />
+                    <mat-radio-button value="1"></mat-radio-button>
+                  </label>
+                    
+                  <label for="2" class="text-center">2<br />
+                    <mat-radio-button value="2"></mat-radio-button>
+                  </label>
+              
+                  <label for="3" class="text-center">3<br />
+                    <mat-radio-button value="3"></mat-radio-button>
+                  </label>
+              
+                  <label for="4" class="text-center">4<br />
+                    <mat-radio-button value="4"></mat-radio-button>
+                  </label>
+              
+                  <label for="5" class="text-center">5<br />
+                    <mat-radio-button value="5"></mat-radio-button>
+                  </label>
+                  </mat-radio-group>
+                  Excelente
+
+                  <p>¿El servicio de Coffee break fue satisfactorio?.</p>
+                  Deficiente
+                      <mat-radio-group aria-label="Seleccione una opción">
+                        <label for="1" class="text-center">1<br />
+                        <mat-radio-button value="1"></mat-radio-button>
+                      </label>
+                        
+                      <label for="2" class="text-center">2<br />
+                        <mat-radio-button value="2"></mat-radio-button>
+                      </label>
+                  
+                      <label for="3" class="text-center">3<br />
+                        <mat-radio-button value="3"></mat-radio-button>
+                      </label>
+                  
+                      <label for="4" class="text-center">4<br />
+                        <mat-radio-button value="4"></mat-radio-button>
+                      </label>
+                  
+                      <label for="5" class="text-center">5<br />
+                        <mat-radio-button value="5"></mat-radio-button>
+                      </label>
+                      </mat-radio-group>
+                      Excelente
+
+      </mat-expansion-panel>
+
+</mat-accordion>
+
+<div class="col-md-1 text-right">
+  <button mat-raised-button color="warn" (click)="Terminar()"  mat-dialog-close [disabled]="btnTerminar" style="float: right;" >Terminar</button>
+</div>
+</div>
+
+
+<div *ngIf="pantallacertificado" >   
+
+<h2 style="text-align: center;">Certificado de Participación</h2>
+
+
+<div style="text-align:center;border-style: solid;">
+  <h2 style="text-align: center;">Certificado de Capacitación</h2>
+<p style="text-align: left;">Certificamos que<br/><strong>Italo Vallejos Gutierréz</strong><br/><strong>Rut: 12.488.347-4</strong></p> 
+
+<p style="text-align: left;">Ha participado en el curso en modalidad virtual</p>
+<h2 style="text-align: left;">"Módulo de Activo Fijo"</h2>
+
+<p style="text-align: left;">Con un total de 33 horas cronológicas,<strong>APROBANDO</strong>el curso con la calificación<strong>5,04</strong>puntos.</p>
+
+<p style="text-align: left;">La actividad se llevó a cabo desde el día 02 al 20 de Marzo 2022.</p>
+
+<p style="text-align: left;">Chile, 29 de Marzo 2022.</p>
+</div>
+
+<div class="col-md-1 text-right">
+  <button mat-raised-button color="warn" (click)="Descargar()"  mat-dialog-close [disabled]="btnDescargar" style="float: right;" >Descargar</button>
+</div>
+
+</div>
