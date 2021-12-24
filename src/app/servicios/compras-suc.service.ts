@@ -46,8 +46,8 @@ export class ComprasSucService {
     );
   }
 
-  putDataSucCrea(primero:string,fechaSolicitud:string,servicio:string,responsable:string,motivoCompra:string): Observable<ISucresultado> {
-    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/crea/`+ primero+  `/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`+ motivoCompra+  `/`,{ headers: this.headers })
+  putDataSucCrea(fechaSolicitud:string,servicio:string,responsable:string/*,motivoCompra:string*/): Observable<ISucresultado> {
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/crea/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`/*+ motivoCompra+  `/`*/,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -55,15 +55,17 @@ export class ComprasSucService {
   }
 
   putDataSucCreaArticulo(primero:string,codigoArticulo: string,detalle: string, unidadDeMedida: string, cantidadTotal: string, valorUnitario: string, montoTotal: string): Observable<ISucresultado> {
-    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/10/10/enfer/pedro/500/50000/valofinal/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
-
-  putDataSucCancelar(idSuc:string,responsable:string,motivo:string,adjuntar:string,fecha:string): Observable<ISucresultado> {
-    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/elimina/`+ idSuc+  `/`+ responsable+  `/`+ motivo+  `/`+ adjuntar+  `/`+ fecha+  `/`,{ headers: this.headers })
+  //PostaCentralConsultaSuc/elimina/26/2/obs/1/2022-05-05
+                                                //id/motivo(numerico)/'xxx'/1 siempre es 1 responsable/fecha
+  putDataSucCancelar(id:string,idSuc:string,responsable:string,motivo:string,adjuntar:string,fecha:string): Observable<ISucresultado> {
+    console.log('cancela',(`/PostaCentralConsultaSuc/elimina/`+ id+  `/`+ motivo+  `/`+ `valor`+  `/`+ `1`+  `/`+ fecha+  `/`));
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/elimina/`+ id+  `/`+ motivo+  `/`+ `valor`+  `/`+ `1`+  `/`+ fecha+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

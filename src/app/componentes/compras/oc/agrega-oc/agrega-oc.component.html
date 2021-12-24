@@ -2,11 +2,15 @@
 
 <mat-dialog-content [formGroup]="agregaArticulo " name="agregaArticulo" class="agrega-container">
 
+
   <mat-form-field>
-    <input matInput  placeholder="Tipo Documento Asociado" [formControl]="tipoDocumentoAsociado" >
+    <mat-label>Tipo Documento Asociado</mat-label>
+    <mat-select [formControl]="tipoDocumentoAsociado" required>
+      <mat-option value="PAC">PAC</mat-option>
+      <mat-option value="SUC">SUC</mat-option>
+    </mat-select>
     <mat-error *ngIf="tipoDocumentoAsociado.invalid">{{getErrorMessage('tipoDocumentoAsociado')}}</mat-error>
   </mat-form-field>
-
   <mat-form-field>
     <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado" >
     <mat-error *ngIf="numDocumentoAsociado.invalid">{{getErrorMessage('numDocumentoAsociado')}}</mat-error>
@@ -57,7 +61,7 @@
 
 <div *ngIf="!agregaArticulo.invalid">
   <div *ngIf="agregaArticulo">
-    <app-agrega-suc2 [agregaArticulo]="agregaArticulo"></app-agrega-suc2>
+    <app-agrega-oc2 [agregaArticulo]="agregaArticulo"></app-agrega-oc2>
   </div>
   </div>
 

@@ -15,13 +15,15 @@ import Swal from 'sweetalert2';
 export class CancelarSucComponent implements OnInit {
 
   idSuc=''
+  parametro={numSuc:'',id:''}
 
   datoAlertas: ICancelarSuc | undefined;
 
   constructor(private dialogRef: MatDialogRef<CancelarSucComponent>
     ,private comprasSucService: ComprasSucService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.idSuc = data;
+      this.parametro = data;
+      console.log('idsuc',this.idSuc);
 
   }
 
@@ -55,10 +57,10 @@ export class CancelarSucComponent implements OnInit {
 
   enviar() {
     let date: Date = new Date();
-    let formattedDate = (moment(date)).format('DD-MM-YYYY HH:mm:ss')
+    let formattedDate = (moment(date)).format('YYYY-MM-DD')
     console.log('fecha formato',formattedDate)
     this.comprasSucService
-    .putDataSucCancelar(this.idSuc,this.cancelarSuc.get('Responsable')?.value,this.cancelarSuc.get('Motivo')?.value,this.cancelarSuc.get('AdjDocu')?.value,formattedDate)
+    .putDataSucCancelar(this.parametro.id,this.parametro.numSuc,this.cancelarSuc.get('Responsable')?.value,this.cancelarSuc.get('Motivo')?.value,this.cancelarSuc.get('AdjDocu')?.value,formattedDate)
     .subscribe((res: {}) => {
       console.log('suc: ', res);
       Swal.fire(

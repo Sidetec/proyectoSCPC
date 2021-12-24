@@ -142,8 +142,9 @@ iDetalleSuc1:IDetalleSuc1={
     return this.resultado= (this.dataSource.data.map(t => t.montoTotal).reduce((acc, value) => acc + value, 0) + this.iva);
   }
   CancelarSUC(){
+    let parametro={numSuc:this.iDetalleSuc1.idSuc,id:this.id}
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.iDetalleSuc1.idSuc;
+    dialogConfig.data = parametro;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';

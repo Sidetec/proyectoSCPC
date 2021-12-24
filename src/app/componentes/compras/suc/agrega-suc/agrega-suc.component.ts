@@ -25,14 +25,14 @@ export class AgregasucComponent implements OnInit {
               fechaSolicitud = new FormControl('', [Validators.required]);
               servicio= new FormControl('', [Validators.required]);
               responsable= new FormControl('', [Validators.required]);
-              motivoCompra= new FormControl('', [Validators.required]);
+              /*motivoCompra= new FormControl('', [Validators.required]);*/
 
 
               public agregaArticulo: FormGroup = new FormGroup({
                 fechaSolicitud: this.fechaSolicitud,
                 servicio: this.servicio,
-                responsable: this.responsable,
-                motivoCompra: this.motivoCompra
+                responsable: this.responsable
+             //   motivoCompra: this.motivoCompra
               });
 
 
@@ -47,10 +47,11 @@ export class AgregasucComponent implements OnInit {
   if (campo === 'responsable'){
       return this.responsable.hasError('required') ? 'Debes ingresar Responsable' : '';
   }
+  /*
   if (campo === 'motivoCompra'){
       return this.motivoCompra.hasError('required') ? 'Debes ingresar Motivo de Compra' : '';
   }
-
+*/
     return '';
   }
 

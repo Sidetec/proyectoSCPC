@@ -166,7 +166,7 @@ console.log('id:',id);
 
    private refreshTable() {
 
-
+    this.getListPac();
     this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
    }
 

@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IArticuloOc } from 'src/app/interface/oc';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-agrega-oc2',
@@ -110,9 +111,9 @@ agregaNuevo(){
   ' </div> ' +
 
   ' <div class="form-group row"> ' +
-  '  <label for="inputValorUnitario" class="col-sm-5 col-form-label">Valor Unitario</label> ' +
+  '  <label for="inputMontoTotal" class="col-sm-5 col-form-label">Monto Total</label> ' +
   '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="valorUnitario" placeholder="Valor Unitario"> ' +
+  '    <input  class="form-control" id="montoTotal"  placeholder="montoTotal"> ' +
   '  </div> ' +
   ' </div> ' +
 
@@ -126,6 +127,7 @@ agregaNuevo(){
       this.iArticuloOc1.unidadDeMedida=((document.getElementById("unidadDeMedida") as HTMLInputElement).value);
       this.iArticuloOc1.cantidadTotal=((document.getElementById("cantidadTotal") as HTMLInputElement).value);
       this.iArticuloOc1.valorUnitario=((document.getElementById("valorUnitario") as HTMLInputElement).value);
+      this.iArticuloOc1.montoTotal=((document.getElementById("montoTotal") as HTMLInputElement).value);
       this.datoConsultaOc.push(this.iArticuloOc1);
       this.refreshTable();
     }
@@ -172,11 +174,11 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
   }
 
   enviar(){
-
+    let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
     this.comprasOcService
-    .putDataOcCrea('5',this.agregaArticulo.value.fechaSolicitud,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
+    .putDataOcCrea('5',formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
     .subscribe((res: {}) => {
-      console.log('suc: ', res);
+      console.log('ot: ', res);
       this.grabarArticulo();
         this.dialogRef.close(1);
 
@@ -199,7 +201,7 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
           this.comprasOcService
         .putDataOcCreaArticulo('10',this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].detalle,this.dataSource.data[valor].unidadDeMedida,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario,this.dataSource.data[valor].montoTotal)
         .subscribe((res: {}) => {
-          console.log('suc: ', res);
+          console.log('ot: ', res);
 
         },
         // console.log('yo:', res as PerfilI[]),

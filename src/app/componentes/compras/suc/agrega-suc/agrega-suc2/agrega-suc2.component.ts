@@ -11,6 +11,7 @@ import { IArticuloSuc, IArticuloSuc1, IConsultaSuc, IDetalleSuc1 } from 'src/app
 import Swal from 'sweetalert2';
 import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-agrega-suc2',
@@ -109,9 +110,9 @@ agregaNuevo(){
   ' </div> ' +
 
   ' <div class="form-group row"> ' +
-  '  <label for="inputValorUnitario" class="col-sm-5 col-form-label">Valor Unitario</label> ' +
+  '  <label for="inputMontoTotal" class="col-sm-5 col-form-label">Monto Total</label> ' +
   '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="valorUnitario" placeholder="Valor Unitario"> ' +
+  '    <input  class="form-control" id="montoTotal" placeholder="Monto Total"> ' +
   '  </div> ' +
   ' </div> ' +
 
@@ -125,6 +126,7 @@ agregaNuevo(){
       this.iArticuloSuc1.unidadDeMedida=((document.getElementById("unidadDeMedida") as HTMLInputElement).value);
       this.iArticuloSuc1.cantidadTotal=((document.getElementById("cantidadTotal") as HTMLInputElement).value);
       this.iArticuloSuc1.valorUnitario=((document.getElementById("valorUnitario") as HTMLInputElement).value);
+      this.iArticuloSuc1.montoTotal=((document.getElementById("montoTotal") as HTMLInputElement).value);
       this.datoConsultaSuc.push(this.iArticuloSuc1);
       this.refreshTable();
     }
@@ -148,10 +150,6 @@ agregaNuevo(){
   }
 
 
-
-
-
-
   private refreshTable() {
   console.log('pp:',this.datoConsultaSuc);
   this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
@@ -171,9 +169,10 @@ agregaNuevo(){
   }
 
   enviar(){
-
+    let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
+console.log('fecha:',formatoDate)
     this.comprasSucService
-    .putDataSucCrea('5',this.agregaArticulo.value.fechaSolicitud,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
+    .putDataSucCrea(formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable)
     .subscribe((res: {}) => {
       console.log('suc: ', res);
       this.grabarArticulo();

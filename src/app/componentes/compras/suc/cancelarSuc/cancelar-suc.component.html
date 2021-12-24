@@ -1,14 +1,14 @@
 <h2 mat-dialog-title>Cancelacion SUC</h2>
 
 <mat-dialog-content [formGroup]="cancelarSuc" name="cancelarSUC" class="agrega-container">
-<h3>Ud. esta a punto de cancelar la SUC N°{{idSuc}} favor ingrese datos de cancelación y confirme</h3>
+<h3>Ud. esta a punto de cancelar la SUC N°{{parametro.numSuc}} favor ingrese datos de cancelación y confirme</h3>
   <mat-form-field>
     <input matInput placeholder="Ingrese Nombre Responsable" [formControl]="Responsable" required>
     <mat-error *ngIf="Responsable.invalid">{{getErrorMessage('Responsable')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Ingrese Motivo del Cierre"  [formControl]="Motivo" required>
+    <input type='number' matInput placeholder="Ingrese Motivo del Cierre"  [formControl]="Motivo" required>
     <mat-error *ngIf="Motivo.invalid">{{getErrorMessage('Motivo')}}</mat-error>
   </mat-form-field>
 

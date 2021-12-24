@@ -28,8 +28,8 @@ export class ComprasOcService {
       catchError(this.errorHandl)
     );
   }
-
-  getDataOcDetalle1(parametro1:string): Observable<IDetalleOc1> {
+  //Los trae todo... hay que filtrar
+  getDataOcDetalle1(): Observable<IDetalleOc1> {
     return this.http.get<IDetalleOc1>(`${environment.apiUrl}/PostaCentralConsultaOC/consultaid/null/null/suc`, { headers: this.headers })
     .pipe(
       retry(1),
@@ -48,7 +48,7 @@ export class ComprasOcService {
   }
 
   putDataOcCrea(primero:string,fechaSolicitud:string,servicio:string,responsable:string,motivoCompra:string): Observable<IOcresultado> {
-    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/crea/`+ primero+  `/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`+ motivoCompra+  `/`,{ headers: this.headers })
+    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/crear/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`+ motivoCompra,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -56,7 +56,7 @@ export class ComprasOcService {
   }
 
   putDataOcCreaArticulo(primero:string,codigoArticulo: string,detalle: string, unidadDeMedida: string, cantidadTotal: string, valorUnitario: string, montoTotal: string): Observable<IOcresultado> {
-    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/creaArticulo/10/10/enfer/pedro/500/50000/valofinal/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
+    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/crear/`+  codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

@@ -15,12 +15,10 @@ import Swal from 'sweetalert2';
 })
 export class ConsultaOcComponent implements AfterViewInit {
 
-  iva=964;
-  resultado=0;
 
 //datoConsultaPac:  IConsultaPac | undefined;
 
- iDetalleOc1:IDetalleOc1={
+/*iDetalleOc1:IDetalleOc1={
   numeroOc:'',
   tipoDocAsoc:'',
   numDocAsoc: '',
@@ -31,6 +29,8 @@ export class ConsultaOcComponent implements AfterViewInit {
   dircEnvioFact: '',
   dircDespacho: '',
   formaPago: ''};
+*/
+iDetalleOc1: IDetalleOc1[] = [];
 
 id: string='';
   displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
@@ -57,20 +57,20 @@ id: string='';
 
   ngOnInit() {
 
-    this.getConsultaDetallePac1();
+    this.getConsultaDetalleOc1();
   }
 
 
-  getConsultaDetallePac1() {
-    console.log('paso oc1', this.id)
+  getConsultaDetalleOc1() {
+
     this.comprasOcService
-    .getDataOcDetalle1(this.id)
+    .getDataOcDetalle1()
     .subscribe((res: {}) => {
       console.log('res oc1: ', res);
       if (res != null){
-      this.iDetalleOc1 = res as IDetalleOc1;
+      this.iDetalleOc1 = res as IDetalleOc1[];
       }
-      this.getConsultaDetallePac2()
+      this.getConsultaDetalleOc2()
     },
     // console.log('yo:', res as PerfilI[]),
     error => {
@@ -85,14 +85,15 @@ id: string='';
   }
 
 
-  getConsultaDetallePac2() {
+  getConsultaDetalleOc2() {
     console.log('paso pac')
     this.comprasOcService
     .getDataOcDetalle2(this.id)
     .subscribe((res: {}) => {
       console.log('suc2: ', res);
+      if (res!=null){
       this.dataSource.data = res as IArticuloOc[];
-
+      }
     },
     // console.log('yo:', res as PerfilI[]),
     error => {
@@ -137,10 +138,6 @@ id: string='';
   getTotalCost() {
     return this.dataSource.data.map(t =>  parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0);
  }
-
- getTotalCostIva() {
-  return this.resultado= (this.dataSource.data.map(t =>  parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0) + this.iva);
-}
 
   }
 
