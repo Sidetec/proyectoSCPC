@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -15,7 +14,6 @@ export class AgregaArticuloComponent implements OnInit {
   
   datos: IArtFarm | undefined;
   constructor(private dialogRef: MatDialogRef<AgregaArticuloComponent>,
-              public httpClient: HttpClient,
               public listaArsenalService: ListaArsenalService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     
