@@ -1,12 +1,13 @@
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-
-import { IArticulo } from 'src/app/interface/Arsenal';
+import Swal from 'sweetalert2';
+import { IArticulo } from 'src/app/interface/arsenal';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-consulta-articulo',
@@ -15,7 +16,7 @@ import { IArticulo } from 'src/app/interface/Arsenal';
 })
 export class ConsultaArticuloComponent implements AfterViewInit {
 
-  datoConsultaArticulo: IArticulo[] = [
+  /*datoConsultaArticulo: IArticulo[] = [
     { 
       gzen: 'gzen001',
       grupo: 'grupo001',
@@ -30,39 +31,50 @@ export class ConsultaArticuloComponent implements AfterViewInit {
       altTerapeutica: 'altTerapeutica001',
       observaciones: 'observaciones001'
     }
-  ];
+  ];*/
+  show = true;
+  datos: IArticulo | undefined;
 
-  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 
-  'medicamento', 'farmaceutica', 'presentacion', 'dosificacion', 'restriccionres',
-  'altTerapeutica','observaciones','opciones'];
-  dataSource: MatTableDataSource<IArticulo>;
+  displayedColumns: string[] = 
+    ['articulo','cantidad', 'descripcion', 'ctrlLegal', 'grupo', 'subgrupo', 
+     'tipo', 'gzen', 'medicamento', 'farmaceutica', 'presentacion', 'dosificacion',
+     'restricciones', 'altTerapeutica', 'observaciones','opciones'];
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
+  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaArticuloComponent>
+    ,@Inject(MAT_DIALOG_DATA) public data: any) {
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<ConsultaArticuloComponent>,) {
-    this.dataSource = new MatTableDataSource(this.datoConsultaArticulo);
+      this.datos = data;
   }
+  gzen = new FormControl('', [Validators.required]);
+  ctrlLegal= new FormControl('', [Validators.required]);
+  grupo= new FormControl('', [Validators.required]);
+  subgrupo= new FormControl('', [Validators.required]);
+  tipo= new FormControl('', [Validators.required]);
+  medicamento= new FormControl('', [Validators.required]);
+  farmaceutica= new FormControl('', [Validators.required]);
+  presentacion= new FormControl('', [Validators.required]);
+  dosificacion= new FormControl('', [Validators.required]);
+  restricciones= new FormControl('', [Validators.required]);
+  altTerapeutica= new FormControl('', [Validators.required]);
+  observaciones= new FormControl('', [Validators.required]);
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  public configuraAlerta: FormGroup = new FormGroup({
+    gzen: this.gzen,
+    ctrlLegal: this.ctrlLegal,
+    grupo: this.grupo,
+    subgrupo: this.subgrupo,
+    tipo: this.tipo,
+    medicamento: this.medicamento,
+    farmaceutica: this.farmaceutica,
+    presentacion: this.presentacion,
+    dosificacion: this.dosificacion,
+    restricciones: this.restricciones,
+    altTerapeutica: this.altTerapeutica,
+    observaciones: this.observaciones
+  });
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  private refreshTable() {
-
-   this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   cerrar() {

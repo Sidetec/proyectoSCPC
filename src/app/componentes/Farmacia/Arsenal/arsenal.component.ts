@@ -2,20 +2,18 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatSnackBar} from '@angular/material//snack-bar';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
-import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
-import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
-import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
+
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
-import { IArticulo } from 'src/app/interface/Arsenal';
+import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
+import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
+import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
 
-
-/*var datos: IArticulo[] = [
-  { 
+/*
+var datos: IArticulo[] = [
+  {
     gzen: 'gzen001',
     grupo: 'G001',
     subgrupo: 'SG001', 
@@ -80,9 +78,12 @@ import Swal from 'sweetalert2';
 })
 export class ArsenalComponent implements AfterViewInit {  
   show = true;
-  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo', 
-    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','restricciones',
-    'altTerapeutica','observaciones','opciones'];
+  datos: IArticulo | undefined;
+
+  displayedColumns: string[] = 
+    ['articulo','cantidad', 'descripcion', 'ctrlLegal', 'grupo', 'subgrupo', 
+     'tipo', 'gzen', 'medicamento', 'farmaceutica', 'presentacion', 'dosificacion',
+     'restricciones', 'altTerapeutica', 'observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
@@ -155,7 +156,7 @@ getListArsenal(): void {
     );
   }
 
-  actualizaArticulo() {
+/*  actualizaArticulo() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -173,17 +174,16 @@ getListArsenal(): void {
                 }
         }
       );
-  }
+  }*/
 
-  consultaArticulo(gzen: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
-    medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string,
-     restricciones:string, altTerapuetica: string, observaciones: string) {
+  consultaArticulo(articulo: string, cantidad: number, descripcion: string, ctrlLegal: string,
+    grupo: string, subgrupo: string, tipo: string, gzen: string, medicamento: string,
+    farmaceutica: string, presentacion: string, dosificacion: string, restricciones: string,
+    altTerapeutica: string, observaciones: string) {
 
-    /*datoArticulo = {
-      gzen, grupo, subgrupo, ctrlLegal, tipo,
-      medicamento, farmaceutica, presentacion, dosificacion,
-      restricciones, altTerapuetica, observaciones
-    };*/
+    this.datos = {articulo, cantidad, descripcion, ctrlLegal, grupo, subgrupo, tipo,
+      gzen, medicamento, farmaceutica, presentacion, dosificacion, restricciones,
+      altTerapeutica, observaciones};
 
     const dialogConfig = new MatDialogConfig();
 
@@ -193,7 +193,7 @@ getListArsenal(): void {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-    //dialogConfig.data = this.datoArticulo;
+    dialogConfig.data = this.datos;
     this.dialog.open(ConsultaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos Consulta:', data);
@@ -204,17 +204,15 @@ getListArsenal(): void {
       );
    }
 
-   eliminaArticulo(id: string) {
-
+/*   eliminaArticulo(gzen: string) {
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
-    dialogConfig.data = id;
+    dialogConfig.data = gzen;
     this.dialog.open(EliminaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos eliminados:', data);
@@ -223,7 +221,7 @@ getListArsenal(): void {
                 }
         }
       );
-  }
+  }*/
 
    private refreshTable() {
 

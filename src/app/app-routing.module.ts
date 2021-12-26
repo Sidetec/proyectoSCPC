@@ -4,8 +4,8 @@ import { AgregaConsumoComponent } from './componentes/compras/consumo/agrega-con
 import { PacComponent } from './componentes/compras/pac/pac.component';
 import { sucComponent } from './componentes/compras/suc/suc.component';
 
-import { ArsenalComponent } from './componentes/Farmacia/Arsenal/arsenal.component';
-import { ClimatizacionComponent } from './componentes/Farmacia/Climatizacion/climatizacion.component';
+import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
+import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';

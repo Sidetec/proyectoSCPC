@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {IArticulo} from 'src/app/interface/Arsenal';
+import {IArtFarm} from 'src/app/interface/arsenal';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 
 import Swal from 'sweetalert2';
 
@@ -12,10 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class AgregaArticuloComponent implements OnInit {
   
-  datoArticulo: IArticulo | undefined;
+  show = true;
+  datos: IArtFarm | undefined;
   constructor(private dialogRef: MatDialogRef<AgregaArticuloComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public listaArsenalService: ListaArsenalService) {
+      this.datos = data;
     }
 
     gzen= new FormControl('', [Validators.required]);
@@ -87,6 +90,22 @@ export class AgregaArticuloComponent implements OnInit {
   }
 
   enviar() {
+    this.datos = {
+      cantidad: 0,
+      descripcion:'',
+      ctrlLegal: this.ingresoArticulo.get('ctrlLegal')?.value,
+      grupo: this.ingresoArticulo.get('grupo')?.value,
+      subgrupo: this.ingresoArticulo.get('subgrupo')?.value,
+      tipo: this.ingresoArticulo.get('tipo')?.value,
+      gzen: this.ingresoArticulo.get('gzen')?.value,
+      medicamento: this.ingresoArticulo.get('medicamento')?.value,
+      farmaceutica: this.ingresoArticulo.get('farmaceutica')?.value,
+      presentacion: this.ingresoArticulo.get('presentacion')?.value,
+      dosificacion: this.ingresoArticulo.get('dosificacion')?.value,
+      restricciones: this.ingresoArticulo.get('restricciones')?.value,
+      altTerapeutica: this.ingresoArticulo.get('altTerapeutica')?.value,
+      observaciones: this.ingresoArticulo.get('observaciones')?.value,
+    }
 
       Swal.fire(
         'Actualizado',
