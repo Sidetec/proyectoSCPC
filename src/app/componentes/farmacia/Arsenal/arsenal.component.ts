@@ -2,24 +2,21 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatSnackBar} from '@angular/material//snack-bar';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
-import { IArticulo } from 'src/app/interface/Arsenal';
+import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
-import { ModificaArticuloComponent } from './modifica-articulo/modifica-articulo.component';
 import { ConsultaArticuloComponent } from './consulta-articulo/consulta-articulo.component';
-import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.component';
 
-
-/*var datos: IArticulo[] = [
+/*
+var datos: IArticulo[] = [
   {
     gzen: 'gzen001',
     grupo: 'G001',
-    subgrupo: 'SG001',
+    subgrupo: 'SG001', 
     ctrlLegal: 'ctrl001',
     tipo: 'tipo001',
     medicamento: 'medicamento001',
@@ -29,11 +26,11 @@ import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.co
     restricciones: 'restricciones001',
     altTerapeutica: 'altTerapeutica001',
     observaciones: 'observaciones001'
-  },
-  {
-    gzen: 'gzen002',
+  }, 
+  { 
+    gzen: 'gzen002', 
     grupo: 'G002',
-    subgrupo: 'SG002',
+    subgrupo: 'SG002', 
     ctrlLegal: 'ctrl002',
     tipo: 'tipo002',
     medicamento: 'medicamento002',
@@ -44,10 +41,10 @@ import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.co
     altTerapeutica: 'altTerapeutica002',
     observaciones: 'observaciones002'
   },
-  {
+  { 
     gzen: 'gzen003',
     grupo: 'G003',
-    subgrupo: 'SG003',
+    subgrupo: 'SG003', 
     ctrlLegal: 'ctrl003',
     tipo: 'tipo003',
     medicamento: 'medicamento003',
@@ -58,10 +55,10 @@ import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.co
     altTerapeutica: 'altTerapeutica003',
     observaciones: 'observaciones003'
   },
-  {
+  {   
     gzen: 'gzen004',
     grupo: 'G004',
-    subgrupo: 'SG004',
+    subgrupo: 'SG004', 
     ctrlLegal: 'ctrl004',
     tipo: 'tipo004',
     medicamento: 'medicamento004',
@@ -79,11 +76,14 @@ import { EliminaArticuloComponent } from './elimina-articulo/elimina-articulo.co
   templateUrl: './arsenal.component.html',
   styleUrls: ['./arsenal.component.css']
 })
-export class ArsenalComponent implements AfterViewInit {
+export class ArsenalComponent implements AfterViewInit {  
   show = true;
-  displayedColumns: string[] = ['gzen', 'grupo', 'subgrupo', 'ctrlLegal', 'tipo',
-    'medicamento', 'farmaceutica', 'presentacion', 'dosificacion','restricciones',
-    'altTerapeutica','observaciones','opciones'];
+  datos: IArticulo | undefined;
+
+  displayedColumns: string[] = 
+    ['articulo','cantidad', 'descripcion', 'ctrlLegal', 'grupo', 'subgrupo', 
+     'tipo', 'gzen', 'medicamento', 'farmaceutica', 'presentacion', 'dosificacion',
+     'restricciones', 'altTerapeutica', 'observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
   @ViewChild(MatPaginator)
@@ -97,7 +97,7 @@ export class ArsenalComponent implements AfterViewInit {
     //this.dataSource = new MatTableDataSource(datos);
     this.dataSource = new MatTableDataSource<IArticulo>();
   }
-
+  
 ngOnInit() {
   this.getListArsenal();
 }
@@ -145,7 +145,7 @@ getListArsenal(): void {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '2%'};
     dialogConfig.data = {};
-
+    
     this.dialog.open(AgregaArticuloComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Datos agregados:', data);
@@ -156,7 +156,7 @@ getListArsenal(): void {
     );
   }
 
-  actualizaArticulo() {
+/*  actualizaArticulo() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -174,17 +174,16 @@ getListArsenal(): void {
                 }
         }
       );
-  }
+  }*/
 
-  consultaArticulo(gzen: string, grupo: string, subgrupo: string, ctrlLegal: string, tipo: string,
-    medicamento: string, farmaceutica: string, presentacion: string, dosificacion: string,
-     restricciones:string, altTerapuetica: string, observaciones: string) {
+  consultaArticulo(articulo: string, cantidad: number, descripcion: string, ctrlLegal: string,
+    grupo: string, subgrupo: string, tipo: string, gzen: string, medicamento: string,
+    farmaceutica: string, presentacion: string, dosificacion: string, restricciones: string,
+    altTerapeutica: string, observaciones: string) {
 
-    /*datoArticulo = {
-      gzen, grupo, subgrupo, ctrlLegal, tipo,
-      medicamento, farmaceutica, presentacion, dosificacion,
-      restricciones, altTerapuetica, observaciones
-    };*/
+    this.datos = {articulo, cantidad, descripcion, ctrlLegal, grupo, subgrupo, tipo,
+      gzen, medicamento, farmaceutica, presentacion, dosificacion, restricciones,
+      altTerapeutica, observaciones};
 
     const dialogConfig = new MatDialogConfig();
 
@@ -194,7 +193,7 @@ getListArsenal(): void {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-    //dialogConfig.data = this.datoArticulo;
+    dialogConfig.data = this.datos;
     this.dialog.open(ConsultaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos Consulta:', data);
@@ -205,17 +204,15 @@ getListArsenal(): void {
       );
    }
 
-   eliminaArticulo(id: string) {
-
+/*   eliminaArticulo(gzen: string) {
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
 
-    dialogConfig.data = id;
+    dialogConfig.data = gzen;
     this.dialog.open(EliminaArticuloComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos eliminados:', data);
@@ -224,7 +221,7 @@ getListArsenal(): void {
                 }
         }
       );
-  }
+  }*/
 
    private refreshTable() {
 

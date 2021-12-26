@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
-import { IArticulo } from '../interface/Arsenal';
-
+import { IArtFarm, IArticulo, IResultado } from '../interface/arsenal';
 
 @Injectable({
   providedIn: 'root'
@@ -27,16 +26,16 @@ export class ListaArsenalService {
     );
   }
 
-  getDelArticulo(gzen:string): Observable<IArticulo> {
-    return this.http.get<IArticulo>(`${environment.apiUrl}/PostaCentralArsenalFarmac/eliminar/5896/`+ gzen , { headers: this.headers })
+  getDelArticulo(gzen:string): Observable<IResultado> {
+    return this.http.get<IResultado>(`${environment.apiUrl}/PostaCentralArsenalFarmac/eliminar/5896/`+ gzen , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  getInsArticulo(articulo:IArticulo): Observable<IArticulo> {
-    return this.http.get<IArticulo>(`${environment.apiUrl}/PostaCentralArsenalFarmac/crear/1/2/2/3/4/5/6/7/8/9/10/11/`+ articulo , { headers: this.headers })
+  getInsArticulo(articulo:IArtFarm): Observable<IResultado> {
+    return this.http.get<IResultado>(`${environment.apiUrl}/PostaCentralArsenalFarmac/crear/1/2/2/3/4/5/6/7/8/9/10/11/`+ articulo , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

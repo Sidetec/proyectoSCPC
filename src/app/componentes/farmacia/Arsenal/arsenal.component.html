@@ -14,20 +14,33 @@
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+      
+      <ng-container matColumnDef="articulo">
+        <th [hidden]="show" id='articuloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Artículo</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.articulo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="cantidad">
+        <th [hidden]="show" id='cantidadI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Cantidad</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.cantidad}} </td>
+      </ng-container>
+      <ng-container matColumnDef="descripcion">
+        <th [hidden]="show" id='descripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Descripción</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.descripcion}} </td>
+      </ng-container>      
 
       <!-- GZEN Column -->
       <ng-container matColumnDef="gzen">
         <th id='gzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Código</th>
         <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.gzen}} </td>
       </ng-container>
-
+  
       <!-- Grupo Column -->
       <ng-container matColumnDef="grupo">
         <th id='grupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Grupo</th>
         <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.grupo}} </td>
       </ng-container>
 
-      <!-- SubGrupo Column -->
+      <!-- SubGrupo Column -->      
       <ng-container matColumnDef="subgrupo">
         <th id='subgrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>SubGrupo</th>
         <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.subgrupo}} </td>
@@ -69,55 +82,47 @@
         <td mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.dosificacion}} </td>
       </ng-container>
 
-      <!-- Ocultos -->
-      <!-- Restricción Column -->
-      <ng-container matColumnDef="restricciones">
-        <th [hidden]="show" id='restriccionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Restricciones</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.restricciones}} </td>
-      </ng-container>
-      <!-- Alternativa Terapéutica Column -->
-      <ng-container matColumnDef="altTerapeutica">
-        <th [hidden]="show" id='altTerapeuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Alternativa Terapéutica</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.altTerapeutica}} </td>
-      </ng-container>
-      <!-- Observaciones Column -->
-      <ng-container matColumnDef="observaciones">
-        <th [hidden]="show" id='observacionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Observaciones</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.observaciones}} </td>
-      </ng-container>
+      <!-- Ocultos 
+          articulo, cantidad, descripcion, restricciones, altTerapeutica, observaciones -->
 
+      <ng-container matColumnDef="restricciones">
+        <th [hidden]="show" id='restriccionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Restricciones</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.restricciones}} </td>
+      </ng-container>
+      <ng-container matColumnDef="altTerapeutica">
+        <th [hidden]="show" id='altTerapeuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Alternativa Terapéutica</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.altTerapeutica}} </td>
+      </ng-container>
+      <ng-container matColumnDef="observaciones">
+        <th [hidden]="show" id='observacionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Observaciones</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.observaciones}} </td>
+      </ng-container>
+      
       <ng-container matColumnDef="opciones" >
-        <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>
+        <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 10%; text-align: center'>
           <button mat-icon-button color="accent" class="nuevo" (click)="agregaNuevo()">
             <mat-icon>add</mat-icon>
           </button>
         </th>
-
-        <td mat-cell *matCellDef="let row; let i=index;" style=' width: 15%; text-align: center'>
-
-          <button mat-icon-button color="accent" style="size:5px" (click)="actualizaArticulo()">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-icon-button color="accent" (click)="consultaArticulo(row.gzen, row.grupo, row.subgrupo, row.ctrlLegal, row.tipo, row.medicamento, row.farmaceutica, row.presentacion, row.dosificacion, row.restricciones,row.altTerapeutica,row.observaciones)">
+  
+        <td mat-cell *matCellDef="let row; let i=index;" style=' width: 10%; text-align: center'>
+ 
+          <button mat-icon-button color="accent" (click)="consultaArticulo(row.articulo,row.cantidad,row.descripcion,row.ctrlLegal,row.grupo,row.subgrupo,row.tipo,row.gzen,row.medicamento,row.farmaceutica,row.presentacion,row.dosificacion,row.restricciones,row.altTerapeutica,row.observaciones)">
             <mat-icon>search</mat-icon>
           </button>
-
-          <button mat-icon-button color="accent" (click)="eliminaArticulo(row.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-
+ 
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+  
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No existen datos...{{input.value}}"</td>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>
     </table>
-
+  
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
   </div>
+  
