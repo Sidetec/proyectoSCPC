@@ -3,8 +3,8 @@
 <mat-dialog-content [formGroup]="ingresoArticulo" name="ingresoArticulo" class="agrega-container">
 
   <mat-form-field>
-    <input matInput placeholder="Código" [formControl]="gzen" >
-    <mat-error *ngIf="gzen.invalid">{{getErrorMessage('gzen')}}</mat-error>
+    <input matInput placeholder="Código" [formControl]="codigoGzen" >
+    <mat-error *ngIf="codigoGzen.invalid">{{getErrorMessage('codigoGzen')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -13,13 +13,13 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="SubGrupo" [formControl]="subgrupo" >
-    <mat-error *ngIf="subgrupo.invalid">{{getErrorMessage('subgrupo')}}</mat-error>
+    <input matInput placeholder="SubGrupo" [formControl]="subGrupo" >
+    <mat-error *ngIf="subGrupo.invalid">{{getErrorMessage('subGrupo')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Control Legal" [formControl]="ctrlLegal" >
-    <mat-error *ngIf="ctrlLegal.invalid">{{getErrorMessage('ctrlLegal')}}</mat-error>
+    <input matInput placeholder="Control Legal" [formControl]="controlLegal" >
+    <mat-error *ngIf="controlLegal.invalid">{{getErrorMessage('controlLegal')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -33,8 +33,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Farmacéutica" [formControl]="farmaceutica" >
-    <mat-error *ngIf="farmaceutica.invalid">{{getErrorMessage('farmaceutica')}}</mat-error>
+    <input matInput placeholder="Farmacéutica" [formControl]="fFarmacia" >
+    <mat-error *ngIf="fFarmacia.invalid">{{getErrorMessage('fFarmacia')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -53,8 +53,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Alternativa Terapéutica" [formControl]="altTerapeutica" >
-    <!--<mat-error *ngIf="altTerapeutica.invalid">{{getErrorMessage('altTerapeutica')}}</mat-error>-->
+    <input matInput placeholder="Alternativa Terapéutica" [formControl]="alternativa" >
+    <!--<mat-error *ngIf="alternativa.invalid">{{getErrorMessage('alternativa')}}</mat-error>-->
   </mat-form-field>
 
   <mat-form-field>

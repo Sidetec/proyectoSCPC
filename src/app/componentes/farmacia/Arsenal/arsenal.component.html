@@ -14,24 +14,11 @@
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
-      
-      <ng-container matColumnDef="articulo">
-        <th [hidden]="show" id='articuloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Artículo</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.articulo}} </td>
-      </ng-container>
-      <ng-container matColumnDef="cantidad">
-        <th [hidden]="show" id='cantidadI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Cantidad</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.cantidad}} </td>
-      </ng-container>
-      <ng-container matColumnDef="descripcion">
-        <th [hidden]="show" id='descripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Descripción</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.descripcion}} </td>
-      </ng-container>      
 
       <!-- GZEN Column -->
-      <ng-container matColumnDef="gzen">
-        <th id='gzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Código</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.gzen}} </td>
+      <ng-container matColumnDef="codigoGzen">
+        <th id='codigoGzenI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Código</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.codigoGzen}} </td>
       </ng-container>
   
       <!-- Grupo Column -->
@@ -41,15 +28,15 @@
       </ng-container>
 
       <!-- SubGrupo Column -->      
-      <ng-container matColumnDef="subgrupo">
-        <th id='subgrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>SubGrupo</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.subgrupo}} </td>
+      <ng-container matColumnDef="subGrupo">
+        <th id='subGrupoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>SubGrupo</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.subGrupo}} </td>
       </ng-container>
 
       <!-- Control Legal Column -->
-      <ng-container matColumnDef="ctrlLegal">
-        <th id='ctrlLegalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Control Legal</th>
-        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.ctrlLegal}} </td>
+      <ng-container matColumnDef="controlLegal">
+        <th id='controlLegalI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Control Legal</th>
+        <td mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.controlLegal}} </td>
       </ng-container>
 
       <!-- Tipo Column -->
@@ -60,57 +47,73 @@
 
       <!-- Medicamento Column -->
       <ng-container matColumnDef="medicamento">
-        <th id='medicamentoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Medicamento</th>
-        <td mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.medicamento}} </td>
+        <th id='medicamentoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Medicamento</th>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.medicamento}} </td>
       </ng-container>
 
       <!-- Farmacéutica Column -->
-      <ng-container matColumnDef="farmaceutica">
-        <th id='farmaceuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Farmacéutica</th>
-        <td mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.farmaceutica}} </td>
+      <ng-container matColumnDef="fFarmacia">
+        <th id='fFarmaciaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Farmacéutica</th>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fFarmacia}} </td>
       </ng-container>
 
       <!-- Presentación Column -->
       <ng-container matColumnDef="presentacion">
-        <th id='presentacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Presentación</th>
-        <td mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.presentacion}} </td>
+        <th id='presentacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Presentación</th>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.presentacion}} </td>
       </ng-container>
 
       <!-- Dosificación Column -->
       <ng-container matColumnDef="dosificacion">
-        <th id='dosificacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Dosificación</th>
-        <td mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.dosificacion}} </td>
+        <th id='dosificacionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Dosificación</th>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.dosificacion}} </td>
       </ng-container>
 
-      <!-- Ocultos 
-          articulo, cantidad, descripcion, restricciones, altTerapeutica, observaciones -->
-
+      <!-- Ocultos -->
+      <!-- Artículo Column -->
+      <ng-container matColumnDef="articulo">
+        <th [hidden]="show" id='articuloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Artículo</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.articulo}} </td>
+      </ng-container>
+      <!-- Cantidad Column -->
+      <ng-container matColumnDef="cantidad">
+        <th [hidden]="show" id='cantidadI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Cantidad</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.cantidad}} </td>
+      </ng-container>
+      <!-- Descripción Column -->
+      <ng-container matColumnDef="descripcion">
+        <th [hidden]="show" id='descripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Descripción</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.descripcion}} </td>
+      </ng-container>
+      <!-- Restricción Column -->
       <ng-container matColumnDef="restricciones">
-        <th [hidden]="show" id='restriccionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Restricciones</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.restricciones}} </td>
+        <th [hidden]="show" id='restriccionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Restricciones</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.restricciones}} </td>
       </ng-container>
-      <ng-container matColumnDef="altTerapeutica">
-        <th [hidden]="show" id='altTerapeuticaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Alternativa Terapéutica</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.altTerapeutica}} </td>
+      <!-- Alternativa Terapéutica Column -->
+      <ng-container matColumnDef="alternativa">
+        <th [hidden]="show" id='alternativaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Alternativa Terapéutica</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.alternativa}} </td>
       </ng-container>
+      <!-- Observaciones Column -->
       <ng-container matColumnDef="observaciones">
-        <th [hidden]="show" id='observacionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 0%;'>Observaciones</th>
-        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 0%;'> {{row.observaciones}} </td>
+        <th [hidden]="show" id='observacionesI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 12%;'>Observaciones</th>
+        <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 12%;'> {{row.observaciones}} </td>
       </ng-container>
       
       <ng-container matColumnDef="opciones" >
-        <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 10%; text-align: center'>
+        <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 5%; text-align: center'>
           <button mat-icon-button color="accent" class="nuevo" (click)="agregaNuevo()">
             <mat-icon>add</mat-icon>
           </button>
         </th>
   
-        <td mat-cell *matCellDef="let row; let i=index;" style=' width: 10%; text-align: center'>
- 
-          <button mat-icon-button color="accent" (click)="consultaArticulo(row.articulo,row.cantidad,row.descripcion,row.ctrlLegal,row.grupo,row.subgrupo,row.tipo,row.gzen,row.medicamento,row.farmaceutica,row.presentacion,row.dosificacion,row.restricciones,row.altTerapeutica,row.observaciones)">
+        <td mat-cell *matCellDef="let row; let i=index;" style=' width: 5%; text-align: center'>
+  
+          <button mat-icon-button color="accent" (click)="consultaArticulo(row.articulo,row.cantidad,row.descripcion,row.codigoGzen, row.grupo, row.subGrupo, row.controlLegal, row.tipo, row.medicamento, row.fFarmacia, row.presentacion, row.dosificacion, row.restricciones,row.alternativa,row.observaciones)">
             <mat-icon>search</mat-icon>
           </button>
- 
+
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
