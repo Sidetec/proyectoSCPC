@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>Creando Orden de Compra Manual</h2>
+
+<mat-dialog-content [formGroup]="agregaArticulo " name="agregaArticulo" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput  placeholder="Tipo Documento Asociado" [formControl]="tipoDocumentoAsociado" >
+    <mat-error *ngIf="tipoDocumentoAsociado.invalid">{{getErrorMessage('tipoDocumentoAsociado')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado" >
+    <mat-error *ngIf="numDocumentoAsociado.invalid">{{getErrorMessage('numDocumentoAsociado')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Fecha Inicio" [matDatepicker]="dpdFechaSolicitud" [formControl]="fechaSolicitud" required>
+    <mat-datepicker-toggle matSuffix [for]="dpdFechaSolicitud"></mat-datepicker-toggle>
+    <mat-datepicker #dpdFechaSolicitud></mat-datepicker>
+    <mat-error *ngIf="fechaSolicitud.invalid">{{getErrorMessage('fechaSolicitud')}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput  placeholder="Empresa" [formControl]="empresa" >
+    <mat-error *ngIf="empresa.invalid">{{getErrorMessage('empresa')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Rut" [formControl]="rut" >
+    <mat-error *ngIf="rut.invalid">{{getErrorMessage('rut')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Descripción" [formControl]="descripcion" >
+    <mat-error *ngIf="descripcion.invalid">{{getErrorMessage('descripcion')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Dirección Envío Factura" [formControl]="direccionEnvioFactura" >
+    <mat-error *ngIf="direccionEnvioFactura.invalid">{{getErrorMessage('direccionEnvioFactura')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Dirección Despacho" [formControl]="direccionDespacho" >
+    <mat-error *ngIf="direccionDespacho.invalid">{{getErrorMessage('direccionDespacho')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Forma Pago" [formControl]="formaPago" >
+    <mat-error *ngIf="formaPago.invalid">{{getErrorMessage('formaPago')}}</mat-error>
+  </mat-form-field>
+
+
+</mat-dialog-content>
+
+
+
+<div *ngIf="!agregaArticulo.invalid">
+  <div *ngIf="agregaArticulo">
+    <app-agrega-suc2 [agregaArticulo]="agregaArticulo"></app-agrega-suc2>
+  </div>
+  </div>
+
+
+
+
+
+
+
