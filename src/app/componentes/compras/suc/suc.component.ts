@@ -59,7 +59,7 @@ export class sucComponent implements AfterViewInit, OnInit {
   }
 
   getListPac() {
-    console.log('paso pac')
+    console.log('paso suc')
     this.comprasSucService
     .getDataSucLista()
     .subscribe((res: {}) => {
@@ -94,8 +94,7 @@ export class sucComponent implements AfterViewInit, OnInit {
   }
 
   agregaNuevo() {
-  //  agregaNuevo(empresaInterface_: EmpresaI) {
-    // Nuevo
+    console.log();
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -103,7 +102,8 @@ export class sucComponent implements AfterViewInit, OnInit {
     dialogConfig.width = '50%';
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '2%'};
-    dialogConfig.data = {};
+
+    dialogConfig.data = {}
   //  dialogConfig.data = {
   //    idProducto: idProdP,
   //    titulo: tituloP

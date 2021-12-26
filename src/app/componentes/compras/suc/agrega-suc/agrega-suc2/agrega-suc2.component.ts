@@ -22,8 +22,9 @@ export class AgregaSuc2Component implements AfterViewInit {
   @Input()
   agregaArticulo!: FormGroup;
 
-  resultado=0;
-  iva=964;
+  @Input()
+  id!: string;
+
 //datoConsultaPac:  IConsultaPac | undefined;
 
 iArticuloSuc1:IArticuloSuc = {
@@ -73,11 +74,11 @@ agregaNuevo(){
     confirmButtonText: "Confirm",
     html:
 
-    '<form> ' +
+    '<form name=f1> ' +
     ' <div class="form-group row"> ' +
     '  <label for="inputCodigoArticulo" class="col-sm-5 col-form-label">Código Artículo </label> ' +
     '  <div class="col-sm-7"> ' +
-    '    <input  class="form-control" id="codigoArticulo" placeholder="Código Artículo"> ' +
+    '    <input  class="form-control" id="codigoArticulo" placeholder="Código Artículo" onblur="compruebaValidoEntero($event)"> ' +
     '  </div> ' +
     ' </div> ' +
 
@@ -116,7 +117,8 @@ agregaNuevo(){
   '  </div> ' +
   ' </div> ' +
 
-  ' </form> ',
+  ' </form> '
+  ,
 
 
     focusConfirm: false,
@@ -164,9 +166,7 @@ agregaNuevo(){
      return this.datoConsultaSuc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0);
   }
 
-  getTotalCostIva() {
-    return this.resultado= (this.datoConsultaSuc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0) + this.iva);
-  }
+
 
   enviar(){
     let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
@@ -195,7 +195,7 @@ console.log('fecha:',formatoDate)
     for (var valor in this.dataSource.data){
 
           this.comprasSucService
-        .putDataSucCreaArticulo('10',this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].detalle,this.dataSource.data[valor].unidadDeMedida,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario,this.dataSource.data[valor].montoTotal)
+        .putDataSucCreaArticulo(this.id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('suc: ', res);
 
@@ -217,5 +217,12 @@ console.log('fecha:',formatoDate)
         'success'
       ); // ,
     }
+
+    compruebaValidoEntero(event: any){
+
+      ((document.getElementById("unidadDeMedida") as HTMLInputElement).value)= event.target.value;
+     // }
+    }
+
 }
 

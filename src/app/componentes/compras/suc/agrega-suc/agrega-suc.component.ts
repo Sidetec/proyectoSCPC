@@ -14,12 +14,12 @@ import Swal from 'sweetalert2';
 })
 export class AgregasucComponent implements OnInit {
 
-
-
-
+  id: string='';
 
   constructor(private dialogRef: MatDialogRef<AgregasucComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
               ) {
+                this.id = data;
               }
 
               fechaSolicitud = new FormControl('', [Validators.required]);

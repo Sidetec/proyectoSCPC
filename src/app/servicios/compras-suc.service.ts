@@ -54,8 +54,9 @@ export class ComprasSucService {
     );
   }
 
-  putDataSucCreaArticulo(primero:string,codigoArticulo: string,detalle: string, unidadDeMedida: string, cantidadTotal: string, valorUnitario: string, montoTotal: string): Observable<ISucresultado> {
-    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ primero+  `/`+ codigoArticulo+  `/`+ detalle+  `/`+ unidadDeMedida+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`+ montoTotal+  `/`,{ headers: this.headers })
+  putDataSucCreaArticulo(id:string,codigoArticulo: string,cantidadTotal: string, PrecioUnitario: string): Observable<ISucresultado> {
+    id='1';
+    return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ id+  `/`+ codigoArticulo+  `/`+ cantidadTotal+  `/`+ PrecioUnitario+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
