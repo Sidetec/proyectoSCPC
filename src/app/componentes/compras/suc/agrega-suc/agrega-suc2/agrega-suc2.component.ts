@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
+import { IngresoArtSucComponent } from './ingreso-art-suc/ingreso-art-suc.component';
 
 @Component({
   selector: 'app-agrega-suc2',
@@ -67,60 +68,8 @@ datoConsultaSuc: IArticuloSuc[] = [
   }
 
 agregaNuevo(){
-  Swal.fire({
-    title: "Ingreso de Artículo",
 
-    showCancelButton: true,
-    confirmButtonText: "Confirm",
-    html:
-
-    '<form name=f1> ' +
-    ' <div class="form-group row"> ' +
-    '  <label for="inputCodigoArticulo" class="col-sm-5 col-form-label">Código Artículo </label> ' +
-    '  <div class="col-sm-7"> ' +
-    '    <input  class="form-control" id="codigoArticulo" placeholder="Código Artículo" onblur="compruebaValidoEntero($event)"> ' +
-    '  </div> ' +
-    ' </div> ' +
-
-  ' <div class="form-group row"> ' +
-  '  <label for="inputDetalle" class="col-sm-5 col-form-label">Detalle</label> ' +
-  '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="detalle" placeholder="Detalle"> ' +
-  '  </div> ' +
-  ' </div> ' +
-
-  ' <div class="form-group row"> ' +
-  '  <label for="inputUnidadDeMedida" class="col-sm-5 col-form-label">Unidad de Medida</label> ' +
-  '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="unidadDeMedida" placeholder="Unidad de Medida"> ' +
-  '  </div> ' +
-  ' </div> ' +
-
-  ' <div class="form-group row"> ' +
-  '  <label for="inputCantidadTotal" class="col-sm-5 col-form-label">Cantidad Total</label> ' +
-  '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="cantidadTotal" placeholder="Canidad Total"> ' +
-  '  </div> ' +
-  ' </div> ' +
-
-  ' <div class="form-group row"> ' +
-  '  <label for="inputValorUnitario" class="col-sm-5 col-form-label">Valor Unitario</label> ' +
-  '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="valorUnitario" placeholder="Valor Unitario"> ' +
-  '  </div> ' +
-  ' </div> ' +
-
-  ' <div class="form-group row"> ' +
-  '  <label for="inputMontoTotal" class="col-sm-5 col-form-label">Monto Total</label> ' +
-  '  <div class="col-sm-7"> ' +
-  '    <input  class="form-control" id="montoTotal" placeholder="Monto Total"> ' +
-  '  </div> ' +
-  ' </div> ' +
-
-  ' </form> '
-  ,
-
-
+/*
     focusConfirm: false,
     preConfirm: () => {
      this.iArticuloSuc1.codigoArticulo=((document.getElementById("codigoArticulo") as HTMLInputElement).value);
@@ -133,6 +82,36 @@ agregaNuevo(){
       this.refreshTable();
     }
   })
+*/
+  const dialogConfig = new MatDialogConfig();
+
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '50%';
+  dialogConfig.height = '90%';
+  dialogConfig.position = { top : '2%'};
+  dialogConfig.data = {};
+//  dialogConfig.data = {
+//    idProducto: idProdP,
+//    titulo: tituloP
+//  };
+
+
+  this.dialog.open(IngresoArtSucComponent, dialogConfig)
+  .afterClosed().subscribe(
+   data => {console.log('Dialog output3333:', data);
+            if (data !== undefined) {
+              this.iArticuloSuc1.codigoArticulo=(data.codigoArticulo);
+      this.iArticuloSuc1.detalle=(data.descripcion);
+      this.iArticuloSuc1.unidadDeMedida=(data.unidad);
+      this.iArticuloSuc1.cantidadTotal=(data.cantidadTotal);
+      this.iArticuloSuc1.valorUnitario=(data.valorUnitario);
+      this.iArticuloSuc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
+      this.datoConsultaSuc.push(this.iArticuloSuc1);
+                this.refreshTable();
+            }
+    }
+  );
 }
 
 
@@ -174,7 +153,7 @@ console.log('fecha:',formatoDate)
     this.comprasSucService
     .putDataSucCrea(formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable)
     .subscribe((res: {}) => {
-      console.log('suc: ', res);
+      console.log('respuesta graba cabecera: ', res);
       this.grabarArticulo();
         this.dialogRef.close(1);
 
@@ -197,7 +176,7 @@ console.log('fecha:',formatoDate)
           this.comprasSucService
         .putDataSucCreaArticulo(this.id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
-          console.log('suc: ', res);
+          console.log('graba articulo: ', res);
 
         },
         // console.log('yo:', res as PerfilI[]),

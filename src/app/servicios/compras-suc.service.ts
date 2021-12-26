@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
 
-import { IConsultaSuc, IConsultaSucLista, IDetalleSuc1, ISucresultado } from '../interface/suc';
+import { IArticulo, IConsultaSuc, IConsultaSucLista, IDetalleSuc1, ISucresultado } from '../interface/suc';
 
 
 @Injectable({
@@ -47,7 +47,16 @@ export class ComprasSucService {
   }
 
   putDataSucCrea(fechaSolicitud:string,servicio:string,responsable:string/*,motivoCompra:string*/): Observable<ISucresultado> {
+    console.log('link graga cabecera',`${environment.apiUrl}/PostaCentralConsultaSuc/crea/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`);
     return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/crea/`+ fechaSolicitud+  `/`+ servicio+  `/`+ responsable+  `/`/*+ motivoCompra+  `/`*/,{ headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  getBuscaArticulo(codigoArticulo:string): Observable<IArticulo> {
+    return this.http.get<IArticulo>(`${environment.apiUrl}/PostaCentralConsultaOC/consultaArticulos/`+ codigoArticulo/*+ motivoCompra+  `/`*/,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -56,6 +65,7 @@ export class ComprasSucService {
 
   putDataSucCreaArticulo(id:string,codigoArticulo: string,cantidadTotal: string, PrecioUnitario: string): Observable<ISucresultado> {
     id='1';
+    console.log('graba articulo',`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ id+  `/`+ codigoArticulo+  `/`+ cantidadTotal+  `/`+ PrecioUnitario+  `/`);
     return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ id+  `/`+ codigoArticulo+  `/`+ cantidadTotal+  `/`+ PrecioUnitario+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),

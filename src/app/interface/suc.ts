@@ -50,7 +50,27 @@ export interface IConsultaSuc {
         AdjDocu:string;
       }
 
+    export interface IArticulo {
+      id:string,
+      cod_art:string,
+      descripcion:string,
+      unidad:string,
+      tipo:string,
+      estado:string,
+      esMedicamento:string,
+      controlLegal:string,
+      saldo_disponible:string
+      }
 
+      export interface IdatoArticulo {
+        id:string,
+        codigoArticulo: string,
+        descripcion: string,
+        unidad: string,
+        cantidadTotal: string,
+        valorUnitario: string
+      }
       export interface ISucresultado {
         resultado: string;
       }
+

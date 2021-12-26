@@ -50,6 +50,7 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
 
 import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
 import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
+import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc2/ingreso-art-suc/ingreso-art-suc.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { ReportesComponent } from './componentes/generales/reportes/reportes.com
     BalanceGeneralComponent,
     ClimatizacionComponent,
     EncuestasComponent,
-    ReportesComponent
+    ReportesComponent,
+    IngresoArtSucComponent
   ],
   imports: [
     BrowserModule,

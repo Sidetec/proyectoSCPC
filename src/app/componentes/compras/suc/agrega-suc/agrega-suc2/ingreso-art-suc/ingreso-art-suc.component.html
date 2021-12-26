@@ -1,0 +1,33 @@
+
+<h2 mat-dialog-title class="text-center">Ingresa Artículo</h2>
+
+<mat-dialog-content [formGroup]="ingresaArticulo" name="ingresaArticulo" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Código Artículo" [formControl]="codigoArticulo" (blur)="onBlurArticulo($event)" required>
+    <mat-error *ngIf="codigoArticulo.invalid">{{getErrorMessage('codigoArticulo')}}</mat-error>
+  </mat-form-field>
+ <h4 *ngIf="descripcion!=''"><b>Descripción:</b>{{descripcion}}</h4>
+ <h4 *ngIf="uidadMedida!=''"><b>Unidad Medida:</b>{{uidadMedida}}</h4>
+  <mat-form-field>
+      <input matInput placeholder="Ingrese Cantidad Total" [formControl]="cantidadTotal" required>
+      <mat-error *ngIf="cantidadTotal.invalid">{{getErrorMessage('cantidadTotal')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Valor Unitario " [formControl]="valorUnitario" required>
+    <mat-error *ngIf="valorUnitario.invalid">{{getErrorMessage('valorUnitario')}}</mat-error>
+  </mat-form-field>
+
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="col-md-6">
+      <button mat-raised-button class="btn-primary" (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn-danger" mat-raised-button  (click)="enviar()" [disabled]="ingresaArticulo.invalid">ENVIAR</button>
+    </div>
+</mat-dialog-actions>
