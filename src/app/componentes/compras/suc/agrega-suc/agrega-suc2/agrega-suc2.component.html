@@ -52,6 +52,14 @@
 
     </ng-container>
 
+     <!-- id Column -->
+     <ng-container matColumnDef="id">
+      <th [hidden]="show" id='idI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>id </th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{(row.id)}} </td>
+      <td [hidden]="show" mat-footer-cell *matFooterCellDef></td>
+
+    </ng-container>
+
     <ng-container matColumnDef="opciones" >
       <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 10%; text-align: center'>
         <button mat-icon-button color="accent" (click)="agregaNuevo()">

@@ -25,11 +25,11 @@ export class AgregaSuc2Component implements AfterViewInit {
 
   @Input()
   id!: string;
-
+  show = true;
 //datoConsultaPac:  IConsultaPac | undefined;
 
 iArticuloSuc1:IArticuloSuc = {
-  codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
+ id:'', codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
 };
 
   servicio: string='';
@@ -101,13 +101,14 @@ agregaNuevo(){
   .afterClosed().subscribe(
    data => {console.log('Dialog output3333:', data);
             if (data !== undefined) {
+              this.iArticuloSuc1.id=(data.id);
               this.iArticuloSuc1.codigoArticulo=(data.codigoArticulo);
-      this.iArticuloSuc1.detalle=(data.descripcion);
-      this.iArticuloSuc1.unidadDeMedida=(data.unidad);
-      this.iArticuloSuc1.cantidadTotal=(data.cantidadTotal);
-      this.iArticuloSuc1.valorUnitario=(data.valorUnitario);
-      this.iArticuloSuc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
-      this.datoConsultaSuc.push(this.iArticuloSuc1);
+              this.iArticuloSuc1.detalle=(data.descripcion);
+              this.iArticuloSuc1.unidadDeMedida=(data.unidad);
+              this.iArticuloSuc1.cantidadTotal=(data.cantidadTotal);
+              this.iArticuloSuc1.valorUnitario=(data.valorUnitario);
+              this.iArticuloSuc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
+              this.datoConsultaSuc.push(this.iArticuloSuc1);
                 this.refreshTable();
             }
     }
@@ -174,7 +175,7 @@ console.log('fecha:',formatoDate)
     for (var valor in this.dataSource.data){
 
           this.comprasSucService
-        .putDataSucCreaArticulo(this.id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
+        .putDataSucCreaArticulo(this.dataSource.data[valor].id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('graba articulo: ', res);
 

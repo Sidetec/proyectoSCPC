@@ -1,4 +1,5 @@
 export interface IArticuloOc {
+    id: string;
     codigoArticulo: string;
     detalle: string;
     unidadDeMedida: string;

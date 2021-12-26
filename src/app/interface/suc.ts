@@ -17,6 +17,7 @@ export interface IConsultaSuc {
       motivosCompra: string;
     }
     export interface IArticuloSuc {
+      id: string;
       codigoArticulo: string;
       detalle: string;
       unidadDeMedida: string;

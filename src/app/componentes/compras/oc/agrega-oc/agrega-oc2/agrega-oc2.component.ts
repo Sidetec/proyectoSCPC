@@ -11,6 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IArticuloOc } from 'src/app/interface/oc';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 import * as moment from 'moment';
+import { IngresoArtOcComponent } from './ingreso-art-oc/ingreso-art-oc.component';
+import { MAT_MENU_DEFAULT_OPTIONS_FACTORY } from '@angular/material/menu/menu';
 
 @Component({
   selector: 'app-agrega-oc2',
@@ -21,23 +23,21 @@ export class AgregaOc2Component implements AfterViewInit {
   @Input()
   agregaArticulo!: FormGroup;
 
-  resultado=0;
-  iva=964;
 //datoConsultaPac:  IConsultaPac | undefined;
 
 iArticuloOc1:IArticuloOc = {
-  codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
+  id:'',codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
 };
 
   id: string='';
 
-
+  show = true;
 datoConsultaOc: IArticuloOc[] = [
 
 
   ];
 
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal','opciones'];
+  displayedColumns: string[] = ['id','codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal','opciones'];
   dataSource: MatTableDataSource<IArticuloOc>;
 
   @ViewChild(MatPaginator)
@@ -49,15 +49,15 @@ datoConsultaOc: IArticuloOc[] = [
     ,private dialogRef: MatDialogRef<AgregaOc2Component>
     ,private comprasOcService:ComprasOcService
 
-    ,@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.id = data;
+) {
+
     this.dataSource = new MatTableDataSource<IArticuloOc>();
     ;
   }
 
   ngOnInit() {
 
-    console.log('arreglo anterior',this.agregaArticulo.value.fechaSolicitud);
+    console.log('arreglo anterior',this.agregaArticulo.value);
   }
 
   eliminaArticulo(i:any){
@@ -67,7 +67,7 @@ datoConsultaOc: IArticuloOc[] = [
   }
 
 agregaNuevo(){
-  Swal.fire({
+  /*Swal.fire({
     title: "Ingreso de Artículo",
 
     showCancelButton: true,
@@ -131,7 +131,37 @@ agregaNuevo(){
       this.datoConsultaOc.push(this.iArticuloOc1);
       this.refreshTable();
     }
-  })
+  })*/
+  const dialogConfig = new MatDialogConfig();
+
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '50%';
+  dialogConfig.height = '90%';
+  dialogConfig.position = { top : '2%'};
+  dialogConfig.data = {};
+//  dialogConfig.data = {
+//    idProducto: idProdP,
+//    titulo: tituloP
+//  };
+
+
+  this.dialog.open(IngresoArtOcComponent, dialogConfig)
+  .afterClosed().subscribe(
+   data => {console.log('Dialog output3333:', data);
+            if (data !== undefined) {
+              this.iArticuloOc1.id=(data.id);
+              this.iArticuloOc1.codigoArticulo=(data.codigoArticulo);
+      this.iArticuloOc1.detalle=(data.descripcion);
+      this.iArticuloOc1.unidadDeMedida=(data.unidad);
+      this.iArticuloOc1.cantidadTotal=(data.cantidadTotal);
+      this.iArticuloOc1.valorUnitario=(data.valorUnitario);
+      this.iArticuloOc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
+      this.datoConsultaOc.push(this.iArticuloOc1);
+                this.refreshTable();
+            }
+    }
+  );
 }
 
 
@@ -151,10 +181,6 @@ agregaNuevo(){
   }
 
 
-
-
-
-
   private refreshTable() {
 console.log('pp:',this.datoConsultaOc);
 this.dataSource = new MatTableDataSource(this.datoConsultaOc);
@@ -169,14 +195,13 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
      return this.datoConsultaOc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0);
   }
 
-  getTotalCostIva() {
-    return this.resultado= (this.datoConsultaOc.map(t => parseInt(t.montoTotal)).reduce((acc, value) => acc + value, 0) + this.iva);
-  }
 
   enviar(){
+
     let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
+
     this.comprasOcService
-    .putDataOcCrea('5',formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable,this.agregaArticulo.value.motivoCompra)
+    .putDataOcCrea(this.agregaArticulo.value.tipoDocumentoAsociado,this.agregaArticulo.value.numDocumentoAsociado,formatoDate, this.agregaArticulo.value.empresa,this.agregaArticulo.value.rut,this.agregaArticulo.value.descripcion,this.agregaArticulo.value.direccionEnvioFactura,this.agregaArticulo.value.direccionDespacho,this.agregaArticulo.value.formaPago)
     .subscribe((res: {}) => {
       console.log('ot: ', res);
       this.grabarArticulo();
@@ -199,7 +224,7 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
     for (var valor in this.dataSource.data){
 
           this.comprasOcService
-        .putDataOcCreaArticulo('10',this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].detalle,this.dataSource.data[valor].unidadDeMedida,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario,this.dataSource.data[valor].montoTotal)
+        .putDataOcCreaArticulo(this.dataSource.data[valor].id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('ot: ', res);
 

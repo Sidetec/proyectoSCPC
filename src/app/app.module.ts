@@ -51,6 +51,7 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
 import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
 import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
 import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc2/ingreso-art-suc/ingreso-art-suc.component';
+import { IngresoArtOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc2/ingreso-art-oc/ingreso-art-oc.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agr
     OcComponent,
     AgregaOcComponent,
     AgregaOc2Component,
+    IngresoArtOcComponent,
     ConsultaPacComponent,
     GestionDocumentalComponent,
     CentralizacionContableComponent,
