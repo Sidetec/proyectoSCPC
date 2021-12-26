@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
-=======
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { environment } from './../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
->>>>>>> 52ff82e57a6130910fed29b4f8236eabc56e84b7
 import { IArtFarm, IArticulo, IResultado } from '../interface/arsenal';
 
 @Injectable({
@@ -43,11 +35,8 @@ export class ListaArsenalService {
   }
 
   getInsArticulo(articulo:IArtFarm): Observable<IResultado> {
-<<<<<<< HEAD
-    return this.http.get<IResultado>(`${environment.apiUrl}/PostaCentralArsenalFarmac/crear/1/2/2/3/4/5/6/7/8/9/10/11/`+ articulo , { headers: this.headers })
-=======
+
     return this.http.get<IResultado>(`${environment.apiUrl}/PostaCentralArsenalFarmac/crear/`+ articulo , { headers: this.headers })
->>>>>>> 52ff82e57a6130910fed29b4f8236eabc56e84b7
     .pipe(
       retry(1),
       catchError(this.errorHandl)
