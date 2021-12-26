@@ -11,10 +11,12 @@ import { GestionDocumentalComponent } from './componentes/activo-fijo/gestiondoc
 import { CentralizacionContableComponent } from './componentes/activo-fijo/centralizacioncontable/centralizacioncontable.component';
 
 import { OcComponent } from './componentes/compras/oc/oc.component';
-import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
+//import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
 import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
 import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
 import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
+import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
+import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
 
 
 
@@ -28,7 +30,7 @@ const routes: Routes = [
     {path: 'recepcion', component: RecepcionComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
-    {path: 'arsenal', component: ArsenalComponent},
+    //{path: 'arsenal', component: ArsenalComponent},
     {path: 'climatizacion', component: ClimatizacionComponent},
 
 
@@ -36,8 +38,8 @@ const routes: Routes = [
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
     {path: 'centralizacionContable', component: CentralizacionContableComponent},
 
-    {path: 'gestionRequerimientos', component: PruebaComponent},
-    {path: 'gestionDocumeevaluacionesntal', component: PruebaComponent}
+    {path: 'reportes', component: ReportesComponent},
+    {path: 'encuestas', component: EncuestasComponent}
 
 ];
 

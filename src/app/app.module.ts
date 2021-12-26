@@ -48,6 +48,8 @@ import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.compone
 import { ConsultaArticuloComponent } from './componentes/farmacia/arsenal/consulta-articulo/consulta-articulo.component';
 import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
 
+import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
+import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     DocumentosAsociadosComponent,
     BalanceGeneralComponent,
     ClimatizacionComponent,
-
+    EncuestasComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,7 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MaterialModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
