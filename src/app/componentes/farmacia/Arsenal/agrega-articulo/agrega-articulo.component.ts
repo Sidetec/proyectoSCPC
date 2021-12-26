@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {IArtFarm, IResultado} from 'src/app/interface/arsenal';
-import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
+
+import { farmaciaService } from 'src/app/servicios/farmacia.service';
+import { IArtFarm } from 'src/app/interface/arsenal';
 
 @Component({
   selector: 'app-agrega-articulo',
@@ -11,11 +12,11 @@ import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
   styleUrls: ['./agrega-articulo.component.css']
 })
 export class AgregaArticuloComponent implements OnInit {
-  
+
   datos: IArtFarm | undefined;
   constructor(private dialogRef: MatDialogRef<AgregaArticuloComponent>,
-              public listaArsenalService: ListaArsenalService,
-              @Inject(MAT_DIALOG_DATA) public data: any) {   
+              public farmaciaService: farmaciaService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
     codigoGzen= new FormControl('', [Validators.required]);
@@ -30,7 +31,7 @@ export class AgregaArticuloComponent implements OnInit {
     restricciones= new FormControl('', [Validators.required]);
     alternativa= new FormControl('', [Validators.required]);
     observaciones= new FormControl('', [Validators.required]);;
-  
+
   public ingresoArticulo: FormGroup = new FormGroup({
     codigoGzen: this.codigoGzen,
     grupo: this.grupo,
@@ -40,7 +41,7 @@ export class AgregaArticuloComponent implements OnInit {
     medicamento: this.medicamento,
     fFarmacia: this.fFarmacia,
     presentacion: this.presentacion,
-    dosificacion: this.dosificacion, 
+    dosificacion: this.dosificacion,
     restricciones: this.restricciones,
     alternativa: this.alternativa,
     observaciones: this.observaciones,
@@ -50,7 +51,7 @@ export class AgregaArticuloComponent implements OnInit {
     if (campo === 'codigoGzen'){
       return this.codigoGzen.hasError('required') ? 'Debe ingresar código GZEN de artículo' : '';
     }
-    
+
     if (campo === 'grupo'){
         return this.grupo.hasError('required') ? 'Debe ingresar el grupo del artículo' : '';
     }
@@ -104,7 +105,7 @@ export class AgregaArticuloComponent implements OnInit {
       observaciones: this.ingresoArticulo.get('observaciones')?.value,
     };
 
-    this.listaArsenalService.getInsArticulo(this.datos)
+    this.farmaciaService.getInsArticulo(this.datos)
       .subscribe(res => {
         console.log('respuesta:', res['codigo']);
         if ( res['codigo'] === 0 ) {

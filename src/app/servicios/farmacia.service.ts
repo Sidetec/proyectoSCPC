@@ -6,10 +6,11 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { IArtFarm, IArticulo, IResultado } from '../interface/arsenal';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class ListaArsenalService {
+export class farmaciaService {
 
   constructor(private http: HttpClient) { }
 

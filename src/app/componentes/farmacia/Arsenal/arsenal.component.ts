@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
+import { farmaciaService } from 'src/app/servicios/farmacia.service';
 import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
@@ -20,8 +20,8 @@ export class ArsenalComponent implements AfterViewInit {
   show = true;
   datos: IArticulo | undefined;
 
-  displayedColumns: string[] = ['articulo','cantidad','descripcion','codigoGzen', 'grupo', 
-    'subGrupo', 'controlLegal', 'tipo', 'medicamento', 'fFarmacia', 'presentacion', 
+  displayedColumns: string[] = ['articulo','cantidad','descripcion','codigoGzen', 'grupo',
+    'subGrupo', 'controlLegal', 'tipo', 'medicamento', 'fFarmacia', 'presentacion',
     'dosificacion', 'restricciones', 'alternativa','observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
@@ -30,10 +30,10 @@ export class ArsenalComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(  private listaArsenalService: ListaArsenalService,
+  constructor(  private farmaciaService: farmaciaService,
                 public dialog: MatDialog,
                 public httpClient: HttpClient,) {
-    
+
     this.dataSource = new MatTableDataSource<IArticulo>();
   }
 
@@ -42,7 +42,7 @@ ngOnInit() {
 }
 
 getListArsenal(): void {
-  this.listaArsenalService
+  this.farmaciaService
     .getDataArsenalLista()
     .subscribe((res: {}) => {
       console.log('Artículos: ', res);
@@ -56,7 +56,7 @@ getListArsenal(): void {
        'info'
      );
     }
-  ); 
+  );
 }
 
   ngAfterViewInit() {
@@ -92,13 +92,13 @@ getListArsenal(): void {
     );
   }
 
-  consultaArticulo(articulo: string, cantidad: number, descripcion: string, codigoGzen: string, 
-    grupo: string, subGrupo: string, controlLegal: string, tipo: string, medicamento: string, 
-    fFarmacia: string, presentacion: string, dosificacion: string, restricciones:string, 
+  consultaArticulo(articulo: string, cantidad: number, descripcion: string, codigoGzen: string,
+    grupo: string, subGrupo: string, controlLegal: string, tipo: string, medicamento: string,
+    fFarmacia: string, presentacion: string, dosificacion: string, restricciones:string,
     alternativa: string, observaciones: string) {
 
-    this.datos = { 
-      articulo, cantidad, descripcion, codigoGzen, grupo, subGrupo, controlLegal, tipo, medicamento, 
+    this.datos = {
+      articulo, cantidad, descripcion, codigoGzen, grupo, subGrupo, controlLegal, tipo, medicamento,
       fFarmacia, presentacion, dosificacion, restricciones, alternativa, observaciones
     };
 
@@ -139,7 +139,7 @@ getListArsenal(): void {
         }
       );
   }
-  
+
    eliminaArticulo(id: string) {
 
     const dialogConfig = new MatDialogConfig();
