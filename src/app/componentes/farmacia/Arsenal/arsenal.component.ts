@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
@@ -29,7 +30,7 @@ export class ArsenalComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(  private farmaciaService: farmaciaService,
+  constructor(  private listaArsenalService: ListaArsenalService,
                 public dialog: MatDialog,
                 public httpClient: HttpClient,) {
 
@@ -41,7 +42,7 @@ ngOnInit() {
 }
 
 getListArsenal(): void {
-  this.farmaciaService
+  this.listaArsenalService
     .getDataArsenalLista()
     .subscribe((res: {}) => {
       console.log('Artículos: ', res);
@@ -161,6 +162,7 @@ getListArsenal(): void {
   }
 */
    private refreshTable() {
+    this.getListArsenal();
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 }

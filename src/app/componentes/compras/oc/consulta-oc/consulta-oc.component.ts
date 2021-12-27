@@ -33,7 +33,7 @@ export class ConsultaOcComponent implements AfterViewInit {
 iDetalleOc1: IDetalleOc1[] = [];
 
 id: string='';
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
+  displayedColumns: string[] = ['codigoArticulo', 'detalles',   'unidadMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
   dataSource: MatTableDataSource<IArticuloOc>;
 
   @ViewChild(MatPaginator)
@@ -69,6 +69,7 @@ id: string='';
       console.log('res oc1: ', res);
       if (res != null){
       this.iDetalleOc1 = res as IDetalleOc1[];
+      console.log('res oc1 Det: ', this.iDetalleOc1);
       }
       this.getConsultaDetalleOc2()
     },

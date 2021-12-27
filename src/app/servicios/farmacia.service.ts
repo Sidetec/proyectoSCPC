@@ -8,7 +8,7 @@ import { IArtFarm, IArticulo, IResultado } from '../interface/arsenal';
 @Injectable({
   providedIn: 'root'
 })
-export class farmaciaService {
+export class ListaArsenalService {
 
   constructor(private http: HttpClient) { }
 

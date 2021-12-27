@@ -97,7 +97,9 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     ClimatizacionComponent,
     EncuestasComponent,
     ReportesComponent,
-    IngresoArtSucComponent
+    IngresoArtSucComponent,
+    ArsenalComponent,
+    AgregaArticuloComponent
   ],
   imports: [
     BrowserModule,

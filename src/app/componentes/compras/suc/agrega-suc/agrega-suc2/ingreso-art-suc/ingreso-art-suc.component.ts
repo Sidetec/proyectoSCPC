@@ -80,7 +80,7 @@ datoArticulo: IdatoArticulo = {
   enviar(){
     this.datoArticulo = {
       id:this.id,
-      codigoArticulo: this.codigoArticuloP ,
+      codigoArticulo: this.ingresaArticulo.get('codigoArticulo')!.value ,
       descripcion: this.descripcion ,
       unidad: this.uidadMedida ,
       cantidadTotal: this.ingresaArticulo.get('cantidadTotal')!.value,

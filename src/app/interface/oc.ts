@@ -1,7 +1,7 @@
 export interface IArticuloOc {
     codigoArticulo: string;
-    detalle: string;
-    unidadDeMedida: string;
+    detalles: string;
+    unidadMedida: string;
     cantidadTotal: string;
     valorUnitario: string;
     montoTotal: string;

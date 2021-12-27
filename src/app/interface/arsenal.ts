@@ -2,9 +2,9 @@ export interface IArticulo{
     articulo: string;
     cantidad: number;
     descripcion: string;
-    controlLegal: string;
+    controlLegal: string;    
     grupo: string;
-    subGrupo: string;
+    subGrupo: string;    
     tipo: string;
     codigoGzen: string;
     medicamento: string;
@@ -19,9 +19,9 @@ export interface IArticulo{
 export interface IArtFarm {
  //   cantidad: number;
  //   descripcion: string;
-    controlLegal: string;
+    controlLegal: string;    
     grupo: string;
-    subGrupo: string;
+    subGrupo: string;    
     tipo: string;
     codigoGzen: string;
     medicamento: string;
