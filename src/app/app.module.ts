@@ -30,7 +30,7 @@ import { CentralizacionContableComponent } from './componentes/activo-fijo/centr
 import { OcComponent } from './componentes/compras/oc/oc.component';
 
 import { ConsultaOcComponent } from './componentes/compras/oc/consulta-oc/consulta-oc.component';
-import { RecepcionComponent } from './componentes/compras/recepcion/recepcion/recepcion.component';
+
 import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.component';
 import { ConsultaActivoFijoComponent } from './componentes/activo-fijo/consulta-activo-fijo/consulta-activo-fijo.component';
 import { ReporteDepreciacionComponent } from './componentes/activo-fijo/reporte-depreciacion/reporte-depreciacion.component';
@@ -99,7 +99,8 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     ReportesComponent,
     IngresoArtSucComponent,
     ArsenalComponent,
-    AgregaArticuloComponent
+    AgregaArticuloComponent,
+ 
   ],
   imports: [
     BrowserModule,

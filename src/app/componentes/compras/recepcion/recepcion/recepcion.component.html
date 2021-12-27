@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Código Articulo" [formControl]="codigoArticulo" >
+    <input matInput placeholder="Ingrese Código Artículo" [formControl]="codigoArticulo"  required>
     <mat-error *ngIf="codigoArticulo.invalid">{{getErrorMessage('codigoArticulo')}}</mat-error>
   </mat-form-field>
 
