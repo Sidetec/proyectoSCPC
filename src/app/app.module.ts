@@ -43,15 +43,18 @@ import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc
 import { DocumentosAsociadosComponent } from './componentes/activo-fijo/documentos-asociados/documentos-asociados.component';
 import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
 import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
-import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
 
 import { ConsultaArticuloComponent } from './componentes/farmacia/arsenal/consulta-articulo/consulta-articulo.component';
-import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
+
 
 import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
 import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
-import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc2/ingreso-art-suc/ingreso-art-suc.component';
+
 import { IngresoArtOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc2/ingreso-art-oc/ingreso-art-oc.component';
+
+import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
+import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc2/ingreso-art-suc/ingreso-art-suc.component';
+import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
 
 @NgModule({
   declarations: [
@@ -77,9 +80,9 @@ import { IngresoArtOcComponent } from './componentes/compras/oc/agrega-oc/agrega
     CentralizacionContableComponent,
     AlertasComponent,
     AgregaConsumoComponent,
-    ArsenalComponent,
+
     ConsultaArticuloComponent,
-    AgregaArticuloComponent,
+
     ConsultaOcComponent,
     RecepcionComponent,
     ActivoFijoComponent,

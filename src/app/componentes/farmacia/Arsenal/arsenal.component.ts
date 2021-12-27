@@ -5,7 +5,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
-import { farmaciaService } from 'src/app/servicios/farmacia.service';
 import { IArticulo } from 'src/app/interface/arsenal';
 import Swal from 'sweetalert2';
 import { AgregaArticuloComponent } from './agrega-articulo/agrega-articulo.component';
@@ -85,9 +84,9 @@ getListArsenal(): void {
     this.dialog.open(AgregaArticuloComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Datos agregados:', data);
-              if (data !== undefined) {
-                  this.refreshTable();
-              }
+     // if (data !== undefined) {
+      this.refreshTable();
+     //}
       }
     );
   }
