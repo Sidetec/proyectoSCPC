@@ -45,3 +45,7 @@ export interface IArticuloOc {
     export interface IOcresultado {
       resultado: string;
     }
+
+    export interface ICapturaValorMax {
+      resultado: string;
+    }

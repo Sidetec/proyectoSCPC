@@ -33,10 +33,7 @@ iArticuloOc1:IArticuloOcAgrega = {
   id: string='';
 
   show = true;
-datoConsultaOc: IArticuloOcAgrega[] = [
-
-
-  ];
+datoConsultaOc: IArticuloOcAgrega[] = [ ];
 
   displayedColumns: string[] = ['id','codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal','opciones'];
   dataSource: MatTableDataSource<IArticuloOcAgrega>;
@@ -60,6 +57,9 @@ datoConsultaOc: IArticuloOcAgrega[] = [
 
     console.log('arreglo anterior',this.agregaArticulo.value);
   }
+
+
+
 
   eliminaArticulo(i:any){
   this.datoConsultaOc.splice(i,1);

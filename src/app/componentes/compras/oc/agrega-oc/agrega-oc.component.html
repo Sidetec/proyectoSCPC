@@ -16,7 +16,7 @@
     <mat-error *ngIf="tipoDocumentoAsociado.invalid">{{getErrorMessage('tipoDocumentoAsociado')}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado" >
+    <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado" readonly>
     <mat-error *ngIf="numDocumentoAsociado.invalid">{{getErrorMessage('numDocumentoAsociado')}}</mat-error>
   </mat-form-field>
 

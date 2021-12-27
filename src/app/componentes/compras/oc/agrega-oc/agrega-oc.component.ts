@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ICapturaValorMax } from 'src/app/interface/oc';
 import { IAlertas } from 'src/app/interface/Pac';
+import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 
 
 import Swal from 'sweetalert2';
@@ -16,6 +18,7 @@ export class AgregaOcComponent implements OnInit {
 
 
   constructor(private dialogRef: MatDialogRef<AgregaOcComponent>,
+    private comprasOcService: ComprasOcService
               ) {
               }
               numOrdenCompra= new FormControl('', [Validators.required]);
@@ -82,9 +85,34 @@ export class AgregaOcComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.capturarValorMax();
   }
 
-  enviar() {
+
+  capturarValorMax(){
+    this.comprasOcService
+    .getCapturaValorMax()
+    .subscribe((res) => {
+      if (res==null){
+        this.agregaArticulo.get('numDocumentoAsociado')!.setValue(0);
+      }else{
+          let max:number =res+1
+          console.log('oc1: ', max);
+          this.agregaArticulo.get('numDocumentoAsociado')!.setValue(max);
+      }
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+    enviar() {
 
             Swal.fire(
             'Se grabó con Éxito',
