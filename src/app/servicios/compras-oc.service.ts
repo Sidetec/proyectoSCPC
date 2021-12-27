@@ -29,8 +29,9 @@ export class ComprasOcService {
     );
   }
   //Los trae todo... hay que filtrar
-  getDataOcDetalle1(): Observable<IDetalleOc1> {
-    return this.http.get<IDetalleOc1>(`${environment.apiUrl}/PostaCentralConsultaOC/consultaid/null/null/suc`, { headers: this.headers })
+  getDataOcDetalle1(id:string,idSolicitud:string): Observable<IDetalleOc1> {
+    console.log('consulta 1:',`${environment.apiUrl}/PostaCentralConsultaOC/consultaid/`+ id +`/null/`+ idSolicitud)
+    return this.http.get<IDetalleOc1>(`${environment.apiUrl}/PostaCentralConsultaOC/consultaid/`+ id +`/null/`+ idSolicitud, { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -38,17 +39,17 @@ export class ComprasOcService {
   }
 
 
-  getDataOcDetalle2(parametro1:string): Observable<IArticuloOc> {
-    console.log('parametro2',parametro1)
-    return this.http.get<IArticuloOc>(`${environment.apiUrl}/PostaCentralConsultaOC/articulos/`+ parametro1 , { headers: this.headers })
+  getDataOcDetalle2(id:string): Observable<IArticuloOc> {
+    console.log('parametro2',id)
+    return this.http.get<IArticuloOc>(`${environment.apiUrl}/PostaCentralConsultaOC/articulos/`+ id , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  putDataOcCrea(tipoDocumentoAsociado:string,numDocumentoAsociado:string,formatoDate:string, empresa:string,rut:string,descripcion:string,direccionEnvioFactura:string,direccionDespacho:string,formaPago:string): Observable<IOcresultado> {
-    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/crear/`+ tipoDocumentoAsociado+  `/`+numDocumentoAsociado+  `/`+formatoDate+  `/`+ empresa+  `/`+rut+  `/`+descripcion+  `/`+direccionEnvioFactura+  `/`+direccionDespacho+  `/`+formaPago,{ headers: this.headers })
+  putDataOcCrea(numOrdenCompra:string,tipoDocumentoAsociado:string,numDocumentoAsociado:string,formatoDate:string, empresa:string,rut:string,descripcion:string,direccionEnvioFactura:string,direccionDespacho:string,formaPago:string): Observable<IOcresultado> {
+    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+numOrdenCompra + `/` + tipoDocumentoAsociado+  `/`+numDocumentoAsociado+  `/`+formatoDate+  `/`+ empresa+  `/`+rut+  `/`+descripcion+  `/`+direccionEnvioFactura+  `/`+direccionDespacho+  `/`+formaPago,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -56,7 +57,7 @@ export class ComprasOcService {
   }
 
   putDataOcCreaArticulo(id:string,codigoArticulo: string, cantidadTotal: string, valorUnitario: string): Observable<IOcresultado> {
-    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOc/crear/`+  id+  `/`+  codigoArticulo+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`,{ headers: this.headers })
+    return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+  id+  `/`+  codigoArticulo+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

@@ -11,8 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IArticuloOcAgrega } from 'src/app/interface/oc';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 import * as moment from 'moment';
-import { IngresoArtOcComponent } from './ingreso-art-oc/ingreso-art-oc.component';
+
 import { MAT_MENU_DEFAULT_OPTIONS_FACTORY } from '@angular/material/menu/menu';
+import { IngresoArtOcComponent } from './ingreso-art-oc/ingreso-art-oc.component';
 
 @Component({
   selector: 'app-agrega-oc2',
@@ -204,9 +205,9 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
     let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
 
     this.comprasOcService
-    .putDataOcCrea(this.agregaArticulo.value.tipoDocumentoAsociado,this.agregaArticulo.value.numDocumentoAsociado,formatoDate, this.agregaArticulo.value.empresa,this.agregaArticulo.value.rut,this.agregaArticulo.value.descripcion,this.agregaArticulo.value.direccionEnvioFactura,this.agregaArticulo.value.direccionDespacho,this.agregaArticulo.value.formaPago)
+    .putDataOcCrea(this.agregaArticulo.value.numOrdenCompra, this.agregaArticulo.value.tipoDocumentoAsociado,this.agregaArticulo.value.numDocumentoAsociado,formatoDate, this.agregaArticulo.value.empresa,this.agregaArticulo.value.rut,this.agregaArticulo.value.descripcion,this.agregaArticulo.value.direccionEnvioFactura,this.agregaArticulo.value.direccionDespacho,this.agregaArticulo.value.formaPago)
     .subscribe((res: {}) => {
-      console.log('ot: ', res);
+      console.log('oc1: ', res);
       this.grabarArticulo();
         this.dialogRef.close(1);
 
@@ -225,9 +226,8 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
 
   grabarArticulo(){
     for (var valor in this.dataSource.data){
-
-          this.comprasOcService
-        .putDataOcCreaArticulo(this.dataSource.data[valor].id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
+        this.comprasOcService
+        .putDataOcCreaArticulo(this.agregaArticulo.value.numDocumentoAsociado,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('ot: ', res);
 
@@ -248,5 +248,7 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
         'Click en Botón!',
         'success'
       ); // ,
-    }
+
+
   }
+}

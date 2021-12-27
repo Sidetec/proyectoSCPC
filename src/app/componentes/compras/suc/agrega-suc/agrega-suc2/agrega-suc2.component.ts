@@ -14,6 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { IngresoArtSucComponent } from './ingreso-art-suc/ingreso-art-suc.component';
 
+
 @Component({
   selector: 'app-agrega-suc2',
   templateUrl: './agrega-suc2.component.html',

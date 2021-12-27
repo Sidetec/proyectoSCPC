@@ -18,6 +18,7 @@ export class AgregaOcComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<AgregaOcComponent>,
               ) {
               }
+              numOrdenCompra= new FormControl('', [Validators.required]);
               tipoDocumentoAsociado= new FormControl('', [Validators.required]);
               numDocumentoAsociado= new FormControl('', [Validators.required]);
               fechaSolicitud = new FormControl('', [Validators.required]);
@@ -29,6 +30,7 @@ export class AgregaOcComponent implements OnInit {
               formaPago= new FormControl('', [Validators.required]);
 
               public agregaArticulo: FormGroup = new FormGroup({
+                numOrdenCompra: this.numOrdenCompra,
                 tipoDocumentoAsociado: this.tipoDocumentoAsociado,
                 numDocumentoAsociado: this.numDocumentoAsociado,
                 fechaSolicitud: this.fechaSolicitud,
@@ -42,6 +44,10 @@ export class AgregaOcComponent implements OnInit {
 
 
   getErrorMessage(campo: string) {
+
+    if (campo === 'numOrdenCompra'){
+      return this.numOrdenCompra.hasError('required') ? 'Debes ingresar Número Orden de Compra' : '';
+    }
 
     if (campo === 'tipoDocumentoAsociado'){
       return this.tipoDocumentoAsociado.hasError('required') ? 'Debes ingresar Tipo Documento Asociado' : '';
@@ -70,6 +76,8 @@ export class AgregaOcComponent implements OnInit {
     if (campo === 'formaPago'){
       return this.formaPago.hasError('required') ? 'Debes ingresar Forma Pago' : '';
     }
+
+
     return '';
   }
 

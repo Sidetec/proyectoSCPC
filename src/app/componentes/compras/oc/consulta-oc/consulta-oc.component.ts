@@ -30,9 +30,19 @@ export class ConsultaOcComponent implements AfterViewInit {
   dircDespacho: '',
   formaPago: ''};
 */
-iDetalleOc1: IDetalleOc1[] = [];
+iDetalleOc1: IDetalleOc1 = {
+  numeroOc: '',
+  tipoDocAsoc: '',
+  numDocAsoc: '',
+  fechaSolicitud: '',
+  empresa: '',
+  rut: '',
+  descripcion: '',
+  dircEnvioFact: '',
+  dircDespacho: '',
+  formaPago: ''
+};
 
-id: string='';
   displayedColumns: string[] = ['codigoArticulo', 'detalles',   'unidadMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal'];
   dataSource: MatTableDataSource<IArticuloOc>;
 
@@ -46,7 +56,7 @@ id: string='';
     , private comprasOcService:ComprasOcService
     ,@Inject(MAT_DIALOG_DATA) public data: any) {
       console.log('en consulta',data)
-      this.id = data;
+
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -62,13 +72,13 @@ id: string='';
 
 
   getConsultaDetalleOc1() {
-
+   console.log('data:',this.data)
     this.comprasOcService
-    .getDataOcDetalle1()
+    .getDataOcDetalle1(this.data.id, this.data.tipoSolicitud)
     .subscribe((res: {}) => {
       console.log('res oc1: ', res);
       if (res != null){
-      this.iDetalleOc1 = res as IDetalleOc1[];
+      this.iDetalleOc1 = res as IDetalleOc1;
       console.log('res oc1 Det: ', this.iDetalleOc1);
       }
       this.getConsultaDetalleOc2()
@@ -89,7 +99,7 @@ id: string='';
   getConsultaDetalleOc2() {
     console.log('paso pac')
     this.comprasOcService
-    .getDataOcDetalle2(this.id)
+    .getDataOcDetalle2(this.data.id)
     .subscribe((res: {}) => {
       console.log('suc2: ', res);
       if (res!=null){

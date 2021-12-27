@@ -2,6 +2,10 @@
 
 <mat-dialog-content [formGroup]="agregaArticulo " name="agregaArticulo" class="agrega-container">
 
+  <mat-form-field>
+    <input matInput  placeholder="Númerom Orden de Compra" [formControl]="numOrdenCompra" >
+    <mat-error *ngIf="numOrdenCompra.invalid">{{getErrorMessage('numOrdenCompra')}}</mat-error>
+  </mat-form-field>
 
   <mat-form-field>
     <mat-label>Tipo Documento Asociado</mat-label>
