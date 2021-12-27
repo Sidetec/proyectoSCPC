@@ -17,7 +17,7 @@ export interface IDetallePac1 {
 export interface IConsultaPac {
   codigo: string;
   detalle: string;
-  unidadDeMedida: string;
+  unidad: string;
   enero: number;
   febrero: number;
   marzo: number;
@@ -36,9 +36,8 @@ export interface IConsultaPac {
   idLic: number;
   idOc: number;
   totalComprado: number
-  saldoLicitacion: number;
+  totalLic: number;
   }
-
   export interface IIgresoConsumo {
   planAnual:number;
   servicio:number;

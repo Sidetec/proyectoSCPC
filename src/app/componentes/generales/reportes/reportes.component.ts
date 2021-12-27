@@ -26,7 +26,7 @@ export interface PeriodicElement {
 }
 
 export interface BitacoraElement {
-  
+
   fecha: Date;
   actividad: string;
 
@@ -67,8 +67,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 const ELEMENT_DATA2: BitacoraElement[] = [
-  {fecha: new Date('2021/12/20') , actividad: "actividad 1"}, 
-  {fecha: new Date('2021/12/20') , actividad: "actividad 2"}, 
+  {fecha: new Date('2021/12/20') , actividad: "actividad 1"},
+  {fecha: new Date('2021/12/20') , actividad: "actividad 2"},
   {fecha: new Date('2021/12/20') , actividad: "actividad 3"}
 ];
 
@@ -80,8 +80,8 @@ const ELEMENT_DATA2: BitacoraElement[] = [
 
 
 export class ReportesComponent implements OnInit {
- 
-  
+
+
   displayedColumns: string[] = ['numeroreporte', 'fechareporte', 'tiporeporte', 'tipoproblema','resuelto','complejidad','criticidad','rut','nombre','servicio','cargo','nivel','responsable','tiemporesolucion','tiemporestante'];
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<PeriodicElement>();
@@ -110,7 +110,7 @@ export class ReportesComponent implements OnInit {
     {value: '2', viewValue: 'tipo problema 2'}
   ]
 
-  
+
   criticidades: criticidad[] = [
 
     {value: '-1', viewValue: 'Seleccione'},
@@ -130,7 +130,7 @@ export class ReportesComponent implements OnInit {
 
   constructor() {
 
-    
+
   }
 
   btnSalir:boolean = false;
@@ -163,7 +163,7 @@ export class ReportesComponent implements OnInit {
   this.btnGrabar = true;
   this.btnCerrarReporte = false;
   this.btnActualizar = false;
- 
+
 
 
 
@@ -192,7 +192,7 @@ Salir2(){
     if (result.isConfirmed) {
       this.popupedicionreporte = false;
       //Swal.fire('Se ha cerrado el Reporte!', '', 'success')
-      
+
     } else if (result.isDenied) {
       //Swal.fire('Changes are not saved', '', 'info')
     }
@@ -205,6 +205,7 @@ Nuevo(){
 
   this.numeroreporte = '';
   this.textopopupedicionreporte = 'Creando Nuevo Reporte';
+  this.popupedicionreporte=true;
   this.btnGrabar = false;
   this.btnActualizar= true;
   this.btnCerrarReporte= true;
@@ -222,8 +223,8 @@ Actualizar()
     'Se ha actualizado este Reporte',
     '',
     'success'
-  ); 
-  
+  );
+
 
 }
 CerrarReporte()
@@ -240,7 +241,7 @@ CerrarReporte()
     if (result.isConfirmed) {
       this.popupedicionreporte = false;
       Swal.fire('Se ha cerrado el Reporte!', '', 'success')
-      
+
     } else if (result.isDenied) {
       Swal.fire('Changes are not saved', '', 'info')
     }
@@ -261,15 +262,15 @@ Grabar(){
     title: 'Se ha generado el Requerimiento N° <strong>89898</strong>',
     html: '<ul><li>Se ha derivado su Requerimiento al comité de Atención de Requerimientos para su análisis y evaluación.</li><li>Se pondrán en contacto con el usuario en <strong>72 horas</strong>.</li></ul>',
     icon: 'success'
-  }); 
+  });
 
 
 
   //this.dataSource.push({numeroreporte: 89898, fechareporte: new Date('2021/12/23'), tiporeporte: 'Requerimiento', tipoproblema: 'Instalación', resuelto: 'N',complejidad: 'Media',criticidad: 'Alta'});
-  ELEMENT_DATA.push( 
+  ELEMENT_DATA.push(
     {numeroreporte: 89898, fechareporte: new Date('2021/12/23'), tiporeporte: 'Requerimiento', tipoproblema: 'Instalación', resuelto: 'N',complejidad: 'Media',criticidad: 'Alta',rut:'900-2',nombre:'Pedro',servicio:'Farmacia',cargo:'Dispensador', nivel:'1',responsable:'Soporte 1',tiemporesolucion:'72 horas',tiemporestante:'48 horas'}
   )
-    
+
   //console.log(ELEMENT_DATA);
 
   this.dataSource = ELEMENT_DATA;

@@ -32,7 +32,8 @@ export class ConsultaPacComponent implements AfterViewInit, OnInit {
 
   ];
 */
-  displayedColumns: string[] = ['codigoArticulo', 'detalle',   'unidadDeMedida', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'cantidadTotal',  'valorUnitario',  'montoTotal', 'idLicitacion','idOc',  'totalComprado',  'saldoLicitacion'];
+
+  displayedColumns: string[] = ['codigo', 'detalle',   'unidad', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'canttotal',  'valorUnitario',  'montoTotal', 'idLic','idOc',  'totalComprado',  'totalLic'];
  // dataSource: MatTableDataSource<IConsultaPac>;
   dataSource: MatTableDataSource<IConsultaPac>;
 
