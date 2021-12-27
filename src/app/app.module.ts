@@ -42,7 +42,7 @@ import { AgregaOcComponent } from './componentes/compras/oc/agrega-oc/agrega-oc.
 import { AgregaOc2Component } from './componentes/compras/oc/agrega-oc/agrega-oc2/agrega-oc2.component';
 import { DocumentosAsociadosComponent } from './componentes/activo-fijo/documentos-asociados/documentos-asociados.component';
 import { BalanceGeneralComponent } from './componentes/activo-fijo/balance-general/balance-general.component';
-import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
+
 
 import { ConsultaArticuloComponent } from './componentes/farmacia/arsenal/consulta-articulo/consulta-articulo.component';
 
@@ -94,7 +94,7 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     AgregaSuc2Component,
     DocumentosAsociadosComponent,
     BalanceGeneralComponent,
-    ClimatizacionComponent,
+
     EncuestasComponent,
     ReportesComponent,
     IngresoArtSucComponent,

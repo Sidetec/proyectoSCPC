@@ -20,8 +20,8 @@ export class ArsenalComponent implements AfterViewInit {
   show = true;
   datos: IArticulo | undefined;
 
-  displayedColumns: string[] = ['articulo','cantidad','descripcion','codigoGzen', 'grupo',
-    'subGrupo', 'controlLegal', 'tipo', 'medicamento', 'fFarmacia', 'presentacion',
+  displayedColumns: string[] = ['articulo','cantidad','descripcion','codigoGzen', 'grupo', 
+    'subGrupo', 'controlLegal', 'tipo', 'medicamento', 'fFarmacia', 'presentacion', 
     'dosificacion', 'restricciones', 'alternativa','observaciones','opciones'];
   dataSource: MatTableDataSource<IArticulo>;
 
@@ -33,7 +33,7 @@ export class ArsenalComponent implements AfterViewInit {
   constructor(  private listaArsenalService: ListaArsenalService,
                 public dialog: MatDialog,
                 public httpClient: HttpClient,) {
-
+    
     this.dataSource = new MatTableDataSource<IArticulo>();
   }
 
@@ -56,7 +56,7 @@ getListArsenal(): void {
        'info'
      );
     }
-  );
+  ); 
 }
 
   ngAfterViewInit() {
@@ -92,13 +92,13 @@ getListArsenal(): void {
     );
   }
 
-  consultaArticulo(articulo: string, cantidad: number, descripcion: string, codigoGzen: string,
-    grupo: string, subGrupo: string, controlLegal: string, tipo: string, medicamento: string,
-    fFarmacia: string, presentacion: string, dosificacion: string, restricciones:string,
+  consultaArticulo(articulo: string, cantidad: number, descripcion: string, codigoGzen: string, 
+    grupo: string, subGrupo: string, controlLegal: string, tipo: string, medicamento: string, 
+    fFarmacia: string, presentacion: string, dosificacion: string, restricciones:string, 
     alternativa: string, observaciones: string) {
 
-    this.datos = {
-      articulo, cantidad, descripcion, codigoGzen, grupo, subGrupo, controlLegal, tipo, medicamento,
+    this.datos = { 
+      articulo, cantidad, descripcion, codigoGzen, grupo, subGrupo, controlLegal, tipo, medicamento, 
       fFarmacia, presentacion, dosificacion, restricciones, alternativa, observaciones
     };
 
@@ -139,7 +139,7 @@ getListArsenal(): void {
         }
       );
   }
-
+  
    eliminaArticulo(id: string) {
 
     const dialogConfig = new MatDialogConfig();
@@ -162,7 +162,6 @@ getListArsenal(): void {
   }
 */
    private refreshTable() {
-    this.getListArsenal();
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 }

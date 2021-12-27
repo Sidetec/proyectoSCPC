@@ -33,6 +33,14 @@ export class ListaArsenalService {
     );
   }
 
+  getArticulo(articulo:string): Observable<IArtFarm> {
+    return this.http.get<IArtFarm>(`${environment.apiUrl}/PostaCentralArsenalFarmac/articulo/`+ articulo , { headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
   getInsArticulo(articulo:IArtFarm): Observable<number> {
     return this.http.get<number>(`${environment.apiUrl}/PostaCentralArsenalFarmac/crear/`+
       articulo.controlLegal +'/'+ articulo.grupo +'/'+ articulo.subGrupo +'/'+ articulo.tipo +'/'+

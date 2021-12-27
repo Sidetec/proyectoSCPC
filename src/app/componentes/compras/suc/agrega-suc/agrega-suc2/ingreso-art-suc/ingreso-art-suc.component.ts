@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';import { IArticulo, IdatoArticulo } from 'src/app/interface/suc';
 import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 ;
 
 
@@ -42,7 +43,8 @@ datoArticulo: IdatoArticulo = {
   }
 
   constructor(private dialogRef: MatDialogRef<IngresoArtSucComponent>
-    , private comprasSucService:ComprasSucService) { }
+    , private comprasSucService:ComprasSucService
+    ,private listaArsenalService:ListaArsenalService) { }
 
   codigoArticulo = new FormControl('', [Validators.required]);
   cantidadTotal = new FormControl('', [Validators.required]);
@@ -98,8 +100,8 @@ datoArticulo: IdatoArticulo = {
 
   onBlurArticulo(event: any){
     let codArticulo= event.target.value;
-    this.comprasSucService
-    .getBuscaArticulo(codArticulo)
+    this.listaArsenalService
+    .getArticulo(codArticulo)
     .subscribe((res: {}) => {
       console.log('articulo: ', res);
       if (res==''){
