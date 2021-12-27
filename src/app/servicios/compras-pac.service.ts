@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 import { retry, catchError } from 'rxjs/operators';
-import { IConsultaPac, IDetallePac1, IListaPac } from '../interface/Pac';
+import { IAlertas, IConsultaPac, IDetallePac1, IListaPac } from '../interface/Pac';
 
 
 
@@ -24,6 +24,14 @@ export class ComprasPacService {
 
   getDataPacLista(): Observable<IListaPac> {
     return this.http.get<IListaPac>(`${environment.apiUrl}/PostaCentralConsultaPac/consulta`, { headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  getAlerta(): Observable<IAlertas> {
+    return this.http.get<IAlertas>(`${environment.apiUrl}/PostaCentralConsultaAlertas/alerta/PAC`, { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)

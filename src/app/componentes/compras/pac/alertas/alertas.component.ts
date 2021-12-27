@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IAlertas } from 'src/app/interface/Pac';
+import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
 
 
 import Swal from 'sweetalert2';
@@ -15,19 +16,28 @@ export class AlertasComponent implements OnInit {
 
 
 
-  datoAlertas: IAlertas | undefined;
+  datoAlertas: IAlertas = {
+    fechaInicio: '',
+    fechaTermino: '',
+    vencPrimerAviso: '',
+    vencSegundoAviso: '',
+    vencTercerAviso: '',
+    controlStock: ''
+  }
 
   constructor(private dialogRef: MatDialogRef<AlertasComponent>,
+    private comprasPacService:ComprasPacService
               ) {
+                this.getAlerta();
               }
 
-  fechaInicio = new FormControl('', [Validators.required]);
-  fechaTermino= new FormControl('', [Validators.required]);
-  primerAvisoDias= new FormControl('', [Validators.required]);
-  segundoAvisoDias= new FormControl('', [Validators.required]);
-  tercerAvisoDias= new FormControl('', [Validators.required]);
-  dFechaExtincion= new FormControl('', [Validators.required]);
-  stockMinimoPorc= new FormControl('', [Validators.required]);
+
+  fechaInicio = new FormControl(this.datoAlertas.fechaInicio, [Validators.required]);
+  fechaTermino= new FormControl(this.datoAlertas.fechaTermino, [Validators.required]);
+  primerAvisoDias= new FormControl(this.datoAlertas.vencPrimerAviso, [Validators.required]);
+  segundoAvisoDias= new FormControl(this.datoAlertas.vencSegundoAviso, [Validators.required]);
+  tercerAvisoDias= new FormControl(this.datoAlertas.vencTercerAviso, [Validators.required]);
+  stockMinimoPorc= new FormControl(this.datoAlertas.controlStock, [Validators.required]);
 
   public configuraAlerta: FormGroup = new FormGroup({
     fechaInicio: this.fechaInicio,
@@ -63,8 +73,38 @@ export class AlertasComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
+getAlerta() {
+    console.log('paso pac')
+    this.comprasPacService
+    .getAlerta()
+    .subscribe((res: {}) => {
+
+      this.datoAlertas=res as IAlertas;
+      console.log('alertas: ', this.datoAlertas);
+
+
+      this.configuraAlerta.get('fechaInicio')!.setValue(this.datoAlertas.fechaInicio);
+      this.configuraAlerta.get('fechaTermino')!.setValue(this.datoAlertas.fechaInicio);
+      this.configuraAlerta.get('primerAvisoDias')!.setValue(this.datoAlertas.vencPrimerAviso);
+      this.configuraAlerta.get('segundoAvisoDias')!.setValue(this.datoAlertas.vencSegundoAviso);
+      this.configuraAlerta.get('tercerAvisoDias')!.setValue(this.datoAlertas.vencTercerAviso);
+      this.configuraAlerta.get('stockMinimoPorc')!.setValue(this.datoAlertas.controlStock);
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
   enviar() {
 
             Swal.fire(

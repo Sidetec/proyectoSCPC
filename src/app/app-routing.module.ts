@@ -17,6 +17,7 @@ import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.compo
 import { ClimatizacionComponent } from './componentes/farmacia/climatizacion/climatizacion.component';
 import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
 import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
+import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
 
 
 
@@ -30,7 +31,7 @@ const routes: Routes = [
     {path: 'recepcion', component: RecepcionComponent},
     {path: 'consumo', component: AgregaConsumoComponent},
 
-    //{path: 'arsenal', component: ArsenalComponent},
+    {path: 'arsenal', component: ArsenalComponent},
     {path: 'climatizacion', component: ClimatizacionComponent},
 
 

@@ -1,11 +1,47 @@
-<app-loader></app-loader>
-<h2 mat-dialog-title class="text-center">RECEPCIÓN ARTÍCULOS</h2>
+<h2 mat-dialog-title>Recepción Artículo</h2>
 
+<mat-dialog-content [formGroup]="ingresoRecepcion" name="ingresoRecepcion" class="agrega-container">
 
+  <mat-form-field>
+    <input matInput  placeholder="Servicio" [formControl]="servicio" >
+    <mat-error *ngIf="servicio.invalid">{{getErrorMessage('servicio')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Tipo Solicitud" [formControl]="tipoSolicitud" >
+    <mat-error *ngIf="tipoSolicitud.invalid">{{getErrorMessage('tipoSolicitud')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Código Articulo" [formControl]="codigoArticulo" >
+    <mat-error *ngIf="codigoArticulo.invalid">{{getErrorMessage('codigoArticulo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Descripción Artículo" [formControl]="descripcionArticulo" >
+    <mat-error *ngIf="descripcionArticulo.invalid">{{getErrorMessage('descripcionArticulo')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Saldo disponible" [formControl]="saldoDisponible" >
+    <mat-error *ngIf="saldoDisponible.invalid">{{getErrorMessage('saldoDisponible')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Cantidad a Recivir" [formControl]="cantidadRecivir" >
+    <mat-error *ngIf="cantidadRecivir.invalid">{{getErrorMessage('cantidadRecivir')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nuevo Saldo disponible" [formControl]="nuevoSaldoDisponible" >
+    <mat-error *ngIf="nuevoSaldoDisponible.invalid">{{getErrorMessage('nuevoSaldoDisponible')}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
 
 <mat-dialog-actions>
 
-    <div class="col-md-12">
-      <button class="btn-danger" mat-raised-button  (click)="enviar()"  >ACEPTAR</button>
+    <div class="col-md-12 text-center">
+      <button class="colorFondoBoton" mat-raised-button  (click)="enviar()"  mat-dialog-close [disabled]="ingresoRecepcion.invalid">ACEPTAR</button>
     </div>
 </mat-dialog-actions>

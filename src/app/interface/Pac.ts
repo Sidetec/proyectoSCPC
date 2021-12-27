@@ -39,15 +39,6 @@ export interface IConsultaPac {
   saldoLicitacion: number;
   }
 
-  export interface IAlertas {
-    fechaInicio:Date;
-    fechaTermino:Date;
-    primerAvisoDias:number;
-    segundoAvisoDias:number;
-    tercerAvisoDias:number;
-    stockMinimoPorc:number;
-  }
-
   export interface IIgresoConsumo {
   planAnual:number;
   servicio:number;
@@ -67,3 +58,12 @@ export interface IConsultaPac {
     cantidad:string;
     nuevoSaldo:string;
   }
+
+  export interface IAlertas  {
+    fechaInicio: string;
+    fechaTermino: string;
+    vencPrimerAviso: string;
+    vencSegundoAviso: string;
+    vencTercerAviso: string;
+    controlStock: string;
+}
