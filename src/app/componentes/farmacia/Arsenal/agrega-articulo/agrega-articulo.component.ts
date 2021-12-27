@@ -17,7 +17,7 @@ export class AgregaArticuloComponent implements OnInit {
               public listaArsenalService: ListaArsenalService,
               @Inject(MAT_DIALOG_DATA) public data: any) {   
     }
-
+    
     codigoGzen= new FormControl('', [Validators.required]);
     grupo= new FormControl('', [Validators.required]);
     subGrupo= new FormControl('', [Validators.required]);
@@ -88,8 +88,8 @@ export class AgregaArticuloComponent implements OnInit {
 
   enviar() {
     this.datos = {
-      cantidad: 1,
-      descripcion: this.ingresoArticulo.get('medicamento')?.value,
+      //cantidad: 1,
+      //descripcion: this.ingresoArticulo.get('medicamento')?.value,
       codigoGzen: this.ingresoArticulo.get('codigoGzen')?.value,
       grupo: this.ingresoArticulo.get('grupo')?.value,
       subGrupo: this.ingresoArticulo.get('subGrupo')?.value,
@@ -97,17 +97,17 @@ export class AgregaArticuloComponent implements OnInit {
       controlLegal: this.ingresoArticulo.get('controlLegal')?.value,
       medicamento: this.ingresoArticulo.get('medicamento')?.value,
       fFarmacia: this.ingresoArticulo.get('fFarmacia')?.value,
-      presentacion: this.ingresoArticulo.get('presentacon')?.value,
+      presentacion: this.ingresoArticulo.get('presentacion')?.value,
       dosificacion: this.ingresoArticulo.get('dosificacion')?.value,
       restricciones: this.ingresoArticulo.get('restricciones')?.value,
       alternativa: this.ingresoArticulo.get('alternativa')?.value,
       observaciones: this.ingresoArticulo.get('observaciones')?.value,
     };
-
+    console.log(this.datos);
     this.listaArsenalService.getInsArticulo(this.datos)
       .subscribe(res => {
-        console.log('respuesta:', res['codigo']);
-        if ( res['codigo'] === 0 ) {
+        console.log('respuesta:', res);
+        if ( res === 0 ) {
             Swal.fire(
             'Se agregó con Éxito',
             'Click en Botón!',

@@ -85,9 +85,9 @@ getListArsenal(): void {
     this.dialog.open(AgregaArticuloComponent, dialogConfig)
     .afterClosed().subscribe(
      data => {console.log('Datos agregados:', data);
-              if (data !== undefined) {
-                  this.refreshTable();
-              }
+     // if (data !== undefined) {
+      this.refreshTable();
+     //}
       }
     );
   }

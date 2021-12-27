@@ -17,8 +17,8 @@ export interface IArticulo{
 }
 
 export interface IArtFarm {
-    cantidad: number;
-    descripcion: string;
+ //   cantidad: number;
+ //   descripcion: string;
     controlLegal: string;    
     grupo: string;
     subGrupo: string;    
@@ -33,5 +33,5 @@ export interface IArtFarm {
     observaciones: string;
 }
 export interface IResultado{
-    codigo: number;
+    codigo: string;
 }
