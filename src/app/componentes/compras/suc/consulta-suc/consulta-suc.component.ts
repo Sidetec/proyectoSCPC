@@ -85,7 +85,7 @@ iDetalleSuc1:IDetalleSuc1={
 
 
   getConsultaDetallePac2() {
-    console.log('paso pac')
+    console.log('paso pac',this.id)
     this.comprasSucService
     .getDataSucDetalle2(this.id)
     .subscribe((res: {}) => {

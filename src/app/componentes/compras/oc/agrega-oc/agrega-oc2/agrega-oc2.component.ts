@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IArticuloOc } from 'src/app/interface/oc';
+import { IArticuloOcAgrega } from 'src/app/interface/oc';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 import * as moment from 'moment';
 import { IngresoArtOcComponent } from './ingreso-art-oc/ingreso-art-oc.component';
@@ -25,20 +25,20 @@ export class AgregaOc2Component implements AfterViewInit {
 
 //datoConsultaPac:  IConsultaPac | undefined;
 
-iArticuloOc1:IArticuloOc = {
+iArticuloOc1:IArticuloOcAgrega = {
   id:'',codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
 };
 
   id: string='';
 
   show = true;
-datoConsultaOc: IArticuloOc[] = [
+datoConsultaOc: IArticuloOcAgrega[] = [
 
 
   ];
 
   displayedColumns: string[] = ['id','codigoArticulo', 'detalle',   'unidadDeMedida', 'cantidadTotal',  'valorUnitario',  'montoTotal','opciones'];
-  dataSource: MatTableDataSource<IArticuloOc>;
+  dataSource: MatTableDataSource<IArticuloOcAgrega>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -51,7 +51,7 @@ datoConsultaOc: IArticuloOc[] = [
 
 ) {
 
-    this.dataSource = new MatTableDataSource<IArticuloOc>();
+    this.dataSource = new MatTableDataSource<IArticuloOcAgrega>();
     ;
   }
 
@@ -158,6 +158,9 @@ agregaNuevo(){
       this.iArticuloOc1.valorUnitario=(data.valorUnitario);
       this.iArticuloOc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
       this.datoConsultaOc.push(this.iArticuloOc1);
+      this.iArticuloOc1 = {
+        id:'',codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
+      };
                 this.refreshTable();
             }
     }

@@ -6,7 +6,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
 import { HttpClient } from '@angular/common/http';
 
 
-import { IArticuloSuc, IArticuloSuc1, IConsultaSuc, IDetalleSuc1 } from 'src/app/interface/suc';
+import { IArticuloSuc, IArticuloSuc1, IConsultaSuc, IConsultaSucLista, IDetalleSuc1 } from 'src/app/interface/suc';
 
 import Swal from 'sweetalert2';
 import { ComprasSucService } from 'src/app/servicios/compras-suc.service';
@@ -99,7 +99,7 @@ agregaNuevo(){
 
   this.dialog.open(IngresoArtSucComponent, dialogConfig)
   .afterClosed().subscribe(
-   data => {console.log('Dialog output3333:', data);
+   data => {console.log('Respuesta ingreso articulo:', data);
             if (data !== undefined) {
               this.iArticuloSuc1.id=(data.id);
               this.iArticuloSuc1.codigoArticulo=(data.codigoArticulo);
@@ -109,6 +109,10 @@ agregaNuevo(){
               this.iArticuloSuc1.valorUnitario=(data.valorUnitario);
               this.iArticuloSuc1.montoTotal=(data.cantidadTotal +data.valorUnitario);
               this.datoConsultaSuc.push(this.iArticuloSuc1);
+              console.log('muestra lo que tiene la tabla articulo',this.datoConsultaSuc);
+              this.iArticuloSuc1 = ({
+                id:'', codigoArticulo: '', detalle: '',   unidadDeMedida: '', cantidadTotal: '0',  valorUnitario: '0',  montoTotal: '0'
+               });
                 this.refreshTable();
             }
     }
@@ -155,7 +159,8 @@ console.log('fecha:',formatoDate)
     .putDataSucCrea(formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable)
     .subscribe((res: {}) => {
       console.log('respuesta graba cabecera: ', res);
-      this.grabarArticulo();
+      this.getRescataId(this.agregaArticulo.value.servicio)
+
         this.dialogRef.close(1);
 
     },
@@ -171,11 +176,33 @@ console.log('fecha:',formatoDate)
   );
   }
 
-  grabarArticulo(){
-    for (var valor in this.dataSource.data){
+  getRescataId(servicio:string) {
+    console.log('paso suc')
+    this.comprasSucService
+    .getDataRescataId(servicio)
+    .subscribe((res: {}) => {
+      console.log('suc rescata id: ', res);
+     let RescataId = res as IConsultaSucLista;
+     this.grabarArticulo(RescataId.id);
 
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+
+  grabarArticulo(rescataId:string){
+    for (var valor in this.dataSource.data){
+        console.log('muestra id articulo',rescataId)
           this.comprasSucService
-        .putDataSucCreaArticulo(this.dataSource.data[valor].id,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
+        .putDataSucCreaArticulo(rescataId,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('graba articulo: ', res);
 

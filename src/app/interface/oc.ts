@@ -1,5 +1,4 @@
 export interface IArticuloOc {
-    id: string;
     codigoArticulo: string;
     detalle: string;
     unidadDeMedida: string;
@@ -9,6 +8,15 @@ export interface IArticuloOc {
     }
 
 
+    export interface IArticuloOcAgrega {
+      id: string;
+      codigoArticulo: string;
+      detalle: string;
+      unidadDeMedida: string;
+      cantidadTotal: string;
+      valorUnitario: string;
+      montoTotal: string;
+      }
     export interface IConsultaOcLista {
       id: string;
       cod_oc: string;

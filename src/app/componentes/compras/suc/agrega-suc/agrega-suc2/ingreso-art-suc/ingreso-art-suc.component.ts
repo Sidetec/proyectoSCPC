@@ -17,6 +17,7 @@ export class IngresoArtSucComponent implements OnInit {
   descripcion:string='' as string;
   uidadMedida:string='' as string;
   id:string='' as string;
+  codigoArticuloP='' as string;
   datosArticulo:IArticulo[]=[];
   /* {
 
@@ -79,12 +80,13 @@ datoArticulo: IdatoArticulo = {
   enviar(){
     this.datoArticulo = {
       id:this.id,
-      codigoArticulo: this.ingresaArticulo.get('codigoArticulo')!.value ,
+      codigoArticulo: this.codigoArticuloP ,
       descripcion: this.descripcion ,
       unidad: this.uidadMedida ,
       cantidadTotal: this.ingresaArticulo.get('cantidadTotal')!.value,
       valorUnitario: this.ingresaArticulo.get('valorUnitario')!.value,
     };
+    console.log('envio articulo:',this.datoArticulo);
     this.dialogRef.close(this.datoArticulo);
   }
 
@@ -104,6 +106,7 @@ datoArticulo: IdatoArticulo = {
         this.descripcion='';
         this.uidadMedida='';
         this.id='';
+        this.codigoArticuloP='';
         this.ingresaArticulo.get('codigoArticulo')!.setValue('');
         Swal.fire(
           'ERROR ARTICULO',
@@ -114,6 +117,7 @@ datoArticulo: IdatoArticulo = {
       }
       else{
         this.datosArticulo = res as IArticulo[];
+        this.codigoArticuloP= this.datosArticulo[0].cod_art;
         this.descripcion=this.datosArticulo[0].descripcion;
         this.uidadMedida=this.datosArticulo[0].unidad;
         this.id=this.datosArticulo[0].id;

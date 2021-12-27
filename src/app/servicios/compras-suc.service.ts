@@ -30,6 +30,14 @@ export class ComprasSucService {
     );
   }
 
+  getDataRescataId(nombreId:string): Observable<IConsultaSucLista> {
+    return this.http.get<IConsultaSucLista>(`${environment.apiUrl}/PostaCentralConsultaSuc/consultaDetalle/`+ nombreId, { headers: this.headers })
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
   getDataSucDetalle1(parametro1:string): Observable<IDetalleSuc1> {
     return this.http.get<IDetalleSuc1>(`${environment.apiUrl}/PostaCentralConsultaSuc/consultaId/`+ parametro1 , { headers: this.headers })
     .pipe(
@@ -64,7 +72,6 @@ export class ComprasSucService {
   }
 
   putDataSucCreaArticulo(id:string,codigoArticulo: string,cantidadTotal: string, PrecioUnitario: string): Observable<ISucresultado> {
-    id='1';
     console.log('graba articulo',`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ id+  `/`+ codigoArticulo+  `/`+ cantidadTotal+  `/`+ PrecioUnitario+  `/`);
     return this.http.get<ISucresultado>(`${environment.apiUrl}/PostaCentralConsultaSuc/creaArticulo/`+ id+  `/`+ codigoArticulo+  `/`+ cantidadTotal+  `/`+ PrecioUnitario+  `/`,{ headers: this.headers })
     .pipe(
