@@ -10,9 +10,7 @@
 <mat-dialog-content [formGroup]="agregaReferencia " name="agregaReferencia" class="agrega-container">
 
   <mat-form-field>
-    <input matInput placeholder="Fecha de Compra" [matDatepicker]="dpdFechaCompra" [formControl]="fechaCompra" required>
-    <mat-datepicker-toggle matSuffix [for]="dpdFechaCompra"></mat-datepicker-toggle>
-    <mat-datepicker #dpdFechaCompra></mat-datepicker>
+    <input matInput  placeholder="Fecha de Compra" [formControl]="fechaCompra" >
     <mat-error *ngIf="fechaCompra.invalid">{{getErrorMessage('fechaCompra')}}</mat-error>
   </mat-form-field>
 

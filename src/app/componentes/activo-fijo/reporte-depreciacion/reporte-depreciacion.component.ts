@@ -51,13 +51,12 @@ datoConsultaSuc: IResumenDepreciacion[] = [
   }
 
   formula(){
-    this.datoConsultaSuc.push( {findeanio: '0', depreciacionAnual: '', depreciacionAcum: '', valorenLibros: '100.000'})
-    this.datoConsultaSuc.push({findeanio: '1', depreciacionAnual: '15.000', depreciacionAcum: '15.000', valorenLibros: '85.000'});
-    this.datoConsultaSuc.push({findeanio: '2', depreciacionAnual: '15.000', depreciacionAcum: '30.000', valorenLibros: '70.000'});
-    this.datoConsultaSuc.push({findeanio: '3', depreciacionAnual: '15.000', depreciacionAcum: '45.000', valorenLibros: '55.000'});
-    this.datoConsultaSuc.push({findeanio: '4', depreciacionAnual: '15.000', depreciacionAcum: '60.000', valorenLibros: '40.000'});
-    this.datoConsultaSuc.push({findeanio: '5', depreciacionAnual: '15.000', depreciacionAcum: '75.000', valorenLibros: '25.000'});
-    this.datoConsultaSuc.push({findeanio: '6', depreciacionAnual: '15.000', depreciacionAcum: '90.000', valorenLibros: '10.000'});
+    this.datoConsultaSuc.push( {findeanio: '0', depreciacionAnual: '', depreciacionAcum: '', valorenLibros: '449.000'})
+    this.datoConsultaSuc.push({findeanio: '1', depreciacionAnual: '89.820', depreciacionAcum: '89.820', valorenLibros: '409.180'});
+    this.datoConsultaSuc.push({findeanio: '2', depreciacionAnual: '89.820', depreciacionAcum: '179.640', valorenLibros: '319.360'});
+    this.datoConsultaSuc.push({findeanio: '3', depreciacionAnual: '89.820', depreciacionAcum: '269.460', valorenLibros: '259.540'});
+    this.datoConsultaSuc.push({findeanio: '4', depreciacionAnual: '89.820', depreciacionAcum: '359.280', valorenLibros: '139.720'});
+    this.datoConsultaSuc.push({findeanio: '5', depreciacionAnual: '89.820', depreciacionAcum: '449.100', valorenLibros: '49.900'});
   }
 
   ngAfterViewInit() {
