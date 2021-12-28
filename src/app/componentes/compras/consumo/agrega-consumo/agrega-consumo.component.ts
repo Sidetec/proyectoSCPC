@@ -141,7 +141,7 @@ export class AgregaConsumoComponent implements OnInit {
     let saldo= this.ingresoConsumo.get('saldoDisponibleantesConsumo')?.value;
     console.log('Saldo: ',saldo);
     this.ingresoConsumo.get('saldoDisponibleDespuesConsumo')!.
-      setValue(parseInt(saldo) + parseInt(this.ingresoConsumo.get('cantidadConsumir')?.value));
+      setValue(parseInt(saldo) - parseInt(this.ingresoConsumo.get('cantidadConsumir')?.value));
   }
 
 

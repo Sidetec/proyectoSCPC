@@ -5,17 +5,15 @@ import {MatTableDataSource} from '@angular/material/table';
 import { AgregaPacComponent } from './agrega-pac/agrega-pac.component';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+
 import { ModificaPacComponent } from './modifica-pac/modifica-pac.component';
 import { ConsultaPacComponent } from './consulta-pac/consulta-pac.component';
 import { AlertasComponent } from './alertas/alertas.component';
-import { IListaPac } from 'src/app/interface/Pac';
+import { IAlertas, IListaPac } from 'src/app/interface/Pac';
 
 import Swal from 'sweetalert2';
 import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
-
-
-
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-pac',
@@ -24,29 +22,7 @@ import { ComprasPacService } from 'src/app/servicios/compras-pac.service';
 })
 export class PacComponent implements AfterViewInit, OnInit {
 
- /* datos: IListaPac[] = [
-    {pac: 'PAC-001', servicio: 'Servicio1'},
-    {pac: 'PAC-002', servicio: 'Servicio2'},
-    {pac: 'PAC-003', servicio: 'Servicio3'},
-    {pac: 'PAC-004', servicio: 'Servicio4'},
-    {pac: 'PAC-005', servicio: 'Servicio5'},
-    {pac: 'PAC-006', servicio: 'Servicio6'},
-    {pac: 'PAC-007', servicio: 'Servicio7'},
-    {pac: 'PAC-008', servicio: 'Servicio8'},
-    {pac: 'PAC-009', servicio: 'Servicio9'},
-    {pac: 'PAC-0010', servicio: 'Servicio10'},
-    {pac: 'PAC-0011', servicio: 'Servicio11'},
-    {pac: 'PAC-0012', servicio: 'Servicio12'},
-    {pac: 'PAC-0013', servicio: 'Servicio13'},
-    {pac: 'PAC-0014', servicio: 'Servicio14'},
-    {pac: 'PAC-0015', servicio: 'Servicio15'},
-    {pac: 'PAC-0016', servicio: 'Servicio16'},
-    {pac: 'PAC-0017', servicio: 'Servicio17'},
-    {pac: 'PAC-0018', servicio: 'Servicio18'},
-    {pac: 'PAC-0019', servicio: 'Servicio19'},
-    {pac: 'PAC-0020', servicio: 'Servicio20'},
-  ];
-  */
+  //fechaActual: string = moment(Date.now()).format("DD-MM-YYYY");
   displayedColumns: string[] = ['id','pac', 'servicio', 'solicitados','comprados','pendientes','consumidos','disponibles','opciones'];
   dataSource: MatTableDataSource<IListaPac>;
 
@@ -58,18 +34,69 @@ export class PacComponent implements AfterViewInit, OnInit {
   show=true;
 
   constructor(public dialog: MatDialog,public httpClient: HttpClient,private comprasPacService:ComprasPacService) {
-    // Create 100 users
-    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-
     this.dataSource = new MatTableDataSource<IListaPac>();
   }
 
-
   ngOnInit() {
-
+    this.getAlertas();
     this.getListPac();
+  }
+  getAlertas(){
+    this.comprasPacService.getAlerta()
+    .subscribe( (resp: {}) => {
+      console.log('pac: ', resp);
+      let alertas = resp as IAlertas;
+      let hoy = new Date();
+      //let hoy = moment(this.fechaActual,'MM-DD-YYYY');
+      //let inicio = moment(alertas.fechaInicio,'MM-DD-YYYY');
+      //let fin = moment(alertas.fechaTermino,'MM-DD-YYYY');
+      //console.log('Hoy: ',this.fechaActual)
+      let inicio = new Date(alertas.fechaInicio);
+      let fin = new Date(alertas.fechaTermino);
+      console.log('Hoy: ',hoy);
+      console.log('Día de Hoy: ',hoy.getDate());
+      console.log('Inicio: ',inicio);
+      console.log('Día de Inicio: ',inicio.getDate());
+      console.log('Fin: ',fin);
+      console.log('Día del Fin: ',fin.getDate());
+      if( hoy >= inicio && hoy < fin ){
+        if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencTercerAviso) ){
+          Swal.fire(
+            'Resta 1 día para finalizar el período de creación de PAC',
+            'Click en botón!',
+            'success'
+         );
+        }else if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencSegundoAviso) ){
+          Swal.fire(
+            'Restan 3 días para finalizar el período de creación de PAC',
+            'Cerrar',
+            'success'
+         );
+        }else if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencPrimerAviso) ){
+          Swal.fire(
+            'Restan 7 días para finalizar el período de creación de PAC',
+            'Click en botón!',
+            'success'
+         );
+        }else{
+            Swal.fire(
+              'El período de creación de PAC está abierto',
+              'Click en botón!',
+              'success'
+           );
+        }
+      }
+
+    },
+      error => {
+        console.log('error carga:', error);
+        Swal.fire(
+          'ERROR INESPERADO',
+          error,
+         'info'
+       );
+      }
+    );
   }
 
   getListPac() {
@@ -79,9 +106,7 @@ export class PacComponent implements AfterViewInit, OnInit {
     .subscribe((res: {}) => {
       console.log('pac: ', res);
       this.dataSource.data = res as IListaPac[];
-
     },
-    // console.log('yo:', res as PerfilI[]),
     error => {
       console.log('error carga:', error);
       Swal.fire(
@@ -92,7 +117,6 @@ export class PacComponent implements AfterViewInit, OnInit {
     }
   );
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -109,8 +133,7 @@ export class PacComponent implements AfterViewInit, OnInit {
   }
 
   agregaNuevo() {
-  //  agregaNuevo(empresaInterface_: EmpresaI) {
-    // Nuevo
+
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -119,11 +142,6 @@ export class PacComponent implements AfterViewInit, OnInit {
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '2%'};
     dialogConfig.data = {};
-  //  dialogConfig.data = {
-  //    idProducto: idProdP,
-  //    titulo: tituloP
-  //  };
-
 
     this.dialog.open(AgregaPacComponent, dialogConfig)
     .afterClosed().subscribe(
@@ -137,7 +155,6 @@ export class PacComponent implements AfterViewInit, OnInit {
 
   actualizaPac() {
 
-
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -145,7 +162,6 @@ export class PacComponent implements AfterViewInit, OnInit {
     dialogConfig.width = '50%';
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
-
 
     this.dialog.open(ModificaPacComponent, dialogConfig)
       .afterClosed().subscribe(
@@ -158,8 +174,6 @@ export class PacComponent implements AfterViewInit, OnInit {
   }
 
   consultaPac(id:string) {
-
-
 
     const dialogConfig = new MatDialogConfig();
 
@@ -180,14 +194,11 @@ export class PacComponent implements AfterViewInit, OnInit {
       );
    }
 
-
   private refreshTable() {
 
     this.getListPac();
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
-
-
 
   alertas(){
     const dialogConfig = new MatDialogConfig();
@@ -197,7 +208,6 @@ export class PacComponent implements AfterViewInit, OnInit {
     dialogConfig.width = '50%';
     dialogConfig.height = '95%';
     dialogConfig.position = { top : '2%'};
-
 
     this.dialog.open(AlertasComponent, dialogConfig)
       .afterClosed().subscribe(
