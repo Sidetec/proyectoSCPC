@@ -3,37 +3,45 @@
 <mat-dialog-content [formGroup]="ingresoRecepcion" name="ingresoRecepcion" class="agrega-container">
 
   <mat-form-field>
-    <input matInput  placeholder="Servicio" [formControl]="servicio" >
+    <mat-select [formControl]="servicio" placeholder="Servicio" required>
+      <mat-option *ngFor="let servicio of datosServicios" [value]="servicio.codigo">
+        {{servicio.codigo}}
+      </mat-option>
+    </mat-select>
     <mat-error *ngIf="servicio.invalid">{{getErrorMessage('servicio')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Tipo Solicitud" [formControl]="tipoSolicitud" >
+    <mat-select [formControl]="tipoSolicitud" placeholder="Tipo Solicitud" required>
+      <mat-option *ngFor="let tipoSolicitud of listaSolicitud" [value]="tipoSolicitud">
+        {{tipoSolicitud}}
+      </mat-option>
+    </mat-select>
     <mat-error *ngIf="tipoSolicitud.invalid">{{getErrorMessage('tipoSolicitud')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Código Articulo" [formControl]="codigoArticulo" >
+    <input matInput placeholder="Código Artículo" [formControl]="codigoArticulo" (blur)="onBlurArticulo($event)" required>
     <mat-error *ngIf="codigoArticulo.invalid">{{getErrorMessage('codigoArticulo')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Descripción Artículo" [formControl]="descripcionArticulo" >
+    <input matInput  placeholder="Descripción Artículo" [formControl]="descripcionArticulo" readonly>
     <mat-error *ngIf="descripcionArticulo.invalid">{{getErrorMessage('descripcionArticulo')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Saldo disponible" [formControl]="saldoDisponible" >
+    <input matInput  placeholder="Saldo disponible" [formControl]="saldoDisponible" readonly>
     <mat-error *ngIf="saldoDisponible.invalid">{{getErrorMessage('saldoDisponible')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Cantidad a Recivir" [formControl]="cantidadRecivir" >
-    <mat-error *ngIf="cantidadRecivir.invalid">{{getErrorMessage('cantidadRecivir')}}</mat-error>
+    <input matInput  placeholder="Cantidad a Recibir" [formControl]="cantidadRecibir" required>
+    <mat-error *ngIf="cantidadRecibir.invalid">{{getErrorMessage('cantidadRecibir')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Nuevo Saldo disponible" [formControl]="nuevoSaldoDisponible" >
+    <input matInput placeholder="Nuevo Saldo disponible" [formControl]="nuevoSaldoDisponible" (blur)="onBlurSaldo($event)" readonly>
     <mat-error *ngIf="nuevoSaldoDisponible.invalid">{{getErrorMessage('nuevoSaldoDisponible')}}</mat-error>
   </mat-form-field>
 

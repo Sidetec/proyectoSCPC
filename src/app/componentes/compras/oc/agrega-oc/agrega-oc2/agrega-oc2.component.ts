@@ -227,7 +227,7 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
   grabarArticulo(){
     for (var valor in this.dataSource.data){
         this.comprasOcService
-        .putDataOcCreaArticulo(this.agregaArticulo.value.numDocumentoAsociado,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
+        .putDataOcCreaArticulo(this.agregaArticulo.value.numDocumentoAsociado,this.dataSource.data[valor].id,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('ot: ', res);
 

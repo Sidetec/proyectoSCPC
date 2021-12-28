@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { IIgresoConsumo } from 'src/app/interface/Pac';
+import { IArticuloOc } from 'src/app/interface/oc';
+import { IServicio } from 'src/app/interface/recepcion';
+import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
+import { ComprasRecepcionService } from 'src/app/servicios/compras-recepcion.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,9 +13,13 @@ import Swal from 'sweetalert2';
 })
 export class RecepcionComponent implements OnInit {
 
-  datoAlertas: IIgresoConsumo | undefined;
+  articulo: IArticuloOc | undefined;
+  datosServicios: IServicio[] | undefined;
+  listaServicios: string[] | undefined;
+  listaSolicitud: string[] = ["PAC","SUC"];
 
-  constructor(
+  constructor(public comprasRecepcionService: ComprasRecepcionService,
+              public comprasOcService: ComprasOcService
               ) {
   }
   servicio = new FormControl('', [Validators.required]);
@@ -20,7 +27,7 @@ export class RecepcionComponent implements OnInit {
   codigoArticulo= new FormControl('', [Validators.required]);
   descripcionArticulo= new FormControl('', [Validators.required]);
   saldoDisponible= new FormControl('', [Validators.required]);
-  cantidadRecivir= new FormControl('', [Validators.required]);
+  cantidadRecibir= new FormControl('', [Validators.required]);
   nuevoSaldoDisponible= new FormControl('', [Validators.required]);;
 
   public ingresoRecepcion: FormGroup = new FormGroup({
@@ -29,7 +36,7 @@ export class RecepcionComponent implements OnInit {
     codigoArticulo: this.codigoArticulo,
     descripcionArticulo: this.descripcionArticulo,
     saldoDisponible: this.saldoDisponible,
-    cantidadRecivir: this.cantidadRecivir,
+    cantidadRecibir: this.cantidadRecibir,
     nuevoSaldoDisponible: this.nuevoSaldoDisponible,
   });
 
@@ -50,8 +57,8 @@ export class RecepcionComponent implements OnInit {
     if (campo === 'saldoDisponible'){
         return this.saldoDisponible.hasError('required') ? 'Debes ingresar Saldo Disponible' : '';
     }
-    if (campo === 'cantidadRecivir'){
-        return this.cantidadRecivir.hasError('required') ? 'Debes ingresar Cantidad Recivir' : '';
+    if (campo === 'cantidadRecibir'){
+        return this.cantidadRecibir.hasError('required') ? 'Debes ingresar Cantidad Recibir' : '';
     }
     if (campo === 'nuevoSaldoDisponible'){
       return this.nuevoSaldoDisponible.hasError('required') ? 'Debes ingresar Nuevo Saldo Disponible' : '';
@@ -60,8 +67,26 @@ export class RecepcionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getListaServicios();
   }
 
+  getListaServicios(): void {
+    this.comprasRecepcionService
+      .getDataServiciosLista()
+      .subscribe((res: {}) => {
+        console.log('Artículos: ', res);
+        this.datosServicios = res as IServicio[];
+      },
+      error => {
+        console.log('error carga:', error);
+        Swal.fire(
+          'ERROR INESPERADO',
+          error,
+         'info'
+       );
+      }
+    );
+  }
   enviar() {
 
             Swal.fire(
@@ -70,13 +95,44 @@ export class RecepcionComponent implements OnInit {
             'success'
           ); // ,
 
-
-
   }
 
-  // Error handling
+ onBlurArticulo(event: any){
+    let codArticulo= event.target.value;
+    this.comprasOcService
+    .getDataOcDetalle2(codArticulo)
+    .subscribe((res: {}) => {
+      console.log('articulo: ', res);
+      if (res==''){
+          Swal.fire(
+          'ERROR ARTICULO',
+          'Artículo no Existe',
+         'info'
+       );
+      }
+      else{
+        let datosArticulo = res as IArticuloOc[];
+        this.ingresoRecepcion.get('descripcionArticulo')!.setValue(datosArticulo[0].detalles);
+        this.ingresoRecepcion.get('saldoDisponible')!.setValue(datosArticulo[0].cantidadTotal);
+      }
+    },
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
 
-
+  onBlurSaldo(event: any){
+    let saldo= this.ingresoRecepcion.get('cantidadRecibir')?.value;
+    console.log('Saldo: ',saldo);
+    this.ingresoRecepcion.get('nuevoSaldoDisponible')!.
+      setValue(parseInt(saldo) + parseInt(this.ingresoRecepcion.get('saldoDisponible')?.value));
+  }
 
   cerrar() {
 

@@ -9,4 +9,12 @@ export interface IRecepcion {
   idOc: number;
   totalComprado: number
   saldoSuc: number;
-  }
+}
+export interface IServicio{
+  codigo: string;
+  nombre: string;
+  descripcion: string;
+  responsable: string;
+  servicio: string;
+  correo: string;
+}

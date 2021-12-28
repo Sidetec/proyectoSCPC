@@ -203,7 +203,7 @@ console.log('fecha:',formatoDate)
     for (var valor in this.dataSource.data){
         console.log('muestra id articulo',rescataId)
           this.comprasSucService
-        .putDataSucCreaArticulo(rescataId,this.dataSource.data[valor].codigoArticulo,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
+        .putDataSucCreaArticulo(rescataId,this.dataSource.data[valor].id,this.dataSource.data[valor].cantidadTotal,this.dataSource.data[valor].valorUnitario)
         .subscribe((res: {}) => {
           console.log('graba articulo: ', res);
 

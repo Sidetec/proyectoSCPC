@@ -1,5 +1,12 @@
-<h2 mat-dialog-title>Creando Solicitud Única de Compras</h2>
 
+<div class="row">
+  <div class="col-md-10 text-center ">
+    <h2 mat-dialog-title>Creando Solicitud Única de Compras</h2>
+  </div>
+  <div class="col-md-2 text-center ">
+    <button  mat-raised-button (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+  </div>
+</div>
 <mat-dialog-content [formGroup]="agregaArticulo " name="agregaArticulo" class="agrega-container">
 
   <mat-form-field>
