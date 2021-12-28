@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IArticuloF } from 'src/app/interface/arsenal';
 import { IIgresoConsumo } from 'src/app/interface/Pac';
+import { IServicioListaP } from 'src/app/interface/recepcion';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 
 
 import Swal from 'sweetalert2';
@@ -13,10 +16,21 @@ import Swal from 'sweetalert2';
 })
 export class AgregaConsumoComponent implements OnInit {
 
+  listaServicio=[
+    {codigo:"1", nombre:"CR Medicina"},
+    {codigo:"2", nombre:"CR Quirúrgico Cirugía"},
+    {codigo:"3", nombre:"CR Quirúrgico Traumatología"},
+    {codigo:"4", nombre:"CR Quemados Pabellón"},
+    {codigo:"5", nombre:"CR Quemados Hospitalización"},
+    {codigo:"6", nombre:"CR Urgencia Médica Quirúrgica"},
+    {codigo:"7", nombre:"CR Urgencia Médica Admisión"},
+    {codigo:"8", nombre:"CR Urgencia Médica  Odontología Maxilofacial"},
+    {codigo:"9", nombre:"CR Paciente Crítico"}
+    ] as IServicioListaP[]
 
   datoAlertas: IIgresoConsumo | undefined;
 
-  constructor(
+  constructor(private listaArsenalService: ListaArsenalService
               ) {
   }
 
@@ -86,4 +100,49 @@ export class AgregaConsumoComponent implements OnInit {
   cerrar() {
 
   }
+
+  onBlurArticulo(event: any){
+    let codArticulo= event.target.value;
+    this.listaArsenalService
+    .getArticulo(codArticulo)
+    .subscribe((res: {}) => {
+      console.log('articulo: ', res);
+      if (res==''){
+          Swal.fire(
+          'ERROR ARTICULO',
+          'Artículo no Existe',
+         'info'
+       );
+      }
+      else{
+        let datosArticulo = res as IArticuloF[];
+        if (datosArticulo[0].disponible!=null){
+          this.ingresoConsumo.get('saldoDisponibleantesConsumo')!.setValue(datosArticulo[0].disponible);
+        }else{
+          this.ingresoConsumo.get('saldoDisponibleantesConsumo')!.setValue('0');
+        }
+
+        this.ingresoConsumo.get('descripcionArticulo')!.setValue(datosArticulo[0].descripcion);
+
+      }
+    },
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
+  }
+
+  onBlurSaldo(event: any){
+    let saldo= this.ingresoConsumo.get('saldoDisponibleantesConsumo')?.value;
+    console.log('Saldo: ',saldo);
+    this.ingresoConsumo.get('saldoDisponibleDespuesConsumo')!.
+      setValue(parseInt(saldo) + parseInt(this.ingresoConsumo.get('cantidadConsumir')?.value));
+  }
+
+
 }

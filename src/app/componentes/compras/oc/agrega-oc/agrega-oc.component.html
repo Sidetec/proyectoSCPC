@@ -9,7 +9,7 @@
 <mat-dialog-content [formGroup]="agregaArticulo " name="agregaArticulo" class="agrega-container">
 
   <mat-form-field>
-    <input matInput  placeholder="Númerom Orden de Compra" [formControl]="numOrdenCompra" >
+    <input matInput  placeholder="Númerom Orden de Compra" [formControl]="numOrdenCompra" #input [value]="input.value.toUpperCase()">
     <mat-error *ngIf="numOrdenCompra.invalid">{{getErrorMessage('numOrdenCompra')}}</mat-error>
   </mat-form-field>
 
@@ -22,7 +22,7 @@
     <mat-error *ngIf="tipoDocumentoAsociado.invalid">{{getErrorMessage('tipoDocumentoAsociado')}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado">
+    <input matInput  placeholder="Númerom Documento Asociado" [formControl]="numDocumentoAsociado" #input1 [value]="input1.value.toUpperCase()">
     <mat-error *ngIf="numDocumentoAsociado.invalid">{{getErrorMessage('numDocumentoAsociado')}}</mat-error>
   </mat-form-field>
 
@@ -35,32 +35,32 @@
 
 
   <mat-form-field>
-    <input matInput  placeholder="Empresa" [formControl]="empresa" >
+    <input matInput  placeholder="Empresa" [formControl]="empresa" #input2 [value]="input2.value.toUpperCase()">
     <mat-error *ngIf="empresa.invalid">{{getErrorMessage('empresa')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Rut" [formControl]="rut" >
+    <input matInput  placeholder="Rut" [formControl]="rut" #input3 [value]="input3.value.toUpperCase()">
     <mat-error *ngIf="rut.invalid">{{getErrorMessage('rut')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Descripción" [formControl]="descripcion" >
+    <input matInput  placeholder="Descripción" [formControl]="descripcion" #input4 [value]="input4.value.toUpperCase()">
     <mat-error *ngIf="descripcion.invalid">{{getErrorMessage('descripcion')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Dirección Envío Factura" [formControl]="direccionEnvioFactura" >
+    <input matInput  placeholder="Dirección Envío Factura" [formControl]="direccionEnvioFactura" #input5 [value]="input5.value.toUpperCase()">
     <mat-error *ngIf="direccionEnvioFactura.invalid">{{getErrorMessage('direccionEnvioFactura')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Dirección Despacho" [formControl]="direccionDespacho" >
+    <input matInput  placeholder="Dirección Despacho" [formControl]="direccionDespacho" #input6 [value]="input6.value.toUpperCase()">
     <mat-error *ngIf="direccionDespacho.invalid">{{getErrorMessage('direccionDespacho')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput  placeholder="Forma Pago" [formControl]="formaPago" >
+    <input matInput  placeholder="Forma Pago" [formControl]="formaPago" #input7 [value]="input7.value.toUpperCase()">
     <mat-error *ngIf="formaPago.invalid">{{getErrorMessage('formaPago')}}</mat-error>
   </mat-form-field>
 
