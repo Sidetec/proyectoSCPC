@@ -3,16 +3,12 @@
 <mat-dialog-content [formGroup]="configuraAlerta" name="configuraAlerta" class="agrega-container">
 
   <mat-form-field>
-    <input matInput placeholder="Ingrese Fecha Inicio" [matDatepicker]="dpdFechaInicio" [formControl]="fechaInicio" readonly required>
-    <mat-datepicker-toggle matSuffix [for]="dpdFechaInicio"></mat-datepicker-toggle>
-    <mat-datepicker #dpdFechaInicio></mat-datepicker>
+    <input matInput placeholder="Fecha Inicioiso" [formControl]="fechaInicio" readonly>
     <mat-error *ngIf="fechaInicio.invalid">{{getErrorMessage('fechaInicio')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Ingrese Fecha Término" [matDatepicker]="dpdFechaTermino" [formControl]="fechaTermino" readonly required>
-    <mat-datepicker-toggle matSuffix [for]="dpdFechaTermino"></mat-datepicker-toggle>
-    <mat-datepicker #dpdFechaTermino></mat-datepicker>
+    <input matInput placeholder="Fecha Termino" [formControl]="fechaTermino" readonly>
     <mat-error *ngIf="fechaTermino.invalid">{{getErrorMessage('fechaTermino')}}</mat-error>
   </mat-form-field>
 

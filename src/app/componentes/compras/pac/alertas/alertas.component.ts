@@ -87,7 +87,7 @@ getAlerta() {
 
 
       this.configuraAlerta.get('fechaInicio')!.setValue(this.datoAlertas.fechaInicio);
-      this.configuraAlerta.get('fechaTermino')!.setValue(this.datoAlertas.fechaInicio);
+      this.configuraAlerta.get('fechaTermino')!.setValue(this.datoAlertas.fechaTermino);
       this.configuraAlerta.get('primerAvisoDias')!.setValue(this.datoAlertas.vencPrimerAviso);
       this.configuraAlerta.get('segundoAvisoDias')!.setValue(this.datoAlertas.vencSegundoAviso);
       this.configuraAlerta.get('tercerAvisoDias')!.setValue(this.datoAlertas.vencTercerAviso);
