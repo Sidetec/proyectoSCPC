@@ -56,7 +56,7 @@ export class CancelarSucComponent implements OnInit {
     let formattedDate = (moment(date)).format('YYYY-MM-DD')
     console.log('fecha formato',formattedDate)
     this.comprasSucService
-    .putDataSucCancelar(this.parametro.id,this.parametro.numSuc,this.cancelarSuc.get('Responsable')?.value,this.cancelarSuc.get('Motivo')?.value,'',formattedDate)
+    .putDataSucCancelar(this.parametro.id,this.parametro.numSuc,this.cancelarSuc.get('Responsable')?.value,'1','',formattedDate)
     .subscribe((res: {}) => {
       console.log('suc: ', res);
       Swal.fire(
