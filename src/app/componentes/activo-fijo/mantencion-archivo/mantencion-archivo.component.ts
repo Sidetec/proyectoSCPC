@@ -4,9 +4,11 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { IMantenimientoActivoFijoLista } from 'src/app/interface/mantenimientoActivoFijo';
+import { MantenimientoActivoFijoService } from 'src/app/servicios/mantenimiento-activo-fijo.service';
 
-
-
+import Swal from 'sweetalert2';
+/*
 export interface Datos {
   numero: string;
   tipo: string;
@@ -26,7 +28,7 @@ const datos: Datos[] = [
 
 ]
 
-
+*/
 @Component({
   selector: 'app-mantencion-archivo',
   templateUrl: './mantencion-archivo.component.html',
@@ -36,19 +38,49 @@ const datos: Datos[] = [
 export class MantencionArchivoComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['numero', 'tipo', 'estado','fecha','fecha2','responsable'];
-  dataSource: MatTableDataSource<Datos>;
+  dataSource: MatTableDataSource<IMantenimientoActivoFijoLista>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog,public httpClient: HttpClient,private dialogRef: MatDialogRef<MantencionArchivoComponent>) {
+  constructor(public dialog: MatDialog,public httpClient: HttpClient
+    ,private dialogRef: MatDialogRef<MantencionArchivoComponent>
+    ,private mantenimientoActivoFijoService:MantenimientoActivoFijoService) {
     // Create 100 users
     //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(datos);
+    this.dataSource = new MatTableDataSource<IMantenimientoActivoFijoLista>();
+  }
+
+
+
+  ngOnInit() {
+
+    this.getListMa();
+  }
+
+  getListMa() {
+    console.log('paso pac')
+    this.mantenimientoActivoFijoService
+    .getDataMantenimientoLista()
+    .subscribe((res: {}) => {
+      console.log('pac: ', res);
+      this.dataSource.data = res as IMantenimientoActivoFijoLista[];
+
+    },
+    // console.log('yo:', res as PerfilI[]),
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
   }
 
   ngAfterViewInit() {
@@ -95,7 +127,7 @@ export class MantencionArchivoComponent implements AfterViewInit {
    this.dataSource.paginator?._changePageSize(this.paginator.pageSize);
   }
 
-  
+
   cerrar() {
     this.dialogRef.close();
   }

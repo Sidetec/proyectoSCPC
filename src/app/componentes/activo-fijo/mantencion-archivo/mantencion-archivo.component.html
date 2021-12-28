@@ -18,7 +18,7 @@
       <!-- PAC Column -->
       <ng-container matColumnDef="numero">
         <th id='numeroI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>N° </th>
-        <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.numero}} </td>
+        <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.cod_mantencion}} </td>
       </ng-container>
 
       <!-- Servicio Column -->
@@ -30,23 +30,23 @@
       <!-- solicitados Column -->
       <ng-container matColumnDef="estado">
         <th id='estadoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 23%;'>Estado </th>
-        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.estado}} </td>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{'Ejecutada'}} </td>
       </ng-container>
 
       <!-- solicitados Column -->
       <ng-container matColumnDef="fecha">
         <th id='fechaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 23%;'>Fecha Programada </th>
-        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fecha}} </td>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fedcha}} </td>
       </ng-container>
       <!-- solicitados Column -->
       <ng-container matColumnDef="fecha2">
         <th id='fecha2I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 23%;'>Fecha Ejecutada</th>
-        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fecha2}} </td>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fedcha}} </td>
       </ng-container>
       <!-- solicitados Column -->
       <ng-container matColumnDef="responsable">
         <th id='responsableI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 23%;'>Responsable </th>
-        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.responsable}} </td>
+        <td mat-cell *matCellDef="let row" style=' width: 13%;'> {{''}} </td>
       </ng-container>
 
       <ng-container matColumnDef="opciones" >
@@ -71,6 +71,6 @@
   </div>
   <div class="col-md-4">
     <button mat-raised-button  (click)="cerrar()" [disabled]=false>Cerrar</button>
-    <button mat-raised-button   [disabled]=false>Agregar</button>
+    <button mat-raised-button   [disabled]=false onclick="javascript:window.print()">Imprimir</button>
 </div>
   </div>
