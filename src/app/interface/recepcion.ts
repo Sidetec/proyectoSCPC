@@ -11,10 +11,16 @@ export interface IRecepcion {
   saldoSuc: number;
 }
 export interface IServicio{
+  codigo?: string;
+  nombre?: string;
+  descripcion?: string;
+  responsable?: string;
+  servicio?: string;
+  correo?: string;
+  nombreP?: string;
+}
+
+export interface IServicioListaP{
   codigo: string;
   nombre: string;
-  descripcion: string;
-  responsable: string;
-  servicio: string;
-  correo: string;
 }

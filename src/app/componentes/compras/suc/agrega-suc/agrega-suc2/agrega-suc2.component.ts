@@ -157,7 +157,7 @@ agregaNuevo(){
     let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
 console.log('fecha:',formatoDate)
     this.comprasSucService
-    .putDataSucCrea(formatoDate,this.agregaArticulo.value.servicio,this.agregaArticulo.value.responsable)
+    .putDataSucCrea(formatoDate,this.agregaArticulo.value.servicio,'1')// se deja el 1 en duro po this.agregaArticulo.value.responsable
     .subscribe((res: {}) => {
       console.log('respuesta graba cabecera: ', res);
       this.getRescataId(this.agregaArticulo.value.servicio)

@@ -85,7 +85,7 @@ export class AgregaOcComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.capturarValorMax();
+   // this.capturarValorMax();
   }
 
 

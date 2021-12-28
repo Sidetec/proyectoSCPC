@@ -60,6 +60,7 @@ export class ComprasOcService {
   }
 
   putDataOcCrea(numOrdenCompra:string,tipoDocumentoAsociado:string,numDocumentoAsociado:string,formatoDate:string, empresa:string,rut:string,descripcion:string,direccionEnvioFactura:string,direccionDespacho:string,formaPago:string): Observable<IOcresultado> {
+    console.log('uno:',`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+numOrdenCompra + `/` + tipoDocumentoAsociado+  `/`+numDocumentoAsociado+  `/`+formatoDate+  `/`+ empresa+  `/`+rut+  `/`+descripcion+  `/`+direccionEnvioFactura+  `/`+direccionDespacho+  `/`);
     return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+numOrdenCompra + `/` + tipoDocumentoAsociado+  `/`+numDocumentoAsociado+  `/`+formatoDate+  `/`+ empresa+  `/`+rut+  `/`+descripcion+  `/`+direccionEnvioFactura+  `/`+direccionDespacho+  `/`+formaPago,{ headers: this.headers })
     .pipe(
       retry(1),
@@ -68,6 +69,7 @@ export class ComprasOcService {
   }
 
   putDataOcCreaArticulo(id:string,codigoArticulo: string, cantidadTotal: string, valorUnitario: string): Observable<IOcresultado> {
+    console.log('uno:',`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+  id+  `/`+  codigoArticulo+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`);
     return this.http.get<IOcresultado>(`${environment.apiUrl}/PostaCentralConsultaOC/crear/`+  id+  `/`+  codigoArticulo+  `/`+ cantidadTotal+  `/`+ valorUnitario+  `/`,{ headers: this.headers })
     .pipe(
       retry(1),

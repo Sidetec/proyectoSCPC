@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { IArtFarm, IArticuloF } from 'src/app/interface/arsenal';
 import { IArticuloOc } from 'src/app/interface/oc';
-import { IServicio } from 'src/app/interface/recepcion';
+import { IServicio, IServicioListaP } from 'src/app/interface/recepcion';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 import { ComprasRecepcionService } from 'src/app/servicios/compras-recepcion.service';
+import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,14 +14,28 @@ import Swal from 'sweetalert2';
   styleUrls: ['./recepcion.component.css']
 })
 export class RecepcionComponent implements OnInit {
+  listaServicio=[
+  {codigo:"1", nombre:"CR Medicina"},
+  {codigo:"2", nombre:"CR Quirúrgico Cirugía"},
+  {codigo:"3", nombre:"CR Quirúrgico Traumatología"},
+  {codigo:"4", nombre:"CR Quemados Pabellón"},
+  {codigo:"5", nombre:"CR Quemados Hospitalización"},
+  {codigo:"6", nombre:"CR Urgencia Médica Quirúrgica"},
+  {codigo:"7", nombre:"CR Urgencia Médica Admisión"},
+  {codigo:"8", nombre:"CR Urgencia Médica  Odontología Maxilofacial"},
+  {codigo:"9", nombre:"CR Paciente Crítico"}
+  ] as IServicioListaP[]
+
 
   articulo: IArticuloOc | undefined;
   datosServicios: IServicio[] | undefined;
+  datosServiciosFinal: IServicio[] | undefined;
   listaServicios: string[] | undefined;
   listaSolicitud: string[] = ["PAC","SUC"];
 
   constructor(public comprasRecepcionService: ComprasRecepcionService,
-              public comprasOcService: ComprasOcService
+              public comprasOcService: ComprasOcService,
+              public listaArsenalService:ListaArsenalService
               ) {
   }
   servicio = new FormControl('', [Validators.required]);
@@ -76,6 +92,10 @@ export class RecepcionComponent implements OnInit {
       .subscribe((res: {}) => {
         console.log('Artículos: ', res);
         this.datosServicios = res as IServicio[];
+        this.datosServiciosFinal = this.datosServicios.concat(this.listaServicio);
+        console.log('sssss:',this.datosServiciosFinal);
+
+
       },
       error => {
         console.log('error carga:', error);
@@ -99,8 +119,8 @@ export class RecepcionComponent implements OnInit {
 
  onBlurArticulo(event: any){
     let codArticulo= event.target.value;
-    this.comprasOcService
-    .getDataOcDetalle2(codArticulo)
+    this.listaArsenalService
+    .getArticulo(codArticulo)
     .subscribe((res: {}) => {
       console.log('articulo: ', res);
       if (res==''){
@@ -111,9 +131,15 @@ export class RecepcionComponent implements OnInit {
        );
       }
       else{
-        let datosArticulo = res as IArticuloOc[];
-        this.ingresoRecepcion.get('descripcionArticulo')!.setValue(datosArticulo[0].detalles);
-        this.ingresoRecepcion.get('saldoDisponible')!.setValue(datosArticulo[0].cantidadTotal);
+        let datosArticulo = res as IArticuloF[];
+        if (datosArticulo[0].disponible!=null){
+          this.ingresoRecepcion.get('saldoDisponible')!.setValue(datosArticulo[0].disponible);
+        }else{
+          this.ingresoRecepcion.get('saldoDisponible')!.setValue('0');
+        }
+
+        this.ingresoRecepcion.get('descripcionArticulo')!.setValue(datosArticulo[0].descripcion);
+
       }
     },
     error => {

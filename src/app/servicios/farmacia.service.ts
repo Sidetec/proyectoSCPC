@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IArtFarm, IArticulo, IResultado } from '../interface/arsenal';
+import { IArtFarm, IArticulo, IArticuloF, IResultado } from '../interface/arsenal';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +33,8 @@ export class ListaArsenalService {
     );
   }
 
-  getArticulo(articulo:string): Observable<IArtFarm> {
-    return this.http.get<IArtFarm>(`${environment.apiUrl}/PostaCentralArsenalFarmac/articulo/`+ articulo , { headers: this.headers })
+  getArticulo(articulo:string): Observable<IArticuloF> {
+    return this.http.get<IArticuloF>(`${environment.apiUrl}/PostaCentralArsenalFarmac/articulo/`+ articulo , { headers: this.headers })
     .pipe(
       retry(1),
       catchError(this.errorHandl)
