@@ -20,6 +20,14 @@ export class ComprasOcService {
     });
 
 
+  getEnvioCorreo4(codSuc:string) {
+      console.log(`${environment.apiUrl}/PostaCentralEnviarCorreo/correo/4/`+  codSuc);
+      return this.http.get(`${environment.apiUrl}/PostaCentralEnviarCorreo/correo/4/`+  codSuc, {responseType: 'text'})
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+    }
 
   getDataOcLista(): Observable<IConsultaOcLista> {
     return this.http.get<IConsultaOcLista>(`${environment.apiUrl}/PostaCentralConsultaOC/consulta`, { headers: this.headers })

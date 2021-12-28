@@ -204,6 +204,23 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
 
     let formatoDate = (moment(this.agregaArticulo.value.fechaSolicitud)).format('YYYY-MM-DD')
 
+    if(this.agregaArticulo.value.tipoDocumentoAsociado=='SUC'){
+
+      this.comprasOcService
+      .getEnvioCorreo4(this.agregaArticulo.value.numDocumentoAsociado)
+      .subscribe((res) => {
+      },
+      error => {
+        console.log('error carga:', error);
+        Swal.fire(
+          'ERROR INESPERADO',
+          error,
+         'info'
+       );
+      }
+    );
+    }
+
     this.comprasOcService
     .putDataOcCrea(this.agregaArticulo.value.numOrdenCompra, this.agregaArticulo.value.tipoDocumentoAsociado,this.agregaArticulo.value.numDocumentoAsociado,formatoDate, this.agregaArticulo.value.empresa,this.agregaArticulo.value.rut,this.agregaArticulo.value.descripcion,this.agregaArticulo.value.direccionEnvioFactura,this.agregaArticulo.value.direccionDespacho,this.agregaArticulo.value.formaPago)
     .subscribe((res: {}) => {
@@ -222,6 +239,7 @@ this.dataSource = new MatTableDataSource(this.datoConsultaOc);
      );
     }
   );
+
   }
 
   grabarArticulo(){

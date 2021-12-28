@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IArticuloF } from 'src/app/interface/arsenal';
 import { IIgresoConsumo } from 'src/app/interface/Pac';
 import { IServicioListaP } from 'src/app/interface/recepcion';
+import { ConsumoService } from 'src/app/servicios/consumo.service';
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
 
 
@@ -30,7 +31,8 @@ export class AgregaConsumoComponent implements OnInit {
 
   datoAlertas: IIgresoConsumo | undefined;
 
-  constructor(private listaArsenalService: ListaArsenalService
+  constructor(private listaArsenalService: ListaArsenalService,
+    private consumoService: ConsumoService
               ) {
   }
 
@@ -83,13 +85,30 @@ export class AgregaConsumoComponent implements OnInit {
 
   enviar() {
 
-            Swal.fire(
-            'Se grabó con Éxito',
-            'Click en Botón!',
-            'success'
-          ); // ,
 
 
+    this.consumoService
+    .getEnvioCorreo3(this.ingresoConsumo.get('codigoArticulo')!.value)
+    .subscribe((res) => {
+      console.log('articuloooo: ', res);
+
+      this.ingresoConsumo.reset()
+      Swal.fire(
+        'Se grabó con Éxito',
+        'Click en Botón!',
+        'success'
+      ); // ,
+
+    },
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
 
   }
 

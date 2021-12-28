@@ -6,6 +6,7 @@ import { IServicio, IServicioListaP } from 'src/app/interface/recepcion';
 import { ComprasOcService } from 'src/app/servicios/compras-oc.service';
 import { ComprasRecepcionService } from 'src/app/servicios/compras-recepcion.service';
 import { ListaArsenalService } from 'src/app/servicios/farmacia.service';
+import { RecepcionService } from 'src/app/servicios/recepcion.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -35,7 +36,8 @@ export class RecepcionComponent implements OnInit {
 
   constructor(public comprasRecepcionService: ComprasRecepcionService,
               public comprasOcService: ComprasOcService,
-              public listaArsenalService:ListaArsenalService
+              public listaArsenalService:ListaArsenalService,
+              private recepcionService: RecepcionService
               ) {
   }
   servicio = new FormControl('', [Validators.required]);
@@ -109,11 +111,28 @@ export class RecepcionComponent implements OnInit {
   }
   enviar() {
 
-            Swal.fire(
-            'Se grabó con Éxito',
-            'Click en Botón!',
-            'success'
-          ); // ,
+    this.recepcionService
+    .getEnvioCorreo6(this.ingresoRecepcion.get('codigoArticulo')!.value)
+    .subscribe((res) => {
+      console.log('articuloooo: ', res);
+
+      this.ingresoRecepcion.reset()
+      Swal.fire(
+        'Se grabó con Éxito',
+        'Click en Botón!',
+        'success'
+      ); // ,
+
+    },
+    error => {
+      console.log('error carga:', error);
+      Swal.fire(
+        'ERROR INESPERADO',
+        error,
+       'info'
+     );
+    }
+  );
 
   }
 

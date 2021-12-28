@@ -29,12 +29,10 @@ export class CancelarSucComponent implements OnInit {
 
   Responsable = new FormControl('', [Validators.required]);
   Motivo= new FormControl('', [Validators.required]);
-  AdjDocu= new FormControl('', [Validators.required]);
 
    cancelarSuc: FormGroup = new FormGroup({
     Responsable: this.Responsable,
     Motivo: this.Motivo,
-    AdjDocu: this.AdjDocu,
   });
 
   getErrorMessage(campo: string) {
@@ -45,9 +43,7 @@ export class CancelarSucComponent implements OnInit {
     if (campo === 'Motivo'){
         return this.Motivo.hasError('required') ? 'Ingresa el Motivo de Cierre' : '';
     }
-    if (campo === 'AdjDocu'){
-        return this.AdjDocu.hasError('required') ? 'Adjunta Documentos' : '';
-    }
+
 
     return '';
   }
@@ -60,11 +56,11 @@ export class CancelarSucComponent implements OnInit {
     let formattedDate = (moment(date)).format('YYYY-MM-DD')
     console.log('fecha formato',formattedDate)
     this.comprasSucService
-    .putDataSucCancelar(this.parametro.id,this.parametro.numSuc,this.cancelarSuc.get('Responsable')?.value,this.cancelarSuc.get('Motivo')?.value,this.cancelarSuc.get('AdjDocu')?.value,formattedDate)
+    .putDataSucCancelar(this.parametro.id,this.parametro.numSuc,this.cancelarSuc.get('Responsable')?.value,this.cancelarSuc.get('Motivo')?.value,'',formattedDate)
     .subscribe((res: {}) => {
       console.log('suc: ', res);
       Swal.fire(
-        'Se agrego con Éxito',
+        'Se canceló con Éxito',
         'Click en Botón!',
         'success'
       ); // ,

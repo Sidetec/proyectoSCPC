@@ -8,14 +8,11 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input type='number' matInput placeholder="Ingrese Motivo del Cierre"  [formControl]="Motivo" required>
+    <input matInput placeholder="Ingrese Motivo del Cierre"  [formControl]="Motivo" required>
     <mat-error *ngIf="Motivo.invalid">{{getErrorMessage('Motivo')}}</mat-error>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Adjunte Documentos"  [formControl]="AdjDocu" required>
-    <mat-error *ngIf="AdjDocu.invalid">{{getErrorMessage('AdjDocu')}}</mat-error>
-  </mat-form-field>
+
 
 
 </mat-dialog-content>
