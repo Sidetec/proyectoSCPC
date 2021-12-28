@@ -55,6 +55,10 @@ import { IngresoArtOcComponent } from './componentes/compras/oc/agrega-oc/agrega
 import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
 import { IngresoArtSucComponent } from './componentes/compras/suc/agrega-suc/agrega-suc2/ingreso-art-suc/ingreso-art-suc.component';
 import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-articulo/agrega-articulo.component';
+import { IngresoComponent } from './componentes/activo-fijo/reporte-depreciacion/ingreso/ingreso.component';
+import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
+import { ConsultaCatalogoComponent } from './componentes/catalogo/consulta-catalogo/consulta-catalogo.component';
+
 
 @NgModule({
   declarations: [
@@ -99,7 +103,10 @@ import { AgregaArticuloComponent } from './componentes/farmacia/arsenal/agrega-a
     ReportesComponent,
     IngresoArtSucComponent,
     ArsenalComponent,
-    AgregaArticuloComponent
+    AgregaArticuloComponent,
+    IngresoComponent,
+    CatalogoComponent,
+    ConsultaCatalogoComponent
   ],
   imports: [
     BrowserModule,

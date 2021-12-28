@@ -121,7 +121,7 @@ export class MenulateralComponent implements OnDestroy {
               titulo: 'Activo Fijo - Catálogo de Activos Fijos',
               tituloMenu: 'Catálogo',
               iconName: 'send icon',
-              route: 'activofijo',
+              route: 'catalogo',
               disabled: false
             },
             {

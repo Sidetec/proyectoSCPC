@@ -17,6 +17,7 @@ import { ActivoFijoComponent } from './componentes/activo-fijo/activo-fijo.compo
 import { EncuestasComponent } from './componentes/generales/encuestas/encuestas.component';
 import { ReportesComponent } from './componentes/generales/reportes/reportes.component';
 import { ArsenalComponent } from './componentes/farmacia/arsenal/arsenal.component';
+import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 
 
 
@@ -38,7 +39,7 @@ const routes: Routes = [
     {path:'activofijo', component:ActivoFijoComponent},
     {path: 'gestionDocumental', component: GestionDocumentalComponent},
     {path: 'centralizacionContable', component: CentralizacionContableComponent},
-
+    {path: 'catalogo', component: CatalogoComponent},
     {path: 'reportes', component: ReportesComponent},
     {path: 'encuestas', component: EncuestasComponent}
 

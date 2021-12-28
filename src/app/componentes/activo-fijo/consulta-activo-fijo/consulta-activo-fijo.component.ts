@@ -11,6 +11,7 @@ import { DocumentosAsociadosComponent } from '../documentos-asociados/documentos
 
 import { IConsultaActivoFijo } from 'src/app/interface/activoFijo';
 import { MantencionArchivoComponent } from '../mantencion-archivo/mantencion-archivo.component';
+import { IngresoComponent } from '../reporte-depreciacion/ingreso/ingreso.component';
 @Component({
   selector: 'app-consulta-activo-fijo',
   templateUrl: './consulta-activo-fijo.component.html',
@@ -53,7 +54,7 @@ datoConsultaSuc: IConsultaActivoFijo[] = [
     dialogConfig.height = '90%';
     dialogConfig.position = { top : '1%'};
 
-    this.dialog.open(ReporteDepreciacionComponent, dialogConfig)
+    this.dialog.open(IngresoComponent, dialogConfig)
       .afterClosed().subscribe(
        data => {console.log('Datos Consulta:', data);
                 if (data !== undefined) {

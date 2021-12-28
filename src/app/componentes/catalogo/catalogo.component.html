@@ -1,87 +1,122 @@
-
 <div class="pt-1" >
-    <div class="col-md-12">
-      <h2 class="text-center">Catálogo de Activos Fijos</h2>
-    </div>
+  <div class="col-md-12">
+    <h2 class="text-center">Catálogo de Activos Fijos</h2>
   </div>
-  <div class="content ml-2 mr-2">
+</div>
+<div class="content ml-2 mr-2">
+<div class="row">
+  <div class="col-md-11">
+    <mat-form-field appearance="standard">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
+    </mat-form-field>
+  </div>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+
+    <!-- Codigo Column -->
+    <ng-container matColumnDef="codigo">
+      <th id='codigoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 10%;'>Código</th>
+      <td mat-cell *matCellDef="let row" style=' width: 10%;'> {{row.codigo}} </td>
+    </ng-container>
+
+    <!-- Descripción Column -->
+    <ng-container matColumnDef="descripcion">
+      <th id='descripcionI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Descripción</th>
+      <td mat-cell *matCellDef="let row" style=' width: 20%;'> {{row.descripcion}} </td>
+    </ng-container>
+
+    <!-- Marca Column -->
+    <ng-container matColumnDef="marca">
+      <th id='marcaI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Marca</th>
+      <td mat-cell *matCellDef="let row" style=' width: 20%;'> {{row.marca}} </td>
+    </ng-container>
+
+    <!-- Modelo Column -->
+    <ng-container matColumnDef="modelo">
+      <th id='modeloI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Modelo</th>
+      <td mat-cell *matCellDef="let row" style=' width: 20%;'> {{row.modelo}} </td>
+    </ng-container>
+
+<!-- Ocultos -->
+    <!-- Vida útil Column -->
+    <ng-container matColumnDef="vidaUtil">
+      <th [hidden]="show" id='vidaUtilI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Vida Útil</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.vidaUtil}} </td>
+    </ng-container>
+
+    <!-- Estado Column -->
+    <ng-container matColumnDef="estado">
+      <th [hidden]="show" id='estadoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Estado</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.estado}} </td>
+    </ng-container>
+
+    <!-- Campo1 Column -->
+    <ng-container matColumnDef="campo1">
+      <th [hidden]="show" id='campo1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Campo1</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.campo1}} </td>
+    </ng-container>
+
+    <!-- fechaCompra Column -->
+    <ng-container matColumnDef="fechaCompra">
+      <th [hidden]="show" id='fechaCompraI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Fecha Compra</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.fechaCompra}} </td>
+    </ng-container>
+
+    <!-- valorCompra Column -->
+    <ng-container matColumnDef="valorCompra">
+      <th [hidden]="show" id='valorCompraI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Valor Compra</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.valorCompra}} </td>
+    </ng-container>
+
+    <!-- valorDesecho Column -->
+    <ng-container matColumnDef="valorDesecho">
+      <th [hidden]="show" id='valorDesechoI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 13%;'>Valor Desecho</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 13%;'> {{row.valorDesecho}} </td>
+    </ng-container>
+
+    <!-- depreciacionAnual Column -->
+    <ng-container matColumnDef="depreciacionAnual">
+      <th [hidden]="show" id='depreciacionAnualI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>Depreciación Anual</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.depreciacionAnual}} </td>
+    </ng-container>
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th [hidden]="show" id='idI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 5%;'>ID</th>
+      <td [hidden]="show" mat-cell *matCellDef="let row" style=' width: 5%;'> {{row.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="opciones" >
+      <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 5%; text-align: center'>    </th>
+      <td mat-cell *matCellDef="let row; let i=index;" style=' width: 5%; text-align: center'>
+        <button mat-icon-button color="accent" (click)="consultaCatalogo(row.id, row.codigo, row.descripcion, row.marca, row.modelo, row.vidaUtil, row.estado, row.campo1, row.fechaCompra, row.valorCompra, row.valorDesecho, row.depreciacionAnual)">
+          <mat-icon>search</mat-icon>
+        </button>
+
+      </td>
+
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-dialog-actions>
     <div class="row">
-      <div class="col-md-11">
-
-        <mat-form-field appearance="standard">
-          <mat-label>Buscar</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
-        </mat-form-field>
-      </div>
-      <div class="col-md-1">
-
-      </div>
-  </div>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
-
-      <!-- PAC Column -->
-      <ng-container matColumnDef="CodigoActivo">
-        <th id='pacI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 15%;'>Código Activo </th>
-        <td mat-cell *matCellDef="let row" style=' width: 15%;'> {{row.CodigoActivo}} </td>
-      </ng-container>
-
-      <!-- Servicio Column -->
-      <ng-container matColumnDef="Descripcion">
-        <th id='servicioI' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 20%;'>Descripción </th>
-        <td mat-cell *matCellDef="let row" style=' width: 17%;'> {{row.Descripcion}} </td>
-      </ng-container>
-
-      <!-- Columna1 Column -->
-      <ng-container matColumnDef="columna1">
-        <th id='columna1I' mat-header-cell *matHeaderCellDef mat-sort-header style=' width: 35%;'> </th>
-        <td mat-cell *matCellDef="let row" style=' width: 35%;'> {{''}} </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="opciones" >
-        <th id='opcionesI' mat-header-cell *matHeaderCellDef  style=' width: 15%; text-align: center'>
-          <button mat-icon-button color="accent" class="nuevo" (click)="agregaNuevo()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </th>
-
-        <td mat-cell *matCellDef="let row; let i=index;" style=' width: 15%; text-align: center'>
-
-            <!--
-          <button mat-icon-button color="accent" style="size:5px" (click)="actualizaPac()">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-icon-button color="accent" (click)="consultaPac()">
-            <mat-icon>search</mat-icon>
-          </button>
-          -->
-
-          <button mat-icon-button color="accent" (click)="consultaPac()">
-            <mat-icon>delete</mat-icon>
-          </button>
-
-
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No existen datos...{{input.value}}"</td>
-      </tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página"></mat-paginator>
-
-    <div class="col-md-4">
-        <button mat-raised-button   (click)="alertas()"  [disabled]=false>Volver</button>
-        <button mat-raised-button   (click)="alertas()"  [disabled]=false>Resumen Inventario</button>
-        <button mat-raised-button   (click)="alertas()"  [disabled]=false>Balance General</button>
+    <div class="col-md-6 text-center">
+        <button mat-raised-button  (click)="balanceGral()" mat-dialog-close  [disabled]=false>Balance General</button>
     </div>
-
-
+    <div class="col-md-6 text-center">
+        <button mat-raised-button  (click)="resumen()" mat-dialog-close  [disabled]=false>Resumen de Inventario por tipo de Especie</button>
+    </div>
   </div>
-  </div>
+</mat-dialog-actions>
+
+</div>
+</div>

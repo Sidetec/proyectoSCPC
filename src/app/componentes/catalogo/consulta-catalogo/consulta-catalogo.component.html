@@ -1,0 +1,59 @@
+<h2 mat-dialog-title class="text-center">Detalle de un Activo</h2>
+<div class="content ml-2 mr-2">
+  <div class="mat-elevation-z8">
+    <mat-dialog-content  name="consultaActivo" class="consulta-container">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Código"  value="{{this.data.codigo}}" disabled='true' >
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <input matInput placeholder="Descripción"  value="{{this.data.descripcion}}" disabled='true' >
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Marca" value="{{this.data.marca}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Modelo" value="{{this.data.modelo}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Vida Útil" value="{{this.data.vidaUtil}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Estado" value="{{this.data.estado}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Fecha Compra" value="{{this.data.fechaCompra}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Valor Compra" value="{{this.data.valorCompra}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Valor Desecho" value="{{this.data.valorDesecho}}" disabled='true'>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Depreciación Anual" value="{{this.data.depreciacionAnual}}" disabled='true'>
+      </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="col-md-4 text-center">
+            <button mat-raised-button  (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button mat-raised-button  (click)="reporte()" mat-dialog-close  [disabled]=false>Reporte Depreciación</button>
+      </div>
+      <div class="col-md-4 text-center">
+          <button mat-raised-button  (click)="mantenimiento()" mat-dialog-close  [disabled]=false>Mantenimiento</button>
+      </div>
+    </mat-dialog-actions>
+  </div>
+</div>

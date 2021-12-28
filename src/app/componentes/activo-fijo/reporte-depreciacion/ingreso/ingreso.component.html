@@ -1,0 +1,49 @@
+
+<div class="row">
+  <div class="col-md-10 text-center ">
+    <h2 mat-dialog-title>Reporte Depreciacion del Archivo</h2>
+  </div>
+  <div class="col-md-2 text-center ">
+    <button  mat-raised-button (click)="cerrar()" mat-dialog-close  [disabled]=false>Cerrar</button>
+  </div>
+</div>
+<mat-dialog-content [formGroup]="agregaReferencia " name="agregaReferencia" class="agrega-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Fecha de Compra" [matDatepicker]="dpdFechaCompra" [formControl]="fechaCompra" required>
+    <mat-datepicker-toggle matSuffix [for]="dpdFechaCompra"></mat-datepicker-toggle>
+    <mat-datepicker #dpdFechaCompra></mat-datepicker>
+    <mat-error *ngIf="fechaCompra.invalid">{{getErrorMessage('fechaCompra')}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput  placeholder="Valor de Compra" [formControl]="valorCompra" >
+    <mat-error *ngIf="valorCompra.invalid">{{getErrorMessage('valorCompra')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Vida Util (Años)" [formControl]="vidaUtil" >
+    <mat-error *ngIf="vidaUtil.invalid">{{getErrorMessage('vidaUtil')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Valor de Desecho" [formControl]="valorDesecho" >
+    <mat-error *ngIf="valorDesecho.invalid">{{getErrorMessage('valorDesecho')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Depreciación Anual" [formControl]="depreciacionAnual" >
+    <mat-error *ngIf="depreciacionAnual.invalid">{{getErrorMessage('depreciacionAnual')}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+
+
+<div *ngIf="!agregaReferencia.invalid">
+  <div *ngIf="agregaReferencia">
+    <app-reporte-depreciacion [agregaReferencia]="agregaReferencia" ></app-reporte-depreciacion>
+  </div>
+  </div>
+

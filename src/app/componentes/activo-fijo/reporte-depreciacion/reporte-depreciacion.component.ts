@@ -1,5 +1,5 @@
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material/dialog
 import { HttpClient } from '@angular/common/http';
 
 import { IResumenDepreciacion } from 'src/app/interface/activoFijo';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reporte-depreciacion',
@@ -15,8 +16,11 @@ import { IResumenDepreciacion } from 'src/app/interface/activoFijo';
 })
 export class ReporteDepreciacionComponent implements AfterViewInit {
 
-datoConsultaSuc: IResumenDepreciacion[] = [
+  @Input()
+  agregaArticulo!: FormGroup;
 
+datoConsultaSuc: IResumenDepreciacion[] = [
+/*
   {findeanio: '0', depreciacionAnual: '', depreciacionAcum: '', valorenLibros: '100.000'},
   {findeanio: '1', depreciacionAnual: '15.000', depreciacionAcum: '15.000', valorenLibros: '85.000'},
   {findeanio: '2', depreciacionAnual: '15.000', depreciacionAcum: '30.000', valorenLibros: '70.000'},
@@ -24,6 +28,7 @@ datoConsultaSuc: IResumenDepreciacion[] = [
   {findeanio: '4', depreciacionAnual: '15.000', depreciacionAcum: '60.000', valorenLibros: '40.000'},
   {findeanio: '5', depreciacionAnual: '15.000', depreciacionAcum: '75.000', valorenLibros: '25.000'},
   {findeanio: '6', depreciacionAnual: '15.000', depreciacionAcum: '90.000', valorenLibros: '10.000'}
+  */
 ];
 
   displayedColumns: string[] = ['findeanio', 'depreciacionAnual', 'depreciacionAcum', 'valorenLibros'];
@@ -40,6 +45,19 @@ datoConsultaSuc: IResumenDepreciacion[] = [
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.datoConsultaSuc);
+  }
+  ngOnInit() {
+    this.formula()
+  }
+
+  formula(){
+    this.datoConsultaSuc.push( {findeanio: '0', depreciacionAnual: '', depreciacionAcum: '', valorenLibros: '100.000'})
+    this.datoConsultaSuc.push({findeanio: '1', depreciacionAnual: '15.000', depreciacionAcum: '15.000', valorenLibros: '85.000'});
+    this.datoConsultaSuc.push({findeanio: '2', depreciacionAnual: '15.000', depreciacionAcum: '30.000', valorenLibros: '70.000'});
+    this.datoConsultaSuc.push({findeanio: '3', depreciacionAnual: '15.000', depreciacionAcum: '45.000', valorenLibros: '55.000'});
+    this.datoConsultaSuc.push({findeanio: '4', depreciacionAnual: '15.000', depreciacionAcum: '60.000', valorenLibros: '40.000'});
+    this.datoConsultaSuc.push({findeanio: '5', depreciacionAnual: '15.000', depreciacionAcum: '75.000', valorenLibros: '25.000'});
+    this.datoConsultaSuc.push({findeanio: '6', depreciacionAnual: '15.000', depreciacionAcum: '90.000', valorenLibros: '10.000'});
   }
 
   ngAfterViewInit() {
