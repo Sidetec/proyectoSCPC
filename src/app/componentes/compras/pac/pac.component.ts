@@ -60,19 +60,19 @@ export class PacComponent implements AfterViewInit, OnInit {
       console.log('Fin: ',fin);
       console.log('Día del Fin: ',fin.getDate());
       if( hoy >= inicio && hoy < fin ){
-        if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencTercerAviso) ){
+        if( fin.getDate()+1 - hoy.getDate() == 1 ){
           Swal.fire(
             'Resta 1 día para finalizar el período de creación de PAC',
             'Click en botón!',
             'success'
          );
-        }else if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencSegundoAviso) ){
+        }else if( fin.getDate()+1 - hoy.getDate() == 3 ){
           Swal.fire(
             'Restan 3 días para finalizar el período de creación de PAC',
             'Cerrar',
             'success'
          );
-        }else if( fin.getDate()+1 - hoy.getDate() == parseInt(alertas.vencPrimerAviso) ){
+        }else if( fin.getDate()+1 - hoy.getDate() == 7 ){
           Swal.fire(
             'Restan 7 días para finalizar el período de creación de PAC',
             'Click en botón!',
